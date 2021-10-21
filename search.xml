@@ -4,6 +4,31 @@
   
     
     <entry>
+      <title>markdown基础语法练习</title>
+      <link href="/2021/10/21/markdown-prictice/"/>
+      <url>/2021/10/21/markdown-prictice/</url>
+      
+        <content type="html"><![CDATA[<p>使用vscode进行markdown文件编写，在vscode中有丰富的插件可以使用，推荐使用markdown preview插件，可同时预览.md文件的效果。</p><h1 id="标题练习"><a href="#标题练习" class="headerlink" title="标题练习"></a>标题练习</h1><h1 id="主标题"><a href="#主标题" class="headerlink" title="主标题"></a>主标题</h1><p>语法：主标题文字 空行 ====</p><h2 id="副标题"><a href="#副标题" class="headerlink" title="副标题"></a>副标题</h2><p>语法：副标题文字 空行 —-</p><h1 id="一级标题"><a href="#一级标题" class="headerlink" title="一级标题"></a>一级标题</h1><h2 id="二级标题"><a href="#二级标题" class="headerlink" title="二级标题"></a>二级标题</h2><h3 id="三级标题"><a href="#三级标题" class="headerlink" title="三级标题"></a>三级标题</h3><h4 id="四级标题"><a href="#四级标题" class="headerlink" title="四级标题"></a>四级标题</h4><h5 id="五级标题"><a href="#五级标题" class="headerlink" title="五级标题"></a>五级标题</h5><p>语法： #（有几个#号就是几级标题）标题文字</p><h1 id="标签"><a href="#标签" class="headerlink" title="标签"></a>标签</h1><p>语法： TAGS/标签：内容</p><p>标签: 练习 markdown语法</p><h1 id="目录"><a href="#目录" class="headerlink" title="目录"></a>目录</h1><p>语法: 在段落中填写 [TOC] （toc小写也可以）以显示各标题为结构的目录（大纲）导航。</p><p>[toc]</p><h1 id="斜体，粗体，删除线，分栏线"><a href="#斜体，粗体，删除线，分栏线" class="headerlink" title="斜体，粗体，删除线，分栏线"></a>斜体，粗体，删除线，分栏线</h1><h1 id="粗体"><a href="#粗体" class="headerlink" title="粗体"></a>粗体</h1><p>语法： 在文字两端加双下底线或双星号<br><strong>粗体文字示范</strong></p><h1 id="斜体"><a href="#斜体" class="headerlink" title="斜体"></a>斜体</h1><p>语法： 在文字两端加单下底线或单星号<br><em>斜体文字示范</em></p><h1 id="删除线"><a href="#删除线" class="headerlink" title="删除线"></a>删除线</h1><p>语法： 在文字两端加双波浪号<br><del>删除线示范</del></p><h1 id="分栏线"><a href="#分栏线" class="headerlink" title="分栏线"></a>分栏线</h1><p>语法： 在空白行下方添加三条—横线</p><hr>]]></content>
+      
+      
+      <categories>
+          
+          <category> 日常练习 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> tech .md </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>祝我自己生日快乐/博客开张纪念</title>
       <link href="/2021/10/21/happybirthday/"/>
       <url>/2021/10/21/happybirthday/</url>
