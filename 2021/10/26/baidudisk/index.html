@@ -4,7 +4,7 @@
 
 <head>
     <meta charset="utf-8">
-    <meta name="keywords" content="markdown基础语法练习, 读读读233">
+    <meta name="keywords" content="ubuntu16.04下载数据集的折腾, 读读读233">
     <meta name="description" content="要像太阳一样">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
@@ -16,7 +16,7 @@
     <!-- Global site tag (gtag.js) - Google Analytics -->
 
 
-    <title>markdown基础语法练习 | 读读读233</title>
+    <title>ubuntu16.04下载数据集的折腾 | 读读读233</title>
     <link rel="icon" type="image/png" href="/favicon.png">
 
     <link rel="stylesheet" type="text/css" href="/libs/awesome/css/all.css">
@@ -266,12 +266,12 @@
 
 
 
-<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/14.jpg')">
+<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/10.jpg')">
     <div class="container" style="right: 0px;left: 0px;">
         <div class="row">
             <div class="col s12 m12 l12">
                 <div class="brand">
-                    <h1 class="description center-align post-title">markdown基础语法练习</h1>
+                    <h1 class="description center-align post-title">ubuntu16.04下载数据集的折腾</h1>
                 </div>
             </div>
         </div>
@@ -412,7 +412,7 @@
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-minus fa-fw"></i>发布日期:&nbsp;&nbsp;
-                    2021-10-21
+                    2021-10-26
                 </div>
                 
 
@@ -433,19 +433,33 @@
 
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <p>使用vscode进行markdown文件编写，在vscode中有丰富的插件可以使用，推荐使用markdown preview插件，可同时预览.md文件的效果。</p>
-<h1 id="标题练习"><a href="#标题练习" class="headerlink" title="标题练习"></a>标题练习</h1><h1 id="主标题"><a href="#主标题" class="headerlink" title="主标题"></a>主标题</h1><p>语法：主标题文字 空行 ====</p>
-<h2 id="副标题"><a href="#副标题" class="headerlink" title="副标题"></a>副标题</h2><p>语法：副标题文字 空行 —-</p>
-<h1 id="一级标题"><a href="#一级标题" class="headerlink" title="一级标题"></a>一级标题</h1><h2 id="二级标题"><a href="#二级标题" class="headerlink" title="二级标题"></a>二级标题</h2><h3 id="三级标题"><a href="#三级标题" class="headerlink" title="三级标题"></a>三级标题</h3><h4 id="四级标题"><a href="#四级标题" class="headerlink" title="四级标题"></a>四级标题</h4><h5 id="五级标题"><a href="#五级标题" class="headerlink" title="五级标题"></a>五级标题</h5><p>语法： #（有几个#号就是几级标题）标题文字</p>
-<h1 id="标签"><a href="#标签" class="headerlink" title="标签"></a>标签</h1><p>语法： TAGS/标签：内容</p>
-<p>标签: 练习 markdown语法</p>
-<h1 id="目录"><a href="#目录" class="headerlink" title="目录"></a>目录</h1><p>语法: 在段落中填写 [TOC] （toc小写也可以）以显示各标题为结构的目录（大纲）导航。</p>
-<p>[toc]</p>
-<h1 id="斜体，粗体，删除线，分栏线"><a href="#斜体，粗体，删除线，分栏线" class="headerlink" title="斜体，粗体，删除线，分栏线"></a>斜体，粗体，删除线，分栏线</h1><h1 id="粗体"><a href="#粗体" class="headerlink" title="粗体"></a>粗体</h1><p>语法： 在文字两端加双下底线或双星号<br><strong>粗体文字示范</strong></p>
-<h1 id="斜体"><a href="#斜体" class="headerlink" title="斜体"></a>斜体</h1><p>语法： 在文字两端加单下底线或单星号<br><em>斜体文字示范</em></p>
-<h1 id="删除线"><a href="#删除线" class="headerlink" title="删除线"></a>删除线</h1><p>语法： 在文字两端加双波浪号<br><del>删除线示范</del></p>
-<h1 id="分栏线"><a href="#分栏线" class="headerlink" title="分栏线"></a>分栏线</h1><p>语法： 在空白行下方添加三条—横线</p>
-<hr>
+                <p>最近在用实验室的服务器炼丹，被数据集折腾的够呛。别人的模型是用的ffhq集，这个数据集是开源的，但是部署在谷歌网盘上，<del>属于是开源了但没完全开</del>。<br>为了下载数据，最开始也是最直接的想法是在linux上折腾梯子。首选clash，没找到有图形化的窗口的项目。遂转用Qv2ray，在找教程的时候突然想到，如果有人把服务器的系统搞坏了（实验室比较穷，我需要和别人共用一台服务器），我这数据岂不是白白下载？于是决定直接在自己的电脑上下载，下载之后上传到百度网盘，这样也能为数据集做个备份，免得哪天被人rm\rf了。于是又在服务器上折腾百度网盘，首先去百度网盘官网下载deb包进行安装，安装成功了，但是打开之后就报错，可能百度没有为ubuntu16.04做适配。然后就打开万能的百度一下开始找<a target="_blank" rel="noopener" href="https://www.jianshu.com/p/ac4a4399d99c">在ubuntu16.04上安装百度网盘的教程</a>，但是似乎阿里云镜像挂掉了。于是，百度网盘这条路也宣告破产。</p>
+<p>这时，想起了服务器和自己的电脑用的是一个局域网，于是，想到可以使用scp命令传文件，应该比百度网盘下载还能快一些（但是数据还是要上传网盘做备份）。<br>scp语法：</p>
+<pre class=" language-python"><code class="language-python">scp <span class="token punctuation">(</span>选项<span class="token punctuation">)</span> <span class="token punctuation">(</span>参数<span class="token punctuation">)</span>
+</code></pre>
+<p>选项</p>
+<pre><code>-1：使用ssh协议版本1；
+-2：使用ssh协议版本2；
+-4：使用ipv4；
+-6：使用ipv6；
+-B：以批处理模式运行；
+-C：使用压缩；
+-F：指定ssh配置文件；
+-i：identity_file 从指定文件中读取传输时使用的密钥文件（例如亚马逊云pem），此参数直接传递给ssh；
+-l：指定宽带限制；
+-o：指定使用的ssh选项；
+-P：指定远程主机的端口号；
+-p：保留文件的最后修改时间，最后访问时间和权限模式；
+-q：不显示复制进度；
+-r：以递归方式复制。
+</code></pre>
+<p>在跨服务器文件传输中，用到的命令格式如下：</p>
+<pre><code>scp /opt/1.rar(此处更改为你要上传至服务器的文件路径) 服务器名@服务器ip地址:/opt(此处更改为你要在服务器上保存此文件的路径）
+</code></pre>
+<p>从服务器向本地拉取文件的命令如下：</p>
+<pre><code>scp /opt(此处更改为你要在本地保存此文件的路径） 服务器名@服务器ip地址:/opt/1.rar(此处更改为你要拉取至本地的文件的路径)
+</code></pre>
+<p>当然，要保证服务器和自己的电脑之间可以相互ping通。<br>亲测速度挺好的，问题解决~</p>
 
                 
             </div>
@@ -472,7 +486,7 @@
                     </i>
                 </span>
                 <span class="reprint-info">
-                    <a href="http://Dududu233.github.io/2021/10/21/markdown-prictice/">http://Dududu233.github.io/2021/10/21/markdown-prictice/</a>
+                    <a href="http://Dududu233.github.io/2021/10/26/baidudisk/">http://Dududu233.github.io/2021/10/26/baidudisk/</a>
                 </span>
             </div>
             <div class="reprint__notice">
@@ -559,13 +573,13 @@
             <div class="article-badge left-badge text-color">
                 <i class="fas fa-chevron-left"></i>&nbsp;上一篇</div>
             <div class="card">
-                <a href="/2021/10/26/baidudisk/">
+                <a href="/2021/10/30/%E8%AE%B0%E4%B8%80%E6%AC%A1%E5%B9%B3%E5%B9%B3%E6%97%A0%E5%A5%87%E7%9A%84%E4%BD%9C%E4%B8%9A/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/10.jpg" class="responsive-img" alt="ubuntu16.04下载数据集的折腾">
+                        <img src="/medias/featureimages/11.jpg" class="responsive-img" alt="记一次平平无奇的作业/练习markdown语法/决策树算法和模型评估标准">
                         
-                        <span class="card-title">ubuntu16.04下载数据集的折腾</span>
+                        <span class="card-title">记一次平平无奇的作业/练习markdown语法/决策树算法和模型评估标准</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
@@ -576,7 +590,7 @@
                     </div>
                     <div class="publish-info">
                         <span class="publish-date">
-                            <i class="far fa-clock fa-fw icon-date"></i>2021-10-26
+                            <i class="far fa-clock fa-fw icon-date"></i>2021-10-30
                         </span>
                         <span class="publish-author">
                             
@@ -608,12 +622,13 @@
                 下一篇&nbsp;<i class="fas fa-chevron-right"></i>
             </div>
             <div class="card">
-                <a href="/2021/10/21/happybirthday/">
+                <a href="/2021/10/21/markdown-prictice/">
                     <div class="card-image">
                         
-                        <img src="/medias/featureimages/24.jpg" class="responsive-img" alt="祝我自己生日快乐/博客开张纪念">
                         
-                        <span class="card-title">祝我自己生日快乐/博客开张纪念</span>
+                        <img src="/medias/featureimages/14.jpg" class="responsive-img" alt="markdown基础语法练习">
+                        
+                        <span class="card-title">markdown基础语法练习</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
@@ -630,8 +645,8 @@
                             
                             <i class="fas fa-bookmark fa-fw icon-category"></i>
                             
-                            <a href="/categories/%E6%97%A5%E6%97%A5%E8%B0%88/" class="post-category">
-                                    日日谈
+                            <a href="/categories/%E6%97%A5%E5%B8%B8%E6%8A%80%E6%9C%AF/" class="post-category">
+                                    日常技术
                                 </a>
                             
                             
@@ -641,8 +656,8 @@
                 
                 <div class="card-action article-tags">
                     
-                    <a href="/tags/nomal-days/">
-                        <span class="chip bg-color">nomal days</span>
+                    <a href="/tags/tech/">
+                        <span class="chip bg-color">tech</span>
                     </a>
                     
                 </div>
