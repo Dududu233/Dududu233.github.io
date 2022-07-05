@@ -1,0 +1,945 @@
+<!DOCTYPE HTML>
+<html lang="zh-CN">
+
+
+<head>
+    <!-- hexo-inject:begin --><!-- hexo-inject:end --><meta charset="utf-8">
+    <meta name="keywords" content="记一次平平无奇的作业/练习markdown语法/决策树算法和模型评估标准, 读读读233">
+    <meta name="description" content="要像太阳一样">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <meta name="renderer" content="webkit|ie-stand|ie-comp">
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="format-detection" content="telephone=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+
+
+    <title>记一次平平无奇的作业/练习markdown语法/决策树算法和模型评估标准 | 读读读233</title>
+    <link rel="icon" type="image/png" href="/favicon.png">
+
+    <link rel="stylesheet" type="text/css" href="/libs/awesome/css/all.css">
+    <link rel="stylesheet" type="text/css" href="/libs/materialize/materialize.min.css">
+    <link rel="stylesheet" type="text/css" href="/libs/aos/aos.css">
+    <link rel="stylesheet" type="text/css" href="/libs/animate/animate.min.css">
+    <link rel="stylesheet" type="text/css" href="/libs/lightGallery/css/lightgallery.min.css">
+    <link rel="stylesheet" type="text/css" href="/css/matery.css">
+    <link rel="stylesheet" type="text/css" href="/css/my.css">
+
+    <script src="/libs/jquery/jquery.min.js"></script>
+
+<meta name="generator" content="Hexo 5.4.0"><!-- hexo-inject:begin --><!-- hexo-inject:end --><link rel="stylesheet" href="/css/prism-tomorrow.css" type="text/css"></head>
+
+
+
+
+<body>
+    <!-- hexo-inject:begin --><!-- hexo-inject:end --><header class="navbar-fixed">
+    <nav id="headNav" class="bg-color nav-transparent">
+        <div id="navContainer" class="nav-wrapper container">
+            <div class="brand-logo">
+                <a href="/" class="waves-effect waves-light">
+                    
+                    <img src="/medias/logo.png" class="logo-img" alt="LOGO">
+                    
+                    <span class="logo-span">读读读233</span>
+                </a>
+            </div>
+            
+
+<a href="#" data-target="mobile-nav" class="sidenav-trigger button-collapse"><i class="fas fa-bars"></i></a>
+<ul class="right nav-menu">
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/" class="waves-effect waves-light">
+      
+      <i class="fas fa-home" style="zoom: 0.6;"></i>
+      
+      <span>首页</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/tags" class="waves-effect waves-light">
+      
+      <i class="fas fa-tags" style="zoom: 0.6;"></i>
+      
+      <span>标签</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/categories" class="waves-effect waves-light">
+      
+      <i class="fas fa-bookmark" style="zoom: 0.6;"></i>
+      
+      <span>分类</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/archives" class="waves-effect waves-light">
+      
+      <i class="fas fa-archive" style="zoom: 0.6;"></i>
+      
+      <span>归档</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/about" class="waves-effect waves-light">
+      
+      <i class="fas fa-user-circle" style="zoom: 0.6;"></i>
+      
+      <span>关于</span>
+    </a>
+    
+  </li>
+  
+  <li>
+    <a href="#searchModal" class="modal-trigger waves-effect waves-light">
+      <i id="searchIcon" class="fas fa-search" title="搜索" style="zoom: 0.85;"></i>
+    </a>
+  </li>
+</ul>
+
+
+<div id="mobile-nav" class="side-nav sidenav">
+
+    <div class="mobile-head bg-color">
+        
+        <img src="/medias/logo.png" class="logo-img circle responsive-img">
+        
+        <div class="logo-name">读读读233</div>
+        <div class="logo-desc">
+            
+            要像太阳一样
+            
+        </div>
+    </div>
+
+    
+
+    <ul class="menu-list mobile-menu-list">
+        
+        <li class="m-nav-item">
+	  
+		<a href="/" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-home"></i>
+			
+			首页
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/tags" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-tags"></i>
+			
+			标签
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/categories" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-bookmark"></i>
+			
+			分类
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/archives" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-archive"></i>
+			
+			归档
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/about" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-user-circle"></i>
+			
+			关于
+		</a>
+          
+        </li>
+        
+        
+        <li><div class="divider"></div></li>
+        <li>
+            <a href="https://github.com/Dududu233" class="waves-effect waves-light" target="_blank">
+                <i class="fab fa-github-square fa-fw"></i>Fork Me
+            </a>
+        </li>
+        
+    </ul>
+</div>
+
+
+        </div>
+
+        
+            <style>
+    .nav-transparent .github-corner {
+        display: none !important;
+    }
+
+    .github-corner {
+        position: absolute;
+        z-index: 10;
+        top: 0;
+        right: 0;
+        border: 0;
+        transform: scale(1.1);
+    }
+
+    .github-corner svg {
+        color: #0f9d58;
+        fill: #fff;
+        height: 64px;
+        width: 64px;
+    }
+
+    .github-corner:hover .octo-arm {
+        animation: a 0.56s ease-in-out;
+    }
+
+    .github-corner .octo-arm {
+        animation: none;
+    }
+
+    @keyframes a {
+        0%,
+        to {
+            transform: rotate(0);
+        }
+        20%,
+        60% {
+            transform: rotate(-25deg);
+        }
+        40%,
+        80% {
+            transform: rotate(10deg);
+        }
+    }
+</style>
+
+<a href="https://github.com/Dududu233" class="github-corner tooltipped hide-on-med-and-down" target="_blank"
+   data-tooltip="Fork Me" data-position="left" data-delay="50">
+    <svg viewBox="0 0 250 250" aria-hidden="true">
+        <path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"></path>
+        <path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2"
+              fill="currentColor" style="transform-origin: 130px 106px;" class="octo-arm"></path>
+        <path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z"
+              fill="currentColor" class="octo-body"></path>
+    </svg>
+</a>
+        
+    </nav>
+
+</header>
+
+    
+
+
+
+<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/11.jpg')">
+    <div class="container" style="right: 0px;left: 0px;">
+        <div class="row">
+            <div class="col s12 m12 l12">
+                <div class="brand">
+                    <h1 class="description center-align post-title">记一次平平无奇的作业/练习markdown语法/决策树算法和模型评估标准</h1>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+<main class="container content">
+
+    
+    <!-- 文章内容详情 -->
+<div id="artDetail">
+    <div class="card">
+        <div class="card-content article-info">
+            <div class="row tag-cate">
+                <div class="col s7">
+                    
+                    <div class="article-tag">
+                        
+                            <a href="/tags/tech/">
+                                <span class="chip bg-color">tech</span>
+                            </a>
+                        
+                    </div>
+                    
+                </div>
+                <div class="col s5 right-align">
+                    
+                    <div class="post-cate">
+                        <i class="fas fa-bookmark fa-fw icon-category"></i>
+                        
+                            <a href="/categories/%E6%97%A5%E5%B8%B8%E6%8A%80%E6%9C%AF/" class="post-category">
+                                日常技术
+                            </a>
+                        
+                    </div>
+                    
+                </div>
+            </div>
+
+            <div class="post-info">
+                
+                <div class="post-date info-break-policy">
+                    <i class="far fa-calendar-minus fa-fw"></i>发布日期:&nbsp;&nbsp;
+                    2021-10-30
+                </div>
+                
+
+                
+
+                
+                <div class="info-break-policy">
+                    <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
+                    4.7k
+                </div>
+                
+
+                
+
+                
+                    <div id="busuanzi_container_page_pv" class="info-break-policy">
+                        <i class="far fa-eye fa-fw"></i>阅读次数:&nbsp;&nbsp;
+                        <span id="busuanzi_value_page_pv"></span>
+                    </div>
+				
+            </div>
+        </div>
+        <hr class="clearfix">
+
+        
+
+        
+        <!-- 代码块折行 -->
+        <style type="text/css">
+            code[class*="language-"], pre[class*="language-"] { white-space: pre-wrap !important; }
+        </style>
+        
+
+        <div class="card-content article-card-content">
+            <div id="articleContent">
+                <p>记一次平平无奇的数据挖掘课的作业。<br>顺便也是练习使用markdown语法。<br>作业题：<br><img src="https://tuchuang-1307891532.cos.ap-nanjing.myqcloud.com/images/10_30_21_1_1.jpg" alt="10_30_21_1_1"><br><img src="https://tuchuang-1307891532.cos.ap-nanjing.myqcloud.com/images/10_30_21_1_2.jpg" alt="10_30_21_1_2"><br><img src="https://tuchuang-1307891532.cos.ap-nanjing.myqcloud.com/images/10_30_21_1_3.jpg" alt="10_30_21_1_3"><br><img src="https://tuchuang-1307891532.cos.ap-nanjing.myqcloud.com/images/10_30_21_1_4.jpg" alt="10_30_21_1_4"></p>
+<p>作业：</p>
+<h1 id="第五章"><a href="#第五章" class="headerlink" title="第五章"></a>第五章</h1><h3 id="第一题"><a href="#第一题" class="headerlink" title="第一题"></a>第一题</h3><p>决策树是一种很常见的机器学习方法。常常用在样本的对象和属性值一一对应时；目标函数有离散的输出值；可能需要析取假设；训练数据集中可能有噪声或者样本中含有缺失属性值的情况下。</p>
+<h3 id="第二题"><a href="#第二题" class="headerlink" title="第二题"></a>第二题</h3><p>剪枝处理是决策树学习算法解决过拟合的主要手段。决策树剪枝的基本策略可分为预剪枝和后剪枝。<br>预剪枝是指在决策树生成的过程中，对每个结点在划分前进行估计，若当前节点的划分不能带来决策树泛化性能的提升，则停止划分并将当前节点标记为叶结点。<br>后剪枝则是先从训练集生成一颗完整的决策树，然后自底向上的对非叶结点进行考察。若当前结点对应的子树替换为叶结点能带来决策树泛化性能的提升，则将该子节点替换为叶结点。</p>
+<h3 id="第三题"><a href="#第三题" class="headerlink" title="第三题"></a>第三题</h3><p>缺失值将从三个方向给决策树的构建带来影响：</p>
+<ul>
+<li>在训练样本属性缺失的情况下，无法进行划分属性的选择</li>
+<li>给定划分属性，若样本在该属性上的值是缺失的，导致无法对此样本进行划分</li>
+<li>测试样本中属性有缺失值，可能导致测试出错<h3 id="第四题"><a href="#第四题" class="headerlink" title="第四题"></a>第四题</h3><h4 id="优点"><a href="#优点" class="headerlink" title="优点"></a>优点</h4></li>
+<li>决策树学习为概念学习和其他离散值函数的学习提供了一种可供实践的方法。</li>
+<li>具有可解释性，能够在相当短的时间内对大型的数据源做出可行且效果良好的结果，决策树分类的效率高。只需要进行一次构建，即可反复使用。</li>
+<li>易于通过静态测试来对模型进行评测，可以测定模型可信度；如果给定一个观察的模型，那么根据所产生的决策树很容易推出相应的逻辑表达式。</li>
+</ul>
+<h4 id="分类过程中可能出现的问题"><a href="#分类过程中可能出现的问题" class="headerlink" title="分类过程中可能出现的问题"></a>分类过程中可能出现的问题</h4><ul>
+<li>在决策树分类的过程中，很经常出现的一个问题就是过拟合问题。在决策树构建的过程中，为了尽可能正确的分类学习样本，常常会不断地对结点进行划分，导致决策树的分支过多，可能会导致错误的将样本集的一些特征当作所有数据都具有的特征从而出现过拟合问题。<h3 id="第五题"><a href="#第五题" class="headerlink" title="第五题"></a>第五题</h3></li>
+</ul>
+<p>集合中共含有十五个样本，其中6个拒绝，9个接受,计算集合的信息熵：</p>
+<script type="math/tex; mode=display">Ent=-\sum_{k=1}^{y}p_klog_2p_k=-\frac{6}{15}log_2\frac{6}{15}-\frac{9}{15}log_2\frac{9}{15}=0.97</script><p>以属性“年龄”对集合进行划分，得到三个子集：$D^1(年龄=青年)，D^2(年龄=中年)，D^3(年龄=老年)$，分别计算三个子集的信息熵：</p>
+<script type="math/tex; mode=display">Ent(D^1)=-\frac{3}{5}log_2\frac{3}{5}-\frac{2}{5}log_2\frac{2}{5}=0.97</script><script type="math/tex; mode=display">Ent(D^2)=-\frac{3}{5}log_2\frac{3}{5}-\frac{2}{5}log_2\frac{2}{5}=0.97</script><script type="math/tex; mode=display">Ent(D^3)=-\frac{4}{5}log_2\frac{4}{5}-\frac{1}{5}log_2\frac{1}{5}=0.721</script><p>由信息增益的计算公式，计算属性年龄对样本集$D$进行划分的信息增益：</p>
+<script type="math/tex; mode=display">\begin{aligned}
+Gain(D,年龄)&=Ent(D)-\sum_{v=1}^{V}\frac{\lvert D^v \rvert}{\lvert D \rvert}Ent(D^v)\\
+&=0.97-(\frac{1}{3}\times0.97+\frac{1}{3}\times0.97+\frac{1}{3}\times0.721)\\
+&=0.089
+\end{aligned}</script><p>相似的，分别求取以工作情况划分样本集时，以房产情况划分样本集时，以信贷情况划分样本集时的信息增益：</p>
+<script type="math/tex; mode=display">Gain(D,工作情况)=0.97-\frac{10}{15}\times0.97=0.33</script><script type="math/tex; mode=display">Gain(D,房产情况)=0.97-\frac{9}{15}\times0.917=0.419</script><script type="math/tex; mode=display">Gain(D,信贷情况)=0.97-\frac{5}{15}\times0.721-\frac{6}{15}\times0.917=0.362</script><p>比较可得，房产情况为最优特征。</p>
+<h3 id="第六题"><a href="#第六题" class="headerlink" title="第六题"></a>第六题</h3><p>由上文第五题的求解，确定使用房产情况为根结点；<br><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">graph TB</span><br><span class="line"> A[房产情况]</span><br><span class="line"> B[有]</span><br><span class="line"> C[无]</span><br><span class="line"> D[同意]</span><br><span class="line"> E[其他情况]</span><br><span class="line"> A--&gt;B</span><br><span class="line"> A--&gt;C</span><br><span class="line"> B--&gt;D</span><br><span class="line"> C--&gt;E</span><br><span class="line"></span><br></pre></td></tr></table></figure><br>此时，有房产的样本已经到达叶节点；将无房产的样本单独划分为一个集合，共有九个样本，首先计算该子样本集的信息熵：</p>
+<script type="math/tex; mode=display">Ent(D_1)=-\sum_{k=1}^{\lvert \gamma \rvert}p_klog_{2}p_k=-\frac{6}{9}log_2\frac{6}{9}-\frac{3}{9}log_2\frac{3}{9}=0.917</script><p>分别计算其他属性对于子样本集的信息增益：</p>
+<script type="math/tex; mode=display">Gain(D_1|年龄)=Ent(D_1)-\sum_{v=1}^{V}\frac{\lvert D^v_1 \rvert}{\lvert D_1 \rvert}Ent(D^v_1)=0.917-0.36-0.305=0.252\\
+Gain(D_1|工作)=Ent(D_1)-\sum_{v=1}^{V}\frac{\lvert D^v_1 \rvert}{\lvert D_1 \rvert}Ent(D^v_1)=0.917-0=0.917\\
+Gain(D_1|信贷)=Ent(D_1)-\sum_{v=1}^{V}\frac{\lvert D^v_1 \rvert}{\lvert D_1 \rvert}Ent(D^v_1)=0.917-\frac{4}{9}=0.472</script><p>此时：工作情况为最优特征，决策树构建为；<br><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">graph TB</span><br><span class="line"> A[房产情况]</span><br><span class="line"> B[有]</span><br><span class="line"> C[无]</span><br><span class="line"> D[同意]</span><br><span class="line"> E[工作情况]</span><br><span class="line"> F[有工作]--&gt;FF[同意]</span><br><span class="line"> G[无工作]--&gt;GG[拒绝]</span><br><span class="line"> A--&gt;B</span><br><span class="line"> A--&gt;C</span><br><span class="line"> B--&gt;D</span><br><span class="line"> C--&gt;E</span><br><span class="line"> E--&gt;F</span><br><span class="line"> E--&gt;G</span><br><span class="line"></span><br></pre></td></tr></table></figure></p>
+<h3 id="第七题"><a href="#第七题" class="headerlink" title="第七题"></a>第七题</h3><p>python源代码：<br><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#ID3算法</span></span><br><span class="line"><span class="keyword">import</span> math</span><br><span class="line"><span class="keyword">import</span> matplotlib.pyplot <span class="keyword">as</span> plt</span><br><span class="line"><span class="keyword">from</span> matplotlib.pylab <span class="keyword">import</span> *</span><br><span class="line"></span><br><span class="line"><span class="keyword">from</span> treePlotter <span class="keyword">import</span> createPlot</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">calcShannonent</span>(<span class="params">dataset</span>):</span><span class="comment">#计算信息熵</span></span><br><span class="line">    numEntries=<span class="built_in">len</span>(dataset)</span><br><span class="line">    labelCounts=&#123;&#125;</span><br><span class="line">    <span class="keyword">for</span> featVec <span class="keyword">in</span> dataset:</span><br><span class="line">        currentLabel = featVec[-<span class="number">1</span>]</span><br><span class="line">        <span class="comment">#判断这个标签在字典中是否存在，不存在就初始化</span></span><br><span class="line">        <span class="keyword">if</span> currentLabel <span class="keyword">not</span> <span class="keyword">in</span> labelCounts.keys():</span><br><span class="line">            labelCounts[currentLabel] = <span class="number">0</span></span><br><span class="line">        <span class="comment">#统计不同类别的数量</span></span><br><span class="line">        labelCounts[currentLabel] += <span class="number">1</span></span><br><span class="line">    <span class="comment">#初始化熵</span></span><br><span class="line">    shannonent = <span class="number">0.0</span></span><br><span class="line">    <span class="comment">#计算熵</span></span><br><span class="line">    <span class="keyword">for</span> key <span class="keyword">in</span> labelCounts:</span><br><span class="line">        prob = <span class="built_in">float</span>(labelCounts[key])/numEntries</span><br><span class="line">        shannonent -= prob * math.log(prob,<span class="number">2</span>)</span><br><span class="line">    <span class="keyword">return</span> shannonent</span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">SubDataset</span>(<span class="params">dataset,index,value</span>):</span><span class="comment">#从总的数据集中选取出关心的数据组成新的数据集</span></span><br><span class="line">    sub_dataset = []</span><br><span class="line">    <span class="keyword">for</span> example <span class="keyword">in</span> dataset:</span><br><span class="line">        current_list = []</span><br><span class="line">        <span class="keyword">if</span> example[index] == value:</span><br><span class="line">            current_list = example[:index]</span><br><span class="line">            current_list.extend(example[index + <span class="number">1</span> :])</span><br><span class="line">            sub_dataset.append(current_list)</span><br><span class="line">    <span class="keyword">return</span> sub_dataset</span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">ChooseBestFeature</span>(<span class="params">dataset</span>):</span><span class="comment">#选择最优特征</span></span><br><span class="line">    num_features=<span class="built_in">len</span>(dataset[<span class="number">0</span>])-<span class="number">1</span></span><br><span class="line">    current_Ent=calcShannonent(dataset)</span><br><span class="line">    bestFeatureGain=<span class="number">0.0</span></span><br><span class="line">    bestFeatureIndex=-<span class="number">1</span></span><br><span class="line">    <span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(num_features):</span><br><span class="line">        values_features=[example[i] <span class="keyword">for</span> example <span class="keyword">in</span> dataset]</span><br><span class="line">        unique_value=<span class="built_in">set</span>(values_features)</span><br><span class="line">        new_ent=<span class="number">0.0</span></span><br><span class="line">        Gain=<span class="number">0.0</span></span><br><span class="line">        <span class="keyword">for</span> value <span class="keyword">in</span> unique_value:</span><br><span class="line">            sub_dataset=SubDataset(dataset,i,value)</span><br><span class="line">            p=<span class="built_in">len</span>(sub_dataset)/<span class="built_in">len</span>(dataset)</span><br><span class="line">            new_ent +=p*calcShannonent(sub_dataset)</span><br><span class="line">            Gain=calcShannonent(dataset)-new_ent</span><br><span class="line">        <span class="keyword">if</span>(Gain&gt;bestFeatureGain):</span><br><span class="line">            bestFeatureGain=Gain</span><br><span class="line">            bestFeatureIndex=i</span><br><span class="line">    <span class="keyword">return</span> bestFeatureIndex</span><br><span class="line">   </span><br><span class="line">    <span class="keyword">return</span> </span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">TreeGenerate</span>(<span class="params">dataset,feature</span>):</span><span class="comment">#通过递归调用创建决策树</span></span><br><span class="line">    label_list=[example[-<span class="number">1</span>] <span class="keyword">for</span> example <span class="keyword">in</span> dataset]</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">if</span>(label_list.count(label_list[<span class="number">0</span>])==<span class="built_in">len</span>(label_list)):<span class="comment">#设置递归结束条件，类别中所有的标签都相同时，递归结束，返回一个叶节点</span></span><br><span class="line">        <span class="keyword">return</span> label_list[<span class="number">0</span>]</span><br><span class="line">    </span><br><span class="line">    best_index=ChooseBestFeature(dataset)</span><br><span class="line">    best_feature=feature[best_index]</span><br><span class="line"></span><br><span class="line">    decisionTree=&#123;best_feature:&#123;&#125;&#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">del</span>(feature[best_index])</span><br><span class="line"></span><br><span class="line">    values_best_feature=[example[best_index] <span class="keyword">for</span> example <span class="keyword">in</span> dataset]</span><br><span class="line">    dict_value=<span class="built_in">set</span>(values_best_feature)</span><br><span class="line">    <span class="keyword">for</span> value <span class="keyword">in</span> dict_value:</span><br><span class="line">        new_feature=feature</span><br><span class="line"></span><br><span class="line">        decisionTree[best_feature][value]=TreeGenerate(SubDataset(dataset,best_index,value),new_feature)<span class="comment">#递归调用自身不断生成子树</span></span><br><span class="line">    </span><br><span class="line">    <span class="keyword">return</span> decisionTree</span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">GenerateDataset</span>():</span> </span><br><span class="line">    dataset = [[<span class="string">&#x27;青年&#x27;</span>, <span class="string">&#x27;否&#x27;</span>, <span class="string">&#x27;否&#x27;</span>, <span class="string">&#x27;一般般&#x27;</span>, <span class="string">&#x27;拒绝&#x27;</span>],</span><br><span class="line">               [<span class="string">&#x27;青年&#x27;</span>, <span class="string">&#x27;否&#x27;</span>, <span class="string">&#x27;否&#x27;</span>, <span class="string">&#x27;好&#x27;</span>, <span class="string">&#x27;拒绝&#x27;</span>],</span><br><span class="line">               [<span class="string">&#x27;青年&#x27;</span>, <span class="string">&#x27;是&#x27;</span>, <span class="string">&#x27;否&#x27;</span>, <span class="string">&#x27;好&#x27;</span>, <span class="string">&#x27;同意&#x27;</span>],</span><br><span class="line">               [<span class="string">&#x27;青年&#x27;</span>, <span class="string">&#x27;是&#x27;</span>, <span class="string">&#x27;是&#x27;</span>, <span class="string">&#x27;一般般&#x27;</span>, <span class="string">&#x27;同意&#x27;</span>],</span><br><span class="line">               [<span class="string">&#x27;青年&#x27;</span>, <span class="string">&#x27;否&#x27;</span>, <span class="string">&#x27;否&#x27;</span>, <span class="string">&#x27;一般般&#x27;</span>, <span class="string">&#x27;拒绝&#x27;</span>],</span><br><span class="line">               [<span class="string">&#x27;中年&#x27;</span>, <span class="string">&#x27;否&#x27;</span>, <span class="string">&#x27;否&#x27;</span>, <span class="string">&#x27;一般般&#x27;</span>, <span class="string">&#x27;拒绝&#x27;</span>],</span><br><span class="line">               [<span class="string">&#x27;中年&#x27;</span>, <span class="string">&#x27;否&#x27;</span>, <span class="string">&#x27;否&#x27;</span>, <span class="string">&#x27;好&#x27;</span>, <span class="string">&#x27;拒绝&#x27;</span>],</span><br><span class="line">               [<span class="string">&#x27;中年&#x27;</span>, <span class="string">&#x27;是&#x27;</span>, <span class="string">&#x27;是&#x27;</span>, <span class="string">&#x27;好&#x27;</span>, <span class="string">&#x27;同意&#x27;</span>],</span><br><span class="line">               [<span class="string">&#x27;中年&#x27;</span>, <span class="string">&#x27;否&#x27;</span>, <span class="string">&#x27;是&#x27;</span>, <span class="string">&#x27;非常好&#x27;</span>, <span class="string">&#x27;同意&#x27;</span>],</span><br><span class="line">               [<span class="string">&#x27;中年&#x27;</span>, <span class="string">&#x27;否&#x27;</span>, <span class="string">&#x27;是&#x27;</span>, <span class="string">&#x27;非常好&#x27;</span>, <span class="string">&#x27;同意&#x27;</span>],</span><br><span class="line">               [<span class="string">&#x27;老年&#x27;</span>, <span class="string">&#x27;否&#x27;</span>, <span class="string">&#x27;是&#x27;</span>, <span class="string">&#x27;非常好&#x27;</span>, <span class="string">&#x27;同意&#x27;</span>],</span><br><span class="line">               [<span class="string">&#x27;老年&#x27;</span>, <span class="string">&#x27;否&#x27;</span>, <span class="string">&#x27;是&#x27;</span>, <span class="string">&#x27;好&#x27;</span>, <span class="string">&#x27;同意&#x27;</span>],</span><br><span class="line">               [<span class="string">&#x27;老年&#x27;</span>, <span class="string">&#x27;是&#x27;</span>, <span class="string">&#x27;否&#x27;</span>, <span class="string">&#x27;好&#x27;</span>, <span class="string">&#x27;同意&#x27;</span>],</span><br><span class="line">               [<span class="string">&#x27;老年&#x27;</span>, <span class="string">&#x27;是&#x27;</span>, <span class="string">&#x27;否&#x27;</span>, <span class="string">&#x27;非常好&#x27;</span>, <span class="string">&#x27;同意&#x27;</span>],</span><br><span class="line">               [<span class="string">&#x27;老年&#x27;</span>, <span class="string">&#x27;否&#x27;</span>, <span class="string">&#x27;否&#x27;</span>, <span class="string">&#x27;一般般&#x27;</span>, <span class="string">&#x27;拒绝&#x27;</span>]]</span><br><span class="line">    features = [<span class="string">&#x27;年龄&#x27;</span>, <span class="string">&#x27;有工作&#x27;</span>, <span class="string">&#x27;有房子&#x27;</span>, <span class="string">&#x27;信贷情况&#x27;</span>]</span><br><span class="line">    <span class="keyword">return</span> dataset, features</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> __name__==<span class="string">&#x27;__main__&#x27;</span>:</span><br><span class="line">    dataset,feature=GenerateDataset()</span><br><span class="line">    decision_tree=TreeGenerate(dataset,feature)</span><br><span class="line"></span><br><span class="line">    <span class="built_in">print</span>(decision_tree)</span><br><span class="line">    <span class="comment"># 定义文本框和箭头格式</span></span><br><span class="line">    decisionNode = <span class="built_in">dict</span>(boxstyle=<span class="string">&quot;round4&quot;</span>, color=<span class="string">&#x27;#3366FF&#x27;</span>)  <span class="comment">#定义判断结点形态</span></span><br><span class="line">    leafNode = <span class="built_in">dict</span>(boxstyle=<span class="string">&quot;circle&quot;</span>, color=<span class="string">&#x27;#FF6633&#x27;</span>)  <span class="comment">#定义叶结点形态</span></span><br><span class="line">    arrow_args = <span class="built_in">dict</span>(arrowstyle=<span class="string">&quot;&lt;-&quot;</span>, color=<span class="string">&#x27;g&#x27;</span>)  <span class="comment">#定义箭头</span></span><br><span class="line">    mpl.rcParams[<span class="string">&#x27;font.sans-serif&#x27;</span>] = [<span class="string">&#x27;SimHei&#x27;</span>]  <span class="comment"># 指定默认字体</span></span><br><span class="line">    mpl.rcParams[<span class="string">&#x27;axes.unicode_minus&#x27;</span>] = <span class="literal">False</span>  <span class="comment"># 解决保存图像时负号&#x27;-&#x27;显示为方块的问题</span></span><br><span class="line"></span><br><span class="line">    createPlot(decision_tree)</span><br><span class="line"></span><br></pre></td></tr></table></figure><br><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#绘制决策树</span></span><br><span class="line"><span class="keyword">import</span> matplotlib.pyplot <span class="keyword">as</span> plt</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment"># 定义文本框和箭头格式</span></span><br><span class="line">decisionNode = <span class="built_in">dict</span>(boxstyle=<span class="string">&quot;round4&quot;</span>, color=<span class="string">&#x27;#3366FF&#x27;</span>)  <span class="comment">#定义判断结点形态</span></span><br><span class="line">leafNode = <span class="built_in">dict</span>(boxstyle=<span class="string">&quot;circle&quot;</span>, color=<span class="string">&#x27;#FF6633&#x27;</span>)  <span class="comment">#定义叶结点形态</span></span><br><span class="line">arrow_args = <span class="built_in">dict</span>(arrowstyle=<span class="string">&quot;&lt;-&quot;</span>, color=<span class="string">&#x27;g&#x27;</span>)  <span class="comment">#定义箭头</span></span><br><span class="line"></span><br><span class="line"><span class="comment">#绘制带箭头的注释</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">plotNode</span>(<span class="params">nodeTxt, centerPt, parentPt, nodeType</span>):</span></span><br><span class="line">    createPlot.ax1.annotate(nodeTxt, xy=parentPt, xycoords=<span class="string">&#x27;axes fraction&#x27;</span>,</span><br><span class="line">                            xytext=centerPt, textcoords=<span class="string">&#x27;axes fraction&#x27;</span>,</span><br><span class="line">                            va=<span class="string">&quot;center&quot;</span>, ha=<span class="string">&quot;center&quot;</span>, bbox=nodeType, arrowprops=arrow_args)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment">#计算叶结点数</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">getNumLeafs</span>(<span class="params">myTree</span>):</span></span><br><span class="line">    numLeafs = <span class="number">0</span></span><br><span class="line">    firstStr = <span class="built_in">list</span>(myTree.keys())[<span class="number">0</span>]</span><br><span class="line">    secondDict = myTree[firstStr]</span><br><span class="line">    <span class="keyword">for</span> key <span class="keyword">in</span> secondDict.keys():</span><br><span class="line">        <span class="keyword">if</span> <span class="built_in">type</span>(secondDict[key]).__name__ == <span class="string">&#x27;dict&#x27;</span>:</span><br><span class="line">            numLeafs += getNumLeafs(secondDict[key])</span><br><span class="line">        <span class="keyword">else</span>:</span><br><span class="line">            numLeafs += <span class="number">1</span></span><br><span class="line">    <span class="keyword">return</span> numLeafs</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment">#计算树的层数</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">getTreeDepth</span>(<span class="params">myTree</span>):</span></span><br><span class="line">    maxDepth = <span class="number">0</span></span><br><span class="line">    firstStr = <span class="built_in">list</span>(myTree.keys())[<span class="number">0</span>]</span><br><span class="line">    secondDict = myTree[firstStr]</span><br><span class="line">    <span class="keyword">for</span> key <span class="keyword">in</span> secondDict.keys():</span><br><span class="line">        <span class="keyword">if</span> <span class="built_in">type</span>(secondDict[key]).__name__ == <span class="string">&#x27;dict&#x27;</span>:</span><br><span class="line">            thisDepth = <span class="number">1</span> + getTreeDepth(secondDict[key])</span><br><span class="line">        <span class="keyword">else</span>:</span><br><span class="line">            thisDepth = <span class="number">1</span></span><br><span class="line">        <span class="keyword">if</span> thisDepth &gt; maxDepth:</span><br><span class="line">            maxDepth = thisDepth</span><br><span class="line">    <span class="keyword">return</span> maxDepth</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment">#在父子结点间填充文本信息</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">plotMidText</span>(<span class="params">cntrPt, parentPt, txtString</span>):</span></span><br><span class="line">    xMid = (parentPt[<span class="number">0</span>] - cntrPt[<span class="number">0</span>]) / <span class="number">2.0</span> + cntrPt[<span class="number">0</span>]</span><br><span class="line">    yMid = (parentPt[<span class="number">1</span>] - cntrPt[<span class="number">1</span>]) / <span class="number">2.0</span> + cntrPt[<span class="number">1</span>]</span><br><span class="line">    createPlot.ax1.text(xMid, yMid, txtString, va=<span class="string">&quot;center&quot;</span>, ha=<span class="string">&quot;center&quot;</span>, rotation=<span class="number">30</span>)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">plotTree</span>(<span class="params">myTree, parentPt, nodeTxt</span>):</span></span><br><span class="line">    numLeafs = getNumLeafs(myTree)</span><br><span class="line">    depth = getTreeDepth(myTree)</span><br><span class="line">    firstStr = <span class="built_in">list</span>(myTree.keys())[<span class="number">0</span>]</span><br><span class="line">    cntrPt = (plotTree.xOff + (<span class="number">1.0</span> + <span class="built_in">float</span>(numLeafs)) / <span class="number">2.0</span> / plotTree.totalW, plotTree.yOff)</span><br><span class="line">    plotMidText(cntrPt, parentPt, nodeTxt)  <span class="comment">#在父子结点间填充文本信息</span></span><br><span class="line">    plotNode(firstStr, cntrPt, parentPt, decisionNode)  <span class="comment">#绘制带箭头的注释</span></span><br><span class="line">    secondDict = myTree[firstStr]</span><br><span class="line">    plotTree.yOff = plotTree.yOff - <span class="number">1.0</span> / plotTree.totalD</span><br><span class="line">    <span class="keyword">for</span> key <span class="keyword">in</span> secondDict.keys():</span><br><span class="line">        <span class="keyword">if</span> <span class="built_in">type</span>(secondDict[key]).__name__ == <span class="string">&#x27;dict&#x27;</span>:</span><br><span class="line">            plotTree(secondDict[key], cntrPt, <span class="built_in">str</span>(key))</span><br><span class="line">        <span class="keyword">else</span>:</span><br><span class="line">            plotTree.xOff = plotTree.xOff + <span class="number">1.0</span> / plotTree.totalW</span><br><span class="line">            plotNode(secondDict[key], (plotTree.xOff, plotTree.yOff), cntrPt, leafNode)</span><br><span class="line">            plotMidText((plotTree.xOff, plotTree.yOff), cntrPt, <span class="built_in">str</span>(key))</span><br><span class="line">    plotTree.yOff = plotTree.yOff + <span class="number">1.0</span> / plotTree.totalD</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">createPlot</span>(<span class="params">inTree</span>):</span></span><br><span class="line">    fig = plt.figure(<span class="number">1</span>, facecolor=<span class="string">&#x27;white&#x27;</span>)</span><br><span class="line">    fig.clf()</span><br><span class="line">    axprops = <span class="built_in">dict</span>(xticks=[], yticks=[])</span><br><span class="line">    createPlot.ax1 = plt.subplot(<span class="number">111</span>, frameon=<span class="literal">False</span>, **axprops)</span><br><span class="line">    plotTree.totalW = <span class="built_in">float</span>(getNumLeafs(inTree))</span><br><span class="line">    plotTree.totalD = <span class="built_in">float</span>(getTreeDepth(inTree))</span><br><span class="line">    plotTree.xOff = -<span class="number">0.5</span> / plotTree.totalW</span><br><span class="line">    plotTree.yOff = <span class="number">1.0</span></span><br><span class="line">    plotTree(inTree, (<span class="number">0.5</span>, <span class="number">1.0</span>), <span class="string">&#x27;&#x27;</span>)</span><br><span class="line">    plt.show()</span><br></pre></td></tr></table></figure><br>程序运行结果：<img src="D:/py_workspace/homework/DecisionTree/1.png" alt="ID3算法运行控制台输出" title="ID3算法运行控制台输出"><br>绘制出的决策树：<img src="D:/py_workspace/homework/DecisionTree/2.png" alt="决策树" title="使用matplotlib绘制的决策树"></p>
+<h3 id="第八题"><a href="#第八题" class="headerlink" title="第八题"></a>第八题</h3><p>python源代码：<br><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br><span class="line">124</span><br><span class="line">125</span><br><span class="line">126</span><br><span class="line">127</span><br><span class="line">128</span><br><span class="line">129</span><br><span class="line">130</span><br><span class="line">131</span><br><span class="line">132</span><br><span class="line">133</span><br><span class="line">134</span><br><span class="line">135</span><br><span class="line">136</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#相较于ID3算法，CART算法并无本质上的区别，只是将选择最优特征的根据改为基尼系数</span></span><br><span class="line"><span class="comment">#因此，修改原ID3算法中的计算信息熵函数为计算基尼系数函数，并同步修改选择最优特征函数即可</span></span><br><span class="line"><span class="keyword">import</span> math</span><br><span class="line"><span class="keyword">import</span> matplotlib.pyplot <span class="keyword">as</span> plt</span><br><span class="line"><span class="keyword">from</span> matplotlib.pylab <span class="keyword">import</span> *</span><br><span class="line"></span><br><span class="line"><span class="keyword">from</span> treePlotter <span class="keyword">import</span> createPlot</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">calcGini</span>(<span class="params">dataSet</span>):</span></span><br><span class="line">    numEntries = <span class="built_in">len</span>(dataSet)</span><br><span class="line">    labelCounts =&#123;&#125;</span><br><span class="line"> </span><br><span class="line">    <span class="keyword">for</span> featVec <span class="keyword">in</span> dataSet:</span><br><span class="line">        currentLabel = featVec[-<span class="number">1</span>]</span><br><span class="line">        <span class="keyword">if</span> currentLabel <span class="keyword">not</span> <span class="keyword">in</span> labelCounts.keys():</span><br><span class="line">            labelCounts[currentLabel] =<span class="number">0</span></span><br><span class="line">        labelCounts[currentLabel]+=<span class="number">1</span></span><br><span class="line">    Gini =<span class="number">1.0</span></span><br><span class="line">    <span class="keyword">for</span> key <span class="keyword">in</span> labelCounts:</span><br><span class="line">        prob = <span class="built_in">float</span>(labelCounts[key])/numEntries</span><br><span class="line">        Gini -= prob * prob</span><br><span class="line">    <span class="keyword">return</span> Gini</span><br><span class="line"></span><br><span class="line">    </span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">SubDataset</span>(<span class="params">dataset,index,value</span>):</span><span class="comment">#从总的数据集中选取出关心的数据组成新的数据集</span></span><br><span class="line">    sub_dataset = []</span><br><span class="line">    <span class="keyword">for</span> example <span class="keyword">in</span> dataset:</span><br><span class="line">        current_list = []</span><br><span class="line">        <span class="keyword">if</span> example[index] == value:</span><br><span class="line">            current_list = example[:index]</span><br><span class="line">            current_list.extend(example[index + <span class="number">1</span> :])</span><br><span class="line">            sub_dataset.append(current_list)</span><br><span class="line">    <span class="keyword">return</span> sub_dataset</span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">splitOtherDataSetByValue</span>(<span class="params">dataSet, index, value</span>):</span></span><br><span class="line">    retDataSet = []</span><br><span class="line">    <span class="keyword">for</span> featVec <span class="keyword">in</span> dataSet:</span><br><span class="line">        <span class="keyword">if</span> featVec[index] != value:</span><br><span class="line">            reduceFeatVec = featVec[:index]  <span class="comment"># 删除这一维特征</span></span><br><span class="line">            reduceFeatVec.extend(featVec[index + <span class="number">1</span>:])</span><br><span class="line">            retDataSet.append(reduceFeatVec)</span><br><span class="line">    <span class="keyword">return</span> retDataSet</span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">ChooseBestFeature</span>(<span class="params">dataSet</span>):</span></span><br><span class="line">    numFeatures = <span class="built_in">len</span>(dataSet[<span class="number">0</span>]) -<span class="number">1</span></span><br><span class="line">    bestGiniIndex = <span class="number">1000000.0</span></span><br><span class="line">    bestSplictValue =[]</span><br><span class="line">    bestFeature = -<span class="number">1</span></span><br><span class="line">    <span class="comment"># 计算Gini指数</span></span><br><span class="line">    <span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(numFeatures):</span><br><span class="line">        featList = [example[i] <span class="keyword">for</span> example <span class="keyword">in</span> dataSet]</span><br><span class="line">       </span><br><span class="line">        uniqueVals = <span class="built_in">set</span>(featList)</span><br><span class="line">        bestGiniCut = <span class="number">1000000.0</span></span><br><span class="line">        bestGiniCutValue =[]</span><br><span class="line">        Gini_value =<span class="number">0.0</span></span><br><span class="line">        </span><br><span class="line">        <span class="keyword">for</span> value <span class="keyword">in</span> uniqueVals:</span><br><span class="line">            </span><br><span class="line">            subDataSet = SubDataset(dataSet,i,value)</span><br><span class="line">            prob = <span class="built_in">len</span>(subDataSet) / <span class="built_in">float</span>(<span class="built_in">len</span>(dataSet))</span><br><span class="line">            Gini_value = prob * calcGini(subDataSet)</span><br><span class="line">            </span><br><span class="line">            otherDataSet = splitOtherDataSetByValue(dataSet,i,value)</span><br><span class="line">            prob = <span class="built_in">len</span>(otherDataSet) / <span class="built_in">float</span>(<span class="built_in">len</span>(dataSet))</span><br><span class="line">            Gini_value = Gini_value + prob * calcGini(otherDataSet)</span><br><span class="line">           </span><br><span class="line">            <span class="keyword">if</span> Gini_value &lt; bestGiniCut:</span><br><span class="line">                bestGiniCut = Gini_value</span><br><span class="line">                bestGiniCutValue = value</span><br><span class="line"></span><br><span class="line">        </span><br><span class="line">        GiniIndex = bestGiniCut</span><br><span class="line">        <span class="keyword">if</span> GiniIndex &lt; bestGiniIndex:</span><br><span class="line">            bestGiniIndex = GiniIndex</span><br><span class="line">            bestSplictValue = bestGiniCutValue</span><br><span class="line">            bestFeature = i</span><br><span class="line">            <span class="comment">#print(bestFeature,bestSplictValue)</span></span><br><span class="line">    </span><br><span class="line">    <span class="keyword">return</span> bestFeature</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">TreeGenerate</span>(<span class="params">dataset,feature</span>):</span><span class="comment">#通过递归调用创建决策树</span></span><br><span class="line">    label_list=[example[-<span class="number">1</span>] <span class="keyword">for</span> example <span class="keyword">in</span> dataset]</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">if</span>(label_list.count(label_list[<span class="number">0</span>])==<span class="built_in">len</span>(label_list)):<span class="comment">#设置递归结束条件，类别中所有的标签都相同时，递归结束，返回一个叶节点</span></span><br><span class="line">        <span class="keyword">return</span> label_list[<span class="number">0</span>]</span><br><span class="line">  </span><br><span class="line"></span><br><span class="line">    best_index=ChooseBestFeature(dataset)</span><br><span class="line">    best_feature=feature[best_index]</span><br><span class="line"></span><br><span class="line">    decisionTree=&#123;best_feature:&#123;&#125;&#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">del</span>(feature[best_index])</span><br><span class="line"></span><br><span class="line">    values_best_feature=[example[best_index] <span class="keyword">for</span> example <span class="keyword">in</span> dataset]</span><br><span class="line">    dict_value=<span class="built_in">set</span>(values_best_feature)</span><br><span class="line">    <span class="keyword">for</span> value <span class="keyword">in</span> dict_value:</span><br><span class="line">        new_feature=feature[:]</span><br><span class="line"></span><br><span class="line">        decisionTree[best_feature][value]=TreeGenerate(SubDataset(dataset,best_index,value),new_feature)<span class="comment">#递归调用自身不断生成子树</span></span><br><span class="line">    </span><br><span class="line">    </span><br><span class="line">    <span class="keyword">return</span> decisionTree</span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">GenerateDataset</span>():</span> </span><br><span class="line">    dataset = [[<span class="string">&#x27;青年&#x27;</span>, <span class="string">&#x27;否&#x27;</span>, <span class="string">&#x27;否&#x27;</span>, <span class="string">&#x27;一般般&#x27;</span>, <span class="string">&#x27;拒绝&#x27;</span>],</span><br><span class="line">               [<span class="string">&#x27;青年&#x27;</span>, <span class="string">&#x27;否&#x27;</span>, <span class="string">&#x27;否&#x27;</span>, <span class="string">&#x27;好&#x27;</span>, <span class="string">&#x27;拒绝&#x27;</span>],</span><br><span class="line">               [<span class="string">&#x27;青年&#x27;</span>, <span class="string">&#x27;是&#x27;</span>, <span class="string">&#x27;否&#x27;</span>, <span class="string">&#x27;好&#x27;</span>, <span class="string">&#x27;同意&#x27;</span>],</span><br><span class="line">               [<span class="string">&#x27;青年&#x27;</span>, <span class="string">&#x27;是&#x27;</span>, <span class="string">&#x27;是&#x27;</span>, <span class="string">&#x27;一般般&#x27;</span>, <span class="string">&#x27;同意&#x27;</span>],</span><br><span class="line">               [<span class="string">&#x27;青年&#x27;</span>, <span class="string">&#x27;否&#x27;</span>, <span class="string">&#x27;否&#x27;</span>, <span class="string">&#x27;一般般&#x27;</span>, <span class="string">&#x27;拒绝&#x27;</span>],</span><br><span class="line">               [<span class="string">&#x27;中年&#x27;</span>, <span class="string">&#x27;否&#x27;</span>, <span class="string">&#x27;否&#x27;</span>, <span class="string">&#x27;一般般&#x27;</span>, <span class="string">&#x27;拒绝&#x27;</span>],</span><br><span class="line">               [<span class="string">&#x27;中年&#x27;</span>, <span class="string">&#x27;否&#x27;</span>, <span class="string">&#x27;否&#x27;</span>, <span class="string">&#x27;好&#x27;</span>, <span class="string">&#x27;拒绝&#x27;</span>],</span><br><span class="line">               [<span class="string">&#x27;中年&#x27;</span>, <span class="string">&#x27;是&#x27;</span>, <span class="string">&#x27;是&#x27;</span>, <span class="string">&#x27;好&#x27;</span>, <span class="string">&#x27;同意&#x27;</span>],</span><br><span class="line">               [<span class="string">&#x27;中年&#x27;</span>, <span class="string">&#x27;否&#x27;</span>, <span class="string">&#x27;是&#x27;</span>, <span class="string">&#x27;非常好&#x27;</span>, <span class="string">&#x27;同意&#x27;</span>],</span><br><span class="line">               [<span class="string">&#x27;中年&#x27;</span>, <span class="string">&#x27;否&#x27;</span>, <span class="string">&#x27;是&#x27;</span>, <span class="string">&#x27;非常好&#x27;</span>, <span class="string">&#x27;同意&#x27;</span>],</span><br><span class="line">               [<span class="string">&#x27;老年&#x27;</span>, <span class="string">&#x27;否&#x27;</span>, <span class="string">&#x27;是&#x27;</span>, <span class="string">&#x27;非常好&#x27;</span>, <span class="string">&#x27;同意&#x27;</span>],</span><br><span class="line">               [<span class="string">&#x27;老年&#x27;</span>, <span class="string">&#x27;否&#x27;</span>, <span class="string">&#x27;是&#x27;</span>, <span class="string">&#x27;好&#x27;</span>, <span class="string">&#x27;同意&#x27;</span>],</span><br><span class="line">               [<span class="string">&#x27;老年&#x27;</span>, <span class="string">&#x27;是&#x27;</span>, <span class="string">&#x27;否&#x27;</span>, <span class="string">&#x27;好&#x27;</span>, <span class="string">&#x27;同意&#x27;</span>],</span><br><span class="line">               [<span class="string">&#x27;老年&#x27;</span>, <span class="string">&#x27;是&#x27;</span>, <span class="string">&#x27;否&#x27;</span>, <span class="string">&#x27;非常好&#x27;</span>, <span class="string">&#x27;同意&#x27;</span>],</span><br><span class="line">               [<span class="string">&#x27;老年&#x27;</span>, <span class="string">&#x27;否&#x27;</span>, <span class="string">&#x27;否&#x27;</span>, <span class="string">&#x27;一般般&#x27;</span>, <span class="string">&#x27;拒绝&#x27;</span>]]</span><br><span class="line">    features = [<span class="string">&#x27;年龄&#x27;</span>, <span class="string">&#x27;有工作&#x27;</span>, <span class="string">&#x27;有房子&#x27;</span>, <span class="string">&#x27;信贷情况&#x27;</span>]</span><br><span class="line">    <span class="keyword">return</span> dataset, features</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> __name__==<span class="string">&#x27;__main__&#x27;</span>:</span><br><span class="line"></span><br><span class="line">    dataset,feature=GenerateDataset()</span><br><span class="line">    decision_tree=TreeGenerate(dataset,feature)</span><br><span class="line"></span><br><span class="line">    <span class="built_in">print</span>(decision_tree)</span><br><span class="line">    <span class="comment"># 定义文本框和箭头格式</span></span><br><span class="line">    decisionNode = <span class="built_in">dict</span>(boxstyle=<span class="string">&quot;round4&quot;</span>, color=<span class="string">&#x27;#3366FF&#x27;</span>)  <span class="comment">#定义判断结点形态</span></span><br><span class="line">    leafNode = <span class="built_in">dict</span>(boxstyle=<span class="string">&quot;circle&quot;</span>, color=<span class="string">&#x27;#FF6633&#x27;</span>)  <span class="comment">#定义叶结点形态</span></span><br><span class="line">    arrow_args = <span class="built_in">dict</span>(arrowstyle=<span class="string">&quot;&lt;-&quot;</span>, color=<span class="string">&#x27;g&#x27;</span>)  <span class="comment">#定义箭头</span></span><br><span class="line">    mpl.rcParams[<span class="string">&#x27;font.sans-serif&#x27;</span>] = [<span class="string">&#x27;SimHei&#x27;</span>]  <span class="comment"># 指定默认字体</span></span><br><span class="line">    mpl.rcParams[<span class="string">&#x27;axes.unicode_minus&#x27;</span>] = <span class="literal">False</span>  <span class="comment"># 解决保存图像时负号&#x27;-&#x27;显示为方块的问题</span></span><br><span class="line"></span><br><span class="line">    createPlot(decision_tree)</span><br></pre></td></tr></table></figure><br>程序运行结果：<img src="D:/py_workspace/homework/DecisionTree/3.png" alt="控制台输出结果" title="控制台输出结果"><br>matplotlib绘图结果：<img src="D:/py_workspace/homework/DecisionTree/4.png" alt="绘制决策树" title="使用matplotlib绘制决策树"></p>
+<h1 id="第六章"><a href="#第六章" class="headerlink" title="第六章"></a>第六章</h1><h3 id="第一题-1"><a href="#第一题-1" class="headerlink" title="第一题"></a>第一题</h3><ul>
+<li>Model1 <script type="math/tex; mode=display">TP=300,FN=80 ,TN=500 ,FP=60</script><script type="math/tex; mode=display">Acurracy=\frac{TP+TN}{TP+FN+TN+FP}=\frac{300+500}{300+80+500+60}=0.851</script><script type="math/tex; mode=display">Cost=300\times(-1)+80\times100+500\times0+60\times5=8000</script><script type="math/tex; mode=display">Recall=\frac{TP}{TP+FN}=\frac{300}{300+80}=0.789</script></li>
+<li>Model2<script type="math/tex; mode=display">TP=500,FN=90,TN=400,FP=10</script><script type="math/tex; mode=display">Acurracy=\frac{TP+TN}{TP+FN+FP+TN}=\frac{500+400}{500+400+10+90}=0.9</script><script type="math/tex; mode=display">Cost=500\times(-1)+90\times100+400\times0+10\times5=8550</script><script type="math/tex; mode=display">Recall=\frac{TP}{TP+FN}=\frac{500}{500+90}=0.847</script></li>
+</ul>
+<h3 id="第二题-1"><a href="#第二题-1" class="headerlink" title="第二题"></a>第二题</h3><ul>
+<li>1、当阈值增大时，样本中实际为正值的样本的个数不变，但是由于阈值的提高，可能导致一部分正例可能被误判为负例，即$TP+FN$的值不变，而$TP$的值可能变小，$Recall=\frac{TP}{TP+FN}$，所以，recall的值将可能不变或变小。</li>
+<li>2、当阈值减小时，样本中实际为正值的样本的个数不变，但是由于阈值的减小，可能导致一部分本来被误判的正例被正确的判为正例，即$TP+FN$的值不变，而$TP$的值可能变大，$Recall=\frac{TP}{TP+FN}$，所以，recall的值将可能不变或变大。</li>
+</ul>
+<h3 id="第三题-1"><a href="#第三题-1" class="headerlink" title="第三题"></a>第三题</h3><p>ROC曲线即受试者工作特征曲线，其纵轴为TPR(True Positive Rate)，横轴为FPR(False Positive Rate)：</p>
+<script type="math/tex; mode=display">TPR=\frac{TP}{TP+FN}</script><script type="math/tex; mode=display">FPR=\frac{FP}{FP+TN}</script><p>在ROC曲线中的每一个点都代表了一个分类器，而这个点的横纵坐标代表了这个分类器的性能。改变分类器的阈值，分类器所代表的点也在ROC曲线上移动。<br>ROC曲线的四个顶点$(0,0),(0,1),(1,0),(0,0)$；每个点都有特殊的含义：</p>
+<ul>
+<li>$(0,0)$点：即$FPR=TPR=0$，即$FP=TP=0$，可以发现该分类器预测所有的样本都为负样本;</li>
+<li>$(0,1)$点：即$FPR=0,TPR=1$，即$TP=TP+FN，FN=FP=0$，且该分类器全部判断正确，是一种理想的分类器；</li>
+<li>$(1,0)$点：即$FPR=1,TPR=0$，即$FP=FP+TN,TP=TN=0$，该分类器是最糟糕的分类器，所有的预测都是错误的；</li>
+<li>$(1,1)$点：即$FPR=TPR=1$，$TN=FN=0$，可以发现，该分类器判断所有的样本都是正样本。<h3 id="第四题-1"><a href="#第四题-1" class="headerlink" title="第四题"></a>第四题</h3>$M_1$模型在大小为50的集合上进行测试，错误率$e_1=0.13$;<br>$M_2$模型在大小为4500的集合上进行测试，错误率$e_2=0.28$;<br>当测试集足够大时，可认为：<script type="math/tex; mode=display">e_1 \sim N(\mu_1, \sigma_1^2)</script><script type="math/tex; mode=display">e_2 \sim N(\mu_2, \sigma_2^2)</script>为了比较两个模型的性能是否有显著的统计学上的差异，令$d=e_1-e_2$，因为$e_1\sim N,e_2\sim N$,所以，$d\sim N(d_t,\sigma_t)$,由正态分布的性质：<script type="math/tex; mode=display">\sigma_t^2=\sigma_1^2+\sigma_2^2\approx\hat{\sigma_1^2}+\hat{\sigma_2^2}=\frac{e_1(1-e_1)}{n_1}+\frac{e_2(1-e_2)}{n_2}</script><script type="math/tex; mode=display">d_t=d\pm Z_{\frac{\alpha}{2}}\hat{\sigma_t}</script><script type="math/tex; mode=display">d=\lvert e_2-e_1 \rvert=0.28-0.13=0.15</script><script type="math/tex; mode=display">\hat{\sigma_d}=\frac{0.13(1-0.13)}{50}+\frac{0.28(1-0.28)}{4500}=0.0023</script>当置信水平为0.95时，$Z_\frac{\alpha}{2}=1.96$:<script type="math/tex; mode=display">d_t=0.15\pm 1.96\times \sqrt{0.0023}=0.15\pm 0.094</script>区间中不包含0，认为两者之间有差距，模型$M_1$的性能优于模型$M_2$的性能。<h3 id="第五题-1"><a href="#第五题-1" class="headerlink" title="第五题"></a>第五题</h3>在机器学习建模过程中，通行的做法通常是将数据分为训练集和测试集。测试集是与训练独立的数据，完全不参与训练，用于最终模型的评估。在训练过程中，经常会出现过拟合的问题，就是模型可以很好的匹配训练数据，却不能很好在预测训练集外的数据。如果此时就使用测试数据来调整模型参数，就相当于在训练时已知部分测试数据的信息，会影响最终评估结果的准确性。通常的做法是在训练数据再中分出一部分做为验证(Validation)数据，用来评估模型的训练效果。</li>
+</ul>
+<p>验证数据取自训练数据，但不参与训练，这样可以相对客观的评估模型对于训练集之外数据的匹配程度。模型在验证数据中的评估常用的是交叉验证，又称循环验证。它将原始数据分成K组(K-Fold)，将每个子集数据分别做一次验证集，其余的K-1组子集数据作为训练集，这样会得到K个模型。这K个模型分别在验证集中评估结果，最后的误差MSE(Mean Squared Error)加和平均就得到交叉验证误差。交叉验证有效利用了有限的数据，并且评估结果能够尽可能接近模型在测试集上的表现，可以做为模型优化的指标使用。<br><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> numpy <span class="keyword">as</span> np</span><br><span class="line"><span class="keyword">from</span> sklearn.model_selection <span class="keyword">import</span> KFold</span><br><span class="line"><span class="keyword">import</span> random</span><br><span class="line"></span><br><span class="line"><span class="comment">#随机生成一百个(-20,20)的数字</span></span><br><span class="line">num=[]</span><br><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(<span class="number">100</span>):</span><br><span class="line">    num.append(random.randint(-<span class="number">20</span>,<span class="number">20</span>))</span><br><span class="line"><span class="comment">#print(num)</span></span><br><span class="line"><span class="comment">#使用k-fold方法对数据集进行划分</span></span><br><span class="line">num=np.array(num)</span><br><span class="line">kf=KFold(n_splits=<span class="number">6</span>)</span><br><span class="line"><span class="keyword">for</span> train,test <span class="keyword">in</span> kf.split(num):</span><br><span class="line">    num_train,num_test=num[train],num[test]</span><br><span class="line">  </span><br><span class="line">    <span class="built_in">print</span>(<span class="string">&quot;训练集为：&quot;</span>,num_train)</span><br><span class="line">    <span class="built_in">print</span>(<span class="string">&quot;验证集为：&quot;</span>,num_test)</span><br><span class="line"></span><br></pre></td></tr></table></figure><br>程序运行结果：<img src="D:/py_workspace/homework/DecisionTree/5.png" alt="控制台输出结果" title="控制台输出结果"></p>
+
+                
+            </div>
+            <hr/>
+
+            
+
+    <div class="reprint" id="reprint-statement">
+        
+            <div class="reprint__author">
+                <span class="reprint-meta" style="font-weight: bold;">
+                    <i class="fas fa-user">
+                        文章作者:
+                    </i>
+                </span>
+                <span class="reprint-info">
+                    <a href="/about" rel="external nofollow noreferrer">李垚</a>
+                </span>
+            </div>
+            <div class="reprint__type">
+                <span class="reprint-meta" style="font-weight: bold;">
+                    <i class="fas fa-link">
+                        文章链接:
+                    </i>
+                </span>
+                <span class="reprint-info">
+                    <a href="http://Dududu233.github.io/2021/10/30/%E8%AE%B0%E4%B8%80%E6%AC%A1%E5%B9%B3%E5%B9%B3%E6%97%A0%E5%A5%87%E7%9A%84%E4%BD%9C%E4%B8%9A/">http://Dududu233.github.io/2021/10/30/%E8%AE%B0%E4%B8%80%E6%AC%A1%E5%B9%B3%E5%B9%B3%E6%97%A0%E5%A5%87%E7%9A%84%E4%BD%9C%E4%B8%9A/</a>
+                </span>
+            </div>
+            <div class="reprint__notice">
+                <span class="reprint-meta" style="font-weight: bold;">
+                    <i class="fas fa-copyright">
+                        版权声明:
+                    </i>
+                </span>
+                <span class="reprint-info">
+                    本博客所有文章除特別声明外，均采用
+                    <a href="https://creativecommons.org/licenses/by/4.0/deed.zh" rel="external nofollow noreferrer" target="_blank">CC BY 4.0</a>
+                    许可协议。转载请注明来源
+                    <a href="/about" target="_blank">李垚</a>
+                    !
+                </span>
+            </div>
+        
+    </div>
+
+    <script async defer>
+      document.addEventListener("copy", function (e) {
+        let toastHTML = '<span>复制成功，请遵循本文的转载规则</span><button class="btn-flat toast-action" onclick="navToReprintStatement()" style="font-size: smaller">查看</a>';
+        M.toast({html: toastHTML})
+      });
+
+      function navToReprintStatement() {
+        $("html, body").animate({scrollTop: $("#reprint-statement").offset().top - 80}, 800);
+      }
+    </script>
+
+
+
+            <div class="tag_share" style="display: block;">
+                <div class="post-meta__tag-list" style="display: inline-block;">
+                    
+                        <div class="article-tag">
+                            
+                                <a href="/tags/tech/">
+                                    <span class="chip bg-color">tech</span>
+                                </a>
+                            
+                        </div>
+                    
+                </div>
+                <div class="post_share" style="zoom: 80%; width: fit-content; display: inline-block; float: right; margin: -0.15rem 0;">
+                    <link rel="stylesheet" type="text/css" href="/libs/share/css/share.min.css">
+<div id="article-share">
+
+    
+    <div class="social-share" data-sites="twitter,facebook,google,qq,qzone,wechat,weibo,douban,linkedin" data-wechat-qrcode-helper="<p>微信扫一扫即可分享！</p>"></div>
+    <script src="/libs/share/js/social-share.min.js"></script>
+    
+
+    
+
+</div>
+
+                </div>
+            </div>
+            
+        </div>
+    </div>
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+<article id="prenext-posts" class="prev-next articles">
+    <div class="row article-row">
+        
+        <div class="article col s12 m6" data-aos="fade-up">
+            <div class="article-badge left-badge text-color">
+                <i class="fas fa-chevron-left"></i>&nbsp;上一篇</div>
+            <div class="card">
+                <a href="/2021/11/19/review-of-dmml/">
+                    <div class="card-image">
+                        
+                        
+                        <img src="/medias/featureimages/21.jpg" class="responsive-img" alt="机器学习与数据挖掘考试复习">
+                        
+                        <span class="card-title">机器学习与数据挖掘考试复习</span>
+                    </div>
+                </a>
+                <div class="card-content article-content">
+                    <div class="summary block-with-text">
+                        
+                            
+                        
+                    </div>
+                    <div class="publish-info">
+                        <span class="publish-date">
+                            <i class="far fa-clock fa-fw icon-date"></i>2021-11-19
+                        </span>
+                        <span class="publish-author">
+                            
+                            <i class="fas fa-bookmark fa-fw icon-category"></i>
+                            
+                            <a href="/categories/%E6%97%A5%E6%97%A5%E8%B0%88/" class="post-category">
+                                    日日谈
+                                </a>
+                            
+                            
+                        </span>
+                    </div>
+                </div>
+                
+                <div class="card-action article-tags">
+                    
+                    <a href="/tags/nomaldays/">
+                        <span class="chip bg-color">nomaldays</span>
+                    </a>
+                    
+                </div>
+                
+            </div>
+        </div>
+        
+        
+        <div class="article col s12 m6" data-aos="fade-up">
+            <div class="article-badge right-badge text-color">
+                下一篇&nbsp;<i class="fas fa-chevron-right"></i>
+            </div>
+            <div class="card">
+                <a href="/2021/10/26/baidudisk/">
+                    <div class="card-image">
+                        
+                        
+                        <img src="/medias/featureimages/10.jpg" class="responsive-img" alt="ubuntu16.04下载数据集的折腾">
+                        
+                        <span class="card-title">ubuntu16.04下载数据集的折腾</span>
+                    </div>
+                </a>
+                <div class="card-content article-content">
+                    <div class="summary block-with-text">
+                        
+                            
+                        
+                    </div>
+                    <div class="publish-info">
+                            <span class="publish-date">
+                                <i class="far fa-clock fa-fw icon-date"></i>2021-10-26
+                            </span>
+                        <span class="publish-author">
+                            
+                            <i class="fas fa-bookmark fa-fw icon-category"></i>
+                            
+                            <a href="/categories/%E6%97%A5%E5%B8%B8%E6%8A%80%E6%9C%AF/" class="post-category">
+                                    日常技术
+                                </a>
+                            
+                            
+                        </span>
+                    </div>
+                </div>
+                
+                <div class="card-action article-tags">
+                    
+                    <a href="/tags/tech/">
+                        <span class="chip bg-color">tech</span>
+                    </a>
+                    
+                </div>
+                
+            </div>
+        </div>
+        
+    </div>
+</article>
+
+</div>
+
+
+
+<!-- 代码块功能依赖 -->
+<script type="text/javascript" src="/libs/codeBlock/codeBlockFuction.js"></script>
+
+<!-- 代码语言 -->
+
+<script type="text/javascript" src="/libs/codeBlock/codeLang.js"></script>
+
+
+<!-- 代码块复制 -->
+
+<script type="text/javascript" src="/libs/codeBlock/codeCopy.js"></script>
+
+
+<!-- 代码块收缩 -->
+
+<script type="text/javascript" src="/libs/codeBlock/codeShrink.js"></script>
+
+
+    
+
+</main>
+
+
+<script src="https://cdn.bootcss.com/mathjax/2.7.5/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+<script>
+    MathJax.Hub.Config({
+        tex2jax: {inlineMath: [['$', '$'], ['\(', '\)']]}
+    });
+</script>
+
+
+
+    <footer class="page-footer bg-color">
+    
+        <link rel="stylesheet" href="/libs/aplayer/APlayer.min.css">
+<style>
+    .aplayer .aplayer-lrc p {
+        
+        display: none;
+        
+        font-size: 12px;
+        font-weight: 700;
+        line-height: 16px !important;
+    }
+
+    .aplayer .aplayer-lrc p.aplayer-lrc-current {
+        
+        display: none;
+        
+        font-size: 15px;
+        color: #42b983;
+    }
+
+    
+    .aplayer.aplayer-fixed.aplayer-narrow .aplayer-body {
+        left: -66px !important;
+    }
+
+    .aplayer.aplayer-fixed.aplayer-narrow .aplayer-body:hover {
+        left: 0px !important;
+    }
+
+    
+</style>
+<div class="">
+    
+    <div class="row">
+        <meting-js class="col l8 offset-l2 m10 offset-m1 s12"
+                   server="netease"
+                   type="playlist"
+                   id="581323340"
+                   fixed='true'
+                   autoplay='false'
+                   theme='#42b983'
+                   loop='all'
+                   order='random'
+                   preload='auto'
+                   volume='0.7'
+                   list-folded='true'
+        >
+        </meting-js>
+    </div>
+</div>
+
+<script src="/libs/aplayer/APlayer.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/meting@2/dist/Meting.min.js"></script>
+
+    
+    <div class="container row center-align" style="margin-bottom: 0px !important;">
+        <div class="col s12 m8 l8 copy-right">
+            Copyright&nbsp;&copy;
+            
+                <span id="year">2019-2022</span>
+            
+            <span id="year">2019</span>
+            <a href="/about" target="_blank">李垚</a>
+            |&nbsp;Powered by&nbsp;<a href="https://hexo.io/" target="_blank">Hexo</a>
+            |&nbsp;Theme&nbsp;<a href="https://github.com/blinkfox/hexo-theme-matery" target="_blank">Matery</a>
+            <br>
+            
+            
+            
+            
+            
+            
+            <span id="busuanzi_container_site_pv">
+                |&nbsp;<i class="far fa-eye"></i>&nbsp;总访问量:&nbsp;<span id="busuanzi_value_site_pv"
+                    class="white-color"></span>&nbsp;次
+            </span>
+            
+            
+            <span id="busuanzi_container_site_uv">
+                |&nbsp;<i class="fas fa-users"></i>&nbsp;总访问人数:&nbsp;<span id="busuanzi_value_site_uv"
+                    class="white-color"></span>&nbsp;人
+            </span>
+            
+            <br>
+            
+            <br>
+            
+            <span id="icp"><img src="/medias/icp.png" style="vertical-align: text-bottom;" />
+                <a href="http://www.beian.miit.gov.cn/" target="_blank">陕ICP备2021015377号</a>
+            </span>
+            
+        </div>
+        <div class="col s12 m4 l4 social-link social-statis">
+    <a href="https://github.com/Dududu233" class="tooltipped" target="_blank" data-tooltip="访问我的GitHub" data-position="top" data-delay="50">
+        <i class="fab fa-github"></i>
+    </a>
+
+
+
+    <a href="mailto:18551811909@163.com" class="tooltipped" target="_blank" data-tooltip="邮件联系我" data-position="top" data-delay="50">
+        <i class="fas fa-envelope-open"></i>
+    </a>
+
+
+
+
+
+
+
+    <a href="tencent://AddContact/?fromId=50&fromSubId=1&subcmd=all&uin=860514292" class="tooltipped" target="_blank" data-tooltip="QQ联系我: 860514292" data-position="top" data-delay="50">
+        <i class="fab fa-qq"></i>
+    </a>
+
+
+
+    <a href="https://weibo.com/u/6067922378" class="tooltipped" target="_blank" data-tooltip="关注我的微博: https://weibo.com/u/6067922378" data-position="top" data-delay="50">
+        <i class="fab fa-weibo"></i>
+    </a>
+
+
+
+
+
+</div>
+    </div>
+</footer>
+
+<div class="progress-bar"></div>
+
+
+    <!-- 搜索遮罩框 -->
+<div id="searchModal" class="modal">
+    <div class="modal-content">
+        <div class="search-header">
+            <span class="title"><i class="fas fa-search"></i>&nbsp;&nbsp;搜索</span>
+            <input type="search" id="searchInput" name="s" placeholder="请输入搜索的关键字"
+                   class="search-input">
+        </div>
+        <div id="searchResult"></div>
+    </div>
+</div>
+
+<script type="text/javascript">
+$(function () {
+    var searchFunc = function (path, search_id, content_id) {
+        'use strict';
+        $.ajax({
+            url: path,
+            dataType: "xml",
+            success: function (xmlResponse) {
+                // get the contents from search data
+                var datas = $("entry", xmlResponse).map(function () {
+                    return {
+                        title: $("title", this).text(),
+                        content: $("content", this).text(),
+                        url: $("url", this).text()
+                    };
+                }).get();
+                var $input = document.getElementById(search_id);
+                var $resultContent = document.getElementById(content_id);
+                $input.addEventListener('input', function () {
+                    var str = '<ul class=\"search-result-list\">';
+                    var keywords = this.value.trim().toLowerCase().split(/[\s\-]+/);
+                    $resultContent.innerHTML = "";
+                    if (this.value.trim().length <= 0) {
+                        return;
+                    }
+                    // perform local searching
+                    datas.forEach(function (data) {
+                        var isMatch = true;
+                        var data_title = data.title.trim().toLowerCase();
+                        var data_content = data.content.trim().replace(/<[^>]+>/g, "").toLowerCase();
+                        var data_url = data.url;
+                        data_url = data_url.indexOf('/') === 0 ? data.url : '/' + data_url;
+                        var index_title = -1;
+                        var index_content = -1;
+                        var first_occur = -1;
+                        // only match artiles with not empty titles and contents
+                        if (data_title !== '' && data_content !== '') {
+                            keywords.forEach(function (keyword, i) {
+                                index_title = data_title.indexOf(keyword);
+                                index_content = data_content.indexOf(keyword);
+                                if (index_title < 0 && index_content < 0) {
+                                    isMatch = false;
+                                } else {
+                                    if (index_content < 0) {
+                                        index_content = 0;
+                                    }
+                                    if (i === 0) {
+                                        first_occur = index_content;
+                                    }
+                                }
+                            });
+                        }
+                        // show search results
+                        if (isMatch) {
+                            str += "<li><a href='" + data_url + "' class='search-result-title'>" + data_title + "</a>";
+                            var content = data.content.trim().replace(/<[^>]+>/g, "");
+                            if (first_occur >= 0) {
+                                // cut out 100 characters
+                                var start = first_occur - 20;
+                                var end = first_occur + 80;
+                                if (start < 0) {
+                                    start = 0;
+                                }
+                                if (start === 0) {
+                                    end = 100;
+                                }
+                                if (end > content.length) {
+                                    end = content.length;
+                                }
+                                var match_content = content.substr(start, end);
+                                // highlight all keywords
+                                keywords.forEach(function (keyword) {
+                                    var regS = new RegExp(keyword, "gi");
+                                    match_content = match_content.replace(regS, "<em class=\"search-keyword\">" + keyword + "</em>");
+                                });
+
+                                str += "<p class=\"search-result\">" + match_content + "...</p>"
+                            }
+                            str += "</li>";
+                        }
+                    });
+                    str += "</ul>";
+                    $resultContent.innerHTML = str;
+                });
+            }
+        });
+    };
+
+    searchFunc('/search.xml', 'searchInput', 'searchResult');
+});
+</script>
+
+    <!-- 回到顶部按钮 -->
+<div id="backTop" class="top-scroll">
+    <a class="btn-floating btn-large waves-effect waves-light" href="#!">
+        <i class="fas fa-arrow-up"></i>
+    </a>
+</div>
+
+
+    <script src="/libs/materialize/materialize.min.js"></script>
+    <script src="/libs/masonry/masonry.pkgd.min.js"></script>
+    <script src="/libs/aos/aos.js"></script>
+    <script src="/libs/scrollprogress/scrollProgress.min.js"></script>
+    <script src="/libs/lightGallery/js/lightgallery-all.min.js"></script>
+    <script src="/js/matery.js"></script>
+
+    <!-- Baidu Analytics -->
+
+    <!-- Baidu Push -->
+
+<script>
+    (function () {
+        var bp = document.createElement('script');
+        var curProtocol = window.location.protocol.split(':')[0];
+        if (curProtocol === 'https') {
+            bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';
+        } else {
+            bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+        }
+        var s = document.getElementsByTagName("script")[0];
+        s.parentNode.insertBefore(bp, s);
+    })();
+</script>
+
+    
+    
+    <script async src="/libs/others/busuanzi.pure.mini.js"></script>
+    
+
+    
+
+    
+
+	
+    
+    <script type="text/javascript" color="0,0,255"
+        pointColor="0,0,255" opacity='0.7'
+        zIndex="-1" count="99"
+        src="/libs/background/canvas-nest.js"></script>
+    
+
+    
+
+    
+
+    
+    <script src="/libs/instantpage/instantpage.js" type="module"></script><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+    
+
+</body>
+
+</html>
