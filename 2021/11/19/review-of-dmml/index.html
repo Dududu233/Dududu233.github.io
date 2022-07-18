@@ -26,10 +26,12 @@
     <link rel="stylesheet" type="text/css" href="/libs/lightGallery/css/lightgallery.min.css">
     <link rel="stylesheet" type="text/css" href="/css/matery.css">
     <link rel="stylesheet" type="text/css" href="/css/my.css">
-
+    <link rel="stylesheet" href="../../source/js/prism/prism.css">
     <script src="/libs/jquery/jquery.min.js"></script>
 
-<meta name="generator" content="Hexo 5.4.0"><!-- hexo-inject:begin --><!-- hexo-inject:end --><link rel="stylesheet" href="/css/prism-tomorrow.css" type="text/css"></head>
+<meta name="generator" content="Hexo 5.4.0"><link rel="alternate" href="/atom.xml" title="读读读233" type="application/atom+xml">
+<link rel="stylesheet" href="/css/prism.css" type="text/css">
+<link rel="stylesheet" href="/css/prism-line-numbers.css" type="text/css"><!-- hexo-inject:begin --><!-- hexo-inject:end --></head>
 
 
 
@@ -293,8 +295,8 @@
                     
                     <div class="article-tag">
                         
-                            <a href="/tags/nomaldays/">
-                                <span class="chip bg-color">nomaldays</span>
+                            <a href="/tags/normaldays/">
+                                <span class="chip bg-color">normaldays</span>
                             </a>
                         
                     </div>
@@ -434,7 +436,18 @@
 <h4 id="2-梯度下降算法"><a href="#2-梯度下降算法" class="headerlink" title="2.梯度下降算法"></a>2.梯度下降算法</h4><p><a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/68468520">原文链接</a><br>寻找损失函数的最低点，就像我们在山谷里行走，希望找到山谷里最低的地方。那么如何寻找损失函数的最低点呢？在这里，我们使用了微积分里导数，通过求出函数导数的值，从而找到函数下降的方向或者是最低点（极值点）。</p>
 <p>损失函数里一般有两种参数，一种是控制输入信号量的权重(Weight, 简称 $w$ ），另一种是调整函数与真实值距离的偏差（Bias，简称 $b$ ）。我们所要做的工作，就是通过梯度下降方法，不断地调整权重 $w$ 和偏差$b$，使得损失函数的值变得越来越小。</p>
 <p>假设某个损失函数里，模型损失值 $L$与权重 $w$ 有下图这样的关系。实际模型里，可能会有多个权重 $w$ ，这里为了简单起见，举只有一个权重 $w$ 的例子。权重$w$ 目前的位置是在A点。此时如果求出A点的梯度 $\frac{dL}{dw}$ ，便可以知道如果我们向右移动，可以使损失函数的值变得更小。<br><img src="https://tuchuang-1307891532.cos.ap-nanjing.myqcloud.com/images/5.jpg" alt="5"><br>公式太多了，好好看</p>
-<h4 id="3-多层神经网络使用什么算法进行训练？"><a href="#3-多层神经网络使用什么算法进行训练？" class="headerlink" title="3.多层神经网络使用什么算法进行训练？"></a>3.多层神经网络使用什么算法进行训练？</h4><p><a target="_blank" rel="noopener" href="https://www.jianshu.com/p/cc440fb27874">逆误差传播算法</a><br><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">算法过程：</span><br><span class="line"><span class="number">1</span>：在（<span class="number">0</span>,<span class="number">1</span>）区间内随机初始化网络中的所有连接权值和阈值</span><br><span class="line"><span class="number">2</span>：repeat</span><br><span class="line"><span class="number">3</span>：    <span class="keyword">for</span> <span class="built_in">all</span> (xk,yk) ∈ D do</span><br><span class="line"><span class="number">4</span>：        根据当前参数和公式计算输出</span><br><span class="line"><span class="number">5</span>：        计算输出层神经元的梯度项gj</span><br><span class="line"><span class="number">6</span>：        计算隐藏层神经元的梯度项eh</span><br><span class="line"><span class="number">7</span>：        计算和更新连接权值ωhj、νih和阈值θj γh</span><br><span class="line"><span class="number">8</span>：    end <span class="keyword">for</span></span><br><span class="line"><span class="number">9</span>：until 达到停止训练的条件</span><br><span class="line"></span><br><span class="line"></span><br></pre></td></tr></table></figure></p>
+<h4 id="3-多层神经网络使用什么算法进行训练？"><a href="#3-多层神经网络使用什么算法进行训练？" class="headerlink" title="3.多层神经网络使用什么算法进行训练？"></a>3.多层神经网络使用什么算法进行训练？</h4><p><a target="_blank" rel="noopener" href="https://www.jianshu.com/p/cc440fb27874">逆误差传播算法</a></p>
+<pre class="line-numbers language-lang-python"><code class="language-lang-python">算法过程：
+1：在（0,1）区间内随机初始化网络中的所有连接权值和阈值
+2：repeat
+3：    for all (xk,yk) ∈ D do
+4：        根据当前参数和公式计算输出
+5：        计算输出层神经元的梯度项gj
+6：        计算隐藏层神经元的梯度项eh
+7：        计算和更新连接权值ωhj、νih和阈值θj γh
+8：    end for
+9：until 达到停止训练的条件
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <h2 id="贝叶斯学习"><a href="#贝叶斯学习" class="headerlink" title="贝叶斯学习"></a>贝叶斯学习</h2><h4 id="1-根据贝叶斯理论，如何计算一个假设-h-成立的后验概率"><a href="#1-根据贝叶斯理论，如何计算一个假设-h-成立的后验概率" class="headerlink" title="1.根据贝叶斯理论，如何计算一个假设$h$成立的后验概率"></a>1.根据贝叶斯理论，如何计算一个假设$h$成立的后验概率</h4><p>先验概率（prior probability）：指根据以往经验和分析。在实验或采样前就可以得到的概率。<br>后验概率（posterior probability）：指某件事已经发生，想要计算这件事发生的原因是由某个因素引起的概率。<br>由贝叶斯定理：</p>
 <script type="math/tex; mode=display">P(B|A)=\frac{P(A|B)P(B)}{P(A)}</script><h4 id="2-极大后验概率假设和极大似然假设有何区别"><a href="#2-极大后验概率假设和极大似然假设有何区别" class="headerlink" title="2.极大后验概率假设和极大似然假设有何区别"></a>2.极大后验概率假设和极大似然假设有何区别</h4><p>最大后验概率假设即求参数$\theta$，使后验概率$P(\theta|X)$最大，由上文所述，<script type="math/tex">P(\theta|X)=\frac{P(X|\theta)P(\theta)}{P(X)}</script>式中，$P(X)$已知，所以极大后验概率假设就是求取$P(X|\theta)P(\theta)$最大时参数$\theta$的值。<br>极大似然假设即求似然函数$P(X|\theta)$最大时参数$\theta$的值。<br>两种假设方法的不同之处在于极大后验概率假设在计算时考虑了先验概率参数$P(\theta)$，极大后验概率假设认为参数$\theta$的值是服从某种分布的，而极大似然假设认为参数$\theta$的值是一个定值。当参数$\theta$服从均匀分布时，可以认为这两种假设就是相同的。</p>
 <h4 id="3-最小描述长度的基本思想"><a href="#3-最小描述长度的基本思想" class="headerlink" title="3.最小描述长度的基本思想"></a>3.最小描述长度的基本思想</h4><p>最小描述长度( MDL) 原理是 Rissane 在研究通用编码时提出的。其基本原理是对于一组给定的实例数据 D ， 如果要对其进行保存 ，为了节省存储空间， 一般采用某种模型对其进行编码压缩，然后再保存压缩后的数据。同时， 为了以后正确恢复这些实例数据，将所用的模型也保存起来。所以需要保存的数据长度( 比特数) 等于这些实例数据进行编码压缩后的长度加上保存模型所需的数据长度，将该数据长度称为总描述长度。最小描述长度( MDL) 原理就是要求选择总描述长度最小的模型。<br>如果将贝叶斯网络作为对实例数据进行压缩编码的模型， MDL原理就可以用于贝叶斯网络的学习。该度量被视为网络结构的描述长度和在给定结构下样本数据集的描述长度之和。一方面，用于描述网络结构的编码位随模型复杂度的增加而增加 ； 另一方面， 对数据集描述的编码位随模型复杂度的增加而下降。因此，贝叶斯网络的 MDL总是力求在模型精度和模型复杂度之间找到平衡。构建贝叶斯网络首先定义一个评分函数， 该评分函数描述了每个可能结构对观察到的数据拟合， 其目的就是发现评分最大的结构，这个过程连续进行到新模型的评分分数不再比老模型的高为止。</p>
@@ -579,8 +592,8 @@ P(H(x)\neq f(x))&=\sum_{k=0}^{[T/2]}\begin{pmatrix} T\\ k \end{pmatrix}(1-\epsil
                     
                         <div class="article-tag">
                             
-                                <a href="/tags/nomaldays/">
-                                    <span class="chip bg-color">nomaldays</span>
+                                <a href="/tags/normaldays/">
+                                    <span class="chip bg-color">normaldays</span>
                                 </a>
                             
                         </div>
@@ -886,7 +899,7 @@ P(H(x)\neq f(x))&=\sum_{k=0}^{[T/2]}\begin{pmatrix} T\\ k \end{pmatrix}(1-\epsil
 </div>
     </div>
 </footer>
-
+<script src="../../source/js/prism/prism.js" async></script>
 <div class="progress-bar"></div>
 
 

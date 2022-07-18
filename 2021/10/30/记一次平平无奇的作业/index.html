@@ -26,10 +26,12 @@
     <link rel="stylesheet" type="text/css" href="/libs/lightGallery/css/lightgallery.min.css">
     <link rel="stylesheet" type="text/css" href="/css/matery.css">
     <link rel="stylesheet" type="text/css" href="/css/my.css">
-
+    <link rel="stylesheet" href="../../source/js/prism/prism.css">
     <script src="/libs/jquery/jquery.min.js"></script>
 
-<meta name="generator" content="Hexo 5.4.0"><!-- hexo-inject:begin --><!-- hexo-inject:end --><link rel="stylesheet" href="/css/prism-tomorrow.css" type="text/css"></head>
+<meta name="generator" content="Hexo 5.4.0"><link rel="alternate" href="/atom.xml" title="读读读233" type="application/atom+xml">
+<link rel="stylesheet" href="/css/prism.css" type="text/css">
+<link rel="stylesheet" href="/css/prism-line-numbers.css" type="text/css"><!-- hexo-inject:begin --><!-- hexo-inject:end --></head>
 
 
 
@@ -327,7 +329,7 @@
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    4.7k
+                    1.9k
                 </div>
                 
 
@@ -379,13 +381,370 @@ Gain(D,年龄)&=Ent(D)-\sum_{v=1}^{V}\frac{\lvert D^v \rvert}{\lvert D \rvert}En
 &=0.089
 \end{aligned}</script><p>相似的，分别求取以工作情况划分样本集时，以房产情况划分样本集时，以信贷情况划分样本集时的信息增益：</p>
 <script type="math/tex; mode=display">Gain(D,工作情况)=0.97-\frac{10}{15}\times0.97=0.33</script><script type="math/tex; mode=display">Gain(D,房产情况)=0.97-\frac{9}{15}\times0.917=0.419</script><script type="math/tex; mode=display">Gain(D,信贷情况)=0.97-\frac{5}{15}\times0.721-\frac{6}{15}\times0.917=0.362</script><p>比较可得，房产情况为最优特征。</p>
-<h3 id="第六题"><a href="#第六题" class="headerlink" title="第六题"></a>第六题</h3><p>由上文第五题的求解，确定使用房产情况为根结点；<br><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">graph TB</span><br><span class="line"> A[房产情况]</span><br><span class="line"> B[有]</span><br><span class="line"> C[无]</span><br><span class="line"> D[同意]</span><br><span class="line"> E[其他情况]</span><br><span class="line"> A--&gt;B</span><br><span class="line"> A--&gt;C</span><br><span class="line"> B--&gt;D</span><br><span class="line"> C--&gt;E</span><br><span class="line"></span><br></pre></td></tr></table></figure><br>此时，有房产的样本已经到达叶节点；将无房产的样本单独划分为一个集合，共有九个样本，首先计算该子样本集的信息熵：</p>
+<h3 id="第六题"><a href="#第六题" class="headerlink" title="第六题"></a>第六题</h3><p>由上文第五题的求解，确定使用房产情况为根结点；</p>
+<pre class="line-numbers language-lang-mermaid"><code class="language-lang-mermaid">graph TB
+ A[房产情况]
+ B[有]
+ C[无]
+ D[同意]
+ E[其他情况]
+ A-->B
+ A-->C
+ B-->D
+ C-->E
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p>此时，有房产的样本已经到达叶节点；将无房产的样本单独划分为一个集合，共有九个样本，首先计算该子样本集的信息熵：</p>
 <script type="math/tex; mode=display">Ent(D_1)=-\sum_{k=1}^{\lvert \gamma \rvert}p_klog_{2}p_k=-\frac{6}{9}log_2\frac{6}{9}-\frac{3}{9}log_2\frac{3}{9}=0.917</script><p>分别计算其他属性对于子样本集的信息增益：</p>
 <script type="math/tex; mode=display">Gain(D_1|年龄)=Ent(D_1)-\sum_{v=1}^{V}\frac{\lvert D^v_1 \rvert}{\lvert D_1 \rvert}Ent(D^v_1)=0.917-0.36-0.305=0.252\\
 Gain(D_1|工作)=Ent(D_1)-\sum_{v=1}^{V}\frac{\lvert D^v_1 \rvert}{\lvert D_1 \rvert}Ent(D^v_1)=0.917-0=0.917\\
-Gain(D_1|信贷)=Ent(D_1)-\sum_{v=1}^{V}\frac{\lvert D^v_1 \rvert}{\lvert D_1 \rvert}Ent(D^v_1)=0.917-\frac{4}{9}=0.472</script><p>此时：工作情况为最优特征，决策树构建为；<br><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">graph TB</span><br><span class="line"> A[房产情况]</span><br><span class="line"> B[有]</span><br><span class="line"> C[无]</span><br><span class="line"> D[同意]</span><br><span class="line"> E[工作情况]</span><br><span class="line"> F[有工作]--&gt;FF[同意]</span><br><span class="line"> G[无工作]--&gt;GG[拒绝]</span><br><span class="line"> A--&gt;B</span><br><span class="line"> A--&gt;C</span><br><span class="line"> B--&gt;D</span><br><span class="line"> C--&gt;E</span><br><span class="line"> E--&gt;F</span><br><span class="line"> E--&gt;G</span><br><span class="line"></span><br></pre></td></tr></table></figure></p>
-<h3 id="第七题"><a href="#第七题" class="headerlink" title="第七题"></a>第七题</h3><p>python源代码：<br><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#ID3算法</span></span><br><span class="line"><span class="keyword">import</span> math</span><br><span class="line"><span class="keyword">import</span> matplotlib.pyplot <span class="keyword">as</span> plt</span><br><span class="line"><span class="keyword">from</span> matplotlib.pylab <span class="keyword">import</span> *</span><br><span class="line"></span><br><span class="line"><span class="keyword">from</span> treePlotter <span class="keyword">import</span> createPlot</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">calcShannonent</span>(<span class="params">dataset</span>):</span><span class="comment">#计算信息熵</span></span><br><span class="line">    numEntries=<span class="built_in">len</span>(dataset)</span><br><span class="line">    labelCounts=&#123;&#125;</span><br><span class="line">    <span class="keyword">for</span> featVec <span class="keyword">in</span> dataset:</span><br><span class="line">        currentLabel = featVec[-<span class="number">1</span>]</span><br><span class="line">        <span class="comment">#判断这个标签在字典中是否存在，不存在就初始化</span></span><br><span class="line">        <span class="keyword">if</span> currentLabel <span class="keyword">not</span> <span class="keyword">in</span> labelCounts.keys():</span><br><span class="line">            labelCounts[currentLabel] = <span class="number">0</span></span><br><span class="line">        <span class="comment">#统计不同类别的数量</span></span><br><span class="line">        labelCounts[currentLabel] += <span class="number">1</span></span><br><span class="line">    <span class="comment">#初始化熵</span></span><br><span class="line">    shannonent = <span class="number">0.0</span></span><br><span class="line">    <span class="comment">#计算熵</span></span><br><span class="line">    <span class="keyword">for</span> key <span class="keyword">in</span> labelCounts:</span><br><span class="line">        prob = <span class="built_in">float</span>(labelCounts[key])/numEntries</span><br><span class="line">        shannonent -= prob * math.log(prob,<span class="number">2</span>)</span><br><span class="line">    <span class="keyword">return</span> shannonent</span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">SubDataset</span>(<span class="params">dataset,index,value</span>):</span><span class="comment">#从总的数据集中选取出关心的数据组成新的数据集</span></span><br><span class="line">    sub_dataset = []</span><br><span class="line">    <span class="keyword">for</span> example <span class="keyword">in</span> dataset:</span><br><span class="line">        current_list = []</span><br><span class="line">        <span class="keyword">if</span> example[index] == value:</span><br><span class="line">            current_list = example[:index]</span><br><span class="line">            current_list.extend(example[index + <span class="number">1</span> :])</span><br><span class="line">            sub_dataset.append(current_list)</span><br><span class="line">    <span class="keyword">return</span> sub_dataset</span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">ChooseBestFeature</span>(<span class="params">dataset</span>):</span><span class="comment">#选择最优特征</span></span><br><span class="line">    num_features=<span class="built_in">len</span>(dataset[<span class="number">0</span>])-<span class="number">1</span></span><br><span class="line">    current_Ent=calcShannonent(dataset)</span><br><span class="line">    bestFeatureGain=<span class="number">0.0</span></span><br><span class="line">    bestFeatureIndex=-<span class="number">1</span></span><br><span class="line">    <span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(num_features):</span><br><span class="line">        values_features=[example[i] <span class="keyword">for</span> example <span class="keyword">in</span> dataset]</span><br><span class="line">        unique_value=<span class="built_in">set</span>(values_features)</span><br><span class="line">        new_ent=<span class="number">0.0</span></span><br><span class="line">        Gain=<span class="number">0.0</span></span><br><span class="line">        <span class="keyword">for</span> value <span class="keyword">in</span> unique_value:</span><br><span class="line">            sub_dataset=SubDataset(dataset,i,value)</span><br><span class="line">            p=<span class="built_in">len</span>(sub_dataset)/<span class="built_in">len</span>(dataset)</span><br><span class="line">            new_ent +=p*calcShannonent(sub_dataset)</span><br><span class="line">            Gain=calcShannonent(dataset)-new_ent</span><br><span class="line">        <span class="keyword">if</span>(Gain&gt;bestFeatureGain):</span><br><span class="line">            bestFeatureGain=Gain</span><br><span class="line">            bestFeatureIndex=i</span><br><span class="line">    <span class="keyword">return</span> bestFeatureIndex</span><br><span class="line">   </span><br><span class="line">    <span class="keyword">return</span> </span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">TreeGenerate</span>(<span class="params">dataset,feature</span>):</span><span class="comment">#通过递归调用创建决策树</span></span><br><span class="line">    label_list=[example[-<span class="number">1</span>] <span class="keyword">for</span> example <span class="keyword">in</span> dataset]</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">if</span>(label_list.count(label_list[<span class="number">0</span>])==<span class="built_in">len</span>(label_list)):<span class="comment">#设置递归结束条件，类别中所有的标签都相同时，递归结束，返回一个叶节点</span></span><br><span class="line">        <span class="keyword">return</span> label_list[<span class="number">0</span>]</span><br><span class="line">    </span><br><span class="line">    best_index=ChooseBestFeature(dataset)</span><br><span class="line">    best_feature=feature[best_index]</span><br><span class="line"></span><br><span class="line">    decisionTree=&#123;best_feature:&#123;&#125;&#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">del</span>(feature[best_index])</span><br><span class="line"></span><br><span class="line">    values_best_feature=[example[best_index] <span class="keyword">for</span> example <span class="keyword">in</span> dataset]</span><br><span class="line">    dict_value=<span class="built_in">set</span>(values_best_feature)</span><br><span class="line">    <span class="keyword">for</span> value <span class="keyword">in</span> dict_value:</span><br><span class="line">        new_feature=feature</span><br><span class="line"></span><br><span class="line">        decisionTree[best_feature][value]=TreeGenerate(SubDataset(dataset,best_index,value),new_feature)<span class="comment">#递归调用自身不断生成子树</span></span><br><span class="line">    </span><br><span class="line">    <span class="keyword">return</span> decisionTree</span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">GenerateDataset</span>():</span> </span><br><span class="line">    dataset = [[<span class="string">&#x27;青年&#x27;</span>, <span class="string">&#x27;否&#x27;</span>, <span class="string">&#x27;否&#x27;</span>, <span class="string">&#x27;一般般&#x27;</span>, <span class="string">&#x27;拒绝&#x27;</span>],</span><br><span class="line">               [<span class="string">&#x27;青年&#x27;</span>, <span class="string">&#x27;否&#x27;</span>, <span class="string">&#x27;否&#x27;</span>, <span class="string">&#x27;好&#x27;</span>, <span class="string">&#x27;拒绝&#x27;</span>],</span><br><span class="line">               [<span class="string">&#x27;青年&#x27;</span>, <span class="string">&#x27;是&#x27;</span>, <span class="string">&#x27;否&#x27;</span>, <span class="string">&#x27;好&#x27;</span>, <span class="string">&#x27;同意&#x27;</span>],</span><br><span class="line">               [<span class="string">&#x27;青年&#x27;</span>, <span class="string">&#x27;是&#x27;</span>, <span class="string">&#x27;是&#x27;</span>, <span class="string">&#x27;一般般&#x27;</span>, <span class="string">&#x27;同意&#x27;</span>],</span><br><span class="line">               [<span class="string">&#x27;青年&#x27;</span>, <span class="string">&#x27;否&#x27;</span>, <span class="string">&#x27;否&#x27;</span>, <span class="string">&#x27;一般般&#x27;</span>, <span class="string">&#x27;拒绝&#x27;</span>],</span><br><span class="line">               [<span class="string">&#x27;中年&#x27;</span>, <span class="string">&#x27;否&#x27;</span>, <span class="string">&#x27;否&#x27;</span>, <span class="string">&#x27;一般般&#x27;</span>, <span class="string">&#x27;拒绝&#x27;</span>],</span><br><span class="line">               [<span class="string">&#x27;中年&#x27;</span>, <span class="string">&#x27;否&#x27;</span>, <span class="string">&#x27;否&#x27;</span>, <span class="string">&#x27;好&#x27;</span>, <span class="string">&#x27;拒绝&#x27;</span>],</span><br><span class="line">               [<span class="string">&#x27;中年&#x27;</span>, <span class="string">&#x27;是&#x27;</span>, <span class="string">&#x27;是&#x27;</span>, <span class="string">&#x27;好&#x27;</span>, <span class="string">&#x27;同意&#x27;</span>],</span><br><span class="line">               [<span class="string">&#x27;中年&#x27;</span>, <span class="string">&#x27;否&#x27;</span>, <span class="string">&#x27;是&#x27;</span>, <span class="string">&#x27;非常好&#x27;</span>, <span class="string">&#x27;同意&#x27;</span>],</span><br><span class="line">               [<span class="string">&#x27;中年&#x27;</span>, <span class="string">&#x27;否&#x27;</span>, <span class="string">&#x27;是&#x27;</span>, <span class="string">&#x27;非常好&#x27;</span>, <span class="string">&#x27;同意&#x27;</span>],</span><br><span class="line">               [<span class="string">&#x27;老年&#x27;</span>, <span class="string">&#x27;否&#x27;</span>, <span class="string">&#x27;是&#x27;</span>, <span class="string">&#x27;非常好&#x27;</span>, <span class="string">&#x27;同意&#x27;</span>],</span><br><span class="line">               [<span class="string">&#x27;老年&#x27;</span>, <span class="string">&#x27;否&#x27;</span>, <span class="string">&#x27;是&#x27;</span>, <span class="string">&#x27;好&#x27;</span>, <span class="string">&#x27;同意&#x27;</span>],</span><br><span class="line">               [<span class="string">&#x27;老年&#x27;</span>, <span class="string">&#x27;是&#x27;</span>, <span class="string">&#x27;否&#x27;</span>, <span class="string">&#x27;好&#x27;</span>, <span class="string">&#x27;同意&#x27;</span>],</span><br><span class="line">               [<span class="string">&#x27;老年&#x27;</span>, <span class="string">&#x27;是&#x27;</span>, <span class="string">&#x27;否&#x27;</span>, <span class="string">&#x27;非常好&#x27;</span>, <span class="string">&#x27;同意&#x27;</span>],</span><br><span class="line">               [<span class="string">&#x27;老年&#x27;</span>, <span class="string">&#x27;否&#x27;</span>, <span class="string">&#x27;否&#x27;</span>, <span class="string">&#x27;一般般&#x27;</span>, <span class="string">&#x27;拒绝&#x27;</span>]]</span><br><span class="line">    features = [<span class="string">&#x27;年龄&#x27;</span>, <span class="string">&#x27;有工作&#x27;</span>, <span class="string">&#x27;有房子&#x27;</span>, <span class="string">&#x27;信贷情况&#x27;</span>]</span><br><span class="line">    <span class="keyword">return</span> dataset, features</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> __name__==<span class="string">&#x27;__main__&#x27;</span>:</span><br><span class="line">    dataset,feature=GenerateDataset()</span><br><span class="line">    decision_tree=TreeGenerate(dataset,feature)</span><br><span class="line"></span><br><span class="line">    <span class="built_in">print</span>(decision_tree)</span><br><span class="line">    <span class="comment"># 定义文本框和箭头格式</span></span><br><span class="line">    decisionNode = <span class="built_in">dict</span>(boxstyle=<span class="string">&quot;round4&quot;</span>, color=<span class="string">&#x27;#3366FF&#x27;</span>)  <span class="comment">#定义判断结点形态</span></span><br><span class="line">    leafNode = <span class="built_in">dict</span>(boxstyle=<span class="string">&quot;circle&quot;</span>, color=<span class="string">&#x27;#FF6633&#x27;</span>)  <span class="comment">#定义叶结点形态</span></span><br><span class="line">    arrow_args = <span class="built_in">dict</span>(arrowstyle=<span class="string">&quot;&lt;-&quot;</span>, color=<span class="string">&#x27;g&#x27;</span>)  <span class="comment">#定义箭头</span></span><br><span class="line">    mpl.rcParams[<span class="string">&#x27;font.sans-serif&#x27;</span>] = [<span class="string">&#x27;SimHei&#x27;</span>]  <span class="comment"># 指定默认字体</span></span><br><span class="line">    mpl.rcParams[<span class="string">&#x27;axes.unicode_minus&#x27;</span>] = <span class="literal">False</span>  <span class="comment"># 解决保存图像时负号&#x27;-&#x27;显示为方块的问题</span></span><br><span class="line"></span><br><span class="line">    createPlot(decision_tree)</span><br><span class="line"></span><br></pre></td></tr></table></figure><br><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#绘制决策树</span></span><br><span class="line"><span class="keyword">import</span> matplotlib.pyplot <span class="keyword">as</span> plt</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment"># 定义文本框和箭头格式</span></span><br><span class="line">decisionNode = <span class="built_in">dict</span>(boxstyle=<span class="string">&quot;round4&quot;</span>, color=<span class="string">&#x27;#3366FF&#x27;</span>)  <span class="comment">#定义判断结点形态</span></span><br><span class="line">leafNode = <span class="built_in">dict</span>(boxstyle=<span class="string">&quot;circle&quot;</span>, color=<span class="string">&#x27;#FF6633&#x27;</span>)  <span class="comment">#定义叶结点形态</span></span><br><span class="line">arrow_args = <span class="built_in">dict</span>(arrowstyle=<span class="string">&quot;&lt;-&quot;</span>, color=<span class="string">&#x27;g&#x27;</span>)  <span class="comment">#定义箭头</span></span><br><span class="line"></span><br><span class="line"><span class="comment">#绘制带箭头的注释</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">plotNode</span>(<span class="params">nodeTxt, centerPt, parentPt, nodeType</span>):</span></span><br><span class="line">    createPlot.ax1.annotate(nodeTxt, xy=parentPt, xycoords=<span class="string">&#x27;axes fraction&#x27;</span>,</span><br><span class="line">                            xytext=centerPt, textcoords=<span class="string">&#x27;axes fraction&#x27;</span>,</span><br><span class="line">                            va=<span class="string">&quot;center&quot;</span>, ha=<span class="string">&quot;center&quot;</span>, bbox=nodeType, arrowprops=arrow_args)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment">#计算叶结点数</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">getNumLeafs</span>(<span class="params">myTree</span>):</span></span><br><span class="line">    numLeafs = <span class="number">0</span></span><br><span class="line">    firstStr = <span class="built_in">list</span>(myTree.keys())[<span class="number">0</span>]</span><br><span class="line">    secondDict = myTree[firstStr]</span><br><span class="line">    <span class="keyword">for</span> key <span class="keyword">in</span> secondDict.keys():</span><br><span class="line">        <span class="keyword">if</span> <span class="built_in">type</span>(secondDict[key]).__name__ == <span class="string">&#x27;dict&#x27;</span>:</span><br><span class="line">            numLeafs += getNumLeafs(secondDict[key])</span><br><span class="line">        <span class="keyword">else</span>:</span><br><span class="line">            numLeafs += <span class="number">1</span></span><br><span class="line">    <span class="keyword">return</span> numLeafs</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment">#计算树的层数</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">getTreeDepth</span>(<span class="params">myTree</span>):</span></span><br><span class="line">    maxDepth = <span class="number">0</span></span><br><span class="line">    firstStr = <span class="built_in">list</span>(myTree.keys())[<span class="number">0</span>]</span><br><span class="line">    secondDict = myTree[firstStr]</span><br><span class="line">    <span class="keyword">for</span> key <span class="keyword">in</span> secondDict.keys():</span><br><span class="line">        <span class="keyword">if</span> <span class="built_in">type</span>(secondDict[key]).__name__ == <span class="string">&#x27;dict&#x27;</span>:</span><br><span class="line">            thisDepth = <span class="number">1</span> + getTreeDepth(secondDict[key])</span><br><span class="line">        <span class="keyword">else</span>:</span><br><span class="line">            thisDepth = <span class="number">1</span></span><br><span class="line">        <span class="keyword">if</span> thisDepth &gt; maxDepth:</span><br><span class="line">            maxDepth = thisDepth</span><br><span class="line">    <span class="keyword">return</span> maxDepth</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment">#在父子结点间填充文本信息</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">plotMidText</span>(<span class="params">cntrPt, parentPt, txtString</span>):</span></span><br><span class="line">    xMid = (parentPt[<span class="number">0</span>] - cntrPt[<span class="number">0</span>]) / <span class="number">2.0</span> + cntrPt[<span class="number">0</span>]</span><br><span class="line">    yMid = (parentPt[<span class="number">1</span>] - cntrPt[<span class="number">1</span>]) / <span class="number">2.0</span> + cntrPt[<span class="number">1</span>]</span><br><span class="line">    createPlot.ax1.text(xMid, yMid, txtString, va=<span class="string">&quot;center&quot;</span>, ha=<span class="string">&quot;center&quot;</span>, rotation=<span class="number">30</span>)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">plotTree</span>(<span class="params">myTree, parentPt, nodeTxt</span>):</span></span><br><span class="line">    numLeafs = getNumLeafs(myTree)</span><br><span class="line">    depth = getTreeDepth(myTree)</span><br><span class="line">    firstStr = <span class="built_in">list</span>(myTree.keys())[<span class="number">0</span>]</span><br><span class="line">    cntrPt = (plotTree.xOff + (<span class="number">1.0</span> + <span class="built_in">float</span>(numLeafs)) / <span class="number">2.0</span> / plotTree.totalW, plotTree.yOff)</span><br><span class="line">    plotMidText(cntrPt, parentPt, nodeTxt)  <span class="comment">#在父子结点间填充文本信息</span></span><br><span class="line">    plotNode(firstStr, cntrPt, parentPt, decisionNode)  <span class="comment">#绘制带箭头的注释</span></span><br><span class="line">    secondDict = myTree[firstStr]</span><br><span class="line">    plotTree.yOff = plotTree.yOff - <span class="number">1.0</span> / plotTree.totalD</span><br><span class="line">    <span class="keyword">for</span> key <span class="keyword">in</span> secondDict.keys():</span><br><span class="line">        <span class="keyword">if</span> <span class="built_in">type</span>(secondDict[key]).__name__ == <span class="string">&#x27;dict&#x27;</span>:</span><br><span class="line">            plotTree(secondDict[key], cntrPt, <span class="built_in">str</span>(key))</span><br><span class="line">        <span class="keyword">else</span>:</span><br><span class="line">            plotTree.xOff = plotTree.xOff + <span class="number">1.0</span> / plotTree.totalW</span><br><span class="line">            plotNode(secondDict[key], (plotTree.xOff, plotTree.yOff), cntrPt, leafNode)</span><br><span class="line">            plotMidText((plotTree.xOff, plotTree.yOff), cntrPt, <span class="built_in">str</span>(key))</span><br><span class="line">    plotTree.yOff = plotTree.yOff + <span class="number">1.0</span> / plotTree.totalD</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">createPlot</span>(<span class="params">inTree</span>):</span></span><br><span class="line">    fig = plt.figure(<span class="number">1</span>, facecolor=<span class="string">&#x27;white&#x27;</span>)</span><br><span class="line">    fig.clf()</span><br><span class="line">    axprops = <span class="built_in">dict</span>(xticks=[], yticks=[])</span><br><span class="line">    createPlot.ax1 = plt.subplot(<span class="number">111</span>, frameon=<span class="literal">False</span>, **axprops)</span><br><span class="line">    plotTree.totalW = <span class="built_in">float</span>(getNumLeafs(inTree))</span><br><span class="line">    plotTree.totalD = <span class="built_in">float</span>(getTreeDepth(inTree))</span><br><span class="line">    plotTree.xOff = -<span class="number">0.5</span> / plotTree.totalW</span><br><span class="line">    plotTree.yOff = <span class="number">1.0</span></span><br><span class="line">    plotTree(inTree, (<span class="number">0.5</span>, <span class="number">1.0</span>), <span class="string">&#x27;&#x27;</span>)</span><br><span class="line">    plt.show()</span><br></pre></td></tr></table></figure><br>程序运行结果：<img src="D:/py_workspace/homework/DecisionTree/1.png" alt="ID3算法运行控制台输出" title="ID3算法运行控制台输出"><br>绘制出的决策树：<img src="D:/py_workspace/homework/DecisionTree/2.png" alt="决策树" title="使用matplotlib绘制的决策树"></p>
-<h3 id="第八题"><a href="#第八题" class="headerlink" title="第八题"></a>第八题</h3><p>python源代码：<br><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br><span class="line">124</span><br><span class="line">125</span><br><span class="line">126</span><br><span class="line">127</span><br><span class="line">128</span><br><span class="line">129</span><br><span class="line">130</span><br><span class="line">131</span><br><span class="line">132</span><br><span class="line">133</span><br><span class="line">134</span><br><span class="line">135</span><br><span class="line">136</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#相较于ID3算法，CART算法并无本质上的区别，只是将选择最优特征的根据改为基尼系数</span></span><br><span class="line"><span class="comment">#因此，修改原ID3算法中的计算信息熵函数为计算基尼系数函数，并同步修改选择最优特征函数即可</span></span><br><span class="line"><span class="keyword">import</span> math</span><br><span class="line"><span class="keyword">import</span> matplotlib.pyplot <span class="keyword">as</span> plt</span><br><span class="line"><span class="keyword">from</span> matplotlib.pylab <span class="keyword">import</span> *</span><br><span class="line"></span><br><span class="line"><span class="keyword">from</span> treePlotter <span class="keyword">import</span> createPlot</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">calcGini</span>(<span class="params">dataSet</span>):</span></span><br><span class="line">    numEntries = <span class="built_in">len</span>(dataSet)</span><br><span class="line">    labelCounts =&#123;&#125;</span><br><span class="line"> </span><br><span class="line">    <span class="keyword">for</span> featVec <span class="keyword">in</span> dataSet:</span><br><span class="line">        currentLabel = featVec[-<span class="number">1</span>]</span><br><span class="line">        <span class="keyword">if</span> currentLabel <span class="keyword">not</span> <span class="keyword">in</span> labelCounts.keys():</span><br><span class="line">            labelCounts[currentLabel] =<span class="number">0</span></span><br><span class="line">        labelCounts[currentLabel]+=<span class="number">1</span></span><br><span class="line">    Gini =<span class="number">1.0</span></span><br><span class="line">    <span class="keyword">for</span> key <span class="keyword">in</span> labelCounts:</span><br><span class="line">        prob = <span class="built_in">float</span>(labelCounts[key])/numEntries</span><br><span class="line">        Gini -= prob * prob</span><br><span class="line">    <span class="keyword">return</span> Gini</span><br><span class="line"></span><br><span class="line">    </span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">SubDataset</span>(<span class="params">dataset,index,value</span>):</span><span class="comment">#从总的数据集中选取出关心的数据组成新的数据集</span></span><br><span class="line">    sub_dataset = []</span><br><span class="line">    <span class="keyword">for</span> example <span class="keyword">in</span> dataset:</span><br><span class="line">        current_list = []</span><br><span class="line">        <span class="keyword">if</span> example[index] == value:</span><br><span class="line">            current_list = example[:index]</span><br><span class="line">            current_list.extend(example[index + <span class="number">1</span> :])</span><br><span class="line">            sub_dataset.append(current_list)</span><br><span class="line">    <span class="keyword">return</span> sub_dataset</span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">splitOtherDataSetByValue</span>(<span class="params">dataSet, index, value</span>):</span></span><br><span class="line">    retDataSet = []</span><br><span class="line">    <span class="keyword">for</span> featVec <span class="keyword">in</span> dataSet:</span><br><span class="line">        <span class="keyword">if</span> featVec[index] != value:</span><br><span class="line">            reduceFeatVec = featVec[:index]  <span class="comment"># 删除这一维特征</span></span><br><span class="line">            reduceFeatVec.extend(featVec[index + <span class="number">1</span>:])</span><br><span class="line">            retDataSet.append(reduceFeatVec)</span><br><span class="line">    <span class="keyword">return</span> retDataSet</span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">ChooseBestFeature</span>(<span class="params">dataSet</span>):</span></span><br><span class="line">    numFeatures = <span class="built_in">len</span>(dataSet[<span class="number">0</span>]) -<span class="number">1</span></span><br><span class="line">    bestGiniIndex = <span class="number">1000000.0</span></span><br><span class="line">    bestSplictValue =[]</span><br><span class="line">    bestFeature = -<span class="number">1</span></span><br><span class="line">    <span class="comment"># 计算Gini指数</span></span><br><span class="line">    <span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(numFeatures):</span><br><span class="line">        featList = [example[i] <span class="keyword">for</span> example <span class="keyword">in</span> dataSet]</span><br><span class="line">       </span><br><span class="line">        uniqueVals = <span class="built_in">set</span>(featList)</span><br><span class="line">        bestGiniCut = <span class="number">1000000.0</span></span><br><span class="line">        bestGiniCutValue =[]</span><br><span class="line">        Gini_value =<span class="number">0.0</span></span><br><span class="line">        </span><br><span class="line">        <span class="keyword">for</span> value <span class="keyword">in</span> uniqueVals:</span><br><span class="line">            </span><br><span class="line">            subDataSet = SubDataset(dataSet,i,value)</span><br><span class="line">            prob = <span class="built_in">len</span>(subDataSet) / <span class="built_in">float</span>(<span class="built_in">len</span>(dataSet))</span><br><span class="line">            Gini_value = prob * calcGini(subDataSet)</span><br><span class="line">            </span><br><span class="line">            otherDataSet = splitOtherDataSetByValue(dataSet,i,value)</span><br><span class="line">            prob = <span class="built_in">len</span>(otherDataSet) / <span class="built_in">float</span>(<span class="built_in">len</span>(dataSet))</span><br><span class="line">            Gini_value = Gini_value + prob * calcGini(otherDataSet)</span><br><span class="line">           </span><br><span class="line">            <span class="keyword">if</span> Gini_value &lt; bestGiniCut:</span><br><span class="line">                bestGiniCut = Gini_value</span><br><span class="line">                bestGiniCutValue = value</span><br><span class="line"></span><br><span class="line">        </span><br><span class="line">        GiniIndex = bestGiniCut</span><br><span class="line">        <span class="keyword">if</span> GiniIndex &lt; bestGiniIndex:</span><br><span class="line">            bestGiniIndex = GiniIndex</span><br><span class="line">            bestSplictValue = bestGiniCutValue</span><br><span class="line">            bestFeature = i</span><br><span class="line">            <span class="comment">#print(bestFeature,bestSplictValue)</span></span><br><span class="line">    </span><br><span class="line">    <span class="keyword">return</span> bestFeature</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">TreeGenerate</span>(<span class="params">dataset,feature</span>):</span><span class="comment">#通过递归调用创建决策树</span></span><br><span class="line">    label_list=[example[-<span class="number">1</span>] <span class="keyword">for</span> example <span class="keyword">in</span> dataset]</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">if</span>(label_list.count(label_list[<span class="number">0</span>])==<span class="built_in">len</span>(label_list)):<span class="comment">#设置递归结束条件，类别中所有的标签都相同时，递归结束，返回一个叶节点</span></span><br><span class="line">        <span class="keyword">return</span> label_list[<span class="number">0</span>]</span><br><span class="line">  </span><br><span class="line"></span><br><span class="line">    best_index=ChooseBestFeature(dataset)</span><br><span class="line">    best_feature=feature[best_index]</span><br><span class="line"></span><br><span class="line">    decisionTree=&#123;best_feature:&#123;&#125;&#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">del</span>(feature[best_index])</span><br><span class="line"></span><br><span class="line">    values_best_feature=[example[best_index] <span class="keyword">for</span> example <span class="keyword">in</span> dataset]</span><br><span class="line">    dict_value=<span class="built_in">set</span>(values_best_feature)</span><br><span class="line">    <span class="keyword">for</span> value <span class="keyword">in</span> dict_value:</span><br><span class="line">        new_feature=feature[:]</span><br><span class="line"></span><br><span class="line">        decisionTree[best_feature][value]=TreeGenerate(SubDataset(dataset,best_index,value),new_feature)<span class="comment">#递归调用自身不断生成子树</span></span><br><span class="line">    </span><br><span class="line">    </span><br><span class="line">    <span class="keyword">return</span> decisionTree</span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">GenerateDataset</span>():</span> </span><br><span class="line">    dataset = [[<span class="string">&#x27;青年&#x27;</span>, <span class="string">&#x27;否&#x27;</span>, <span class="string">&#x27;否&#x27;</span>, <span class="string">&#x27;一般般&#x27;</span>, <span class="string">&#x27;拒绝&#x27;</span>],</span><br><span class="line">               [<span class="string">&#x27;青年&#x27;</span>, <span class="string">&#x27;否&#x27;</span>, <span class="string">&#x27;否&#x27;</span>, <span class="string">&#x27;好&#x27;</span>, <span class="string">&#x27;拒绝&#x27;</span>],</span><br><span class="line">               [<span class="string">&#x27;青年&#x27;</span>, <span class="string">&#x27;是&#x27;</span>, <span class="string">&#x27;否&#x27;</span>, <span class="string">&#x27;好&#x27;</span>, <span class="string">&#x27;同意&#x27;</span>],</span><br><span class="line">               [<span class="string">&#x27;青年&#x27;</span>, <span class="string">&#x27;是&#x27;</span>, <span class="string">&#x27;是&#x27;</span>, <span class="string">&#x27;一般般&#x27;</span>, <span class="string">&#x27;同意&#x27;</span>],</span><br><span class="line">               [<span class="string">&#x27;青年&#x27;</span>, <span class="string">&#x27;否&#x27;</span>, <span class="string">&#x27;否&#x27;</span>, <span class="string">&#x27;一般般&#x27;</span>, <span class="string">&#x27;拒绝&#x27;</span>],</span><br><span class="line">               [<span class="string">&#x27;中年&#x27;</span>, <span class="string">&#x27;否&#x27;</span>, <span class="string">&#x27;否&#x27;</span>, <span class="string">&#x27;一般般&#x27;</span>, <span class="string">&#x27;拒绝&#x27;</span>],</span><br><span class="line">               [<span class="string">&#x27;中年&#x27;</span>, <span class="string">&#x27;否&#x27;</span>, <span class="string">&#x27;否&#x27;</span>, <span class="string">&#x27;好&#x27;</span>, <span class="string">&#x27;拒绝&#x27;</span>],</span><br><span class="line">               [<span class="string">&#x27;中年&#x27;</span>, <span class="string">&#x27;是&#x27;</span>, <span class="string">&#x27;是&#x27;</span>, <span class="string">&#x27;好&#x27;</span>, <span class="string">&#x27;同意&#x27;</span>],</span><br><span class="line">               [<span class="string">&#x27;中年&#x27;</span>, <span class="string">&#x27;否&#x27;</span>, <span class="string">&#x27;是&#x27;</span>, <span class="string">&#x27;非常好&#x27;</span>, <span class="string">&#x27;同意&#x27;</span>],</span><br><span class="line">               [<span class="string">&#x27;中年&#x27;</span>, <span class="string">&#x27;否&#x27;</span>, <span class="string">&#x27;是&#x27;</span>, <span class="string">&#x27;非常好&#x27;</span>, <span class="string">&#x27;同意&#x27;</span>],</span><br><span class="line">               [<span class="string">&#x27;老年&#x27;</span>, <span class="string">&#x27;否&#x27;</span>, <span class="string">&#x27;是&#x27;</span>, <span class="string">&#x27;非常好&#x27;</span>, <span class="string">&#x27;同意&#x27;</span>],</span><br><span class="line">               [<span class="string">&#x27;老年&#x27;</span>, <span class="string">&#x27;否&#x27;</span>, <span class="string">&#x27;是&#x27;</span>, <span class="string">&#x27;好&#x27;</span>, <span class="string">&#x27;同意&#x27;</span>],</span><br><span class="line">               [<span class="string">&#x27;老年&#x27;</span>, <span class="string">&#x27;是&#x27;</span>, <span class="string">&#x27;否&#x27;</span>, <span class="string">&#x27;好&#x27;</span>, <span class="string">&#x27;同意&#x27;</span>],</span><br><span class="line">               [<span class="string">&#x27;老年&#x27;</span>, <span class="string">&#x27;是&#x27;</span>, <span class="string">&#x27;否&#x27;</span>, <span class="string">&#x27;非常好&#x27;</span>, <span class="string">&#x27;同意&#x27;</span>],</span><br><span class="line">               [<span class="string">&#x27;老年&#x27;</span>, <span class="string">&#x27;否&#x27;</span>, <span class="string">&#x27;否&#x27;</span>, <span class="string">&#x27;一般般&#x27;</span>, <span class="string">&#x27;拒绝&#x27;</span>]]</span><br><span class="line">    features = [<span class="string">&#x27;年龄&#x27;</span>, <span class="string">&#x27;有工作&#x27;</span>, <span class="string">&#x27;有房子&#x27;</span>, <span class="string">&#x27;信贷情况&#x27;</span>]</span><br><span class="line">    <span class="keyword">return</span> dataset, features</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> __name__==<span class="string">&#x27;__main__&#x27;</span>:</span><br><span class="line"></span><br><span class="line">    dataset,feature=GenerateDataset()</span><br><span class="line">    decision_tree=TreeGenerate(dataset,feature)</span><br><span class="line"></span><br><span class="line">    <span class="built_in">print</span>(decision_tree)</span><br><span class="line">    <span class="comment"># 定义文本框和箭头格式</span></span><br><span class="line">    decisionNode = <span class="built_in">dict</span>(boxstyle=<span class="string">&quot;round4&quot;</span>, color=<span class="string">&#x27;#3366FF&#x27;</span>)  <span class="comment">#定义判断结点形态</span></span><br><span class="line">    leafNode = <span class="built_in">dict</span>(boxstyle=<span class="string">&quot;circle&quot;</span>, color=<span class="string">&#x27;#FF6633&#x27;</span>)  <span class="comment">#定义叶结点形态</span></span><br><span class="line">    arrow_args = <span class="built_in">dict</span>(arrowstyle=<span class="string">&quot;&lt;-&quot;</span>, color=<span class="string">&#x27;g&#x27;</span>)  <span class="comment">#定义箭头</span></span><br><span class="line">    mpl.rcParams[<span class="string">&#x27;font.sans-serif&#x27;</span>] = [<span class="string">&#x27;SimHei&#x27;</span>]  <span class="comment"># 指定默认字体</span></span><br><span class="line">    mpl.rcParams[<span class="string">&#x27;axes.unicode_minus&#x27;</span>] = <span class="literal">False</span>  <span class="comment"># 解决保存图像时负号&#x27;-&#x27;显示为方块的问题</span></span><br><span class="line"></span><br><span class="line">    createPlot(decision_tree)</span><br></pre></td></tr></table></figure><br>程序运行结果：<img src="D:/py_workspace/homework/DecisionTree/3.png" alt="控制台输出结果" title="控制台输出结果"><br>matplotlib绘图结果：<img src="D:/py_workspace/homework/DecisionTree/4.png" alt="绘制决策树" title="使用matplotlib绘制决策树"></p>
+Gain(D_1|信贷)=Ent(D_1)-\sum_{v=1}^{V}\frac{\lvert D^v_1 \rvert}{\lvert D_1 \rvert}Ent(D^v_1)=0.917-\frac{4}{9}=0.472</script><p>此时：工作情况为最优特征，决策树构建为；</p>
+<pre class="line-numbers language-lang-mermaid"><code class="language-lang-mermaid">graph TB
+ A[房产情况]
+ B[有]
+ C[无]
+ D[同意]
+ E[工作情况]
+ F[有工作]-->FF[同意]
+ G[无工作]-->GG[拒绝]
+ A-->B
+ A-->C
+ B-->D
+ C-->E
+ E-->F
+ E-->G
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<h3 id="第七题"><a href="#第七题" class="headerlink" title="第七题"></a>第七题</h3><p>python源代码：</p>
+<pre class="line-numbers language-lang-python"><code class="language-lang-python">#ID3算法
+import math
+import matplotlib.pyplot as plt
+from matplotlib.pylab import *
+
+from treePlotter import createPlot
+
+def calcShannonent(dataset):#计算信息熵
+    numEntries=len(dataset)
+    labelCounts=&#123;&#125;
+    for featVec in dataset:
+        currentLabel = featVec[-1]
+        #判断这个标签在字典中是否存在，不存在就初始化
+        if currentLabel not in labelCounts.keys():
+            labelCounts[currentLabel] = 0
+        #统计不同类别的数量
+        labelCounts[currentLabel] += 1
+    #初始化熵
+    shannonent = 0.0
+    #计算熵
+    for key in labelCounts:
+        prob = float(labelCounts[key])/numEntries
+        shannonent -= prob * math.log(prob,2)
+    return shannonent
+def SubDataset(dataset,index,value):#从总的数据集中选取出关心的数据组成新的数据集
+    sub_dataset = []
+    for example in dataset:
+        current_list = []
+        if example[index] == value:
+            current_list = example[:index]
+            current_list.extend(example[index + 1 :])
+            sub_dataset.append(current_list)
+    return sub_dataset
+def ChooseBestFeature(dataset):#选择最优特征
+    num_features=len(dataset[0])-1
+    current_Ent=calcShannonent(dataset)
+    bestFeatureGain=0.0
+    bestFeatureIndex=-1
+    for i in range(num_features):
+        values_features=[example[i] for example in dataset]
+        unique_value=set(values_features)
+        new_ent=0.0
+        Gain=0.0
+        for value in unique_value:
+            sub_dataset=SubDataset(dataset,i,value)
+            p=len(sub_dataset)/len(dataset)
+            new_ent +=p*calcShannonent(sub_dataset)
+            Gain=calcShannonent(dataset)-new_ent
+        if(Gain>bestFeatureGain):
+            bestFeatureGain=Gain
+            bestFeatureIndex=i
+    return bestFeatureIndex
+
+    return 
+def TreeGenerate(dataset,feature):#通过递归调用创建决策树
+    label_list=[example[-1] for example in dataset]
+
+    if(label_list.count(label_list[0])==len(label_list)):#设置递归结束条件，类别中所有的标签都相同时，递归结束，返回一个叶节点
+        return label_list[0]
+
+    best_index=ChooseBestFeature(dataset)
+    best_feature=feature[best_index]
+
+    decisionTree=&#123;best_feature:&#123;&#125;&#125;
+
+    del(feature[best_index])
+
+    values_best_feature=[example[best_index] for example in dataset]
+    dict_value=set(values_best_feature)
+    for value in dict_value:
+        new_feature=feature
+
+        decisionTree[best_feature][value]=TreeGenerate(SubDataset(dataset,best_index,value),new_feature)#递归调用自身不断生成子树
+
+    return decisionTree
+def GenerateDataset(): 
+    dataset = [['青年', '否', '否', '一般般', '拒绝'],
+               ['青年', '否', '否', '好', '拒绝'],
+               ['青年', '是', '否', '好', '同意'],
+               ['青年', '是', '是', '一般般', '同意'],
+               ['青年', '否', '否', '一般般', '拒绝'],
+               ['中年', '否', '否', '一般般', '拒绝'],
+               ['中年', '否', '否', '好', '拒绝'],
+               ['中年', '是', '是', '好', '同意'],
+               ['中年', '否', '是', '非常好', '同意'],
+               ['中年', '否', '是', '非常好', '同意'],
+               ['老年', '否', '是', '非常好', '同意'],
+               ['老年', '否', '是', '好', '同意'],
+               ['老年', '是', '否', '好', '同意'],
+               ['老年', '是', '否', '非常好', '同意'],
+               ['老年', '否', '否', '一般般', '拒绝']]
+    features = ['年龄', '有工作', '有房子', '信贷情况']
+    return dataset, features
+
+
+if __name__=='__main__':
+    dataset,feature=GenerateDataset()
+    decision_tree=TreeGenerate(dataset,feature)
+
+    print(decision_tree)
+    # 定义文本框和箭头格式
+    decisionNode = dict(boxstyle="round4", color='#3366FF')  #定义判断结点形态
+    leafNode = dict(boxstyle="circle", color='#FF6633')  #定义叶结点形态
+    arrow_args = dict(arrowstyle="<-", color='g')  #定义箭头
+    mpl.rcParams['font.sans-serif'] = ['SimHei']  # 指定默认字体
+    mpl.rcParams['axes.unicode_minus'] = False  # 解决保存图像时负号'-'显示为方块的问题
+
+    createPlot(decision_tree)
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<pre class="line-numbers language-lang-python"><code class="language-lang-python">#绘制决策树
+import matplotlib.pyplot as plt
+
+
+# 定义文本框和箭头格式
+decisionNode = dict(boxstyle="round4", color='#3366FF')  #定义判断结点形态
+leafNode = dict(boxstyle="circle", color='#FF6633')  #定义叶结点形态
+arrow_args = dict(arrowstyle="<-", color='g')  #定义箭头
+
+#绘制带箭头的注释
+def plotNode(nodeTxt, centerPt, parentPt, nodeType):
+    createPlot.ax1.annotate(nodeTxt, xy=parentPt, xycoords='axes fraction',
+                            xytext=centerPt, textcoords='axes fraction',
+                            va="center", ha="center", bbox=nodeType, arrowprops=arrow_args)
+
+
+#计算叶结点数
+def getNumLeafs(myTree):
+    numLeafs = 0
+    firstStr = list(myTree.keys())[0]
+    secondDict = myTree[firstStr]
+    for key in secondDict.keys():
+        if type(secondDict[key]).__name__ == 'dict':
+            numLeafs += getNumLeafs(secondDict[key])
+        else:
+            numLeafs += 1
+    return numLeafs
+
+
+#计算树的层数
+def getTreeDepth(myTree):
+    maxDepth = 0
+    firstStr = list(myTree.keys())[0]
+    secondDict = myTree[firstStr]
+    for key in secondDict.keys():
+        if type(secondDict[key]).__name__ == 'dict':
+            thisDepth = 1 + getTreeDepth(secondDict[key])
+        else:
+            thisDepth = 1
+        if thisDepth > maxDepth:
+            maxDepth = thisDepth
+    return maxDepth
+
+
+#在父子结点间填充文本信息
+def plotMidText(cntrPt, parentPt, txtString):
+    xMid = (parentPt[0] - cntrPt[0]) / 2.0 + cntrPt[0]
+    yMid = (parentPt[1] - cntrPt[1]) / 2.0 + cntrPt[1]
+    createPlot.ax1.text(xMid, yMid, txtString, va="center", ha="center", rotation=30)
+
+
+def plotTree(myTree, parentPt, nodeTxt):
+    numLeafs = getNumLeafs(myTree)
+    depth = getTreeDepth(myTree)
+    firstStr = list(myTree.keys())[0]
+    cntrPt = (plotTree.xOff + (1.0 + float(numLeafs)) / 2.0 / plotTree.totalW, plotTree.yOff)
+    plotMidText(cntrPt, parentPt, nodeTxt)  #在父子结点间填充文本信息
+    plotNode(firstStr, cntrPt, parentPt, decisionNode)  #绘制带箭头的注释
+    secondDict = myTree[firstStr]
+    plotTree.yOff = plotTree.yOff - 1.0 / plotTree.totalD
+    for key in secondDict.keys():
+        if type(secondDict[key]).__name__ == 'dict':
+            plotTree(secondDict[key], cntrPt, str(key))
+        else:
+            plotTree.xOff = plotTree.xOff + 1.0 / plotTree.totalW
+            plotNode(secondDict[key], (plotTree.xOff, plotTree.yOff), cntrPt, leafNode)
+            plotMidText((plotTree.xOff, plotTree.yOff), cntrPt, str(key))
+    plotTree.yOff = plotTree.yOff + 1.0 / plotTree.totalD
+
+
+def createPlot(inTree):
+    fig = plt.figure(1, facecolor='white')
+    fig.clf()
+    axprops = dict(xticks=[], yticks=[])
+    createPlot.ax1 = plt.subplot(111, frameon=False, **axprops)
+    plotTree.totalW = float(getNumLeafs(inTree))
+    plotTree.totalD = float(getTreeDepth(inTree))
+    plotTree.xOff = -0.5 / plotTree.totalW
+    plotTree.yOff = 1.0
+    plotTree(inTree, (0.5, 1.0), '')
+    plt.show()
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p>程序运行结果：<img src="D:/py_workspace/homework/DecisionTree/1.png" alt="ID3算法运行控制台输出" title="ID3算法运行控制台输出"><br>绘制出的决策树：<img src="D:/py_workspace/homework/DecisionTree/2.png" alt="决策树" title="使用matplotlib绘制的决策树"></p>
+<h3 id="第八题"><a href="#第八题" class="headerlink" title="第八题"></a>第八题</h3><p>python源代码：</p>
+<pre class="line-numbers language-lang-python"><code class="language-lang-python">#相较于ID3算法，CART算法并无本质上的区别，只是将选择最优特征的根据改为基尼系数
+#因此，修改原ID3算法中的计算信息熵函数为计算基尼系数函数，并同步修改选择最优特征函数即可
+import math
+import matplotlib.pyplot as plt
+from matplotlib.pylab import *
+
+from treePlotter import createPlot
+
+def calcGini(dataSet):
+    numEntries = len(dataSet)
+    labelCounts =&#123;&#125;
+
+    for featVec in dataSet:
+        currentLabel = featVec[-1]
+        if currentLabel not in labelCounts.keys():
+            labelCounts[currentLabel] =0
+        labelCounts[currentLabel]+=1
+    Gini =1.0
+    for key in labelCounts:
+        prob = float(labelCounts[key])/numEntries
+        Gini -= prob * prob
+    return Gini
+
+
+def SubDataset(dataset,index,value):#从总的数据集中选取出关心的数据组成新的数据集
+    sub_dataset = []
+    for example in dataset:
+        current_list = []
+        if example[index] == value:
+            current_list = example[:index]
+            current_list.extend(example[index + 1 :])
+            sub_dataset.append(current_list)
+    return sub_dataset
+def splitOtherDataSetByValue(dataSet, index, value):
+    retDataSet = []
+    for featVec in dataSet:
+        if featVec[index] != value:
+            reduceFeatVec = featVec[:index]  # 删除这一维特征
+            reduceFeatVec.extend(featVec[index + 1:])
+            retDataSet.append(reduceFeatVec)
+    return retDataSet
+def ChooseBestFeature(dataSet):
+    numFeatures = len(dataSet[0]) -1
+    bestGiniIndex = 1000000.0
+    bestSplictValue =[]
+    bestFeature = -1
+    # 计算Gini指数
+    for i in range(numFeatures):
+        featList = [example[i] for example in dataSet]
+
+        uniqueVals = set(featList)
+        bestGiniCut = 1000000.0
+        bestGiniCutValue =[]
+        Gini_value =0.0
+
+        for value in uniqueVals:
+
+            subDataSet = SubDataset(dataSet,i,value)
+            prob = len(subDataSet) / float(len(dataSet))
+            Gini_value = prob * calcGini(subDataSet)
+
+            otherDataSet = splitOtherDataSetByValue(dataSet,i,value)
+            prob = len(otherDataSet) / float(len(dataSet))
+            Gini_value = Gini_value + prob * calcGini(otherDataSet)
+
+            if Gini_value < bestGiniCut:
+                bestGiniCut = Gini_value
+                bestGiniCutValue = value
+
+
+        GiniIndex = bestGiniCut
+        if GiniIndex < bestGiniIndex:
+            bestGiniIndex = GiniIndex
+            bestSplictValue = bestGiniCutValue
+            bestFeature = i
+            #print(bestFeature,bestSplictValue)
+
+    return bestFeature
+
+def TreeGenerate(dataset,feature):#通过递归调用创建决策树
+    label_list=[example[-1] for example in dataset]
+
+    if(label_list.count(label_list[0])==len(label_list)):#设置递归结束条件，类别中所有的标签都相同时，递归结束，返回一个叶节点
+        return label_list[0]
+
+
+    best_index=ChooseBestFeature(dataset)
+    best_feature=feature[best_index]
+
+    decisionTree=&#123;best_feature:&#123;&#125;&#125;
+
+    del(feature[best_index])
+
+    values_best_feature=[example[best_index] for example in dataset]
+    dict_value=set(values_best_feature)
+    for value in dict_value:
+        new_feature=feature[:]
+
+        decisionTree[best_feature][value]=TreeGenerate(SubDataset(dataset,best_index,value),new_feature)#递归调用自身不断生成子树
+
+
+    return decisionTree
+def GenerateDataset(): 
+    dataset = [['青年', '否', '否', '一般般', '拒绝'],
+               ['青年', '否', '否', '好', '拒绝'],
+               ['青年', '是', '否', '好', '同意'],
+               ['青年', '是', '是', '一般般', '同意'],
+               ['青年', '否', '否', '一般般', '拒绝'],
+               ['中年', '否', '否', '一般般', '拒绝'],
+               ['中年', '否', '否', '好', '拒绝'],
+               ['中年', '是', '是', '好', '同意'],
+               ['中年', '否', '是', '非常好', '同意'],
+               ['中年', '否', '是', '非常好', '同意'],
+               ['老年', '否', '是', '非常好', '同意'],
+               ['老年', '否', '是', '好', '同意'],
+               ['老年', '是', '否', '好', '同意'],
+               ['老年', '是', '否', '非常好', '同意'],
+               ['老年', '否', '否', '一般般', '拒绝']]
+    features = ['年龄', '有工作', '有房子', '信贷情况']
+    return dataset, features
+
+
+if __name__=='__main__':
+
+    dataset,feature=GenerateDataset()
+    decision_tree=TreeGenerate(dataset,feature)
+
+    print(decision_tree)
+    # 定义文本框和箭头格式
+    decisionNode = dict(boxstyle="round4", color='#3366FF')  #定义判断结点形态
+    leafNode = dict(boxstyle="circle", color='#FF6633')  #定义叶结点形态
+    arrow_args = dict(arrowstyle="<-", color='g')  #定义箭头
+    mpl.rcParams['font.sans-serif'] = ['SimHei']  # 指定默认字体
+    mpl.rcParams['axes.unicode_minus'] = False  # 解决保存图像时负号'-'显示为方块的问题
+
+    createPlot(decision_tree)
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p>程序运行结果：<img src="D:/py_workspace/homework/DecisionTree/3.png" alt="控制台输出结果" title="控制台输出结果"><br>matplotlib绘图结果：<img src="D:/py_workspace/homework/DecisionTree/4.png" alt="绘制决策树" title="使用matplotlib绘制决策树"></p>
 <h1 id="第六章"><a href="#第六章" class="headerlink" title="第六章"></a>第六章</h1><h3 id="第一题-1"><a href="#第一题-1" class="headerlink" title="第一题"></a>第一题</h3><ul>
 <li>Model1 <script type="math/tex; mode=display">TP=300,FN=80 ,TN=500 ,FP=60</script><script type="math/tex; mode=display">Acurracy=\frac{TP+TN}{TP+FN+TN+FP}=\frac{300+500}{300+80+500+60}=0.851</script><script type="math/tex; mode=display">Cost=300\times(-1)+80\times100+500\times0+60\times5=8000</script><script type="math/tex; mode=display">Recall=\frac{TP}{TP+FN}=\frac{300}{300+80}=0.789</script></li>
 <li>Model2<script type="math/tex; mode=display">TP=500,FN=90,TN=400,FP=10</script><script type="math/tex; mode=display">Acurracy=\frac{TP+TN}{TP+FN+FP+TN}=\frac{500+400}{500+400+10+90}=0.9</script><script type="math/tex; mode=display">Cost=500\times(-1)+90\times100+400\times0+10\times5=8550</script><script type="math/tex; mode=display">Recall=\frac{TP}{TP+FN}=\frac{500}{500+90}=0.847</script></li>
@@ -402,7 +761,26 @@ Gain(D_1|信贷)=Ent(D_1)-\sum_{v=1}^{V}\frac{\lvert D^v_1 \rvert}{\lvert D_1 \r
 <li>$(1,0)$点：即$FPR=1,TPR=0$，即$FP=FP+TN,TP=TN=0$，该分类器是最糟糕的分类器，所有的预测都是错误的；</li>
 <li>$(1,1)$点：即$FPR=TPR=1$，$TN=FN=0$，可以发现，该分类器判断所有的样本都是正样本。<h3 id="第四题-1"><a href="#第四题-1" class="headerlink" title="第四题"></a>第四题</h3>$M_1$模型在大小为50的集合上进行测试，错误率$e_1=0.13$;<br>$M_2$模型在大小为4500的集合上进行测试，错误率$e_2=0.28$;<br>当测试集足够大时，可认为：<script type="math/tex; mode=display">e_1 \sim N(\mu_1, \sigma_1^2)</script><script type="math/tex; mode=display">e_2 \sim N(\mu_2, \sigma_2^2)</script>为了比较两个模型的性能是否有显著的统计学上的差异，令$d=e_1-e_2$，因为$e_1\sim N,e_2\sim N$,所以，$d\sim N(d_t,\sigma_t)$,由正态分布的性质：<script type="math/tex; mode=display">\sigma_t^2=\sigma_1^2+\sigma_2^2\approx\hat{\sigma_1^2}+\hat{\sigma_2^2}=\frac{e_1(1-e_1)}{n_1}+\frac{e_2(1-e_2)}{n_2}</script><script type="math/tex; mode=display">d_t=d\pm Z_{\frac{\alpha}{2}}\hat{\sigma_t}</script><script type="math/tex; mode=display">d=\lvert e_2-e_1 \rvert=0.28-0.13=0.15</script><script type="math/tex; mode=display">\hat{\sigma_d}=\frac{0.13(1-0.13)}{50}+\frac{0.28(1-0.28)}{4500}=0.0023</script>当置信水平为0.95时，$Z_\frac{\alpha}{2}=1.96$:<script type="math/tex; mode=display">d_t=0.15\pm 1.96\times \sqrt{0.0023}=0.15\pm 0.094</script>区间中不包含0，认为两者之间有差距，模型$M_1$的性能优于模型$M_2$的性能。<h3 id="第五题-1"><a href="#第五题-1" class="headerlink" title="第五题"></a>第五题</h3>在机器学习建模过程中，通行的做法通常是将数据分为训练集和测试集。测试集是与训练独立的数据，完全不参与训练，用于最终模型的评估。在训练过程中，经常会出现过拟合的问题，就是模型可以很好的匹配训练数据，却不能很好在预测训练集外的数据。如果此时就使用测试数据来调整模型参数，就相当于在训练时已知部分测试数据的信息，会影响最终评估结果的准确性。通常的做法是在训练数据再中分出一部分做为验证(Validation)数据，用来评估模型的训练效果。</li>
 </ul>
-<p>验证数据取自训练数据，但不参与训练，这样可以相对客观的评估模型对于训练集之外数据的匹配程度。模型在验证数据中的评估常用的是交叉验证，又称循环验证。它将原始数据分成K组(K-Fold)，将每个子集数据分别做一次验证集，其余的K-1组子集数据作为训练集，这样会得到K个模型。这K个模型分别在验证集中评估结果，最后的误差MSE(Mean Squared Error)加和平均就得到交叉验证误差。交叉验证有效利用了有限的数据，并且评估结果能够尽可能接近模型在测试集上的表现，可以做为模型优化的指标使用。<br><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> numpy <span class="keyword">as</span> np</span><br><span class="line"><span class="keyword">from</span> sklearn.model_selection <span class="keyword">import</span> KFold</span><br><span class="line"><span class="keyword">import</span> random</span><br><span class="line"></span><br><span class="line"><span class="comment">#随机生成一百个(-20,20)的数字</span></span><br><span class="line">num=[]</span><br><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(<span class="number">100</span>):</span><br><span class="line">    num.append(random.randint(-<span class="number">20</span>,<span class="number">20</span>))</span><br><span class="line"><span class="comment">#print(num)</span></span><br><span class="line"><span class="comment">#使用k-fold方法对数据集进行划分</span></span><br><span class="line">num=np.array(num)</span><br><span class="line">kf=KFold(n_splits=<span class="number">6</span>)</span><br><span class="line"><span class="keyword">for</span> train,test <span class="keyword">in</span> kf.split(num):</span><br><span class="line">    num_train,num_test=num[train],num[test]</span><br><span class="line">  </span><br><span class="line">    <span class="built_in">print</span>(<span class="string">&quot;训练集为：&quot;</span>,num_train)</span><br><span class="line">    <span class="built_in">print</span>(<span class="string">&quot;验证集为：&quot;</span>,num_test)</span><br><span class="line"></span><br></pre></td></tr></table></figure><br>程序运行结果：<img src="D:/py_workspace/homework/DecisionTree/5.png" alt="控制台输出结果" title="控制台输出结果"></p>
+<p>验证数据取自训练数据，但不参与训练，这样可以相对客观的评估模型对于训练集之外数据的匹配程度。模型在验证数据中的评估常用的是交叉验证，又称循环验证。它将原始数据分成K组(K-Fold)，将每个子集数据分别做一次验证集，其余的K-1组子集数据作为训练集，这样会得到K个模型。这K个模型分别在验证集中评估结果，最后的误差MSE(Mean Squared Error)加和平均就得到交叉验证误差。交叉验证有效利用了有限的数据，并且评估结果能够尽可能接近模型在测试集上的表现，可以做为模型优化的指标使用。</p>
+<pre class="line-numbers language-lang-python"><code class="language-lang-python">import numpy as np
+from sklearn.model_selection import KFold
+import random
+
+#随机生成一百个(-20,20)的数字
+num=[]
+for i in range(100):
+    num.append(random.randint(-20,20))
+#print(num)
+#使用k-fold方法对数据集进行划分
+num=np.array(num)
+kf=KFold(n_splits=6)
+for train,test in kf.split(num):
+    num_train,num_test=num[train],num[test]
+
+    print("训练集为：",num_train)
+    print("验证集为：",num_test)
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p>程序运行结果：<img src="D:/py_workspace/homework/DecisionTree/5.png" alt="控制台输出结果" title="控制台输出结果"></p>
 
                 
             </div>
@@ -550,8 +928,8 @@ Gain(D_1|信贷)=Ent(D_1)-\sum_{v=1}^{V}\frac{\lvert D^v_1 \rvert}{\lvert D_1 \r
                 
                 <div class="card-action article-tags">
                     
-                    <a href="/tags/nomaldays/">
-                        <span class="chip bg-color">nomaldays</span>
+                    <a href="/tags/normaldays/">
+                        <span class="chip bg-color">normaldays</span>
                     </a>
                     
                 </div>
@@ -774,7 +1152,7 @@ Gain(D_1|信贷)=Ent(D_1)-\sum_{v=1}^{V}\frac{\lvert D^v_1 \rvert}{\lvert D_1 \r
 </div>
     </div>
 </footer>
-
+<script src="../../source/js/prism/prism.js" async></script>
 <div class="progress-bar"></div>
 
 
