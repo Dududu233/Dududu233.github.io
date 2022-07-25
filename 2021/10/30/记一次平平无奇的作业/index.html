@@ -30,7 +30,7 @@
     <script src="/libs/jquery/jquery.min.js"></script>
 
 <meta name="generator" content="Hexo 5.4.0"><link rel="alternate" href="/atom.xml" title="读读读233" type="application/atom+xml"><!-- hexo-inject:begin --><!-- hexo-inject:end -->
-<link rel="stylesheet" href="/css/prism.css" type="text/css"></head>
+</head>
 
 
 
@@ -282,10 +282,104 @@
 
 
 
-<main class="container content">
+<main class="post-container content">
 
     
-    <!-- 文章内容详情 -->
+    <link rel="stylesheet" href="/libs/tocbot/tocbot.css">
+<style>
+    #articleContent h1::before,
+    #articleContent h2::before,
+    #articleContent h3::before,
+    #articleContent h4::before,
+    #articleContent h5::before,
+    #articleContent h6::before {
+        display: block;
+        content: " ";
+        height: 100px;
+        margin-top: -100px;
+        visibility: hidden;
+    }
+
+    #articleContent :focus {
+        outline: none;
+    }
+
+    .toc-fixed {
+        position: fixed;
+        top: 64px;
+    }
+
+    .toc-widget {
+        width: 345px;
+        padding-left: 20px;
+    }
+
+    .toc-widget .toc-title {
+        padding: 35px 0 15px 17px;
+        font-size: 1.5rem;
+        font-weight: bold;
+        line-height: 1.5rem;
+    }
+
+    .toc-widget ol {
+        padding: 0;
+        list-style: none;
+    }
+
+    #toc-content {
+        padding-bottom: 30px;
+        overflow: auto;
+    }
+
+    #toc-content ol {
+        padding-left: 10px;
+    }
+
+    #toc-content ol li {
+        padding-left: 10px;
+    }
+
+    #toc-content .toc-link:hover {
+        color: #42b983;
+        font-weight: 700;
+        text-decoration: underline;
+    }
+
+    #toc-content .toc-link::before {
+        background-color: transparent;
+        max-height: 25px;
+
+        position: absolute;
+        right: 23.5vw;
+        display: block;
+    }
+
+    #toc-content .is-active-link {
+        color: #42b983;
+    }
+
+    #floating-toc-btn {
+        position: fixed;
+        right: 15px;
+        bottom: 76px;
+        padding-top: 15px;
+        margin-bottom: 0;
+        z-index: 998;
+    }
+
+    #floating-toc-btn .btn-floating {
+        width: 48px;
+        height: 48px;
+    }
+
+    #floating-toc-btn .btn-floating i {
+        line-height: 48px;
+        font-size: 1.4rem;
+    }
+</style>
+<div class="row">
+    <div id="main-content" class="col s12 m12 l9">
+        <!-- 文章内容详情 -->
 <div id="artDetail">
     <div class="card">
         <div class="card-content article-info">
@@ -328,7 +422,7 @@
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    1.9k
+                    4.3k
                 </div>
                 
 
@@ -344,6 +438,9 @@
         </div>
         <hr class="clearfix">
 
+        
+        <!-- 是否加载使用自带的 prismjs. -->
+        <link rel="stylesheet" href="/libs/prism/prism.css">
         
 
         
@@ -380,370 +477,360 @@ Gain(D,年龄)&=Ent(D)-\sum_{v=1}^{V}\frac{\lvert D^v \rvert}{\lvert D \rvert}En
 &=0.089
 \end{aligned}</script><p>相似的，分别求取以工作情况划分样本集时，以房产情况划分样本集时，以信贷情况划分样本集时的信息增益：</p>
 <script type="math/tex; mode=display">Gain(D,工作情况)=0.97-\frac{10}{15}\times0.97=0.33</script><script type="math/tex; mode=display">Gain(D,房产情况)=0.97-\frac{9}{15}\times0.917=0.419</script><script type="math/tex; mode=display">Gain(D,信贷情况)=0.97-\frac{5}{15}\times0.721-\frac{6}{15}\times0.917=0.362</script><p>比较可得，房产情况为最优特征。</p>
-<h3 id="第六题"><a href="#第六题" class="headerlink" title="第六题"></a>第六题</h3><p>由上文第五题的求解，确定使用房产情况为根结点；</p>
-<pre class=" language-lang-mermaid"><code class="language-lang-mermaid">graph TB
- A[房产情况]
- B[有]
- C[无]
- D[同意]
- E[其他情况]
- A-->B
- A-->C
- B-->D
- C-->E
-</code></pre>
-<p>此时，有房产的样本已经到达叶节点；将无房产的样本单独划分为一个集合，共有九个样本，首先计算该子样本集的信息熵：</p>
+<h3 id="第六题"><a href="#第六题" class="headerlink" title="第六题"></a>第六题</h3><p>由上文第五题的求解，确定使用房产情况为根结点；<br><pre class="line-numbers language-mermaid" data-language="mermaid"><code class="language-mermaid"><span class="token keyword">graph</span> TB
+ A<span class="token text string">[房产情况]</span>
+ B<span class="token text string">[有]</span>
+ C<span class="token text string">[无]</span>
+ D<span class="token text string">[同意]</span>
+ E<span class="token text string">[其他情况]</span>
+ A<span class="token arrow operator">--></span>B
+ A<span class="token arrow operator">--></span>C
+ B<span class="token arrow operator">--></span>D
+ C<span class="token arrow operator">--></span>E
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre><br>此时，有房产的样本已经到达叶节点；将无房产的样本单独划分为一个集合，共有九个样本，首先计算该子样本集的信息熵：</p>
 <script type="math/tex; mode=display">Ent(D_1)=-\sum_{k=1}^{\lvert \gamma \rvert}p_klog_{2}p_k=-\frac{6}{9}log_2\frac{6}{9}-\frac{3}{9}log_2\frac{3}{9}=0.917</script><p>分别计算其他属性对于子样本集的信息增益：</p>
 <script type="math/tex; mode=display">Gain(D_1|年龄)=Ent(D_1)-\sum_{v=1}^{V}\frac{\lvert D^v_1 \rvert}{\lvert D_1 \rvert}Ent(D^v_1)=0.917-0.36-0.305=0.252\\
 Gain(D_1|工作)=Ent(D_1)-\sum_{v=1}^{V}\frac{\lvert D^v_1 \rvert}{\lvert D_1 \rvert}Ent(D^v_1)=0.917-0=0.917\\
-Gain(D_1|信贷)=Ent(D_1)-\sum_{v=1}^{V}\frac{\lvert D^v_1 \rvert}{\lvert D_1 \rvert}Ent(D^v_1)=0.917-\frac{4}{9}=0.472</script><p>此时：工作情况为最优特征，决策树构建为；</p>
-<pre class=" language-lang-mermaid"><code class="language-lang-mermaid">graph TB
- A[房产情况]
- B[有]
- C[无]
- D[同意]
- E[工作情况]
- F[有工作]-->FF[同意]
- G[无工作]-->GG[拒绝]
- A-->B
- A-->C
- B-->D
- C-->E
- E-->F
- E-->G
-</code></pre>
-<h3 id="第七题"><a href="#第七题" class="headerlink" title="第七题"></a>第七题</h3><p>python源代码：</p>
-<pre class=" language-lang-python"><code class="language-lang-python">#ID3算法
-import math
-import matplotlib.pyplot as plt
-from matplotlib.pylab import *
+Gain(D_1|信贷)=Ent(D_1)-\sum_{v=1}^{V}\frac{\lvert D^v_1 \rvert}{\lvert D_1 \rvert}Ent(D^v_1)=0.917-\frac{4}{9}=0.472</script><p>此时：工作情况为最优特征，决策树构建为；<br><pre class="line-numbers language-mermaid" data-language="mermaid"><code class="language-mermaid"><span class="token keyword">graph</span> TB
+ A<span class="token text string">[房产情况]</span>
+ B<span class="token text string">[有]</span>
+ C<span class="token text string">[无]</span>
+ D<span class="token text string">[同意]</span>
+ E<span class="token text string">[工作情况]</span>
+ F<span class="token text string">[有工作]</span><span class="token arrow operator">--></span>FF<span class="token text string">[同意]</span>
+ G<span class="token text string">[无工作]</span><span class="token arrow operator">--></span>GG<span class="token text string">[拒绝]</span>
+ A<span class="token arrow operator">--></span>B
+ A<span class="token arrow operator">--></span>C
+ B<span class="token arrow operator">--></span>D
+ C<span class="token arrow operator">--></span>E
+ E<span class="token arrow operator">--></span>F
+ E<span class="token arrow operator">--></span>G
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre></p>
+<h3 id="第七题"><a href="#第七题" class="headerlink" title="第七题"></a>第七题</h3><p>python源代码：<br><pre class="line-numbers language-python" data-language="python"><code class="language-python"><span class="token comment">#ID3算法</span>
+<span class="token keyword">import</span> math
+<span class="token keyword">import</span> matplotlib<span class="token punctuation">.</span>pyplot <span class="token keyword">as</span> plt
+<span class="token keyword">from</span> matplotlib<span class="token punctuation">.</span>pylab <span class="token keyword">import</span> <span class="token operator">*</span>
 
-from treePlotter import createPlot
+<span class="token keyword">from</span> treePlotter <span class="token keyword">import</span> createPlot
 
-def calcShannonent(dataset):#计算信息熵
-    numEntries=len(dataset)
-    labelCounts=&#123;&#125;
-    for featVec in dataset:
-        currentLabel = featVec[-1]
-        #判断这个标签在字典中是否存在，不存在就初始化
-        if currentLabel not in labelCounts.keys():
-            labelCounts[currentLabel] = 0
-        #统计不同类别的数量
-        labelCounts[currentLabel] += 1
-    #初始化熵
-    shannonent = 0.0
-    #计算熵
-    for key in labelCounts:
-        prob = float(labelCounts[key])/numEntries
-        shannonent -= prob * math.log(prob,2)
-    return shannonent
-def SubDataset(dataset,index,value):#从总的数据集中选取出关心的数据组成新的数据集
-    sub_dataset = []
-    for example in dataset:
-        current_list = []
-        if example[index] == value:
-            current_list = example[:index]
-            current_list.extend(example[index + 1 :])
-            sub_dataset.append(current_list)
-    return sub_dataset
-def ChooseBestFeature(dataset):#选择最优特征
-    num_features=len(dataset[0])-1
-    current_Ent=calcShannonent(dataset)
-    bestFeatureGain=0.0
-    bestFeatureIndex=-1
-    for i in range(num_features):
-        values_features=[example[i] for example in dataset]
-        unique_value=set(values_features)
-        new_ent=0.0
-        Gain=0.0
-        for value in unique_value:
-            sub_dataset=SubDataset(dataset,i,value)
-            p=len(sub_dataset)/len(dataset)
-            new_ent +=p*calcShannonent(sub_dataset)
-            Gain=calcShannonent(dataset)-new_ent
-        if(Gain>bestFeatureGain):
-            bestFeatureGain=Gain
-            bestFeatureIndex=i
-    return bestFeatureIndex
+<span class="token keyword">def</span> <span class="token function">calcShannonent</span><span class="token punctuation">(</span>dataset<span class="token punctuation">)</span><span class="token punctuation">:</span><span class="token comment">#计算信息熵</span>
+    numEntries<span class="token operator">=</span><span class="token builtin">len</span><span class="token punctuation">(</span>dataset<span class="token punctuation">)</span>
+    labelCounts<span class="token operator">=</span><span class="token punctuation">&#123;</span><span class="token punctuation">&#125;</span>
+    <span class="token keyword">for</span> featVec <span class="token keyword">in</span> dataset<span class="token punctuation">:</span>
+        currentLabel <span class="token operator">=</span> featVec<span class="token punctuation">[</span><span class="token operator">-</span><span class="token number">1</span><span class="token punctuation">]</span>
+        <span class="token comment">#判断这个标签在字典中是否存在，不存在就初始化</span>
+        <span class="token keyword">if</span> currentLabel <span class="token keyword">not</span> <span class="token keyword">in</span> labelCounts<span class="token punctuation">.</span>keys<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
+            labelCounts<span class="token punctuation">[</span>currentLabel<span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token number">0</span>
+        <span class="token comment">#统计不同类别的数量</span>
+        labelCounts<span class="token punctuation">[</span>currentLabel<span class="token punctuation">]</span> <span class="token operator">+=</span> <span class="token number">1</span>
+    <span class="token comment">#初始化熵</span>
+    shannonent <span class="token operator">=</span> <span class="token number">0.0</span>
+    <span class="token comment">#计算熵</span>
+    <span class="token keyword">for</span> key <span class="token keyword">in</span> labelCounts<span class="token punctuation">:</span>
+        prob <span class="token operator">=</span> <span class="token builtin">float</span><span class="token punctuation">(</span>labelCounts<span class="token punctuation">[</span>key<span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token operator">/</span>numEntries
+        shannonent <span class="token operator">-=</span> prob <span class="token operator">*</span> math<span class="token punctuation">.</span>log<span class="token punctuation">(</span>prob<span class="token punctuation">,</span><span class="token number">2</span><span class="token punctuation">)</span>
+    <span class="token keyword">return</span> shannonent
+<span class="token keyword">def</span> <span class="token function">SubDataset</span><span class="token punctuation">(</span>dataset<span class="token punctuation">,</span>index<span class="token punctuation">,</span>value<span class="token punctuation">)</span><span class="token punctuation">:</span><span class="token comment">#从总的数据集中选取出关心的数据组成新的数据集</span>
+    sub_dataset <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token punctuation">]</span>
+    <span class="token keyword">for</span> example <span class="token keyword">in</span> dataset<span class="token punctuation">:</span>
+        current_list <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token punctuation">]</span>
+        <span class="token keyword">if</span> example<span class="token punctuation">[</span>index<span class="token punctuation">]</span> <span class="token operator">==</span> value<span class="token punctuation">:</span>
+            current_list <span class="token operator">=</span> example<span class="token punctuation">[</span><span class="token punctuation">:</span>index<span class="token punctuation">]</span>
+            current_list<span class="token punctuation">.</span>extend<span class="token punctuation">(</span>example<span class="token punctuation">[</span>index <span class="token operator">+</span> <span class="token number">1</span> <span class="token punctuation">:</span><span class="token punctuation">]</span><span class="token punctuation">)</span>
+            sub_dataset<span class="token punctuation">.</span>append<span class="token punctuation">(</span>current_list<span class="token punctuation">)</span>
+    <span class="token keyword">return</span> sub_dataset
+<span class="token keyword">def</span> <span class="token function">ChooseBestFeature</span><span class="token punctuation">(</span>dataset<span class="token punctuation">)</span><span class="token punctuation">:</span><span class="token comment">#选择最优特征</span>
+    num_features<span class="token operator">=</span><span class="token builtin">len</span><span class="token punctuation">(</span>dataset<span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token operator">-</span><span class="token number">1</span>
+    current_Ent<span class="token operator">=</span>calcShannonent<span class="token punctuation">(</span>dataset<span class="token punctuation">)</span>
+    bestFeatureGain<span class="token operator">=</span><span class="token number">0.0</span>
+    bestFeatureIndex<span class="token operator">=</span><span class="token operator">-</span><span class="token number">1</span>
+    <span class="token keyword">for</span> i <span class="token keyword">in</span> <span class="token builtin">range</span><span class="token punctuation">(</span>num_features<span class="token punctuation">)</span><span class="token punctuation">:</span>
+        values_features<span class="token operator">=</span><span class="token punctuation">[</span>example<span class="token punctuation">[</span>i<span class="token punctuation">]</span> <span class="token keyword">for</span> example <span class="token keyword">in</span> dataset<span class="token punctuation">]</span>
+        unique_value<span class="token operator">=</span><span class="token builtin">set</span><span class="token punctuation">(</span>values_features<span class="token punctuation">)</span>
+        new_ent<span class="token operator">=</span><span class="token number">0.0</span>
+        Gain<span class="token operator">=</span><span class="token number">0.0</span>
+        <span class="token keyword">for</span> value <span class="token keyword">in</span> unique_value<span class="token punctuation">:</span>
+            sub_dataset<span class="token operator">=</span>SubDataset<span class="token punctuation">(</span>dataset<span class="token punctuation">,</span>i<span class="token punctuation">,</span>value<span class="token punctuation">)</span>
+            p<span class="token operator">=</span><span class="token builtin">len</span><span class="token punctuation">(</span>sub_dataset<span class="token punctuation">)</span><span class="token operator">/</span><span class="token builtin">len</span><span class="token punctuation">(</span>dataset<span class="token punctuation">)</span>
+            new_ent <span class="token operator">+=</span>p<span class="token operator">*</span>calcShannonent<span class="token punctuation">(</span>sub_dataset<span class="token punctuation">)</span>
+            Gain<span class="token operator">=</span>calcShannonent<span class="token punctuation">(</span>dataset<span class="token punctuation">)</span><span class="token operator">-</span>new_ent
+        <span class="token keyword">if</span><span class="token punctuation">(</span>Gain<span class="token operator">></span>bestFeatureGain<span class="token punctuation">)</span><span class="token punctuation">:</span>
+            bestFeatureGain<span class="token operator">=</span>Gain
+            bestFeatureIndex<span class="token operator">=</span>i
+    <span class="token keyword">return</span> bestFeatureIndex
+   
+    <span class="token keyword">return</span> 
+<span class="token keyword">def</span> <span class="token function">TreeGenerate</span><span class="token punctuation">(</span>dataset<span class="token punctuation">,</span>feature<span class="token punctuation">)</span><span class="token punctuation">:</span><span class="token comment">#通过递归调用创建决策树</span>
+    label_list<span class="token operator">=</span><span class="token punctuation">[</span>example<span class="token punctuation">[</span><span class="token operator">-</span><span class="token number">1</span><span class="token punctuation">]</span> <span class="token keyword">for</span> example <span class="token keyword">in</span> dataset<span class="token punctuation">]</span>
+    
+    <span class="token keyword">if</span><span class="token punctuation">(</span>label_list<span class="token punctuation">.</span>count<span class="token punctuation">(</span>label_list<span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token operator">==</span><span class="token builtin">len</span><span class="token punctuation">(</span>label_list<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">:</span><span class="token comment">#设置递归结束条件，类别中所有的标签都相同时，递归结束，返回一个叶节点</span>
+        <span class="token keyword">return</span> label_list<span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span>
+    
+    best_index<span class="token operator">=</span>ChooseBestFeature<span class="token punctuation">(</span>dataset<span class="token punctuation">)</span>
+    best_feature<span class="token operator">=</span>feature<span class="token punctuation">[</span>best_index<span class="token punctuation">]</span>
 
-    return 
-def TreeGenerate(dataset,feature):#通过递归调用创建决策树
-    label_list=[example[-1] for example in dataset]
+    decisionTree<span class="token operator">=</span><span class="token punctuation">&#123;</span>best_feature<span class="token punctuation">:</span><span class="token punctuation">&#123;</span><span class="token punctuation">&#125;</span><span class="token punctuation">&#125;</span>
 
-    if(label_list.count(label_list[0])==len(label_list)):#设置递归结束条件，类别中所有的标签都相同时，递归结束，返回一个叶节点
-        return label_list[0]
+    <span class="token keyword">del</span><span class="token punctuation">(</span>feature<span class="token punctuation">[</span>best_index<span class="token punctuation">]</span><span class="token punctuation">)</span>
 
-    best_index=ChooseBestFeature(dataset)
-    best_feature=feature[best_index]
+    values_best_feature<span class="token operator">=</span><span class="token punctuation">[</span>example<span class="token punctuation">[</span>best_index<span class="token punctuation">]</span> <span class="token keyword">for</span> example <span class="token keyword">in</span> dataset<span class="token punctuation">]</span>
+    dict_value<span class="token operator">=</span><span class="token builtin">set</span><span class="token punctuation">(</span>values_best_feature<span class="token punctuation">)</span>
+    <span class="token keyword">for</span> value <span class="token keyword">in</span> dict_value<span class="token punctuation">:</span>
+        new_feature<span class="token operator">=</span>feature
 
-    decisionTree=&#123;best_feature:&#123;&#125;&#125;
-
-    del(feature[best_index])
-
-    values_best_feature=[example[best_index] for example in dataset]
-    dict_value=set(values_best_feature)
-    for value in dict_value:
-        new_feature=feature
-
-        decisionTree[best_feature][value]=TreeGenerate(SubDataset(dataset,best_index,value),new_feature)#递归调用自身不断生成子树
-
-    return decisionTree
-def GenerateDataset(): 
-    dataset = [['青年', '否', '否', '一般般', '拒绝'],
-               ['青年', '否', '否', '好', '拒绝'],
-               ['青年', '是', '否', '好', '同意'],
-               ['青年', '是', '是', '一般般', '同意'],
-               ['青年', '否', '否', '一般般', '拒绝'],
-               ['中年', '否', '否', '一般般', '拒绝'],
-               ['中年', '否', '否', '好', '拒绝'],
-               ['中年', '是', '是', '好', '同意'],
-               ['中年', '否', '是', '非常好', '同意'],
-               ['中年', '否', '是', '非常好', '同意'],
-               ['老年', '否', '是', '非常好', '同意'],
-               ['老年', '否', '是', '好', '同意'],
-               ['老年', '是', '否', '好', '同意'],
-               ['老年', '是', '否', '非常好', '同意'],
-               ['老年', '否', '否', '一般般', '拒绝']]
-    features = ['年龄', '有工作', '有房子', '信贷情况']
-    return dataset, features
+        decisionTree<span class="token punctuation">[</span>best_feature<span class="token punctuation">]</span><span class="token punctuation">[</span>value<span class="token punctuation">]</span><span class="token operator">=</span>TreeGenerate<span class="token punctuation">(</span>SubDataset<span class="token punctuation">(</span>dataset<span class="token punctuation">,</span>best_index<span class="token punctuation">,</span>value<span class="token punctuation">)</span><span class="token punctuation">,</span>new_feature<span class="token punctuation">)</span><span class="token comment">#递归调用自身不断生成子树</span>
+    
+    <span class="token keyword">return</span> decisionTree
+<span class="token keyword">def</span> <span class="token function">GenerateDataset</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">:</span> 
+    dataset <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token punctuation">[</span><span class="token string">'青年'</span><span class="token punctuation">,</span> <span class="token string">'否'</span><span class="token punctuation">,</span> <span class="token string">'否'</span><span class="token punctuation">,</span> <span class="token string">'一般般'</span><span class="token punctuation">,</span> <span class="token string">'拒绝'</span><span class="token punctuation">]</span><span class="token punctuation">,</span>
+               <span class="token punctuation">[</span><span class="token string">'青年'</span><span class="token punctuation">,</span> <span class="token string">'否'</span><span class="token punctuation">,</span> <span class="token string">'否'</span><span class="token punctuation">,</span> <span class="token string">'好'</span><span class="token punctuation">,</span> <span class="token string">'拒绝'</span><span class="token punctuation">]</span><span class="token punctuation">,</span>
+               <span class="token punctuation">[</span><span class="token string">'青年'</span><span class="token punctuation">,</span> <span class="token string">'是'</span><span class="token punctuation">,</span> <span class="token string">'否'</span><span class="token punctuation">,</span> <span class="token string">'好'</span><span class="token punctuation">,</span> <span class="token string">'同意'</span><span class="token punctuation">]</span><span class="token punctuation">,</span>
+               <span class="token punctuation">[</span><span class="token string">'青年'</span><span class="token punctuation">,</span> <span class="token string">'是'</span><span class="token punctuation">,</span> <span class="token string">'是'</span><span class="token punctuation">,</span> <span class="token string">'一般般'</span><span class="token punctuation">,</span> <span class="token string">'同意'</span><span class="token punctuation">]</span><span class="token punctuation">,</span>
+               <span class="token punctuation">[</span><span class="token string">'青年'</span><span class="token punctuation">,</span> <span class="token string">'否'</span><span class="token punctuation">,</span> <span class="token string">'否'</span><span class="token punctuation">,</span> <span class="token string">'一般般'</span><span class="token punctuation">,</span> <span class="token string">'拒绝'</span><span class="token punctuation">]</span><span class="token punctuation">,</span>
+               <span class="token punctuation">[</span><span class="token string">'中年'</span><span class="token punctuation">,</span> <span class="token string">'否'</span><span class="token punctuation">,</span> <span class="token string">'否'</span><span class="token punctuation">,</span> <span class="token string">'一般般'</span><span class="token punctuation">,</span> <span class="token string">'拒绝'</span><span class="token punctuation">]</span><span class="token punctuation">,</span>
+               <span class="token punctuation">[</span><span class="token string">'中年'</span><span class="token punctuation">,</span> <span class="token string">'否'</span><span class="token punctuation">,</span> <span class="token string">'否'</span><span class="token punctuation">,</span> <span class="token string">'好'</span><span class="token punctuation">,</span> <span class="token string">'拒绝'</span><span class="token punctuation">]</span><span class="token punctuation">,</span>
+               <span class="token punctuation">[</span><span class="token string">'中年'</span><span class="token punctuation">,</span> <span class="token string">'是'</span><span class="token punctuation">,</span> <span class="token string">'是'</span><span class="token punctuation">,</span> <span class="token string">'好'</span><span class="token punctuation">,</span> <span class="token string">'同意'</span><span class="token punctuation">]</span><span class="token punctuation">,</span>
+               <span class="token punctuation">[</span><span class="token string">'中年'</span><span class="token punctuation">,</span> <span class="token string">'否'</span><span class="token punctuation">,</span> <span class="token string">'是'</span><span class="token punctuation">,</span> <span class="token string">'非常好'</span><span class="token punctuation">,</span> <span class="token string">'同意'</span><span class="token punctuation">]</span><span class="token punctuation">,</span>
+               <span class="token punctuation">[</span><span class="token string">'中年'</span><span class="token punctuation">,</span> <span class="token string">'否'</span><span class="token punctuation">,</span> <span class="token string">'是'</span><span class="token punctuation">,</span> <span class="token string">'非常好'</span><span class="token punctuation">,</span> <span class="token string">'同意'</span><span class="token punctuation">]</span><span class="token punctuation">,</span>
+               <span class="token punctuation">[</span><span class="token string">'老年'</span><span class="token punctuation">,</span> <span class="token string">'否'</span><span class="token punctuation">,</span> <span class="token string">'是'</span><span class="token punctuation">,</span> <span class="token string">'非常好'</span><span class="token punctuation">,</span> <span class="token string">'同意'</span><span class="token punctuation">]</span><span class="token punctuation">,</span>
+               <span class="token punctuation">[</span><span class="token string">'老年'</span><span class="token punctuation">,</span> <span class="token string">'否'</span><span class="token punctuation">,</span> <span class="token string">'是'</span><span class="token punctuation">,</span> <span class="token string">'好'</span><span class="token punctuation">,</span> <span class="token string">'同意'</span><span class="token punctuation">]</span><span class="token punctuation">,</span>
+               <span class="token punctuation">[</span><span class="token string">'老年'</span><span class="token punctuation">,</span> <span class="token string">'是'</span><span class="token punctuation">,</span> <span class="token string">'否'</span><span class="token punctuation">,</span> <span class="token string">'好'</span><span class="token punctuation">,</span> <span class="token string">'同意'</span><span class="token punctuation">]</span><span class="token punctuation">,</span>
+               <span class="token punctuation">[</span><span class="token string">'老年'</span><span class="token punctuation">,</span> <span class="token string">'是'</span><span class="token punctuation">,</span> <span class="token string">'否'</span><span class="token punctuation">,</span> <span class="token string">'非常好'</span><span class="token punctuation">,</span> <span class="token string">'同意'</span><span class="token punctuation">]</span><span class="token punctuation">,</span>
+               <span class="token punctuation">[</span><span class="token string">'老年'</span><span class="token punctuation">,</span> <span class="token string">'否'</span><span class="token punctuation">,</span> <span class="token string">'否'</span><span class="token punctuation">,</span> <span class="token string">'一般般'</span><span class="token punctuation">,</span> <span class="token string">'拒绝'</span><span class="token punctuation">]</span><span class="token punctuation">]</span>
+    features <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token string">'年龄'</span><span class="token punctuation">,</span> <span class="token string">'有工作'</span><span class="token punctuation">,</span> <span class="token string">'有房子'</span><span class="token punctuation">,</span> <span class="token string">'信贷情况'</span><span class="token punctuation">]</span>
+    <span class="token keyword">return</span> dataset<span class="token punctuation">,</span> features
 
 
-if __name__=='__main__':
-    dataset,feature=GenerateDataset()
-    decision_tree=TreeGenerate(dataset,feature)
+<span class="token keyword">if</span> __name__<span class="token operator">==</span><span class="token string">'__main__'</span><span class="token punctuation">:</span>
+    dataset<span class="token punctuation">,</span>feature<span class="token operator">=</span>GenerateDataset<span class="token punctuation">(</span><span class="token punctuation">)</span>
+    decision_tree<span class="token operator">=</span>TreeGenerate<span class="token punctuation">(</span>dataset<span class="token punctuation">,</span>feature<span class="token punctuation">)</span>
 
-    print(decision_tree)
-    # 定义文本框和箭头格式
-    decisionNode = dict(boxstyle="round4", color='#3366FF')  #定义判断结点形态
-    leafNode = dict(boxstyle="circle", color='#FF6633')  #定义叶结点形态
-    arrow_args = dict(arrowstyle="<-", color='g')  #定义箭头
-    mpl.rcParams['font.sans-serif'] = ['SimHei']  # 指定默认字体
-    mpl.rcParams['axes.unicode_minus'] = False  # 解决保存图像时负号'-'显示为方块的问题
+    <span class="token keyword">print</span><span class="token punctuation">(</span>decision_tree<span class="token punctuation">)</span>
+    <span class="token comment"># 定义文本框和箭头格式</span>
+    decisionNode <span class="token operator">=</span> <span class="token builtin">dict</span><span class="token punctuation">(</span>boxstyle<span class="token operator">=</span><span class="token string">"round4"</span><span class="token punctuation">,</span> color<span class="token operator">=</span><span class="token string">'#3366FF'</span><span class="token punctuation">)</span>  <span class="token comment">#定义判断结点形态</span>
+    leafNode <span class="token operator">=</span> <span class="token builtin">dict</span><span class="token punctuation">(</span>boxstyle<span class="token operator">=</span><span class="token string">"circle"</span><span class="token punctuation">,</span> color<span class="token operator">=</span><span class="token string">'#FF6633'</span><span class="token punctuation">)</span>  <span class="token comment">#定义叶结点形态</span>
+    arrow_args <span class="token operator">=</span> <span class="token builtin">dict</span><span class="token punctuation">(</span>arrowstyle<span class="token operator">=</span><span class="token string">"&lt;-"</span><span class="token punctuation">,</span> color<span class="token operator">=</span><span class="token string">'g'</span><span class="token punctuation">)</span>  <span class="token comment">#定义箭头</span>
+    mpl<span class="token punctuation">.</span>rcParams<span class="token punctuation">[</span><span class="token string">'font.sans-serif'</span><span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token string">'SimHei'</span><span class="token punctuation">]</span>  <span class="token comment"># 指定默认字体</span>
+    mpl<span class="token punctuation">.</span>rcParams<span class="token punctuation">[</span><span class="token string">'axes.unicode_minus'</span><span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token boolean">False</span>  <span class="token comment"># 解决保存图像时负号'-'显示为方块的问题</span>
 
-    createPlot(decision_tree)
-</code></pre>
-<pre class=" language-lang-python"><code class="language-lang-python">#绘制决策树
-import matplotlib.pyplot as plt
-
-
-# 定义文本框和箭头格式
-decisionNode = dict(boxstyle="round4", color='#3366FF')  #定义判断结点形态
-leafNode = dict(boxstyle="circle", color='#FF6633')  #定义叶结点形态
-arrow_args = dict(arrowstyle="<-", color='g')  #定义箭头
-
-#绘制带箭头的注释
-def plotNode(nodeTxt, centerPt, parentPt, nodeType):
-    createPlot.ax1.annotate(nodeTxt, xy=parentPt, xycoords='axes fraction',
-                            xytext=centerPt, textcoords='axes fraction',
-                            va="center", ha="center", bbox=nodeType, arrowprops=arrow_args)
+    createPlot<span class="token punctuation">(</span>decision_tree<span class="token punctuation">)</span>
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre><br><pre class="line-numbers language-python" data-language="python"><code class="language-python"><span class="token comment">#绘制决策树</span>
+<span class="token keyword">import</span> matplotlib<span class="token punctuation">.</span>pyplot <span class="token keyword">as</span> plt
 
 
-#计算叶结点数
-def getNumLeafs(myTree):
-    numLeafs = 0
-    firstStr = list(myTree.keys())[0]
-    secondDict = myTree[firstStr]
-    for key in secondDict.keys():
-        if type(secondDict[key]).__name__ == 'dict':
-            numLeafs += getNumLeafs(secondDict[key])
-        else:
-            numLeafs += 1
-    return numLeafs
+<span class="token comment"># 定义文本框和箭头格式</span>
+decisionNode <span class="token operator">=</span> <span class="token builtin">dict</span><span class="token punctuation">(</span>boxstyle<span class="token operator">=</span><span class="token string">"round4"</span><span class="token punctuation">,</span> color<span class="token operator">=</span><span class="token string">'#3366FF'</span><span class="token punctuation">)</span>  <span class="token comment">#定义判断结点形态</span>
+leafNode <span class="token operator">=</span> <span class="token builtin">dict</span><span class="token punctuation">(</span>boxstyle<span class="token operator">=</span><span class="token string">"circle"</span><span class="token punctuation">,</span> color<span class="token operator">=</span><span class="token string">'#FF6633'</span><span class="token punctuation">)</span>  <span class="token comment">#定义叶结点形态</span>
+arrow_args <span class="token operator">=</span> <span class="token builtin">dict</span><span class="token punctuation">(</span>arrowstyle<span class="token operator">=</span><span class="token string">"&lt;-"</span><span class="token punctuation">,</span> color<span class="token operator">=</span><span class="token string">'g'</span><span class="token punctuation">)</span>  <span class="token comment">#定义箭头</span>
+
+<span class="token comment">#绘制带箭头的注释</span>
+<span class="token keyword">def</span> <span class="token function">plotNode</span><span class="token punctuation">(</span>nodeTxt<span class="token punctuation">,</span> centerPt<span class="token punctuation">,</span> parentPt<span class="token punctuation">,</span> nodeType<span class="token punctuation">)</span><span class="token punctuation">:</span>
+    createPlot<span class="token punctuation">.</span>ax1<span class="token punctuation">.</span>annotate<span class="token punctuation">(</span>nodeTxt<span class="token punctuation">,</span> xy<span class="token operator">=</span>parentPt<span class="token punctuation">,</span> xycoords<span class="token operator">=</span><span class="token string">'axes fraction'</span><span class="token punctuation">,</span>
+                            xytext<span class="token operator">=</span>centerPt<span class="token punctuation">,</span> textcoords<span class="token operator">=</span><span class="token string">'axes fraction'</span><span class="token punctuation">,</span>
+                            va<span class="token operator">=</span><span class="token string">"center"</span><span class="token punctuation">,</span> ha<span class="token operator">=</span><span class="token string">"center"</span><span class="token punctuation">,</span> bbox<span class="token operator">=</span>nodeType<span class="token punctuation">,</span> arrowprops<span class="token operator">=</span>arrow_args<span class="token punctuation">)</span>
 
 
-#计算树的层数
-def getTreeDepth(myTree):
-    maxDepth = 0
-    firstStr = list(myTree.keys())[0]
-    secondDict = myTree[firstStr]
-    for key in secondDict.keys():
-        if type(secondDict[key]).__name__ == 'dict':
-            thisDepth = 1 + getTreeDepth(secondDict[key])
-        else:
-            thisDepth = 1
-        if thisDepth > maxDepth:
-            maxDepth = thisDepth
-    return maxDepth
+<span class="token comment">#计算叶结点数</span>
+<span class="token keyword">def</span> <span class="token function">getNumLeafs</span><span class="token punctuation">(</span>myTree<span class="token punctuation">)</span><span class="token punctuation">:</span>
+    numLeafs <span class="token operator">=</span> <span class="token number">0</span>
+    firstStr <span class="token operator">=</span> <span class="token builtin">list</span><span class="token punctuation">(</span>myTree<span class="token punctuation">.</span>keys<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span>
+    secondDict <span class="token operator">=</span> myTree<span class="token punctuation">[</span>firstStr<span class="token punctuation">]</span>
+    <span class="token keyword">for</span> key <span class="token keyword">in</span> secondDict<span class="token punctuation">.</span>keys<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
+        <span class="token keyword">if</span> <span class="token builtin">type</span><span class="token punctuation">(</span>secondDict<span class="token punctuation">[</span>key<span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">.</span>__name__ <span class="token operator">==</span> <span class="token string">'dict'</span><span class="token punctuation">:</span>
+            numLeafs <span class="token operator">+=</span> getNumLeafs<span class="token punctuation">(</span>secondDict<span class="token punctuation">[</span>key<span class="token punctuation">]</span><span class="token punctuation">)</span>
+        <span class="token keyword">else</span><span class="token punctuation">:</span>
+            numLeafs <span class="token operator">+=</span> <span class="token number">1</span>
+    <span class="token keyword">return</span> numLeafs
 
 
-#在父子结点间填充文本信息
-def plotMidText(cntrPt, parentPt, txtString):
-    xMid = (parentPt[0] - cntrPt[0]) / 2.0 + cntrPt[0]
-    yMid = (parentPt[1] - cntrPt[1]) / 2.0 + cntrPt[1]
-    createPlot.ax1.text(xMid, yMid, txtString, va="center", ha="center", rotation=30)
+<span class="token comment">#计算树的层数</span>
+<span class="token keyword">def</span> <span class="token function">getTreeDepth</span><span class="token punctuation">(</span>myTree<span class="token punctuation">)</span><span class="token punctuation">:</span>
+    maxDepth <span class="token operator">=</span> <span class="token number">0</span>
+    firstStr <span class="token operator">=</span> <span class="token builtin">list</span><span class="token punctuation">(</span>myTree<span class="token punctuation">.</span>keys<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span>
+    secondDict <span class="token operator">=</span> myTree<span class="token punctuation">[</span>firstStr<span class="token punctuation">]</span>
+    <span class="token keyword">for</span> key <span class="token keyword">in</span> secondDict<span class="token punctuation">.</span>keys<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
+        <span class="token keyword">if</span> <span class="token builtin">type</span><span class="token punctuation">(</span>secondDict<span class="token punctuation">[</span>key<span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">.</span>__name__ <span class="token operator">==</span> <span class="token string">'dict'</span><span class="token punctuation">:</span>
+            thisDepth <span class="token operator">=</span> <span class="token number">1</span> <span class="token operator">+</span> getTreeDepth<span class="token punctuation">(</span>secondDict<span class="token punctuation">[</span>key<span class="token punctuation">]</span><span class="token punctuation">)</span>
+        <span class="token keyword">else</span><span class="token punctuation">:</span>
+            thisDepth <span class="token operator">=</span> <span class="token number">1</span>
+        <span class="token keyword">if</span> thisDepth <span class="token operator">></span> maxDepth<span class="token punctuation">:</span>
+            maxDepth <span class="token operator">=</span> thisDepth
+    <span class="token keyword">return</span> maxDepth
 
 
-def plotTree(myTree, parentPt, nodeTxt):
-    numLeafs = getNumLeafs(myTree)
-    depth = getTreeDepth(myTree)
-    firstStr = list(myTree.keys())[0]
-    cntrPt = (plotTree.xOff + (1.0 + float(numLeafs)) / 2.0 / plotTree.totalW, plotTree.yOff)
-    plotMidText(cntrPt, parentPt, nodeTxt)  #在父子结点间填充文本信息
-    plotNode(firstStr, cntrPt, parentPt, decisionNode)  #绘制带箭头的注释
-    secondDict = myTree[firstStr]
-    plotTree.yOff = plotTree.yOff - 1.0 / plotTree.totalD
-    for key in secondDict.keys():
-        if type(secondDict[key]).__name__ == 'dict':
-            plotTree(secondDict[key], cntrPt, str(key))
-        else:
-            plotTree.xOff = plotTree.xOff + 1.0 / plotTree.totalW
-            plotNode(secondDict[key], (plotTree.xOff, plotTree.yOff), cntrPt, leafNode)
-            plotMidText((plotTree.xOff, plotTree.yOff), cntrPt, str(key))
-    plotTree.yOff = plotTree.yOff + 1.0 / plotTree.totalD
+<span class="token comment">#在父子结点间填充文本信息</span>
+<span class="token keyword">def</span> <span class="token function">plotMidText</span><span class="token punctuation">(</span>cntrPt<span class="token punctuation">,</span> parentPt<span class="token punctuation">,</span> txtString<span class="token punctuation">)</span><span class="token punctuation">:</span>
+    xMid <span class="token operator">=</span> <span class="token punctuation">(</span>parentPt<span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span> <span class="token operator">-</span> cntrPt<span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span><span class="token punctuation">)</span> <span class="token operator">/</span> <span class="token number">2.0</span> <span class="token operator">+</span> cntrPt<span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span>
+    yMid <span class="token operator">=</span> <span class="token punctuation">(</span>parentPt<span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">]</span> <span class="token operator">-</span> cntrPt<span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">]</span><span class="token punctuation">)</span> <span class="token operator">/</span> <span class="token number">2.0</span> <span class="token operator">+</span> cntrPt<span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">]</span>
+    createPlot<span class="token punctuation">.</span>ax1<span class="token punctuation">.</span>text<span class="token punctuation">(</span>xMid<span class="token punctuation">,</span> yMid<span class="token punctuation">,</span> txtString<span class="token punctuation">,</span> va<span class="token operator">=</span><span class="token string">"center"</span><span class="token punctuation">,</span> ha<span class="token operator">=</span><span class="token string">"center"</span><span class="token punctuation">,</span> rotation<span class="token operator">=</span><span class="token number">30</span><span class="token punctuation">)</span>
 
 
-def createPlot(inTree):
-    fig = plt.figure(1, facecolor='white')
-    fig.clf()
-    axprops = dict(xticks=[], yticks=[])
-    createPlot.ax1 = plt.subplot(111, frameon=False, **axprops)
-    plotTree.totalW = float(getNumLeafs(inTree))
-    plotTree.totalD = float(getTreeDepth(inTree))
-    plotTree.xOff = -0.5 / plotTree.totalW
-    plotTree.yOff = 1.0
-    plotTree(inTree, (0.5, 1.0), '')
-    plt.show()
-</code></pre>
-<p>程序运行结果：<img src="D:/py_workspace/homework/DecisionTree/1.png" alt="ID3算法运行控制台输出" title="ID3算法运行控制台输出"><br>绘制出的决策树：<img src="D:/py_workspace/homework/DecisionTree/2.png" alt="决策树" title="使用matplotlib绘制的决策树"></p>
-<h3 id="第八题"><a href="#第八题" class="headerlink" title="第八题"></a>第八题</h3><p>python源代码：</p>
-<pre class=" language-lang-python"><code class="language-lang-python">#相较于ID3算法，CART算法并无本质上的区别，只是将选择最优特征的根据改为基尼系数
-#因此，修改原ID3算法中的计算信息熵函数为计算基尼系数函数，并同步修改选择最优特征函数即可
-import math
-import matplotlib.pyplot as plt
-from matplotlib.pylab import *
-
-from treePlotter import createPlot
-
-def calcGini(dataSet):
-    numEntries = len(dataSet)
-    labelCounts =&#123;&#125;
-
-    for featVec in dataSet:
-        currentLabel = featVec[-1]
-        if currentLabel not in labelCounts.keys():
-            labelCounts[currentLabel] =0
-        labelCounts[currentLabel]+=1
-    Gini =1.0
-    for key in labelCounts:
-        prob = float(labelCounts[key])/numEntries
-        Gini -= prob * prob
-    return Gini
+<span class="token keyword">def</span> <span class="token function">plotTree</span><span class="token punctuation">(</span>myTree<span class="token punctuation">,</span> parentPt<span class="token punctuation">,</span> nodeTxt<span class="token punctuation">)</span><span class="token punctuation">:</span>
+    numLeafs <span class="token operator">=</span> getNumLeafs<span class="token punctuation">(</span>myTree<span class="token punctuation">)</span>
+    depth <span class="token operator">=</span> getTreeDepth<span class="token punctuation">(</span>myTree<span class="token punctuation">)</span>
+    firstStr <span class="token operator">=</span> <span class="token builtin">list</span><span class="token punctuation">(</span>myTree<span class="token punctuation">.</span>keys<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span>
+    cntrPt <span class="token operator">=</span> <span class="token punctuation">(</span>plotTree<span class="token punctuation">.</span>xOff <span class="token operator">+</span> <span class="token punctuation">(</span><span class="token number">1.0</span> <span class="token operator">+</span> <span class="token builtin">float</span><span class="token punctuation">(</span>numLeafs<span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token operator">/</span> <span class="token number">2.0</span> <span class="token operator">/</span> plotTree<span class="token punctuation">.</span>totalW<span class="token punctuation">,</span> plotTree<span class="token punctuation">.</span>yOff<span class="token punctuation">)</span>
+    plotMidText<span class="token punctuation">(</span>cntrPt<span class="token punctuation">,</span> parentPt<span class="token punctuation">,</span> nodeTxt<span class="token punctuation">)</span>  <span class="token comment">#在父子结点间填充文本信息</span>
+    plotNode<span class="token punctuation">(</span>firstStr<span class="token punctuation">,</span> cntrPt<span class="token punctuation">,</span> parentPt<span class="token punctuation">,</span> decisionNode<span class="token punctuation">)</span>  <span class="token comment">#绘制带箭头的注释</span>
+    secondDict <span class="token operator">=</span> myTree<span class="token punctuation">[</span>firstStr<span class="token punctuation">]</span>
+    plotTree<span class="token punctuation">.</span>yOff <span class="token operator">=</span> plotTree<span class="token punctuation">.</span>yOff <span class="token operator">-</span> <span class="token number">1.0</span> <span class="token operator">/</span> plotTree<span class="token punctuation">.</span>totalD
+    <span class="token keyword">for</span> key <span class="token keyword">in</span> secondDict<span class="token punctuation">.</span>keys<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
+        <span class="token keyword">if</span> <span class="token builtin">type</span><span class="token punctuation">(</span>secondDict<span class="token punctuation">[</span>key<span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">.</span>__name__ <span class="token operator">==</span> <span class="token string">'dict'</span><span class="token punctuation">:</span>
+            plotTree<span class="token punctuation">(</span>secondDict<span class="token punctuation">[</span>key<span class="token punctuation">]</span><span class="token punctuation">,</span> cntrPt<span class="token punctuation">,</span> <span class="token builtin">str</span><span class="token punctuation">(</span>key<span class="token punctuation">)</span><span class="token punctuation">)</span>
+        <span class="token keyword">else</span><span class="token punctuation">:</span>
+            plotTree<span class="token punctuation">.</span>xOff <span class="token operator">=</span> plotTree<span class="token punctuation">.</span>xOff <span class="token operator">+</span> <span class="token number">1.0</span> <span class="token operator">/</span> plotTree<span class="token punctuation">.</span>totalW
+            plotNode<span class="token punctuation">(</span>secondDict<span class="token punctuation">[</span>key<span class="token punctuation">]</span><span class="token punctuation">,</span> <span class="token punctuation">(</span>plotTree<span class="token punctuation">.</span>xOff<span class="token punctuation">,</span> plotTree<span class="token punctuation">.</span>yOff<span class="token punctuation">)</span><span class="token punctuation">,</span> cntrPt<span class="token punctuation">,</span> leafNode<span class="token punctuation">)</span>
+            plotMidText<span class="token punctuation">(</span><span class="token punctuation">(</span>plotTree<span class="token punctuation">.</span>xOff<span class="token punctuation">,</span> plotTree<span class="token punctuation">.</span>yOff<span class="token punctuation">)</span><span class="token punctuation">,</span> cntrPt<span class="token punctuation">,</span> <span class="token builtin">str</span><span class="token punctuation">(</span>key<span class="token punctuation">)</span><span class="token punctuation">)</span>
+    plotTree<span class="token punctuation">.</span>yOff <span class="token operator">=</span> plotTree<span class="token punctuation">.</span>yOff <span class="token operator">+</span> <span class="token number">1.0</span> <span class="token operator">/</span> plotTree<span class="token punctuation">.</span>totalD
 
 
-def SubDataset(dataset,index,value):#从总的数据集中选取出关心的数据组成新的数据集
-    sub_dataset = []
-    for example in dataset:
-        current_list = []
-        if example[index] == value:
-            current_list = example[:index]
-            current_list.extend(example[index + 1 :])
-            sub_dataset.append(current_list)
-    return sub_dataset
-def splitOtherDataSetByValue(dataSet, index, value):
-    retDataSet = []
-    for featVec in dataSet:
-        if featVec[index] != value:
-            reduceFeatVec = featVec[:index]  # 删除这一维特征
-            reduceFeatVec.extend(featVec[index + 1:])
-            retDataSet.append(reduceFeatVec)
-    return retDataSet
-def ChooseBestFeature(dataSet):
-    numFeatures = len(dataSet[0]) -1
-    bestGiniIndex = 1000000.0
-    bestSplictValue =[]
-    bestFeature = -1
-    # 计算Gini指数
-    for i in range(numFeatures):
-        featList = [example[i] for example in dataSet]
+<span class="token keyword">def</span> <span class="token function">createPlot</span><span class="token punctuation">(</span>inTree<span class="token punctuation">)</span><span class="token punctuation">:</span>
+    fig <span class="token operator">=</span> plt<span class="token punctuation">.</span>figure<span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">,</span> facecolor<span class="token operator">=</span><span class="token string">'white'</span><span class="token punctuation">)</span>
+    fig<span class="token punctuation">.</span>clf<span class="token punctuation">(</span><span class="token punctuation">)</span>
+    axprops <span class="token operator">=</span> <span class="token builtin">dict</span><span class="token punctuation">(</span>xticks<span class="token operator">=</span><span class="token punctuation">[</span><span class="token punctuation">]</span><span class="token punctuation">,</span> yticks<span class="token operator">=</span><span class="token punctuation">[</span><span class="token punctuation">]</span><span class="token punctuation">)</span>
+    createPlot<span class="token punctuation">.</span>ax1 <span class="token operator">=</span> plt<span class="token punctuation">.</span>subplot<span class="token punctuation">(</span><span class="token number">111</span><span class="token punctuation">,</span> frameon<span class="token operator">=</span><span class="token boolean">False</span><span class="token punctuation">,</span> <span class="token operator">**</span>axprops<span class="token punctuation">)</span>
+    plotTree<span class="token punctuation">.</span>totalW <span class="token operator">=</span> <span class="token builtin">float</span><span class="token punctuation">(</span>getNumLeafs<span class="token punctuation">(</span>inTree<span class="token punctuation">)</span><span class="token punctuation">)</span>
+    plotTree<span class="token punctuation">.</span>totalD <span class="token operator">=</span> <span class="token builtin">float</span><span class="token punctuation">(</span>getTreeDepth<span class="token punctuation">(</span>inTree<span class="token punctuation">)</span><span class="token punctuation">)</span>
+    plotTree<span class="token punctuation">.</span>xOff <span class="token operator">=</span> <span class="token operator">-</span><span class="token number">0.5</span> <span class="token operator">/</span> plotTree<span class="token punctuation">.</span>totalW
+    plotTree<span class="token punctuation">.</span>yOff <span class="token operator">=</span> <span class="token number">1.0</span>
+    plotTree<span class="token punctuation">(</span>inTree<span class="token punctuation">,</span> <span class="token punctuation">(</span><span class="token number">0.5</span><span class="token punctuation">,</span> <span class="token number">1.0</span><span class="token punctuation">)</span><span class="token punctuation">,</span> <span class="token string">''</span><span class="token punctuation">)</span>
+    plt<span class="token punctuation">.</span>show<span class="token punctuation">(</span><span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre><br>程序运行结果：<img src="D:/py_workspace/homework/DecisionTree/1.png" alt="ID3算法运行控制台输出" title="ID3算法运行控制台输出"><br>绘制出的决策树：<img src="D:/py_workspace/homework/DecisionTree/2.png" alt="决策树" title="使用matplotlib绘制的决策树"></p>
+<h3 id="第八题"><a href="#第八题" class="headerlink" title="第八题"></a>第八题</h3><p>python源代码：<br><pre class="line-numbers language-python" data-language="python"><code class="language-python"><span class="token comment">#相较于ID3算法，CART算法并无本质上的区别，只是将选择最优特征的根据改为基尼系数</span>
+<span class="token comment">#因此，修改原ID3算法中的计算信息熵函数为计算基尼系数函数，并同步修改选择最优特征函数即可</span>
+<span class="token keyword">import</span> math
+<span class="token keyword">import</span> matplotlib<span class="token punctuation">.</span>pyplot <span class="token keyword">as</span> plt
+<span class="token keyword">from</span> matplotlib<span class="token punctuation">.</span>pylab <span class="token keyword">import</span> <span class="token operator">*</span>
 
-        uniqueVals = set(featList)
-        bestGiniCut = 1000000.0
-        bestGiniCutValue =[]
-        Gini_value =0.0
+<span class="token keyword">from</span> treePlotter <span class="token keyword">import</span> createPlot
 
-        for value in uniqueVals:
+<span class="token keyword">def</span> <span class="token function">calcGini</span><span class="token punctuation">(</span>dataSet<span class="token punctuation">)</span><span class="token punctuation">:</span>
+    numEntries <span class="token operator">=</span> <span class="token builtin">len</span><span class="token punctuation">(</span>dataSet<span class="token punctuation">)</span>
+    labelCounts <span class="token operator">=</span><span class="token punctuation">&#123;</span><span class="token punctuation">&#125;</span>
+ 
+    <span class="token keyword">for</span> featVec <span class="token keyword">in</span> dataSet<span class="token punctuation">:</span>
+        currentLabel <span class="token operator">=</span> featVec<span class="token punctuation">[</span><span class="token operator">-</span><span class="token number">1</span><span class="token punctuation">]</span>
+        <span class="token keyword">if</span> currentLabel <span class="token keyword">not</span> <span class="token keyword">in</span> labelCounts<span class="token punctuation">.</span>keys<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
+            labelCounts<span class="token punctuation">[</span>currentLabel<span class="token punctuation">]</span> <span class="token operator">=</span><span class="token number">0</span>
+        labelCounts<span class="token punctuation">[</span>currentLabel<span class="token punctuation">]</span><span class="token operator">+=</span><span class="token number">1</span>
+    Gini <span class="token operator">=</span><span class="token number">1.0</span>
+    <span class="token keyword">for</span> key <span class="token keyword">in</span> labelCounts<span class="token punctuation">:</span>
+        prob <span class="token operator">=</span> <span class="token builtin">float</span><span class="token punctuation">(</span>labelCounts<span class="token punctuation">[</span>key<span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token operator">/</span>numEntries
+        Gini <span class="token operator">-=</span> prob <span class="token operator">*</span> prob
+    <span class="token keyword">return</span> Gini
 
-            subDataSet = SubDataset(dataSet,i,value)
-            prob = len(subDataSet) / float(len(dataSet))
-            Gini_value = prob * calcGini(subDataSet)
+    
+<span class="token keyword">def</span> <span class="token function">SubDataset</span><span class="token punctuation">(</span>dataset<span class="token punctuation">,</span>index<span class="token punctuation">,</span>value<span class="token punctuation">)</span><span class="token punctuation">:</span><span class="token comment">#从总的数据集中选取出关心的数据组成新的数据集</span>
+    sub_dataset <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token punctuation">]</span>
+    <span class="token keyword">for</span> example <span class="token keyword">in</span> dataset<span class="token punctuation">:</span>
+        current_list <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token punctuation">]</span>
+        <span class="token keyword">if</span> example<span class="token punctuation">[</span>index<span class="token punctuation">]</span> <span class="token operator">==</span> value<span class="token punctuation">:</span>
+            current_list <span class="token operator">=</span> example<span class="token punctuation">[</span><span class="token punctuation">:</span>index<span class="token punctuation">]</span>
+            current_list<span class="token punctuation">.</span>extend<span class="token punctuation">(</span>example<span class="token punctuation">[</span>index <span class="token operator">+</span> <span class="token number">1</span> <span class="token punctuation">:</span><span class="token punctuation">]</span><span class="token punctuation">)</span>
+            sub_dataset<span class="token punctuation">.</span>append<span class="token punctuation">(</span>current_list<span class="token punctuation">)</span>
+    <span class="token keyword">return</span> sub_dataset
+<span class="token keyword">def</span> <span class="token function">splitOtherDataSetByValue</span><span class="token punctuation">(</span>dataSet<span class="token punctuation">,</span> index<span class="token punctuation">,</span> value<span class="token punctuation">)</span><span class="token punctuation">:</span>
+    retDataSet <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token punctuation">]</span>
+    <span class="token keyword">for</span> featVec <span class="token keyword">in</span> dataSet<span class="token punctuation">:</span>
+        <span class="token keyword">if</span> featVec<span class="token punctuation">[</span>index<span class="token punctuation">]</span> <span class="token operator">!=</span> value<span class="token punctuation">:</span>
+            reduceFeatVec <span class="token operator">=</span> featVec<span class="token punctuation">[</span><span class="token punctuation">:</span>index<span class="token punctuation">]</span>  <span class="token comment"># 删除这一维特征</span>
+            reduceFeatVec<span class="token punctuation">.</span>extend<span class="token punctuation">(</span>featVec<span class="token punctuation">[</span>index <span class="token operator">+</span> <span class="token number">1</span><span class="token punctuation">:</span><span class="token punctuation">]</span><span class="token punctuation">)</span>
+            retDataSet<span class="token punctuation">.</span>append<span class="token punctuation">(</span>reduceFeatVec<span class="token punctuation">)</span>
+    <span class="token keyword">return</span> retDataSet
+<span class="token keyword">def</span> <span class="token function">ChooseBestFeature</span><span class="token punctuation">(</span>dataSet<span class="token punctuation">)</span><span class="token punctuation">:</span>
+    numFeatures <span class="token operator">=</span> <span class="token builtin">len</span><span class="token punctuation">(</span>dataSet<span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span><span class="token punctuation">)</span> <span class="token operator">-</span><span class="token number">1</span>
+    bestGiniIndex <span class="token operator">=</span> <span class="token number">1000000.0</span>
+    bestSplictValue <span class="token operator">=</span><span class="token punctuation">[</span><span class="token punctuation">]</span>
+    bestFeature <span class="token operator">=</span> <span class="token operator">-</span><span class="token number">1</span>
+    <span class="token comment"># 计算Gini指数</span>
+    <span class="token keyword">for</span> i <span class="token keyword">in</span> <span class="token builtin">range</span><span class="token punctuation">(</span>numFeatures<span class="token punctuation">)</span><span class="token punctuation">:</span>
+        featList <span class="token operator">=</span> <span class="token punctuation">[</span>example<span class="token punctuation">[</span>i<span class="token punctuation">]</span> <span class="token keyword">for</span> example <span class="token keyword">in</span> dataSet<span class="token punctuation">]</span>
+       
+        uniqueVals <span class="token operator">=</span> <span class="token builtin">set</span><span class="token punctuation">(</span>featList<span class="token punctuation">)</span>
+        bestGiniCut <span class="token operator">=</span> <span class="token number">1000000.0</span>
+        bestGiniCutValue <span class="token operator">=</span><span class="token punctuation">[</span><span class="token punctuation">]</span>
+        Gini_value <span class="token operator">=</span><span class="token number">0.0</span>
+        
+        <span class="token keyword">for</span> value <span class="token keyword">in</span> uniqueVals<span class="token punctuation">:</span>
+            
+            subDataSet <span class="token operator">=</span> SubDataset<span class="token punctuation">(</span>dataSet<span class="token punctuation">,</span>i<span class="token punctuation">,</span>value<span class="token punctuation">)</span>
+            prob <span class="token operator">=</span> <span class="token builtin">len</span><span class="token punctuation">(</span>subDataSet<span class="token punctuation">)</span> <span class="token operator">/</span> <span class="token builtin">float</span><span class="token punctuation">(</span><span class="token builtin">len</span><span class="token punctuation">(</span>dataSet<span class="token punctuation">)</span><span class="token punctuation">)</span>
+            Gini_value <span class="token operator">=</span> prob <span class="token operator">*</span> calcGini<span class="token punctuation">(</span>subDataSet<span class="token punctuation">)</span>
+            
+            otherDataSet <span class="token operator">=</span> splitOtherDataSetByValue<span class="token punctuation">(</span>dataSet<span class="token punctuation">,</span>i<span class="token punctuation">,</span>value<span class="token punctuation">)</span>
+            prob <span class="token operator">=</span> <span class="token builtin">len</span><span class="token punctuation">(</span>otherDataSet<span class="token punctuation">)</span> <span class="token operator">/</span> <span class="token builtin">float</span><span class="token punctuation">(</span><span class="token builtin">len</span><span class="token punctuation">(</span>dataSet<span class="token punctuation">)</span><span class="token punctuation">)</span>
+            Gini_value <span class="token operator">=</span> Gini_value <span class="token operator">+</span> prob <span class="token operator">*</span> calcGini<span class="token punctuation">(</span>otherDataSet<span class="token punctuation">)</span>
+           
+            <span class="token keyword">if</span> Gini_value <span class="token operator">&lt;</span> bestGiniCut<span class="token punctuation">:</span>
+                bestGiniCut <span class="token operator">=</span> Gini_value
+                bestGiniCutValue <span class="token operator">=</span> value
 
-            otherDataSet = splitOtherDataSetByValue(dataSet,i,value)
-            prob = len(otherDataSet) / float(len(dataSet))
-            Gini_value = Gini_value + prob * calcGini(otherDataSet)
+        
+        GiniIndex <span class="token operator">=</span> bestGiniCut
+        <span class="token keyword">if</span> GiniIndex <span class="token operator">&lt;</span> bestGiniIndex<span class="token punctuation">:</span>
+            bestGiniIndex <span class="token operator">=</span> GiniIndex
+            bestSplictValue <span class="token operator">=</span> bestGiniCutValue
+            bestFeature <span class="token operator">=</span> i
+            <span class="token comment">#print(bestFeature,bestSplictValue)</span>
+    
+    <span class="token keyword">return</span> bestFeature
 
-            if Gini_value < bestGiniCut:
-                bestGiniCut = Gini_value
-                bestGiniCutValue = value
+<span class="token keyword">def</span> <span class="token function">TreeGenerate</span><span class="token punctuation">(</span>dataset<span class="token punctuation">,</span>feature<span class="token punctuation">)</span><span class="token punctuation">:</span><span class="token comment">#通过递归调用创建决策树</span>
+    label_list<span class="token operator">=</span><span class="token punctuation">[</span>example<span class="token punctuation">[</span><span class="token operator">-</span><span class="token number">1</span><span class="token punctuation">]</span> <span class="token keyword">for</span> example <span class="token keyword">in</span> dataset<span class="token punctuation">]</span>
+    
+    <span class="token keyword">if</span><span class="token punctuation">(</span>label_list<span class="token punctuation">.</span>count<span class="token punctuation">(</span>label_list<span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token operator">==</span><span class="token builtin">len</span><span class="token punctuation">(</span>label_list<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">:</span><span class="token comment">#设置递归结束条件，类别中所有的标签都相同时，递归结束，返回一个叶节点</span>
+        <span class="token keyword">return</span> label_list<span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span>
+  
 
+    best_index<span class="token operator">=</span>ChooseBestFeature<span class="token punctuation">(</span>dataset<span class="token punctuation">)</span>
+    best_feature<span class="token operator">=</span>feature<span class="token punctuation">[</span>best_index<span class="token punctuation">]</span>
 
-        GiniIndex = bestGiniCut
-        if GiniIndex < bestGiniIndex:
-            bestGiniIndex = GiniIndex
-            bestSplictValue = bestGiniCutValue
-            bestFeature = i
-            #print(bestFeature,bestSplictValue)
+    decisionTree<span class="token operator">=</span><span class="token punctuation">&#123;</span>best_feature<span class="token punctuation">:</span><span class="token punctuation">&#123;</span><span class="token punctuation">&#125;</span><span class="token punctuation">&#125;</span>
 
-    return bestFeature
+    <span class="token keyword">del</span><span class="token punctuation">(</span>feature<span class="token punctuation">[</span>best_index<span class="token punctuation">]</span><span class="token punctuation">)</span>
 
-def TreeGenerate(dataset,feature):#通过递归调用创建决策树
-    label_list=[example[-1] for example in dataset]
+    values_best_feature<span class="token operator">=</span><span class="token punctuation">[</span>example<span class="token punctuation">[</span>best_index<span class="token punctuation">]</span> <span class="token keyword">for</span> example <span class="token keyword">in</span> dataset<span class="token punctuation">]</span>
+    dict_value<span class="token operator">=</span><span class="token builtin">set</span><span class="token punctuation">(</span>values_best_feature<span class="token punctuation">)</span>
+    <span class="token keyword">for</span> value <span class="token keyword">in</span> dict_value<span class="token punctuation">:</span>
+        new_feature<span class="token operator">=</span>feature<span class="token punctuation">[</span><span class="token punctuation">:</span><span class="token punctuation">]</span>
 
-    if(label_list.count(label_list[0])==len(label_list)):#设置递归结束条件，类别中所有的标签都相同时，递归结束，返回一个叶节点
-        return label_list[0]
-
-
-    best_index=ChooseBestFeature(dataset)
-    best_feature=feature[best_index]
-
-    decisionTree=&#123;best_feature:&#123;&#125;&#125;
-
-    del(feature[best_index])
-
-    values_best_feature=[example[best_index] for example in dataset]
-    dict_value=set(values_best_feature)
-    for value in dict_value:
-        new_feature=feature[:]
-
-        decisionTree[best_feature][value]=TreeGenerate(SubDataset(dataset,best_index,value),new_feature)#递归调用自身不断生成子树
-
-
-    return decisionTree
-def GenerateDataset(): 
-    dataset = [['青年', '否', '否', '一般般', '拒绝'],
-               ['青年', '否', '否', '好', '拒绝'],
-               ['青年', '是', '否', '好', '同意'],
-               ['青年', '是', '是', '一般般', '同意'],
-               ['青年', '否', '否', '一般般', '拒绝'],
-               ['中年', '否', '否', '一般般', '拒绝'],
-               ['中年', '否', '否', '好', '拒绝'],
-               ['中年', '是', '是', '好', '同意'],
-               ['中年', '否', '是', '非常好', '同意'],
-               ['中年', '否', '是', '非常好', '同意'],
-               ['老年', '否', '是', '非常好', '同意'],
-               ['老年', '否', '是', '好', '同意'],
-               ['老年', '是', '否', '好', '同意'],
-               ['老年', '是', '否', '非常好', '同意'],
-               ['老年', '否', '否', '一般般', '拒绝']]
-    features = ['年龄', '有工作', '有房子', '信贷情况']
-    return dataset, features
+        decisionTree<span class="token punctuation">[</span>best_feature<span class="token punctuation">]</span><span class="token punctuation">[</span>value<span class="token punctuation">]</span><span class="token operator">=</span>TreeGenerate<span class="token punctuation">(</span>SubDataset<span class="token punctuation">(</span>dataset<span class="token punctuation">,</span>best_index<span class="token punctuation">,</span>value<span class="token punctuation">)</span><span class="token punctuation">,</span>new_feature<span class="token punctuation">)</span><span class="token comment">#递归调用自身不断生成子树</span>
+    
+    
+    <span class="token keyword">return</span> decisionTree
+<span class="token keyword">def</span> <span class="token function">GenerateDataset</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">:</span> 
+    dataset <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token punctuation">[</span><span class="token string">'青年'</span><span class="token punctuation">,</span> <span class="token string">'否'</span><span class="token punctuation">,</span> <span class="token string">'否'</span><span class="token punctuation">,</span> <span class="token string">'一般般'</span><span class="token punctuation">,</span> <span class="token string">'拒绝'</span><span class="token punctuation">]</span><span class="token punctuation">,</span>
+               <span class="token punctuation">[</span><span class="token string">'青年'</span><span class="token punctuation">,</span> <span class="token string">'否'</span><span class="token punctuation">,</span> <span class="token string">'否'</span><span class="token punctuation">,</span> <span class="token string">'好'</span><span class="token punctuation">,</span> <span class="token string">'拒绝'</span><span class="token punctuation">]</span><span class="token punctuation">,</span>
+               <span class="token punctuation">[</span><span class="token string">'青年'</span><span class="token punctuation">,</span> <span class="token string">'是'</span><span class="token punctuation">,</span> <span class="token string">'否'</span><span class="token punctuation">,</span> <span class="token string">'好'</span><span class="token punctuation">,</span> <span class="token string">'同意'</span><span class="token punctuation">]</span><span class="token punctuation">,</span>
+               <span class="token punctuation">[</span><span class="token string">'青年'</span><span class="token punctuation">,</span> <span class="token string">'是'</span><span class="token punctuation">,</span> <span class="token string">'是'</span><span class="token punctuation">,</span> <span class="token string">'一般般'</span><span class="token punctuation">,</span> <span class="token string">'同意'</span><span class="token punctuation">]</span><span class="token punctuation">,</span>
+               <span class="token punctuation">[</span><span class="token string">'青年'</span><span class="token punctuation">,</span> <span class="token string">'否'</span><span class="token punctuation">,</span> <span class="token string">'否'</span><span class="token punctuation">,</span> <span class="token string">'一般般'</span><span class="token punctuation">,</span> <span class="token string">'拒绝'</span><span class="token punctuation">]</span><span class="token punctuation">,</span>
+               <span class="token punctuation">[</span><span class="token string">'中年'</span><span class="token punctuation">,</span> <span class="token string">'否'</span><span class="token punctuation">,</span> <span class="token string">'否'</span><span class="token punctuation">,</span> <span class="token string">'一般般'</span><span class="token punctuation">,</span> <span class="token string">'拒绝'</span><span class="token punctuation">]</span><span class="token punctuation">,</span>
+               <span class="token punctuation">[</span><span class="token string">'中年'</span><span class="token punctuation">,</span> <span class="token string">'否'</span><span class="token punctuation">,</span> <span class="token string">'否'</span><span class="token punctuation">,</span> <span class="token string">'好'</span><span class="token punctuation">,</span> <span class="token string">'拒绝'</span><span class="token punctuation">]</span><span class="token punctuation">,</span>
+               <span class="token punctuation">[</span><span class="token string">'中年'</span><span class="token punctuation">,</span> <span class="token string">'是'</span><span class="token punctuation">,</span> <span class="token string">'是'</span><span class="token punctuation">,</span> <span class="token string">'好'</span><span class="token punctuation">,</span> <span class="token string">'同意'</span><span class="token punctuation">]</span><span class="token punctuation">,</span>
+               <span class="token punctuation">[</span><span class="token string">'中年'</span><span class="token punctuation">,</span> <span class="token string">'否'</span><span class="token punctuation">,</span> <span class="token string">'是'</span><span class="token punctuation">,</span> <span class="token string">'非常好'</span><span class="token punctuation">,</span> <span class="token string">'同意'</span><span class="token punctuation">]</span><span class="token punctuation">,</span>
+               <span class="token punctuation">[</span><span class="token string">'中年'</span><span class="token punctuation">,</span> <span class="token string">'否'</span><span class="token punctuation">,</span> <span class="token string">'是'</span><span class="token punctuation">,</span> <span class="token string">'非常好'</span><span class="token punctuation">,</span> <span class="token string">'同意'</span><span class="token punctuation">]</span><span class="token punctuation">,</span>
+               <span class="token punctuation">[</span><span class="token string">'老年'</span><span class="token punctuation">,</span> <span class="token string">'否'</span><span class="token punctuation">,</span> <span class="token string">'是'</span><span class="token punctuation">,</span> <span class="token string">'非常好'</span><span class="token punctuation">,</span> <span class="token string">'同意'</span><span class="token punctuation">]</span><span class="token punctuation">,</span>
+               <span class="token punctuation">[</span><span class="token string">'老年'</span><span class="token punctuation">,</span> <span class="token string">'否'</span><span class="token punctuation">,</span> <span class="token string">'是'</span><span class="token punctuation">,</span> <span class="token string">'好'</span><span class="token punctuation">,</span> <span class="token string">'同意'</span><span class="token punctuation">]</span><span class="token punctuation">,</span>
+               <span class="token punctuation">[</span><span class="token string">'老年'</span><span class="token punctuation">,</span> <span class="token string">'是'</span><span class="token punctuation">,</span> <span class="token string">'否'</span><span class="token punctuation">,</span> <span class="token string">'好'</span><span class="token punctuation">,</span> <span class="token string">'同意'</span><span class="token punctuation">]</span><span class="token punctuation">,</span>
+               <span class="token punctuation">[</span><span class="token string">'老年'</span><span class="token punctuation">,</span> <span class="token string">'是'</span><span class="token punctuation">,</span> <span class="token string">'否'</span><span class="token punctuation">,</span> <span class="token string">'非常好'</span><span class="token punctuation">,</span> <span class="token string">'同意'</span><span class="token punctuation">]</span><span class="token punctuation">,</span>
+               <span class="token punctuation">[</span><span class="token string">'老年'</span><span class="token punctuation">,</span> <span class="token string">'否'</span><span class="token punctuation">,</span> <span class="token string">'否'</span><span class="token punctuation">,</span> <span class="token string">'一般般'</span><span class="token punctuation">,</span> <span class="token string">'拒绝'</span><span class="token punctuation">]</span><span class="token punctuation">]</span>
+    features <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token string">'年龄'</span><span class="token punctuation">,</span> <span class="token string">'有工作'</span><span class="token punctuation">,</span> <span class="token string">'有房子'</span><span class="token punctuation">,</span> <span class="token string">'信贷情况'</span><span class="token punctuation">]</span>
+    <span class="token keyword">return</span> dataset<span class="token punctuation">,</span> features
 
 
-if __name__=='__main__':
+<span class="token keyword">if</span> __name__<span class="token operator">==</span><span class="token string">'__main__'</span><span class="token punctuation">:</span>
 
-    dataset,feature=GenerateDataset()
-    decision_tree=TreeGenerate(dataset,feature)
+    dataset<span class="token punctuation">,</span>feature<span class="token operator">=</span>GenerateDataset<span class="token punctuation">(</span><span class="token punctuation">)</span>
+    decision_tree<span class="token operator">=</span>TreeGenerate<span class="token punctuation">(</span>dataset<span class="token punctuation">,</span>feature<span class="token punctuation">)</span>
 
-    print(decision_tree)
-    # 定义文本框和箭头格式
-    decisionNode = dict(boxstyle="round4", color='#3366FF')  #定义判断结点形态
-    leafNode = dict(boxstyle="circle", color='#FF6633')  #定义叶结点形态
-    arrow_args = dict(arrowstyle="<-", color='g')  #定义箭头
-    mpl.rcParams['font.sans-serif'] = ['SimHei']  # 指定默认字体
-    mpl.rcParams['axes.unicode_minus'] = False  # 解决保存图像时负号'-'显示为方块的问题
+    <span class="token keyword">print</span><span class="token punctuation">(</span>decision_tree<span class="token punctuation">)</span>
+    <span class="token comment"># 定义文本框和箭头格式</span>
+    decisionNode <span class="token operator">=</span> <span class="token builtin">dict</span><span class="token punctuation">(</span>boxstyle<span class="token operator">=</span><span class="token string">"round4"</span><span class="token punctuation">,</span> color<span class="token operator">=</span><span class="token string">'#3366FF'</span><span class="token punctuation">)</span>  <span class="token comment">#定义判断结点形态</span>
+    leafNode <span class="token operator">=</span> <span class="token builtin">dict</span><span class="token punctuation">(</span>boxstyle<span class="token operator">=</span><span class="token string">"circle"</span><span class="token punctuation">,</span> color<span class="token operator">=</span><span class="token string">'#FF6633'</span><span class="token punctuation">)</span>  <span class="token comment">#定义叶结点形态</span>
+    arrow_args <span class="token operator">=</span> <span class="token builtin">dict</span><span class="token punctuation">(</span>arrowstyle<span class="token operator">=</span><span class="token string">"&lt;-"</span><span class="token punctuation">,</span> color<span class="token operator">=</span><span class="token string">'g'</span><span class="token punctuation">)</span>  <span class="token comment">#定义箭头</span>
+    mpl<span class="token punctuation">.</span>rcParams<span class="token punctuation">[</span><span class="token string">'font.sans-serif'</span><span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token string">'SimHei'</span><span class="token punctuation">]</span>  <span class="token comment"># 指定默认字体</span>
+    mpl<span class="token punctuation">.</span>rcParams<span class="token punctuation">[</span><span class="token string">'axes.unicode_minus'</span><span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token boolean">False</span>  <span class="token comment"># 解决保存图像时负号'-'显示为方块的问题</span>
 
-    createPlot(decision_tree)
-</code></pre>
-<p>程序运行结果：<img src="D:/py_workspace/homework/DecisionTree/3.png" alt="控制台输出结果" title="控制台输出结果"><br>matplotlib绘图结果：<img src="D:/py_workspace/homework/DecisionTree/4.png" alt="绘制决策树" title="使用matplotlib绘制决策树"></p>
+    createPlot<span class="token punctuation">(</span>decision_tree<span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre><br>程序运行结果：<img src="D:/py_workspace/homework/DecisionTree/3.png" alt="控制台输出结果" title="控制台输出结果"><br>matplotlib绘图结果：<img src="D:/py_workspace/homework/DecisionTree/4.png" alt="绘制决策树" title="使用matplotlib绘制决策树"></p>
 <h1 id="第六章"><a href="#第六章" class="headerlink" title="第六章"></a>第六章</h1><h3 id="第一题-1"><a href="#第一题-1" class="headerlink" title="第一题"></a>第一题</h3><ul>
 <li>Model1 <script type="math/tex; mode=display">TP=300,FN=80 ,TN=500 ,FP=60</script><script type="math/tex; mode=display">Acurracy=\frac{TP+TN}{TP+FN+TN+FP}=\frac{300+500}{300+80+500+60}=0.851</script><script type="math/tex; mode=display">Cost=300\times(-1)+80\times100+500\times0+60\times5=8000</script><script type="math/tex; mode=display">Recall=\frac{TP}{TP+FN}=\frac{300}{300+80}=0.789</script></li>
 <li>Model2<script type="math/tex; mode=display">TP=500,FN=90,TN=400,FP=10</script><script type="math/tex; mode=display">Acurracy=\frac{TP+TN}{TP+FN+FP+TN}=\frac{500+400}{500+400+10+90}=0.9</script><script type="math/tex; mode=display">Cost=500\times(-1)+90\times100+400\times0+10\times5=8550</script><script type="math/tex; mode=display">Recall=\frac{TP}{TP+FN}=\frac{500}{500+90}=0.847</script></li>
@@ -760,26 +847,24 @@ if __name__=='__main__':
 <li>$(1,0)$点：即$FPR=1,TPR=0$，即$FP=FP+TN,TP=TN=0$，该分类器是最糟糕的分类器，所有的预测都是错误的；</li>
 <li>$(1,1)$点：即$FPR=TPR=1$，$TN=FN=0$，可以发现，该分类器判断所有的样本都是正样本。<h3 id="第四题-1"><a href="#第四题-1" class="headerlink" title="第四题"></a>第四题</h3>$M_1$模型在大小为50的集合上进行测试，错误率$e_1=0.13$;<br>$M_2$模型在大小为4500的集合上进行测试，错误率$e_2=0.28$;<br>当测试集足够大时，可认为：<script type="math/tex; mode=display">e_1 \sim N(\mu_1, \sigma_1^2)</script><script type="math/tex; mode=display">e_2 \sim N(\mu_2, \sigma_2^2)</script>为了比较两个模型的性能是否有显著的统计学上的差异，令$d=e_1-e_2$，因为$e_1\sim N,e_2\sim N$,所以，$d\sim N(d_t,\sigma_t)$,由正态分布的性质：<script type="math/tex; mode=display">\sigma_t^2=\sigma_1^2+\sigma_2^2\approx\hat{\sigma_1^2}+\hat{\sigma_2^2}=\frac{e_1(1-e_1)}{n_1}+\frac{e_2(1-e_2)}{n_2}</script><script type="math/tex; mode=display">d_t=d\pm Z_{\frac{\alpha}{2}}\hat{\sigma_t}</script><script type="math/tex; mode=display">d=\lvert e_2-e_1 \rvert=0.28-0.13=0.15</script><script type="math/tex; mode=display">\hat{\sigma_d}=\frac{0.13(1-0.13)}{50}+\frac{0.28(1-0.28)}{4500}=0.0023</script>当置信水平为0.95时，$Z_\frac{\alpha}{2}=1.96$:<script type="math/tex; mode=display">d_t=0.15\pm 1.96\times \sqrt{0.0023}=0.15\pm 0.094</script>区间中不包含0，认为两者之间有差距，模型$M_1$的性能优于模型$M_2$的性能。<h3 id="第五题-1"><a href="#第五题-1" class="headerlink" title="第五题"></a>第五题</h3>在机器学习建模过程中，通行的做法通常是将数据分为训练集和测试集。测试集是与训练独立的数据，完全不参与训练，用于最终模型的评估。在训练过程中，经常会出现过拟合的问题，就是模型可以很好的匹配训练数据，却不能很好在预测训练集外的数据。如果此时就使用测试数据来调整模型参数，就相当于在训练时已知部分测试数据的信息，会影响最终评估结果的准确性。通常的做法是在训练数据再中分出一部分做为验证(Validation)数据，用来评估模型的训练效果。</li>
 </ul>
-<p>验证数据取自训练数据，但不参与训练，这样可以相对客观的评估模型对于训练集之外数据的匹配程度。模型在验证数据中的评估常用的是交叉验证，又称循环验证。它将原始数据分成K组(K-Fold)，将每个子集数据分别做一次验证集，其余的K-1组子集数据作为训练集，这样会得到K个模型。这K个模型分别在验证集中评估结果，最后的误差MSE(Mean Squared Error)加和平均就得到交叉验证误差。交叉验证有效利用了有限的数据，并且评估结果能够尽可能接近模型在测试集上的表现，可以做为模型优化的指标使用。</p>
-<pre class=" language-lang-python"><code class="language-lang-python">import numpy as np
-from sklearn.model_selection import KFold
-import random
+<p>验证数据取自训练数据，但不参与训练，这样可以相对客观的评估模型对于训练集之外数据的匹配程度。模型在验证数据中的评估常用的是交叉验证，又称循环验证。它将原始数据分成K组(K-Fold)，将每个子集数据分别做一次验证集，其余的K-1组子集数据作为训练集，这样会得到K个模型。这K个模型分别在验证集中评估结果，最后的误差MSE(Mean Squared Error)加和平均就得到交叉验证误差。交叉验证有效利用了有限的数据，并且评估结果能够尽可能接近模型在测试集上的表现，可以做为模型优化的指标使用。<br><pre class="line-numbers language-python" data-language="python"><code class="language-python"><span class="token keyword">import</span> numpy <span class="token keyword">as</span> np
+<span class="token keyword">from</span> sklearn<span class="token punctuation">.</span>model_selection <span class="token keyword">import</span> KFold
+<span class="token keyword">import</span> random
 
-#随机生成一百个(-20,20)的数字
-num=[]
-for i in range(100):
-    num.append(random.randint(-20,20))
-#print(num)
-#使用k-fold方法对数据集进行划分
-num=np.array(num)
-kf=KFold(n_splits=6)
-for train,test in kf.split(num):
-    num_train,num_test=num[train],num[test]
-
-    print("训练集为：",num_train)
-    print("验证集为：",num_test)
-</code></pre>
-<p>程序运行结果：<img src="D:/py_workspace/homework/DecisionTree/5.png" alt="控制台输出结果" title="控制台输出结果"></p>
+<span class="token comment">#随机生成一百个(-20,20)的数字</span>
+num<span class="token operator">=</span><span class="token punctuation">[</span><span class="token punctuation">]</span>
+<span class="token keyword">for</span> i <span class="token keyword">in</span> <span class="token builtin">range</span><span class="token punctuation">(</span><span class="token number">100</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
+    num<span class="token punctuation">.</span>append<span class="token punctuation">(</span>random<span class="token punctuation">.</span>randint<span class="token punctuation">(</span><span class="token operator">-</span><span class="token number">20</span><span class="token punctuation">,</span><span class="token number">20</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
+<span class="token comment">#print(num)</span>
+<span class="token comment">#使用k-fold方法对数据集进行划分</span>
+num<span class="token operator">=</span>np<span class="token punctuation">.</span>array<span class="token punctuation">(</span>num<span class="token punctuation">)</span>
+kf<span class="token operator">=</span>KFold<span class="token punctuation">(</span>n_splits<span class="token operator">=</span><span class="token number">6</span><span class="token punctuation">)</span>
+<span class="token keyword">for</span> train<span class="token punctuation">,</span>test <span class="token keyword">in</span> kf<span class="token punctuation">.</span>split<span class="token punctuation">(</span>num<span class="token punctuation">)</span><span class="token punctuation">:</span>
+    num_train<span class="token punctuation">,</span>num_test<span class="token operator">=</span>num<span class="token punctuation">[</span>train<span class="token punctuation">]</span><span class="token punctuation">,</span>num<span class="token punctuation">[</span>test<span class="token punctuation">]</span>
+  
+    <span class="token keyword">print</span><span class="token punctuation">(</span><span class="token string">"训练集为："</span><span class="token punctuation">,</span>num_train<span class="token punctuation">)</span>
+    <span class="token keyword">print</span><span class="token punctuation">(</span><span class="token string">"验证集为："</span><span class="token punctuation">,</span>num_test<span class="token punctuation">)</span>
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre><br>程序运行结果：<img src="D:/py_workspace/homework/DecisionTree/5.png" alt="控制台输出结果" title="控制台输出结果"></p>
 
                 
             </div>
@@ -1010,6 +1095,100 @@ for train,test in kf.split(num):
 <script type="text/javascript" src="/libs/codeBlock/codeShrink.js"></script>
 
 
+    </div>
+    <div id="toc-aside" class="expanded col l3 hide-on-med-and-down">
+        <div class="toc-widget card" style="background-color: white;">
+            <div class="toc-title"><i class="far fa-list-alt"></i>&nbsp;&nbsp;目录</div>
+            <div id="toc-content"></div>
+        </div>
+    </div>
+</div>
+
+<!-- TOC 悬浮按钮. -->
+
+<div id="floating-toc-btn" class="hide-on-med-and-down">
+    <a class="btn-floating btn-large bg-color">
+        <i class="fas fa-list-ul"></i>
+    </a>
+</div>
+
+
+<script src="/libs/tocbot/tocbot.min.js"></script>
+<script>
+    $(function () {
+        tocbot.init({
+            tocSelector: '#toc-content',
+            contentSelector: '#articleContent',
+            headingsOffset: -($(window).height() * 0.4 - 45),
+            collapseDepth: Number('0'),
+            headingSelector: 'h2, h3, h4'
+        });
+
+        // modify the toc link href to support Chinese.
+        let i = 0;
+        let tocHeading = 'toc-heading-';
+        $('#toc-content a').each(function () {
+            $(this).attr('href', '#' + tocHeading + (++i));
+        });
+
+        // modify the heading title id to support Chinese.
+        i = 0;
+        $('#articleContent').children('h2, h3, h4').each(function () {
+            $(this).attr('id', tocHeading + (++i));
+        });
+
+        // Set scroll toc fixed.
+        let tocHeight = parseInt($(window).height() * 0.4 - 64);
+        let $tocWidget = $('.toc-widget');
+        $(window).scroll(function () {
+            let scroll = $(window).scrollTop();
+            /* add post toc fixed. */
+            if (scroll > tocHeight) {
+                $tocWidget.addClass('toc-fixed');
+            } else {
+                $tocWidget.removeClass('toc-fixed');
+            }
+        });
+
+        
+        /* 修复文章卡片 div 的宽度. */
+        let fixPostCardWidth = function (srcId, targetId) {
+            let srcDiv = $('#' + srcId);
+            if (srcDiv.length === 0) {
+                return;
+            }
+
+            let w = srcDiv.width();
+            if (w >= 450) {
+                w = w + 21;
+            } else if (w >= 350 && w < 450) {
+                w = w + 18;
+            } else if (w >= 300 && w < 350) {
+                w = w + 16;
+            } else {
+                w = w + 14;
+            }
+            $('#' + targetId).width(w);
+        };
+
+        // 切换TOC目录展开收缩的相关操作.
+        const expandedClass = 'expanded';
+        let $tocAside = $('#toc-aside');
+        let $mainContent = $('#main-content');
+        $('#floating-toc-btn .btn-floating').click(function () {
+            if ($tocAside.hasClass(expandedClass)) {
+                $tocAside.removeClass(expandedClass).hide();
+                $mainContent.removeClass('l9');
+            } else {
+                $tocAside.addClass(expandedClass).show();
+                $mainContent.addClass('l9');
+            }
+            fixPostCardWidth('artDetail', 'prenext-posts');
+        });
+        
+    });
+</script>
+
     
 
 </main>
@@ -1062,7 +1241,7 @@ for train,test in kf.split(num):
         <meting-js class="col l8 offset-l2 m10 offset-m1 s12"
                    server="netease"
                    type="playlist"
-                   id="330695641"
+                   id="797162374"
                    fixed='true'
                    autoplay='false'
                    theme='#42b983'
