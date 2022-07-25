@@ -30,8 +30,7 @@
     <script src="/libs/jquery/jquery.min.js"></script>
 
 <meta name="generator" content="Hexo 5.4.0"><link rel="alternate" href="/atom.xml" title="读读读233" type="application/atom+xml"><!-- hexo-inject:begin --><!-- hexo-inject:end -->
-<link rel="stylesheet" href="/css/prism.css" type="text/css">
-<link rel="stylesheet" href="/css/prism-line-numbers.css" type="text/css"></head>
+<link rel="stylesheet" href="/css/prism.css" type="text/css"></head>
 
 
 
@@ -382,7 +381,7 @@ Gain(D,年龄)&=Ent(D)-\sum_{v=1}^{V}\frac{\lvert D^v \rvert}{\lvert D \rvert}En
 \end{aligned}</script><p>相似的，分别求取以工作情况划分样本集时，以房产情况划分样本集时，以信贷情况划分样本集时的信息增益：</p>
 <script type="math/tex; mode=display">Gain(D,工作情况)=0.97-\frac{10}{15}\times0.97=0.33</script><script type="math/tex; mode=display">Gain(D,房产情况)=0.97-\frac{9}{15}\times0.917=0.419</script><script type="math/tex; mode=display">Gain(D,信贷情况)=0.97-\frac{5}{15}\times0.721-\frac{6}{15}\times0.917=0.362</script><p>比较可得，房产情况为最优特征。</p>
 <h3 id="第六题"><a href="#第六题" class="headerlink" title="第六题"></a>第六题</h3><p>由上文第五题的求解，确定使用房产情况为根结点；</p>
-<pre class="line-numbers language-lang-mermaid"><code class="language-lang-mermaid">graph TB
+<pre class=" language-lang-mermaid"><code class="language-lang-mermaid">graph TB
  A[房产情况]
  B[有]
  C[无]
@@ -392,13 +391,13 @@ Gain(D,年龄)&=Ent(D)-\sum_{v=1}^{V}\frac{\lvert D^v \rvert}{\lvert D \rvert}En
  A-->C
  B-->D
  C-->E
-<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+</code></pre>
 <p>此时，有房产的样本已经到达叶节点；将无房产的样本单独划分为一个集合，共有九个样本，首先计算该子样本集的信息熵：</p>
 <script type="math/tex; mode=display">Ent(D_1)=-\sum_{k=1}^{\lvert \gamma \rvert}p_klog_{2}p_k=-\frac{6}{9}log_2\frac{6}{9}-\frac{3}{9}log_2\frac{3}{9}=0.917</script><p>分别计算其他属性对于子样本集的信息增益：</p>
 <script type="math/tex; mode=display">Gain(D_1|年龄)=Ent(D_1)-\sum_{v=1}^{V}\frac{\lvert D^v_1 \rvert}{\lvert D_1 \rvert}Ent(D^v_1)=0.917-0.36-0.305=0.252\\
 Gain(D_1|工作)=Ent(D_1)-\sum_{v=1}^{V}\frac{\lvert D^v_1 \rvert}{\lvert D_1 \rvert}Ent(D^v_1)=0.917-0=0.917\\
 Gain(D_1|信贷)=Ent(D_1)-\sum_{v=1}^{V}\frac{\lvert D^v_1 \rvert}{\lvert D_1 \rvert}Ent(D^v_1)=0.917-\frac{4}{9}=0.472</script><p>此时：工作情况为最优特征，决策树构建为；</p>
-<pre class="line-numbers language-lang-mermaid"><code class="language-lang-mermaid">graph TB
+<pre class=" language-lang-mermaid"><code class="language-lang-mermaid">graph TB
  A[房产情况]
  B[有]
  C[无]
@@ -412,9 +411,9 @@ Gain(D_1|信贷)=Ent(D_1)-\sum_{v=1}^{V}\frac{\lvert D^v_1 \rvert}{\lvert D_1 \r
  C-->E
  E-->F
  E-->G
-<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+</code></pre>
 <h3 id="第七题"><a href="#第七题" class="headerlink" title="第七题"></a>第七题</h3><p>python源代码：</p>
-<pre class="line-numbers language-lang-python"><code class="language-lang-python">#ID3算法
+<pre class=" language-lang-python"><code class="language-lang-python">#ID3算法
 import math
 import matplotlib.pyplot as plt
 from matplotlib.pylab import *
@@ -522,8 +521,8 @@ if __name__=='__main__':
     mpl.rcParams['axes.unicode_minus'] = False  # 解决保存图像时负号'-'显示为方块的问题
 
     createPlot(decision_tree)
-<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-<pre class="line-numbers language-lang-python"><code class="language-lang-python">#绘制决策树
+</code></pre>
+<pre class=" language-lang-python"><code class="language-lang-python">#绘制决策树
 import matplotlib.pyplot as plt
 
 
@@ -604,10 +603,10 @@ def createPlot(inTree):
     plotTree.yOff = 1.0
     plotTree(inTree, (0.5, 1.0), '')
     plt.show()
-<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+</code></pre>
 <p>程序运行结果：<img src="D:/py_workspace/homework/DecisionTree/1.png" alt="ID3算法运行控制台输出" title="ID3算法运行控制台输出"><br>绘制出的决策树：<img src="D:/py_workspace/homework/DecisionTree/2.png" alt="决策树" title="使用matplotlib绘制的决策树"></p>
 <h3 id="第八题"><a href="#第八题" class="headerlink" title="第八题"></a>第八题</h3><p>python源代码：</p>
-<pre class="line-numbers language-lang-python"><code class="language-lang-python">#相较于ID3算法，CART算法并无本质上的区别，只是将选择最优特征的根据改为基尼系数
+<pre class=" language-lang-python"><code class="language-lang-python">#相较于ID3算法，CART算法并无本质上的区别，只是将选择最优特征的根据改为基尼系数
 #因此，修改原ID3算法中的计算信息熵函数为计算基尼系数函数，并同步修改选择最优特征函数即可
 import math
 import matplotlib.pyplot as plt
@@ -743,7 +742,7 @@ if __name__=='__main__':
     mpl.rcParams['axes.unicode_minus'] = False  # 解决保存图像时负号'-'显示为方块的问题
 
     createPlot(decision_tree)
-<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+</code></pre>
 <p>程序运行结果：<img src="D:/py_workspace/homework/DecisionTree/3.png" alt="控制台输出结果" title="控制台输出结果"><br>matplotlib绘图结果：<img src="D:/py_workspace/homework/DecisionTree/4.png" alt="绘制决策树" title="使用matplotlib绘制决策树"></p>
 <h1 id="第六章"><a href="#第六章" class="headerlink" title="第六章"></a>第六章</h1><h3 id="第一题-1"><a href="#第一题-1" class="headerlink" title="第一题"></a>第一题</h3><ul>
 <li>Model1 <script type="math/tex; mode=display">TP=300,FN=80 ,TN=500 ,FP=60</script><script type="math/tex; mode=display">Acurracy=\frac{TP+TN}{TP+FN+TN+FP}=\frac{300+500}{300+80+500+60}=0.851</script><script type="math/tex; mode=display">Cost=300\times(-1)+80\times100+500\times0+60\times5=8000</script><script type="math/tex; mode=display">Recall=\frac{TP}{TP+FN}=\frac{300}{300+80}=0.789</script></li>
@@ -762,7 +761,7 @@ if __name__=='__main__':
 <li>$(1,1)$点：即$FPR=TPR=1$，$TN=FN=0$，可以发现，该分类器判断所有的样本都是正样本。<h3 id="第四题-1"><a href="#第四题-1" class="headerlink" title="第四题"></a>第四题</h3>$M_1$模型在大小为50的集合上进行测试，错误率$e_1=0.13$;<br>$M_2$模型在大小为4500的集合上进行测试，错误率$e_2=0.28$;<br>当测试集足够大时，可认为：<script type="math/tex; mode=display">e_1 \sim N(\mu_1, \sigma_1^2)</script><script type="math/tex; mode=display">e_2 \sim N(\mu_2, \sigma_2^2)</script>为了比较两个模型的性能是否有显著的统计学上的差异，令$d=e_1-e_2$，因为$e_1\sim N,e_2\sim N$,所以，$d\sim N(d_t,\sigma_t)$,由正态分布的性质：<script type="math/tex; mode=display">\sigma_t^2=\sigma_1^2+\sigma_2^2\approx\hat{\sigma_1^2}+\hat{\sigma_2^2}=\frac{e_1(1-e_1)}{n_1}+\frac{e_2(1-e_2)}{n_2}</script><script type="math/tex; mode=display">d_t=d\pm Z_{\frac{\alpha}{2}}\hat{\sigma_t}</script><script type="math/tex; mode=display">d=\lvert e_2-e_1 \rvert=0.28-0.13=0.15</script><script type="math/tex; mode=display">\hat{\sigma_d}=\frac{0.13(1-0.13)}{50}+\frac{0.28(1-0.28)}{4500}=0.0023</script>当置信水平为0.95时，$Z_\frac{\alpha}{2}=1.96$:<script type="math/tex; mode=display">d_t=0.15\pm 1.96\times \sqrt{0.0023}=0.15\pm 0.094</script>区间中不包含0，认为两者之间有差距，模型$M_1$的性能优于模型$M_2$的性能。<h3 id="第五题-1"><a href="#第五题-1" class="headerlink" title="第五题"></a>第五题</h3>在机器学习建模过程中，通行的做法通常是将数据分为训练集和测试集。测试集是与训练独立的数据，完全不参与训练，用于最终模型的评估。在训练过程中，经常会出现过拟合的问题，就是模型可以很好的匹配训练数据，却不能很好在预测训练集外的数据。如果此时就使用测试数据来调整模型参数，就相当于在训练时已知部分测试数据的信息，会影响最终评估结果的准确性。通常的做法是在训练数据再中分出一部分做为验证(Validation)数据，用来评估模型的训练效果。</li>
 </ul>
 <p>验证数据取自训练数据，但不参与训练，这样可以相对客观的评估模型对于训练集之外数据的匹配程度。模型在验证数据中的评估常用的是交叉验证，又称循环验证。它将原始数据分成K组(K-Fold)，将每个子集数据分别做一次验证集，其余的K-1组子集数据作为训练集，这样会得到K个模型。这K个模型分别在验证集中评估结果，最后的误差MSE(Mean Squared Error)加和平均就得到交叉验证误差。交叉验证有效利用了有限的数据，并且评估结果能够尽可能接近模型在测试集上的表现，可以做为模型优化的指标使用。</p>
-<pre class="line-numbers language-lang-python"><code class="language-lang-python">import numpy as np
+<pre class=" language-lang-python"><code class="language-lang-python">import numpy as np
 from sklearn.model_selection import KFold
 import random
 
@@ -779,7 +778,7 @@ for train,test in kf.split(num):
 
     print("训练集为：",num_train)
     print("验证集为：",num_test)
-<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+</code></pre>
 <p>程序运行结果：<img src="D:/py_workspace/homework/DecisionTree/5.png" alt="控制台输出结果" title="控制台输出结果"></p>
 
                 
@@ -1063,7 +1062,7 @@ for train,test in kf.split(num):
         <meting-js class="col l8 offset-l2 m10 offset-m1 s12"
                    server="netease"
                    type="playlist"
-                   id="581323340"
+                   id="330695641"
                    fixed='true'
                    autoplay='false'
                    theme='#42b983'
@@ -1148,6 +1147,10 @@ for train,test in kf.split(num):
 
 
 
+
+    <a href="/atom.xml" class="tooltipped" target="_blank" data-tooltip="RSS 订阅" data-position="top" data-delay="50">
+        <i class="fas fa-rss"></i>
+    </a>
 
 </div>
     </div>
@@ -1303,11 +1306,6 @@ $(function () {
     
 
 	
-    
-    <script type="text/javascript" color="0,0,255"
-        pointColor="0,0,255" opacity='0.7'
-        zIndex="-1" count="99"
-        src="/libs/background/canvas-nest.js"></script>
     
 
     

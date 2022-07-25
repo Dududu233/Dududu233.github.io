@@ -30,8 +30,7 @@
     <script src="/libs/jquery/jquery.min.js"></script>
 
 <meta name="generator" content="Hexo 5.4.0"><link rel="alternate" href="/atom.xml" title="读读读233" type="application/atom+xml"><!-- hexo-inject:begin --><!-- hexo-inject:end -->
-<link rel="stylesheet" href="/css/prism.css" type="text/css">
-<link rel="stylesheet" href="/css/prism-line-numbers.css" type="text/css"></head>
+<link rel="stylesheet" href="/css/prism.css" type="text/css"></head>
 
 
 
@@ -329,7 +328,7 @@
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    245
+                    246
                 </div>
                 
 
@@ -372,7 +371,7 @@
 </li>
 </ul>
 <h6 id="核心代码"><a href="#核心代码" class="headerlink" title="核心代码"></a>核心代码</h6><p>主要的核心操作是在递归调用之前做出选择，将选择从选择列表中删除，在递归之后再撤销已做出的选择。</p>
-<pre class="line-numbers language-lang-python"><code class="language-lang-python">for option in options:
+<pre class=" language-lang-python"><code class="language-lang-python">for option in options:
     # 做出选择
     将该选择从选择列表中移除
     路径.add(option)
@@ -380,9 +379,10 @@
     # 撤销选择
     路径.remove(option)
     将该选择重新加入选择列表
-<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+</code></pre>
 <h5 id="T46-全排列"><a href="#T46-全排列" class="headerlink" title="T46 全排列"></a>T46 全排列</h5><p><img src="https://tuchuang-1307891532.cos.ap-nanjing.myqcloud.com/images/20220629092430.png" alt="20220629092430"></p>
-<h5 id="Solution"><a href="#Solution" class="headerlink" title="Solution"></a>Solution</h5><pre class="line-numbers language-lang-C++"><code class="language-lang-C++">void backtrack(vector<int> nums, vector<int>& temp, vector<vector<int>>& ans, vector<bool>& used)&#123;
+<h5 id="Solution"><a href="#Solution" class="headerlink" title="Solution"></a>Solution</h5><pre class=" language-lang-C++"><code class="language-lang-C++">
+void backtrack(vector<int> nums, vector<int>& temp, vector<vector<int>>& ans, vector<bool>& used)&#123;
         if(temp.size() == nums.size())&#123;
             ans.push_back(temp);
             return;
@@ -403,9 +403,10 @@
         backtrack(nums, temp, ans, used);
         return ans;    
     &#125;
-<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+</code></pre>
 <h5 id="T39-组合总和"><a href="#T39-组合总和" class="headerlink" title="T39 组合总和"></a>T39 组合总和</h5><p><img src="https://tuchuang-1307891532.cos.ap-nanjing.myqcloud.com/images/20220629160803.png" alt="20220629160803"></p>
-<h5 id="Solution-1"><a href="#Solution-1" class="headerlink" title="Solution"></a>Solution</h5><pre class="line-numbers language-lang-C++"><code class="language-lang-C++">void backtrack(vector<int> nums, vector<int>& temp, vector<vector<int>>& ans, int target, int startIndex)&#123;
+<h5 id="Solution-1"><a href="#Solution-1" class="headerlink" title="Solution"></a>Solution</h5><pre class=" language-lang-C++"><code class="language-lang-C++">
+void backtrack(vector<int> nums, vector<int>& temp, vector<vector<int>>& ans, int target, int startIndex)&#123;
         if(target == 0)&#123;
             ans.push_back(temp);
             return;
@@ -428,9 +429,10 @@
         backtrack(candidates, temp, ans, target, 0);
         return ans;
     &#125;
-<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+</code></pre>
 <h5 id="T40-组合总和"><a href="#T40-组合总和" class="headerlink" title="T40 组合总和"></a>T40 组合总和</h5><p><img src="https://tuchuang-1307891532.cos.ap-nanjing.myqcloud.com/images/20220629154746.png" alt="20220629154746"></p>
-<h5 id="Solution-2"><a href="#Solution-2" class="headerlink" title="Solution"></a>Solution</h5><pre class="line-numbers language-lang-C++"><code class="language-lang-C++">void backtrack(vector<int> nums, vector<int>& temp, vector<vector<int>>& ans, vector<bool>& used, int target, int startIndex)&#123;
+<h5 id="Solution-2"><a href="#Solution-2" class="headerlink" title="Solution"></a>Solution</h5><pre class=" language-lang-C++"><code class="language-lang-C++">
+void backtrack(vector<int> nums, vector<int>& temp, vector<vector<int>>& ans, vector<bool>& used, int target, int startIndex)&#123;
         if(target == 0)&#123;
             ans.push_back(temp);
             return;
@@ -462,7 +464,7 @@
         backtrack(candidates, temp, ans, used, target, 0);
         return ans;
     &#125;
-<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+</code></pre>
 
                 
             </div>
@@ -738,7 +740,7 @@
         <meting-js class="col l8 offset-l2 m10 offset-m1 s12"
                    server="netease"
                    type="playlist"
-                   id="581323340"
+                   id="330695641"
                    fixed='true'
                    autoplay='false'
                    theme='#42b983'
@@ -823,6 +825,10 @@
 
 
 
+
+    <a href="/atom.xml" class="tooltipped" target="_blank" data-tooltip="RSS 订阅" data-position="top" data-delay="50">
+        <i class="fas fa-rss"></i>
+    </a>
 
 </div>
     </div>
@@ -978,11 +984,6 @@ $(function () {
     
 
 	
-    
-    <script type="text/javascript" color="0,0,255"
-        pointColor="0,0,255" opacity='0.7'
-        zIndex="-1" count="99"
-        src="/libs/background/canvas-nest.js"></script>
     
 
     

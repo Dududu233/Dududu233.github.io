@@ -30,8 +30,7 @@
     <script src="/libs/jquery/jquery.min.js"></script>
 
 <meta name="generator" content="Hexo 5.4.0"><link rel="alternate" href="/atom.xml" title="读读读233" type="application/atom+xml"><!-- hexo-inject:begin --><!-- hexo-inject:end -->
-<link rel="stylesheet" href="/css/prism.css" type="text/css">
-<link rel="stylesheet" href="/css/prism-line-numbers.css" type="text/css"></head>
+<link rel="stylesheet" href="/css/prism.css" type="text/css"></head>
 
 
 
@@ -358,8 +357,8 @@
             <div id="articleContent">
                 <p>最近在用实验室的服务器炼丹，被数据集折腾的够呛。别人的模型是用的ffhq集，这个数据集是开源的，但是部署在谷歌网盘上，<del>属于是开源了但没完全开</del>。<br>为了下载数据，最开始也是最直接的想法是在linux上折腾梯子。首选clash，没找到有图形化的窗口的项目。遂转用Qv2ray，在找教程的时候突然想到，如果有人把服务器的系统搞坏了（实验室比较穷，我需要和别人共用一台服务器），我这数据岂不是白白下载？于是决定直接在自己的电脑上下载，下载之后上传到百度网盘，这样也能为数据集做个备份，免得哪天被人rm\rf了。于是又在服务器上折腾百度网盘，首先去百度网盘官网下载deb包进行安装，安装成功了，但是打开之后就报错，可能百度没有为ubuntu16.04做适配。然后就打开万能的百度一下开始找<a target="_blank" rel="noopener" href="https://www.jianshu.com/p/ac4a4399d99c">在ubuntu16.04上安装百度网盘的教程</a>，但是似乎阿里云镜像挂掉了。于是，百度网盘这条路也宣告破产。</p>
 <p>这时，想起了服务器和自己的电脑用的是一个局域网，于是，想到可以使用scp命令传文件，应该比百度网盘下载还能快一些（但是数据还是要上传网盘做备份）。<br>scp语法：</p>
-<pre class="line-numbers language-lang-python"><code class="language-lang-python">scp (选项) (参数)
-<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<pre class=" language-lang-python"><code class="language-lang-python">scp (选项) (参数)
+</code></pre>
 <p>选项</p>
 <pre><code>-1：使用ssh协议版本1；
 -2：使用ssh协议版本2；
@@ -657,7 +656,7 @@
         <meting-js class="col l8 offset-l2 m10 offset-m1 s12"
                    server="netease"
                    type="playlist"
-                   id="581323340"
+                   id="330695641"
                    fixed='true'
                    autoplay='false'
                    theme='#42b983'
@@ -742,6 +741,10 @@
 
 
 
+
+    <a href="/atom.xml" class="tooltipped" target="_blank" data-tooltip="RSS 订阅" data-position="top" data-delay="50">
+        <i class="fas fa-rss"></i>
+    </a>
 
 </div>
     </div>
@@ -897,11 +900,6 @@ $(function () {
     
 
 	
-    
-    <script type="text/javascript" color="0,0,255"
-        pointColor="0,0,255" opacity='0.7'
-        zIndex="-1" count="99"
-        src="/libs/background/canvas-nest.js"></script>
     
 
     
