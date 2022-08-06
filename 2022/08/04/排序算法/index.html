@@ -4,7 +4,7 @@
 
 <head>
     <!-- hexo-inject:begin --><!-- hexo-inject:end --><meta charset="utf-8">
-    <meta name="keywords" content="祝我自己生日快乐/博客开张纪念, 读读读233">
+    <meta name="keywords" content="排序算法, 读读读233">
     <meta name="description" content="要像太阳一样">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
@@ -16,7 +16,7 @@
     <!-- Global site tag (gtag.js) - Google Analytics -->
 
 
-    <title>祝我自己生日快乐/博客开张纪念 | 读读读233</title>
+    <title>排序算法 | 读读读233</title>
     <link rel="icon" type="image/png" href="/favicon.png">
 
     <link rel="stylesheet" type="text/css" href="/libs/awesome/css/all.css">
@@ -267,12 +267,12 @@
 
 
 
-<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/24.jpg')">
+<div class="bg-cover pd-header post-cover" style="background-image: url('https://tuchuang-1307891532.cos.ap-nanjing.myqcloud.com/cover/3.jpg')">
     <div class="container" style="right: 0px;left: 0px;">
         <div class="row">
             <div class="col s12 m12 l12">
                 <div class="brand">
-                    <h1 class="description center-align post-title">祝我自己生日快乐/博客开张纪念</h1>
+                    <h1 class="description center-align post-title">排序算法</h1>
                 </div>
             </div>
         </div>
@@ -388,8 +388,8 @@
                     
                     <div class="article-tag">
                         
-                            <a href="/tags/normaldays/">
-                                <span class="chip bg-color">normaldays</span>
+                            <a href="/tags/leetcode/">
+                                <span class="chip bg-color">leetcode</span>
                             </a>
                         
                     </div>
@@ -400,8 +400,8 @@
                     <div class="post-cate">
                         <i class="fas fa-bookmark fa-fw icon-category"></i>
                         
-                            <a href="/categories/%E6%97%A5%E6%97%A5%E8%B0%88/" class="post-category">
-                                日日谈
+                            <a href="/categories/%E5%88%B7%E9%A2%98%E8%B5%8E%E7%BD%AA/" class="post-category">
+                                刷题赎罪
                             </a>
                         
                     </div>
@@ -413,7 +413,7 @@
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-minus fa-fw"></i>发布日期:&nbsp;&nbsp;
-                    2021-10-21
+                    2022-08-04
                 </div>
                 
 
@@ -422,7 +422,7 @@
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    476
+                    2.1k
                 </div>
                 
 
@@ -452,11 +452,211 @@
 
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <p>21岁了。  </p>
-<p>今天就是21岁的第一天。很难想象之后的日子就是朝着三十岁大步流星头也不回的猛冲。彷佛还在去年生日的第一天，还在考研的压力下苦苦的与失眠和蚊子作斗争。寒来暑往，四序迁流。彷佛真的就是在弹指一挥间。  </p>
-<p>从20岁到21岁，从南京到西安，从本科生到研究生，也算是生命中很重要的转折之一了吧。前段时间在网上查资料，看了很多大佬的技术博客都放在自己的个人博客里边。后来就稍微关注了一下这方面的技术。发现搭建一个个人主页的成本似乎并不是很高，需要的入门技术也不是很复杂。于是，就买了自己的域名，使用git pages+hexo的技术方案初步搭建了自己的主页，算是给自己的生日礼物吧。</p>
-<p>这个主页内容用了很短的时间来折腾，大多数东西都直接采用了matery主题的框架，还有很多功能目前没有实现。以后会继续折腾，受制于个人审美能力的原因，应该也是在matery或者其他主题的框架下继续魔改吧。个人博客以后主要会用来记录自己的技术学习笔记，也会有一些个人生活分享。</p>
-<p>你我皆凡人，生在人世间。终日奔波苦，一刻不得闲。没有人是世界的中心。平凡的生活，也有被记录下来的价值。记录自己的生活，包括技术生活和日常生活，给自己一个从旁观者的角度来看自己的生活的机会，这就是这个博客最大的意义，也是给自己最好的生日礼物。</p>
+                <h3 id="排序"><a href="#排序" class="headerlink" title="排序"></a>排序</h3><h4 id="冒泡排序"><a href="#冒泡排序" class="headerlink" title="冒泡排序"></a>冒泡排序</h4><p>平均时间复杂度为$O(n^2)$，在最好情况下的时间复杂度为$O(n)$，在最坏情况下的时间复杂度为$O(n^2)$，在原地修改，所以空间复杂度为$O(1)$。<br>代码实现如下所示：</p>
+<pre class="line-numbers language-C++" data-language="C++"><code class="language-C++">template&lt;typename T&gt;
+void pop_sort(vector&lt;T&gt; &amp; nums)&#123;
+    for(int i&#x3D;0; i&lt;nums.size()-1; i++)&#123;
+        for(int j&#x3D;0; j&lt;nums.size()-i-1; j++)&#123;
+            if(nums[j]&gt;nums[j+1])&#123;
+                T buffer &#x3D; nums[j+1];
+                nums[j+1] &#x3D; nums[j];
+                nums[j] &#x3D; buffer;
+            &#125;
+        &#125;
+    &#125;
+&#125;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<h4 id="选择排序"><a href="#选择排序" class="headerlink" title="选择排序"></a>选择排序</h4><p>选择排序整体思路与冒泡排序的思路相似，都是在依次排序之后将最小的元素放在最前面，不同的是，冒泡排序是两个相邻元素之间的比较，而选择排序进行的是整体的选择，即在每一趟都查出无序区的最小元素，将最小的元素追加至有序区的末尾。<br>选择排序的平均时间复杂度为$O(n^2)$，在最好情况下的时间复杂度为$O(n^2)$，在最坏情况下的时间复杂度为$O(n^2)$，在原地修改，所以空间复杂度为$O(1)$。<br>代码实现如下：<br><pre class="line-numbers language-C++" data-language="C++"><code class="language-C++">template&lt;typename T&gt;
+void select_sort(vector&lt;T&gt; &amp; nums)&#123;
+    int min;
+    for(int i &#x3D; 0; i &lt; nums.size()-1; i++)&#123;
+        min &#x3D; i;
+        for(int j &#x3D; i+1; j &lt; nums.size(); j++)&#123;
+            if(nums[j] &lt; nums[min])&#123;
+                min &#x3D; j;
+            &#125;
+        &#125;
+        T buffer &#x3D; nums[i];
+        nums[i] &#x3D; nums[min];
+        nums[min] &#x3D; buffer;
+    &#125;
+&#125;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre></p>
+<h4 id="插入排序"><a href="#插入排序" class="headerlink" title="插入排序"></a>插入排序</h4><p>插入排序的思路是构建一个有序数列，对于未排序的数据，在已排序的序列中从前往后扫描，找到正确的位置并插入。<br>平均时间复杂度为$O(n^2)$，在最好情况下的时间复杂度为$O(n)$，在最坏情况下的时间复杂度为$O(n^2)$，在原地修改，所以空间复杂度为$O(1)$。<br>代码实现如下：<br><pre class="line-numbers language-C++" data-language="C++"><code class="language-C++">template&lt;typename T&gt;
+void insert_sort(vector&lt;T&gt; &amp; nums)&#123;
+    for(int i &#x3D; 1; i &lt; nums.size(); i++)&#123;
+        int key &#x3D; nums[i];
+        int j &#x3D; i-1;
+        while(j&gt;&#x3D;0 &amp;&amp; key&lt;nums[j])&#123;
+            nums[j+1] &#x3D; nums[j];
+            j--;
+        &#125;
+        nums[j+1] &#x3D; key;
+    &#125;
+&#125;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre></p>
+<h4 id="希尔排序"><a href="#希尔排序" class="headerlink" title="希尔排序"></a>希尔排序</h4><p>希尔排序是对插入排序的一种修改。希尔排序的基本思想是将待排序的数据分为若干个子序列进行插入排序，等到整个序列都基本有序时，在对整个序列直接进行插入排序。<br>希尔排序的时间复杂度与子序列的选取有关，当子序列的步长设为1时，希尔排序退化为插入排序，时间复杂度为$O(n^2)$。希尔排序的平均时间复杂度为$O(n \log n)$<br>代码实现如下：<br><pre class="line-numbers language-C++" data-language="C++"><code class="language-C++">template&lt;typename T&gt;
+void shell_sort(vector&lt;T&gt; &amp; nums)&#123;
+    int h &#x3D; 1;
+    int l &#x3D; 3; &#x2F;&#x2F; 步长，将原序列分为l个子序列
+    while(h&lt;nums.size()&#x2F;l)&#123;
+        h &#x3D; l * h + 1;
+    &#125;  
+    while(h&gt;&#x3D;1)&#123;
+        for(int i &#x3D; 0; i&lt;nums.size(); i++)&#123;
+            for(int j &#x3D; i; j&gt;&#x3D;h &amp;&amp; nums[j] &lt; nums[j-h]; j -&#x3D; h)&#123;
+                T buffer &#x3D; nums[j];
+                nums[j] &#x3D; nums[j-h];
+                nums[j-h] &#x3D; buffer;
+            &#125;
+        &#125;
+        h &#x3D; h &#x2F; l;
+    &#125;
+&#125;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre></p>
+<h4 id="归并排序"><a href="#归并排序" class="headerlink" title="归并排序"></a>归并排序</h4><p>归并排序是一种建立在归并操作上的有效的排序算法。是一种使用分治法思想的典型应用。基本步骤为，将$n$个元素分成含$\frac{n}{2}$个元素的子序列，用合并排序法对两个子序列递归的排序，合并两个已排序的子序列得到排序的结果<br>归并排序的实现由两种方法：自上而下的递归；自下而上的迭代。<br>归并排序的时间复杂度为$O(n \log n)$，由于使用了额外的内存空间，空间复杂度为$O(n)$。<br>代码实现如下：<br><pre class="line-numbers language-C++" data-language="C++"><code class="language-C++">&#x2F;&#x2F;1、使用自上而下的递归的实现
+template&lt;typename T&gt;
+vector&lt;T&gt; merge(vector&lt;T&gt; left, vector&lt;T&gt; right)&#123;
+    vector&lt;T&gt; res;
+    size_t l &#x3D; 0, r &#x3D; 0;
+    while(l&lt;left.size() &amp;&amp; r&lt;right.size())&#123;
+        if(left[l] &lt;&#x3D; right[r]) res.push_back(left[l++]);
+        else res.push_back(right[r++]);
+    &#125;
+    if(l &#x3D;&#x3D; left.size()) res.insert(res.end(), right.begin() + r, right.end());
+    else if (r &#x3D;&#x3D; right.size()) res.insert(res.end(), left.begin() + l, left.end());
+    return res;
+&#125;
+template&lt;typename T&gt;
+vector&lt;T&gt; merge_sort_recursion(vector&lt;T&gt; nums)&#123;
+    if (nums.size()&lt;2) return nums;
+    const size_t mid &#x3D; nums.size() &#x2F; 2;
+    vector&lt;T&gt; left(nums.begin(), nums.begin() + mid);
+    vector&lt;T&gt; right(nums.begin() + mid, nums.end());
+    return merge(merge_sort_recursion&lt;T&gt;(left), merge_sort_recursion&lt;T&gt;(right));
+   
+&#125;
+&#x2F;&#x2F;2、使用自下而上的迭代的实现
+template&lt;typename T&gt;
+void merge_sort_interation(vector&lt;T&gt; &amp; nums)&#123;
+    &#x2F;&#x2F; 枚举步长
+    for(int seg &#x3D; 1; seg&lt;nums.size(); seg +&#x3D; seg)&#123;
+        &#x2F;&#x2F; 合并两个相邻的区间
+        for(int i &#x3D; 0; i&lt;nums.size(); i +&#x3D; seg + seg)&#123;
+            vector&lt;T&gt; temp;
+            int low &#x3D; i, mid &#x3D; min(i + seg, nums.size()), high &#x3D; min(i + seg + seg, nums.size());
+            int start1 &#x3D; low, end1 &#x3D; mid;
+            int start2 &#x3D; mid, end2 &#x3D; high;
+            while(start1 &lt; end1 &amp;&amp; start2 &lt; end2)&#123;
+                temp.push_back(nums[start1]&lt;nums[start2]? nums[start1++] : nums[start2++]);
+            &#125; 
+            while(start1 &lt; end1)&#123;
+                temp.push_back(nums[start1++]);
+            &#125;
+            while(start2 &lt; end2)&#123;
+                temp.push_back(nums[start2++]);
+            &#125;
+            for (int j &#x3D; 0; j &lt; temp.size(); j++) &#123;
+                nums[low + j] &#x3D; temp[j];
+            &#125;
+        &#125;
+    &#125;
+&#125;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre></p>
+<h4 id="快速排序"><a href="#快速排序" class="headerlink" title="快速排序"></a>快速排序</h4><p>快速排序也是分治思想在排序中的一种应用，快速排序是在冒泡排序的基础上的递归分治法。快速排序是处理大数据的最快的排序算法。<br>快排的基本算法步骤为：从数列中挑出一个元素，成为基准；重新排序数列，将所有元素中比基准值小的放在基准的前面，将所有元素中比基准值大的放在基准的后边；递归的将小于基准值元素的子数列和大于基准值元素的子数列进行排序。<br>快速排序的时间复杂度为$O(n \log n)$，空间复杂度为$O(\log n)$。<br><pre class="line-numbers language-C++" data-language="C++"><code class="language-C++">&#x2F;&#x2F; 1、迭代实现
+struct Range&#123;
+    int start, end;
+    Range(int s &#x3D; 0, int e &#x3D; 0)&#123;
+        start &#x3D; s, end &#x3D; e;
+    &#125;
+&#125;;
+template&lt;typename T&gt;
+void quick_sort(vector&lt;T&gt; &amp; nums)&#123;
+    if(nums.size()&lt;&#x3D;0) return;
+    vector&lt;Range&gt; r(nums.size());
+    int p &#x3D; 0;
+    r[p++] &#x3D; Range(0, nums.size()-1);
+    while(p)&#123;
+        Range range(0, nums.size()-1);
+        if(range.start &gt;&#x3D; range.end) break;
+        T mid &#x3D; nums[range.end];
+        int left &#x3D; range.start, right &#x3D; range.end;
+        while(left &lt; right)&#123;
+            while(nums[left] &lt; mid &amp;&amp; left &lt; right) left++;
+            while(nums[right] &gt;&#x3D; mid &amp;&amp; left &lt; right) right--;
+            T temp &#x3D; nums[left];
+            nums[left] &#x3D; nums[right];
+            nums[right] &#x3D; temp; 
+        &#125;
+        if(nums[left] &gt;&#x3D; nums[range.end])&#123;
+            T temp &#x3D; nums[left];
+            nums[left] &#x3D; nums[range.end];
+            nums[range.end] &#x3D; temp; 
+        &#125;
+        else left++;
+        r[p++] &#x3D; Range(range.start, left - 1);
+        r[p++] &#x3D; Range(left + 1, range.end);
+    &#125;
+&#125;
+&#x2F;&#x2F; 2、 递归实现
+template&lt;typename T&gt;
+void quick_sort(vector&lt;T&gt; &amp; nums, int begin, int end)&#123;
+    if(begin &gt; end) return;
+    T temp &#x3D; nums[begin];
+    int i &#x3D; begin, j &#x3D; end;
+    while(i !&#x3D; j)&#123;
+        while(nums[i] &gt;&#x3D; temp &amp;&amp; j &gt; i)&#123;
+            j--;
+        &#125;
+        while(nums[i] &lt;&#x3D; temp &amp;&amp; j &gt; i)&#123;
+            i++;
+        &#125;
+        if(j &gt; i)&#123;
+            T t &#x3D; nums[i];
+            nums[i] &#x3D; nums[j];
+            nums[j] &#x3D; t;
+        &#125;
+    &#125;
+    nums[begin] &#x3D; nums[i];
+    nums[i] &#x3D; temp;
+    quick_sort(nums, begin, i-1);
+    quick_sort(nums, i+1, end);
+&#125;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre></p>
+<h4 id="堆排序"><a href="#堆排序" class="headerlink" title="堆排序"></a>堆排序</h4><p>堆排序是指，利用堆数据结构的排序算法。堆积是一个近似完全二叉树的结构，同时满足堆积的性质，即子节点的键值或索引总是小于或大于它的父节点，分为两种方法：</p>
+<ul>
+<li>大顶堆(最大堆)：每个节点的值都大于或等于其子节点的值，在堆排序算法中用于升序排列；</li>
+<li>小顶堆(最小堆)：每个节点的值都小于或等于其子节点的值，在堆排序算法中用于降序排列。</li>
+</ul>
+<p>堆排序的平均时间复杂度为$O(n \log n)$，空间复杂度为$O(1)$。</p>
+<p>代码实现如下：<br><pre class="line-numbers language-C++" data-language="C++"><code class="language-C++">void max_heapify(vector&lt;int&gt; &amp;nums, int start, int end)
+&#123;
+    int dad &#x3D; start;
+    int son &#x3D; dad * 2 + 1;
+    while (son &lt;&#x3D; end)
+    &#123;
+        if (son + 1 &lt;&#x3D; end &amp;&amp; nums[son] &lt; nums[son + 1])
+        &#123;
+            son++;
+        &#125;
+        if (nums[dad] &gt; nums[son])
+        &#123;
+            return;
+        &#125;
+        else
+        &#123;
+            swap(nums[dad], nums[son]);
+            dad &#x3D; son;
+            son &#x3D; dad * 2 + 1;
+        &#125;
+    &#125;
+&#125;
+void heap_sort(vector&lt;int&gt; &amp;nums, int len)
+&#123;
+    for (int i &#x3D; len &#x2F; 2 - 1; i &gt;&#x3D; 0; i--)
+    &#123;
+        max_heapify(nums, i, len - 1);
+    &#125;
+    for (int i &#x3D; len - 1; i &gt; 0; i--)
+    &#123;
+        swap(nums[0], nums[i]);
+        max_heapify(nums, 0, i - 1);
+    &#125;
+&#125;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre></p>
 
                 
             </div>
@@ -483,7 +683,7 @@
                     </i>
                 </span>
                 <span class="reprint-info">
-                    <a href="http://Dududu233.github.io/2021/10/21/happybirthday/">http://Dududu233.github.io/2021/10/21/happybirthday/</a>
+                    <a href="http://Dududu233.github.io/2022/08/04/%E6%8E%92%E5%BA%8F%E7%AE%97%E6%B3%95/">http://Dududu233.github.io/2022/08/04/%E6%8E%92%E5%BA%8F%E7%AE%97%E6%B3%95/</a>
                 </span>
             </div>
             <div class="reprint__notice">
@@ -521,8 +721,8 @@
                     
                         <div class="article-tag">
                             
-                                <a href="/tags/normaldays/">
-                                    <span class="chip bg-color">normaldays</span>
+                                <a href="/tags/leetcode/">
+                                    <span class="chip bg-color">leetcode</span>
                                 </a>
                             
                         </div>
@@ -570,13 +770,13 @@
             <div class="article-badge left-badge text-color">
                 <i class="fas fa-chevron-left"></i>&nbsp;上一篇</div>
             <div class="card">
-                <a href="/2021/10/21/markdown-prictice/">
+                <a href="/2022/08/06/%E6%97%A0%E9%A2%98%E7%9A%84%E4%BF%A1/">
                     <div class="card-image">
                         
                         
-                        <img src="https://tuchuang-1307891532.cos.ap-nanjing.myqcloud.com/cover/14.jpg" class="responsive-img" alt="markdown基础语法练习">
+                        <img src="https://tuchuang-1307891532.cos.ap-nanjing.myqcloud.com/cover/13.jpg" class="responsive-img" alt="无题的信">
                         
-                        <span class="card-title">markdown基础语法练习</span>
+                        <span class="card-title">无题的信</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
@@ -587,56 +787,8 @@
                     </div>
                     <div class="publish-info">
                         <span class="publish-date">
-                            <i class="far fa-clock fa-fw icon-date"></i>2021-10-21
+                            <i class="far fa-clock fa-fw icon-date"></i>2022-08-06
                         </span>
-                        <span class="publish-author">
-                            
-                            <i class="fas fa-bookmark fa-fw icon-category"></i>
-                            
-                            <a href="/categories/%E6%97%A5%E5%B8%B8%E6%8A%80%E6%9C%AF/" class="post-category">
-                                    日常技术
-                                </a>
-                            
-                            
-                        </span>
-                    </div>
-                </div>
-                
-                <div class="card-action article-tags">
-                    
-                    <a href="/tags/tech/">
-                        <span class="chip bg-color">tech</span>
-                    </a>
-                    
-                </div>
-                
-            </div>
-        </div>
-        
-        
-        <div class="article col s12 m6" data-aos="fade-up">
-            <div class="article-badge right-badge text-color">
-                本篇&nbsp;<i class="far fa-dot-circle"></i>
-            </div>
-            <div class="card">
-                <a href="/2021/10/21/happybirthday/">
-                    <div class="card-image">
-                        
-                        <img src="/medias/featureimages/24.jpg" class="responsive-img" alt="祝我自己生日快乐/博客开张纪念">
-                        
-                        <span class="card-title">祝我自己生日快乐/博客开张纪念</span>
-                    </div>
-                </a>
-                <div class="card-content article-content">
-                    <div class="summary block-with-text">
-                        
-                            
-                        
-                    </div>
-                    <div class="publish-info">
-                            <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2021-10-21
-                            </span>
                         <span class="publish-author">
                             
                             <i class="fas fa-bookmark fa-fw icon-category"></i>
@@ -649,12 +801,60 @@
                         </span>
                     </div>
                 </div>
-
                 
                 <div class="card-action article-tags">
                     
                     <a href="/tags/normaldays/">
                         <span class="chip bg-color">normaldays</span>
+                    </a>
+                    
+                </div>
+                
+            </div>
+        </div>
+        
+        
+        <div class="article col s12 m6" data-aos="fade-up">
+            <div class="article-badge right-badge text-color">
+                下一篇&nbsp;<i class="fas fa-chevron-right"></i>
+            </div>
+            <div class="card">
+                <a href="/2022/07/18/%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92/">
+                    <div class="card-image">
+                        
+                        
+                        <img src="https://tuchuang-1307891532.cos.ap-nanjing.myqcloud.com/cover/15.jpg" class="responsive-img" alt="动态规划">
+                        
+                        <span class="card-title">动态规划</span>
+                    </div>
+                </a>
+                <div class="card-content article-content">
+                    <div class="summary block-with-text">
+                        
+                            
+                        
+                    </div>
+                    <div class="publish-info">
+                            <span class="publish-date">
+                                <i class="far fa-clock fa-fw icon-date"></i>2022-07-18
+                            </span>
+                        <span class="publish-author">
+                            
+                            <i class="fas fa-bookmark fa-fw icon-category"></i>
+                            
+                            <a href="/categories/%E5%88%B7%E9%A2%98%E8%B5%8E%E7%BD%AA/" class="post-category">
+                                    刷题赎罪
+                                </a>
+                            
+                            
+                        </span>
+                    </div>
+                </div>
+                
+                <div class="card-action article-tags">
+                    
+                    <a href="/tags/leetcode/">
+                        <span class="chip bg-color">leetcode</span>
                     </a>
                     
                 </div>
