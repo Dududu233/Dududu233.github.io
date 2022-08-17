@@ -4,6 +4,56 @@
   
     
     <entry>
+      <title>前缀和与差分数组</title>
+      <link href="/2022/08/17/%E5%89%8D%E7%BC%80%E5%92%8C%E4%B8%8E%E5%B7%AE%E5%88%86%E6%95%B0%E7%BB%84/"/>
+      <url>/2022/08/17/%E5%89%8D%E7%BC%80%E5%92%8C%E4%B8%8E%E5%B7%AE%E5%88%86%E6%95%B0%E7%BB%84/</url>
+      
+        <content type="html"><![CDATA[<p>今天在看东哥的算法笔记时学习了两个以空间换时间的算法技巧，前缀和和差分数组。但是在刷题的时候不以为然，多层for循环走天下，直到测例超时才幡然醒悟，悔之晚矣呀！<br>但是还是不得不吐槽一下，leetcode的某些测试用例……</p><p><img src="https://tuchuang-1307891532.cos.ap-nanjing.myqcloud.com/images/9c4c145a8cb580454498db4bb05b1f6.png" alt="想得出这种测例的人生活一定很不幸吧"></p><h5 id="前缀和"><a href="#前缀和" class="headerlink" title="前缀和"></a>前缀和</h5><p>前缀和适用于需要快速，频繁的计算一个索引区间内的元素之和的场景。<br>对于一个长度为n的一维数组nums，维持一个长度为n+1的前缀和数组presum，其中，</p><script type="math/tex; mode=display">presum[i] = \sum_{a=0}^{i-1} nums[a]</script><p>这样，我们在计算nums数组的一个索引区间内的元素之和时，只需要使用presum中的相应元素进行一次加减法运算即可。</p><script type="math/tex; mode=display">\begin{align*}sum(nums[i], nums[j]) &= presum[j+1] - presum[i] = \sum_{a=0}^{j} nums[a] - \sum_{a=0}^{i-1} nums[a] \\&=\sum_{a=i}^{j} nums[a]\end{align*}</script><p>这种做法在仅需进行少量计算时，不如直接用for循环进行遍历求和，但当需要进行多次快速检索时，前缀和数组的优越性就体现出来了。</p><h6 id="实例"><a href="#实例" class="headerlink" title="实例"></a>实例</h6><p><img src="https://tuchuang-1307891532.cos.ap-nanjing.myqcloud.com/images/20220817155959.png" alt="[leetcode 303题](https://leetcode.cn/problems/range-sum-query-immutable/)"></p><ul><li>题解：</li></ul><pre class="line-numbers language-C++" data-language="C++"><code class="language-C++">class NumArray &#123;private:    vector&lt;int&gt; preSum;public:    NumArray(vector&lt;int&gt;&amp; nums) &#123;        preSum &#x3D; vector&lt;int&gt; (nums.size() + 1, 0);        for(int i &#x3D; 1; i &lt;&#x3D; nums.size(); i++)&#123;            preSum[i] &#x3D; preSum[i-1] + nums[i-1];         &#125;    &#125;        int sumRange(int left, int right) &#123;        return preSum[right + 1] - preSum[left];    &#125;&#125;;&#x2F;** * Your NumArray object will be instantiated and called as such: * NumArray* obj &#x3D; new NumArray(nums); * int param_1 &#x3D; obj-&gt;sumRange(left,right); *&#x2F;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre><p>同样的，前缀和的方法也适用于二维数组。</p><h5 id="差分数组"><a href="#差分数组" class="headerlink" title="差分数组"></a>差分数组</h5><p>类似与前缀和技巧，差分数组的思想是额外的维持一个长度为n的差分数组differ。</p><script type="math/tex; mode=display">differ[i] = nums[i] - nums[i-1]</script><p>差分数组中的元素表示了原数组中相应位置上的元素与其前一个元素之间的差。差分数组的适用于我们需要频繁的对nums进行批量操作时。比如，场景要求我们对区间nums[2…6]全部加1，做一次这样的操作，只需要for循环遍历即可，但是，若是操作的太多，效率将极为低下。而若是使用差分数组，每次对区间i，j进行操作，只需要在差分数组的对应位置进行两次加减法操作即可，前者的时间复杂度为$O(n)$，而后者的时间复杂度仅为$O(1)$。</p><h6 id="实例-1"><a href="#实例-1" class="headerlink" title="实例"></a>实例</h6><p><img src="https://tuchuang-1307891532.cos.ap-nanjing.myqcloud.com/images/20220817161307.png" alt="[leetcode 1109题](https://leetcode.cn/problems/corporate-flight-bookings/)"></p><ul><li>题解：</li></ul><pre class="line-numbers language-C++" data-language="C++"><code class="language-C++">class Solution &#123;public:    vector&lt;int&gt; corpFlightBookings(vector&lt;vector&lt;int&gt;&gt;&amp; bookings, int n) &#123;        &#x2F;&#x2F; 超时        &#x2F;&#x2F; vector&lt;int&gt; ans(n, 0);        &#x2F;&#x2F; for(auto p : bookings)&#123;        &#x2F;&#x2F;     for(int i &#x3D; p[0]; i &lt;&#x3D; p[1]; i++)&#123;        &#x2F;&#x2F;         ans[i-1] +&#x3D; p[2];        &#x2F;&#x2F;     &#125;        &#x2F;&#x2F; &#125;        &#x2F;&#x2F; return ans;                &#x2F;&#x2F; 构建差分数组        vector&lt;int&gt; differ(n + 1, 0);        for(auto p : bookings)&#123;            differ[p[0]] +&#x3D; p[2];            if(p[1]+1 &lt; differ.size())                differ[p[1]+1] -&#x3D; p[2];        &#125;        &#x2F;&#x2F; 从差分数组恢复出原数组        vector&lt;int&gt; ans(n, 0);        ans[0] &#x3D; differ[1];        for(int i &#x3D; 2; i &lt; differ.size(); i++)&#123;            ans[i-1] &#x3D; ans[i-2] + differ[i];         &#125;        return ans;    &#125;&#125;;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>]]></content>
+      
+      
+      <categories>
+          
+          <category> 刷题赎罪 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> leetcode </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>Gated_PixelCNN小结</title>
+      <link href="/2022/08/15/Gated-PixelCNN%E5%B0%8F%E7%BB%93/"/>
+      <url>/2022/08/15/Gated-PixelCNN%E5%B0%8F%E7%BB%93/</url>
+      
+        <content type="html"><![CDATA[<h4 id="Gated-PixelCNN"><a href="#Gated-PixelCNN" class="headerlink" title="Gated PixelCNN"></a>Gated PixelCNN</h4><p>论文中提出的模型结合了PixelRNN和PixelCNN的优点。<br>主体结构还是PixelCNN，因为PixelCNN使用卷积运算，可以节省运算时间和运算资源。<br>相比于PixelCNN，PixelRNN的优点是使用了门控单元，且没有感受野盲区。分别针对这两点对PixelCNN进行了针对性的改进。</p><h5 id="Gated-activation"><a href="#Gated-activation" class="headerlink" title="Gated activation"></a>Gated activation</h5><p>首先，使用门激活函数代替PixelCNN中的线性激活函数。有助于建模更加复杂的interactions。门激活函数的数学表达式如下所示：</p><script type="math/tex; mode=display">y = \tanh (W_{k, f} * \mathrm {x} ) \odot \sigma(W_{k, g}* \mathrm {x})</script><p>式中的参数分别表示：<br>$\sigma$:sigmoid函数<br>$k$:卷积的层数<br>$\odot$:逐元素点乘<br>$*$:卷积操作<br>$W<em>{k, f},W</em>{k, g}$:第k层的卷积核</p><h5 id="解决Blind-spot"><a href="#解决Blind-spot" class="headerlink" title="解决Blind spot"></a>解决Blind spot</h5><div align = center>![上图为original pixelcnn的感受野，随着卷积核的叠加，感受野盲区的范围也不断地扩大，下图为本文的解决方案，将masked conv filter分为vertical stack和horizontal stack，完美的解决了感受野盲区的问题](https://tuchuang-1307891532.cos.ap-nanjing.myqcloud.com/images/20220815105923.png#pic_center)</div><p>Gated PixelCNN的输入被分为了两个部分，一部分是vertical，一部分是horizontal。vertical包含了现在行之上的所有行，而horizontal包含了现在行之前的所有的像素点。<br>在每一层结束之后，都将这两个stack的输出结合起来。<br>两者的结合方式如图所示，使用简单的卷积。</p><div align = center>![一个简单的Gated PixelCNN单元](https://tuchuang-1307891532.cos.ap-nanjing.myqcloud.com/images/20220815151441.png#pic_center)![堆叠起来的Gated PixelCNN模型，绿色为vertival部分，蓝色为horizontal部分](https://tuchuang-1307891532.cos.ap-nanjing.myqcloud.com/images/20220815152247.png#pic_center)</div><h5 id="Conditional-PixelCNN"><a href="#Conditional-PixelCNN" class="headerlink" title="Conditional PixelCNN"></a>Conditional PixelCNN</h5><p>Gated PixelCNN在给定一些先验条件的情况下也可以成为一个条件图片生成器。<br>原始版的PixelCNN建模的对象为：</p><script type="math/tex; mode=display">P(X) = \prod_{i=1}^{n^2} p(x_i|x_1, x_2, ... ,x_{i-1})</script><p>在加入先验条件$h$之后，建模的对象变成了:</p><script type="math/tex; mode=display">P(X) = \prod_{i=1}^{n^2} p(x_i|x_1, x_2, ... ,x_{i-1},h)</script><p>此时，Gated激活函数的表达式也需要变化：</p><script type="math/tex; mode=display">y = \tanh (W_{k, f} * \mathrm {x} + V_{k,f} * \mathrm s) \odot \sigma(W_{k, g}* \mathrm {x} + V_{k,g} * \mathrm s)</script><p>式中：<br>$\mathrm{s}$: h在频域上的表示，$\mathrm{s} = m(\mathrm{h})$<br>$V_{k,f}$: $1\times 1$的卷积</p>]]></content>
+      
+      
+      <categories>
+          
+          <category> 论文总结 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> tech </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>无题的信</title>
       <link href="/2022/08/06/%E6%97%A0%E9%A2%98%E7%9A%84%E4%BF%A1/"/>
       <url>/2022/08/06/%E6%97%A0%E9%A2%98%E7%9A%84%E4%BF%A1/</url>
