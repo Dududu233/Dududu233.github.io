@@ -422,7 +422,7 @@
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    894
+                    905
                 </div>
                 
 
@@ -476,6 +476,7 @@
 <p>大多数pixelCNN中都使用了raster scan的方式，即从左到右，再从上到下扫描。这样扫描大多数的上下文都被浪费在了距离要推断的点比较远的部分，比如说右上角的点。因此本文使用了zigzag ordering。</p>
 <p><img src="https://tuchuang-1307891532.cos.ap-nanjing.myqcloud.com/images/20220818173438.png" alt="两种不同的扫描顺序"></p>
 <p>但是，使用这种扫描的顺序会导致blind spot的出现，为了解决这个问题，提出了pixelSNAIL—使用了更大更灵活的感受野。</p>
+<p>pixelSNAIL的主要做法是引入attention模块。</p>
 
                 
             </div>
