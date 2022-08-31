@@ -20,6 +20,15 @@
     <title>关于 | 读读读233</title>
     <link rel="icon" type="image/png" href="https://tuchuang-1307891532.cos.ap-nanjing.myqcloud.com/source/favicon.png">
     
+    <style>
+        body{
+            background-image: url(https://tuchuang-1307891532.cos.ap-nanjing.myqcloud.com/cover/15.jpg);
+            background-repeat:no-repeat;
+            background-size: 100% 100%;
+            background-attachment:fixed;
+        }
+    </style>
+
 
 
     <!-- bg-cover style     -->
@@ -311,12 +320,12 @@
                     var typed = new Typed("#subtitle", {
                         strings: [ 
                             
-                                "从来没有真正的绝境, 只有心灵的迷途",
+                                "期以岁月",
                             
-                                "Never really desperate, only the lost of the soul",
+                                "All problems are solvable in time",
                             
                         ],
-                        startDelay: 300,
+                        startDelay: 30,
                         typeSpeed: 100,
                         loop: true,
                         backSpeed: 50,
@@ -331,9 +340,7 @@
 
 
 <script>
-    // 每天切换 banner 图.  Switch banner image every day.
-    var bannerUrl = "/medias/banner/" + new Date().getDay() + '.jpg';
-    $('.bg-cover').css('background-image', 'url(' + bannerUrl + ')');
+    $('.bg-cover').css('background-image', 'url(/medias/banner/0.jpg)');
 </script>
 
 
@@ -587,7 +594,7 @@
                 type: 'pie',
                 radius: '50%',
                 color: ['#6772e5', '#ff9e0f', '#fa755a', '#3ecf8e', '#82d3f4', '#ab47bc', '#525f7f', '#f51c47', '#26A69A'],
-                data: [{"name":"论文总结","value":1},{"name":"日常技术","value":3},{"name":"日日谈","value":14},{"name":"刷题赎罪","value":4}],
+                data: [{"name":"论文总结","value":1},{"name":"日日谈","value":14},{"name":"日常技术","value":3},{"name":"刷题赎罪","value":4}],
                 itemStyle: {
                     emphasis: {
                         shadowBlur: 10,
