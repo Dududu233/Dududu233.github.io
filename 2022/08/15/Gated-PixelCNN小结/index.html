@@ -422,7 +422,7 @@
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    905
+                    918
                 </div>
                 
 
@@ -456,7 +456,7 @@
 <h5 id="Gated-activation"><a href="#Gated-activation" class="headerlink" title="Gated activation"></a>Gated activation</h5><p>首先，使用门激活函数代替PixelCNN中的线性激活函数。有助于建模更加复杂的interactions。门激活函数的数学表达式如下所示：</p>
 <script type="math/tex; mode=display">y = \tanh (W_{k, f} * \mathrm {x} ) \odot \sigma(W_{k, g}* \mathrm {x})</script><p>式中的参数分别表示：<br>$\sigma$:sigmoid函数<br>$k$:卷积的层数<br>$\odot$:逐元素点乘<br>$*$:卷积操作<br>$W<em>{k, f},W</em>{k, g}$:第k层的卷积核</p>
 <h5 id="解决Blind-spot"><a href="#解决Blind-spot" class="headerlink" title="解决Blind spot"></a>解决Blind spot</h5><p><img src="https://tuchuang-1307891532.cos.ap-nanjing.myqcloud.com/images/20220815105923.png" alt="上图为original pixelcnn的感受野，随着卷积核的叠加，感受野盲区的范围也不断地扩大，下图为本文的解决方案，将masked conv filter分为vertical stack和horizontal stack，完美的解决了感受野盲区的问题"></p>
-<p>Gated PixelCNN的输入被分为了两个部分，一部分是vertical，一部分是horizontal。vertical包含了现在行之上的所有行，而horizontal包含了现在行之前的所有的像素点。<br>在每一层结束之后，都将这两个stack的输出结合起来。<br>两者的结合方式如图所示，使用简单的卷积。</p>
+<p>Gated PixelCNN的输入被分为了两个部分，一部分是vertical，一部分是horizontal。vertical包含了现在行之上的所有行，而horizontal包含了现在行之前的所有的像素点。<br>github上已经有了完整的<a target="_blank" rel="noopener" href="https://github.com/kkleidal/GatedPixelCNNPyTorch/blob/master/note-on-conv-masking.ipynb">验证代码</a>。<br>在每一层结束之后，都将这两个stack的输出结合起来。<br>两者的结合方式如图所示，使用简单的卷积。</p>
 <p><img src="https://tuchuang-1307891532.cos.ap-nanjing.myqcloud.com/images/20220815151441.png" alt="一个简单的Gated PixelCNN单元"></p>
 <p><img src="https://tuchuang-1307891532.cos.ap-nanjing.myqcloud.com/images/20220815152247.png" alt="堆叠起来的Gated PixelCNN模型，绿色为vertival部分，蓝色为horizontal部分"></p>
 <h5 id="Conditional-PixelCNN"><a href="#Conditional-PixelCNN" class="headerlink" title="Conditional PixelCNN"></a>Conditional PixelCNN</h5><p>Gated PixelCNN在给定一些先验条件的情况下也可以成为一个条件图片生成器。<br>原始版的PixelCNN建模的对象为：</p>
