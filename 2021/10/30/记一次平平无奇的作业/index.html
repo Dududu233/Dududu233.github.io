@@ -7,7 +7,8 @@
     <meta name="keywords" content="记一次平平无奇的作业/练习markdown语法/决策树算法和模型评估标准, 读读读233">
     <meta name="description" content="记一次平平无奇的数据挖掘课的作业。顺便也是练习使用markdown语法。作业题：
 作业：
-第五章第一题决策树是一种很常见的机器学习方法。常常用在样本的对象和属性值一一对应时；目标函数有离散的输出值；可能需要析取假设；训练数据集中可能有噪声或">
+#第五章
+###第一题决策树是一种很常见的机器学习方法。常常用在样本的对象和属性值一一对应时；目标函数有离散的输出值；可能需要析取假设；训练数据集中可">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <meta name="renderer" content="webkit|ie-stand|ie-comp">
@@ -363,7 +364,7 @@
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    4.3k
+                    4.4k
                 </div>
                 
 
@@ -395,30 +396,30 @@
             <div id="articleContent">
                 <p>记一次平平无奇的数据挖掘课的作业。<br>顺便也是练习使用markdown语法。<br>作业题：<br><img src="https://tuchuang-1307891532.cos.ap-nanjing.myqcloud.com/images/10_30_21_1_1.jpg" alt="10_30_21_1_1"><br><img src="https://tuchuang-1307891532.cos.ap-nanjing.myqcloud.com/images/10_30_21_1_2.jpg" alt="10_30_21_1_2"><br><img src="https://tuchuang-1307891532.cos.ap-nanjing.myqcloud.com/images/10_30_21_1_3.jpg" alt="10_30_21_1_3"><br><img src="https://tuchuang-1307891532.cos.ap-nanjing.myqcloud.com/images/10_30_21_1_4.jpg" alt="10_30_21_1_4"></p>
 <p>作业：</p>
-<h1 id="第五章"><a href="#第五章" class="headerlink" title="第五章"></a>第五章</h1><h3 id="第一题"><a href="#第一题" class="headerlink" title="第一题"></a>第一题</h3><p>决策树是一种很常见的机器学习方法。常常用在样本的对象和属性值一一对应时；目标函数有离散的输出值；可能需要析取假设；训练数据集中可能有噪声或者样本中含有缺失属性值的情况下。</p>
-<h3 id="第二题"><a href="#第二题" class="headerlink" title="第二题"></a>第二题</h3><p>剪枝处理是决策树学习算法解决过拟合的主要手段。决策树剪枝的基本策略可分为预剪枝和后剪枝。<br>预剪枝是指在决策树生成的过程中，对每个结点在划分前进行估计，若当前节点的划分不能带来决策树泛化性能的提升，则停止划分并将当前节点标记为叶结点。<br>后剪枝则是先从训练集生成一颗完整的决策树，然后自底向上的对非叶结点进行考察。若当前结点对应的子树替换为叶结点能带来决策树泛化性能的提升，则将该子节点替换为叶结点。</p>
-<h3 id="第三题"><a href="#第三题" class="headerlink" title="第三题"></a>第三题</h3><p>缺失值将从三个方向给决策树的构建带来影响：</p>
+<p>#第五章</p>
+<p>###第一题<br>决策树是一种很常见的机器学习方法。常常用在样本的对象和属性值一一对应时；目标函数有离散的输出值；可能需要析取假设；训练数据集中可能有噪声或者样本中含有缺失属性值的情况下。</p>
+<p>###第二题</p>
+<p>剪枝处理是决策树学习算法解决过拟合的主要手段。决策树剪枝的基本策略可分为预剪枝和后剪枝。<br>预剪枝是指在决策树生成的过程中，对每个结点在划分前进行估计，若当前节点的划分不能带来决策树泛化性能的提升，则停止划分并将当前节点标记为叶结点。<br>后剪枝则是先从训练集生成一颗完整的决策树，然后自底向上的对非叶结点进行考察。若当前结点对应的子树替换为叶结点能带来决策树泛化性能的提升，则将该子节点替换为叶结点。<br>###第三题<br>缺失值将从三个方向给决策树的构建带来影响：</p>
 <ul>
 <li>在训练样本属性缺失的情况下，无法进行划分属性的选择</li>
 <li>给定划分属性，若样本在该属性上的值是缺失的，导致无法对此样本进行划分</li>
-<li>测试样本中属性有缺失值，可能导致测试出错<h3 id="第四题"><a href="#第四题" class="headerlink" title="第四题"></a>第四题</h3><h4 id="优点"><a href="#优点" class="headerlink" title="优点"></a>优点</h4></li>
+<li>测试样本中属性有缺失值，可能导致测试出错</li>
+</ul>
+<p>###第四题<br>####优点</p>
+<ul>
 <li>决策树学习为概念学习和其他离散值函数的学习提供了一种可供实践的方法。</li>
 <li>具有可解释性，能够在相当短的时间内对大型的数据源做出可行且效果良好的结果，决策树分类的效率高。只需要进行一次构建，即可反复使用。</li>
 <li>易于通过静态测试来对模型进行评测，可以测定模型可信度；如果给定一个观察的模型，那么根据所产生的决策树很容易推出相应的逻辑表达式。</li>
 </ul>
-<h4 id="分类过程中可能出现的问题"><a href="#分类过程中可能出现的问题" class="headerlink" title="分类过程中可能出现的问题"></a>分类过程中可能出现的问题</h4><ul>
-<li>在决策树分类的过程中，很经常出现的一个问题就是过拟合问题。在决策树构建的过程中，为了尽可能正确的分类学习样本，常常会不断地对结点进行划分，导致决策树的分支过多，可能会导致错误的将样本集的一些特征当作所有数据都具有的特征从而出现过拟合问题。<h3 id="第五题"><a href="#第五题" class="headerlink" title="第五题"></a>第五题</h3></li>
+<p>####分类过程中可能出现的问题</p>
+<ul>
+<li>在决策树分类的过程中，很经常出现的一个问题就是过拟合问题。在决策树构建的过程中，为了尽可能正确的分类学习样本，常常会不断地对结点进行划分，导致决策树的分支过多，可能会导致错误的将样本集的一些特征当作所有数据都具有的特征从而出现过拟合问题。</li>
 </ul>
-<p>集合中共含有十五个样本，其中6个拒绝，9个接受,计算集合的信息熵：</p>
-<script type="math/tex; mode=display">Ent=-\sum_{k=1}^{y}p_klog_2p_k=-\frac{6}{15}log_2\frac{6}{15}-\frac{9}{15}log_2\frac{9}{15}=0.97</script><p>以属性“年龄”对集合进行划分，得到三个子集：$D^1(年龄=青年)，D^2(年龄=中年)，D^3(年龄=老年)$，分别计算三个子集的信息熵：</p>
-<script type="math/tex; mode=display">Ent(D^1)=-\frac{3}{5}log_2\frac{3}{5}-\frac{2}{5}log_2\frac{2}{5}=0.97</script><script type="math/tex; mode=display">Ent(D^2)=-\frac{3}{5}log_2\frac{3}{5}-\frac{2}{5}log_2\frac{2}{5}=0.97</script><script type="math/tex; mode=display">Ent(D^3)=-\frac{4}{5}log_2\frac{4}{5}-\frac{1}{5}log_2\frac{1}{5}=0.721</script><p>由信息增益的计算公式，计算属性年龄对样本集$D$进行划分的信息增益：</p>
-<script type="math/tex; mode=display">\begin{aligned}
-Gain(D,年龄)&=Ent(D)-\sum_{v=1}^{V}\frac{\lvert D^v \rvert}{\lvert D \rvert}Ent(D^v)\\
-&=0.97-(\frac{1}{3}\times0.97+\frac{1}{3}\times0.97+\frac{1}{3}\times0.721)\\
-&=0.089
-\end{aligned}</script><p>相似的，分别求取以工作情况划分样本集时，以房产情况划分样本集时，以信贷情况划分样本集时的信息增益：</p>
-<script type="math/tex; mode=display">Gain(D,工作情况)=0.97-\frac{10}{15}\times0.97=0.33</script><script type="math/tex; mode=display">Gain(D,房产情况)=0.97-\frac{9}{15}\times0.917=0.419</script><script type="math/tex; mode=display">Gain(D,信贷情况)=0.97-\frac{5}{15}\times0.721-\frac{6}{15}\times0.917=0.362</script><p>比较可得，房产情况为最优特征。</p>
-<h3 id="第六题"><a href="#第六题" class="headerlink" title="第六题"></a>第六题</h3><p>由上文第五题的求解，确定使用房产情况为根结点；<br><pre class="line-numbers language-mermaid" data-language="mermaid"><code class="language-mermaid"><span class="token keyword">graph</span> TB
+<p>###第五题</p>
+<p>集合中共含有十五个样本，其中6个拒绝，9个接受,计算集合的信息熵：<br>$$Ent&#x3D;-\sum_{k&#x3D;1}^{y}p_klog_2p_k&#x3D;-\frac{6}{15}log_2\frac{6}{15}-\frac{9}{15}log_2\frac{9}{15}&#x3D;0.97 $$<br>以属性“年龄”对集合进行划分，得到三个子集：$D^1(年龄&#x3D;青年)，D^2(年龄&#x3D;中年)，D^3(年龄&#x3D;老年)$，分别计算三个子集的信息熵：<br>$$Ent(D^1)&#x3D;-\frac{3}{5}log_2\frac{3}{5}-\frac{2}{5}log_2\frac{2}{5}&#x3D;0.97$$<br>$$Ent(D^2)&#x3D;-\frac{3}{5}log_2\frac{3}{5}-\frac{2}{5}log_2\frac{2}{5}&#x3D;0.97$$<br>$$Ent(D^3)&#x3D;-\frac{4}{5}log_2\frac{4}{5}-\frac{1}{5}log_2\frac{1}{5}&#x3D;0.721$$<br>由信息增益的计算公式，计算属性年龄对样本集$D$进行划分的信息增益：<br>$$\begin{aligned}<br>Gain(D,年龄)&amp;&#x3D;Ent(D)-\sum_{v&#x3D;1}^{V}\frac{\lvert D^v \rvert}{\lvert D \rvert}Ent(D^v)\<br>&amp;&#x3D;0.97-(\frac{1}{3}\times0.97+\frac{1}{3}\times0.97+\frac{1}{3}\times0.721)\<br>&amp;&#x3D;0.089<br>\end{aligned}$$<br>相似的，分别求取以工作情况划分样本集时，以房产情况划分样本集时，以信贷情况划分样本集时的信息增益：<br>$$Gain(D,工作情况)&#x3D;0.97-\frac{10}{15}\times0.97&#x3D;0.33$$<br>$$Gain(D,房产情况)&#x3D;0.97-\frac{9}{15}\times0.917&#x3D;0.419$$<br>$$Gain(D,信贷情况)&#x3D;0.97-\frac{5}{15}\times0.721-\frac{6}{15}\times0.917&#x3D;0.362$$<br>比较可得，房产情况为最优特征。</p>
+<p>###第六题</p>
+<p>由上文第五题的求解，确定使用房产情况为根结点；</p>
+<pre class="line-numbers language-mermaid" data-language="mermaid"><code class="language-mermaid"><span class="token keyword">graph</span> TB
  A<span class="token text string">[房产情况]</span>
  B<span class="token text string">[有]</span>
  C<span class="token text string">[无]</span>
@@ -428,11 +429,9 @@ Gain(D,年龄)&=Ent(D)-\sum_{v=1}^{V}\frac{\lvert D^v \rvert}{\lvert D \rvert}En
  A<span class="token arrow operator">--></span>C
  B<span class="token arrow operator">--></span>D
  C<span class="token arrow operator">--></span>E
-<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre><br>此时，有房产的样本已经到达叶节点；将无房产的样本单独划分为一个集合，共有九个样本，首先计算该子样本集的信息熵：</p>
-<script type="math/tex; mode=display">Ent(D_1)=-\sum_{k=1}^{\lvert \gamma \rvert}p_klog_{2}p_k=-\frac{6}{9}log_2\frac{6}{9}-\frac{3}{9}log_2\frac{3}{9}=0.917</script><p>分别计算其他属性对于子样本集的信息增益：</p>
-<script type="math/tex; mode=display">Gain(D_1|年龄)=Ent(D_1)-\sum_{v=1}^{V}\frac{\lvert D^v_1 \rvert}{\lvert D_1 \rvert}Ent(D^v_1)=0.917-0.36-0.305=0.252\\
-Gain(D_1|工作)=Ent(D_1)-\sum_{v=1}^{V}\frac{\lvert D^v_1 \rvert}{\lvert D_1 \rvert}Ent(D^v_1)=0.917-0=0.917\\
-Gain(D_1|信贷)=Ent(D_1)-\sum_{v=1}^{V}\frac{\lvert D^v_1 \rvert}{\lvert D_1 \rvert}Ent(D^v_1)=0.917-\frac{4}{9}=0.472</script><p>此时：工作情况为最优特征，决策树构建为；<br><pre class="line-numbers language-mermaid" data-language="mermaid"><code class="language-mermaid"><span class="token keyword">graph</span> TB
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p>此时，有房产的样本已经到达叶节点；将无房产的样本单独划分为一个集合，共有九个样本，首先计算该子样本集的信息熵：<br>$$Ent(D_1)&#x3D;-\sum_{k&#x3D;1}^{\lvert \gamma \rvert}p_klog_{2}p_k&#x3D;-\frac{6}{9}log_2\frac{6}{9}-\frac{3}{9}log_2\frac{3}{9}&#x3D;0.917$$<br>分别计算其他属性对于子样本集的信息增益：<br>$$Gain(D_1|年龄)&#x3D;Ent(D_1)-\sum_{v&#x3D;1}^{V}\frac{\lvert D^v_1 \rvert}{\lvert D_1 \rvert}Ent(D^v_1)&#x3D;0.917-0.36-0.305&#x3D;0.252\<br>Gain(D_1|工作)&#x3D;Ent(D_1)-\sum_{v&#x3D;1}^{V}\frac{\lvert D^v_1 \rvert}{\lvert D_1 \rvert}Ent(D^v_1)&#x3D;0.917-0&#x3D;0.917\<br>Gain(D_1|信贷)&#x3D;Ent(D_1)-\sum_{v&#x3D;1}^{V}\frac{\lvert D^v_1 \rvert}{\lvert D_1 \rvert}Ent(D^v_1)&#x3D;0.917-\frac{4}{9}&#x3D;0.472$$<br>此时：工作情况为最优特征，决策树构建为；</p>
+<pre class="line-numbers language-mermaid" data-language="mermaid"><code class="language-mermaid"><span class="token keyword">graph</span> TB
  A<span class="token text string">[房产情况]</span>
  B<span class="token text string">[有]</span>
  C<span class="token text string">[无]</span>
@@ -446,8 +445,9 @@ Gain(D_1|信贷)=Ent(D_1)-\sum_{v=1}^{V}\frac{\lvert D^v_1 \rvert}{\lvert D_1 \r
  C<span class="token arrow operator">--></span>E
  E<span class="token arrow operator">--></span>F
  E<span class="token arrow operator">--></span>G
-<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre></p>
-<h3 id="第七题"><a href="#第七题" class="headerlink" title="第七题"></a>第七题</h3><p>python源代码：<br><pre class="line-numbers language-python" data-language="python"><code class="language-python"><span class="token comment">#ID3算法</span>
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p>###第七题<br>python源代码：</p>
+<pre class="line-numbers language-python" data-language="python"><code class="language-python"><span class="token comment">#ID3算法</span>
 <span class="token keyword">import</span> math
 <span class="token keyword">import</span> matplotlib<span class="token punctuation">.</span>pyplot <span class="token keyword">as</span> plt
 <span class="token keyword">from</span> matplotlib<span class="token punctuation">.</span>pylab <span class="token keyword">import</span> <span class="token operator">*</span>
@@ -555,7 +555,8 @@ Gain(D_1|信贷)=Ent(D_1)-\sum_{v=1}^{V}\frac{\lvert D^v_1 \rvert}{\lvert D_1 \r
     mpl<span class="token punctuation">.</span>rcParams<span class="token punctuation">[</span><span class="token string">'axes.unicode_minus'</span><span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token boolean">False</span>  <span class="token comment"># 解决保存图像时负号'-'显示为方块的问题</span>
 
     createPlot<span class="token punctuation">(</span>decision_tree<span class="token punctuation">)</span>
-<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre><br><pre class="line-numbers language-python" data-language="python"><code class="language-python"><span class="token comment">#绘制决策树</span>
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<pre class="line-numbers language-python" data-language="python"><code class="language-python"><span class="token comment">#绘制决策树</span>
 <span class="token keyword">import</span> matplotlib<span class="token punctuation">.</span>pyplot <span class="token keyword">as</span> plt
 
 
@@ -635,8 +636,9 @@ arrow_args <span class="token operator">=</span> <span class="token builtin">dic
     plotTree<span class="token punctuation">.</span>xOff <span class="token operator">=</span> <span class="token operator">-</span><span class="token number">0.5</span> <span class="token operator">/</span> plotTree<span class="token punctuation">.</span>totalW
     plotTree<span class="token punctuation">.</span>yOff <span class="token operator">=</span> <span class="token number">1.0</span>
     plotTree<span class="token punctuation">(</span>inTree<span class="token punctuation">,</span> <span class="token punctuation">(</span><span class="token number">0.5</span><span class="token punctuation">,</span> <span class="token number">1.0</span><span class="token punctuation">)</span><span class="token punctuation">,</span> <span class="token string">''</span><span class="token punctuation">)</span>
-    plt<span class="token punctuation">.</span>show<span class="token punctuation">(</span><span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre><br>程序运行结果：<img src="D:/py_workspace/homework/DecisionTree/1.png" alt="ID3算法运行控制台输出" title="ID3算法运行控制台输出"><br>绘制出的决策树：<img src="D:/py_workspace/homework/DecisionTree/2.png" alt="决策树" title="使用matplotlib绘制的决策树"></p>
-<h3 id="第八题"><a href="#第八题" class="headerlink" title="第八题"></a>第八题</h3><p>python源代码：<br><pre class="line-numbers language-python" data-language="python"><code class="language-python"><span class="token comment">#相较于ID3算法，CART算法并无本质上的区别，只是将选择最优特征的根据改为基尼系数</span>
+    plt<span class="token punctuation">.</span>show<span class="token punctuation">(</span><span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p>程序运行结果：<img src="D:/py_workspace/homework/DecisionTree/1.png" alt="ID3算法运行控制台输出" title="ID3算法运行控制台输出"><br>绘制出的决策树：<img src="D:/py_workspace/homework/DecisionTree/2.png" alt="决策树" title="使用matplotlib绘制的决策树"><br>###第八题<br>python源代码：</p>
+<pre class="line-numbers language-python" data-language="python"><code class="language-python"><span class="token comment">#相较于ID3算法，CART算法并无本质上的区别，只是将选择最优特征的根据改为基尼系数</span>
 <span class="token comment">#因此，修改原ID3算法中的计算信息熵函数为计算基尼系数函数，并同步修改选择最优特征函数即可</span>
 <span class="token keyword">import</span> math
 <span class="token keyword">import</span> matplotlib<span class="token punctuation">.</span>pyplot <span class="token keyword">as</span> plt
@@ -771,24 +773,28 @@ arrow_args <span class="token operator">=</span> <span class="token builtin">dic
     mpl<span class="token punctuation">.</span>rcParams<span class="token punctuation">[</span><span class="token string">'font.sans-serif'</span><span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token string">'SimHei'</span><span class="token punctuation">]</span>  <span class="token comment"># 指定默认字体</span>
     mpl<span class="token punctuation">.</span>rcParams<span class="token punctuation">[</span><span class="token string">'axes.unicode_minus'</span><span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token boolean">False</span>  <span class="token comment"># 解决保存图像时负号'-'显示为方块的问题</span>
 
-    createPlot<span class="token punctuation">(</span>decision_tree<span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre><br>程序运行结果：<img src="D:/py_workspace/homework/DecisionTree/3.png" alt="控制台输出结果" title="控制台输出结果"><br>matplotlib绘图结果：<img src="D:/py_workspace/homework/DecisionTree/4.png" alt="绘制决策树" title="使用matplotlib绘制决策树"></p>
-<h1 id="第六章"><a href="#第六章" class="headerlink" title="第六章"></a>第六章</h1><h3 id="第一题-1"><a href="#第一题-1" class="headerlink" title="第一题"></a>第一题</h3><ul>
-<li>Model1 <script type="math/tex; mode=display">TP=300,FN=80 ,TN=500 ,FP=60</script><script type="math/tex; mode=display">Acurracy=\frac{TP+TN}{TP+FN+TN+FP}=\frac{300+500}{300+80+500+60}=0.851</script><script type="math/tex; mode=display">Cost=300\times(-1)+80\times100+500\times0+60\times5=8000</script><script type="math/tex; mode=display">Recall=\frac{TP}{TP+FN}=\frac{300}{300+80}=0.789</script></li>
-<li>Model2<script type="math/tex; mode=display">TP=500,FN=90,TN=400,FP=10</script><script type="math/tex; mode=display">Acurracy=\frac{TP+TN}{TP+FN+FP+TN}=\frac{500+400}{500+400+10+90}=0.9</script><script type="math/tex; mode=display">Cost=500\times(-1)+90\times100+400\times0+10\times5=8550</script><script type="math/tex; mode=display">Recall=\frac{TP}{TP+FN}=\frac{500}{500+90}=0.847</script></li>
-</ul>
-<h3 id="第二题-1"><a href="#第二题-1" class="headerlink" title="第二题"></a>第二题</h3><ul>
-<li>1、当阈值增大时，样本中实际为正值的样本的个数不变，但是由于阈值的提高，可能导致一部分正例可能被误判为负例，即$TP+FN$的值不变，而$TP$的值可能变小，$Recall=\frac{TP}{TP+FN}$，所以，recall的值将可能不变或变小。</li>
-<li>2、当阈值减小时，样本中实际为正值的样本的个数不变，但是由于阈值的减小，可能导致一部分本来被误判的正例被正确的判为正例，即$TP+FN$的值不变，而$TP$的值可能变大，$Recall=\frac{TP}{TP+FN}$，所以，recall的值将可能不变或变大。</li>
-</ul>
-<h3 id="第三题-1"><a href="#第三题-1" class="headerlink" title="第三题"></a>第三题</h3><p>ROC曲线即受试者工作特征曲线，其纵轴为TPR(True Positive Rate)，横轴为FPR(False Positive Rate)：</p>
-<script type="math/tex; mode=display">TPR=\frac{TP}{TP+FN}</script><script type="math/tex; mode=display">FPR=\frac{FP}{FP+TN}</script><p>在ROC曲线中的每一个点都代表了一个分类器，而这个点的横纵坐标代表了这个分类器的性能。改变分类器的阈值，分类器所代表的点也在ROC曲线上移动。<br>ROC曲线的四个顶点$(0,0),(0,1),(1,0),(0,0)$；每个点都有特殊的含义：</p>
+    createPlot<span class="token punctuation">(</span>decision_tree<span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p>程序运行结果：<img src="D:/py_workspace/homework/DecisionTree/3.png" alt="控制台输出结果" title="控制台输出结果"><br>matplotlib绘图结果：<img src="D:/py_workspace/homework/DecisionTree/4.png" alt="绘制决策树" title="使用matplotlib绘制决策树"></p>
+<p>#第六章<br>###第一题</p>
 <ul>
-<li>$(0,0)$点：即$FPR=TPR=0$，即$FP=TP=0$，可以发现该分类器预测所有的样本都为负样本;</li>
-<li>$(0,1)$点：即$FPR=0,TPR=1$，即$TP=TP+FN，FN=FP=0$，且该分类器全部判断正确，是一种理想的分类器；</li>
-<li>$(1,0)$点：即$FPR=1,TPR=0$，即$FP=FP+TN,TP=TN=0$，该分类器是最糟糕的分类器，所有的预测都是错误的；</li>
-<li>$(1,1)$点：即$FPR=TPR=1$，$TN=FN=0$，可以发现，该分类器判断所有的样本都是正样本。<h3 id="第四题-1"><a href="#第四题-1" class="headerlink" title="第四题"></a>第四题</h3>$M_1$模型在大小为50的集合上进行测试，错误率$e_1=0.13$;<br>$M_2$模型在大小为4500的集合上进行测试，错误率$e_2=0.28$;<br>当测试集足够大时，可认为：<script type="math/tex; mode=display">e_1 \sim N(\mu_1, \sigma_1^2)</script><script type="math/tex; mode=display">e_2 \sim N(\mu_2, \sigma_2^2)</script>为了比较两个模型的性能是否有显著的统计学上的差异，令$d=e_1-e_2$，因为$e_1\sim N,e_2\sim N$,所以，$d\sim N(d_t,\sigma_t)$,由正态分布的性质：<script type="math/tex; mode=display">\sigma_t^2=\sigma_1^2+\sigma_2^2\approx\hat{\sigma_1^2}+\hat{\sigma_2^2}=\frac{e_1(1-e_1)}{n_1}+\frac{e_2(1-e_2)}{n_2}</script><script type="math/tex; mode=display">d_t=d\pm Z_{\frac{\alpha}{2}}\hat{\sigma_t}</script><script type="math/tex; mode=display">d=\lvert e_2-e_1 \rvert=0.28-0.13=0.15</script><script type="math/tex; mode=display">\hat{\sigma_d}=\frac{0.13(1-0.13)}{50}+\frac{0.28(1-0.28)}{4500}=0.0023</script>当置信水平为0.95时，$Z_\frac{\alpha}{2}=1.96$:<script type="math/tex; mode=display">d_t=0.15\pm 1.96\times \sqrt{0.0023}=0.15\pm 0.094</script>区间中不包含0，认为两者之间有差距，模型$M_1$的性能优于模型$M_2$的性能。<h3 id="第五题-1"><a href="#第五题-1" class="headerlink" title="第五题"></a>第五题</h3>在机器学习建模过程中，通行的做法通常是将数据分为训练集和测试集。测试集是与训练独立的数据，完全不参与训练，用于最终模型的评估。在训练过程中，经常会出现过拟合的问题，就是模型可以很好的匹配训练数据，却不能很好在预测训练集外的数据。如果此时就使用测试数据来调整模型参数，就相当于在训练时已知部分测试数据的信息，会影响最终评估结果的准确性。通常的做法是在训练数据再中分出一部分做为验证(Validation)数据，用来评估模型的训练效果。</li>
+<li>Model1<br>$$TP&#x3D;300,FN&#x3D;80 ,TN&#x3D;500 ,FP&#x3D;60$$<br>$$Acurracy&#x3D;\frac{TP+TN}{TP+FN+TN+FP}&#x3D;\frac{300+500}{300+80+500+60}&#x3D;0.851$$<br>$$Cost&#x3D;300\times(-1)+80\times100+500\times0+60\times5&#x3D;8000$$<br>$$Recall&#x3D;\frac{TP}{TP+FN}&#x3D;\frac{300}{300+80}&#x3D;0.789$$</li>
+<li>Model2<br>$$TP&#x3D;500,FN&#x3D;90,TN&#x3D;400,FP&#x3D;10$$<br>$$Acurracy&#x3D;\frac{TP+TN}{TP+FN+FP+TN}&#x3D;\frac{500+400}{500+400+10+90}&#x3D;0.9$$<br>$$Cost&#x3D;500\times(-1)+90\times100+400\times0+10\times5&#x3D;8550$$<br>$$Recall&#x3D;\frac{TP}{TP+FN}&#x3D;\frac{500}{500+90}&#x3D;0.847$$</li>
 </ul>
-<p>验证数据取自训练数据，但不参与训练，这样可以相对客观的评估模型对于训练集之外数据的匹配程度。模型在验证数据中的评估常用的是交叉验证，又称循环验证。它将原始数据分成K组(K-Fold)，将每个子集数据分别做一次验证集，其余的K-1组子集数据作为训练集，这样会得到K个模型。这K个模型分别在验证集中评估结果，最后的误差MSE(Mean Squared Error)加和平均就得到交叉验证误差。交叉验证有效利用了有限的数据，并且评估结果能够尽可能接近模型在测试集上的表现，可以做为模型优化的指标使用。<br><pre class="line-numbers language-python" data-language="python"><code class="language-python"><span class="token keyword">import</span> numpy <span class="token keyword">as</span> np
+<p>###第二题</p>
+<ul>
+<li>1、当阈值增大时，样本中实际为正值的样本的个数不变，但是由于阈值的提高，可能导致一部分正例可能被误判为负例，即$TP+FN$的值不变，而$TP$的值可能变小，$Recall&#x3D;\frac{TP}{TP+FN}$，所以，recall的值将可能不变或变小。</li>
+<li>2、当阈值减小时，样本中实际为正值的样本的个数不变，但是由于阈值的减小，可能导致一部分本来被误判的正例被正确的判为正例，即$TP+FN$的值不变，而$TP$的值可能变大，$Recall&#x3D;\frac{TP}{TP+FN}$，所以，recall的值将可能不变或变大。</li>
+</ul>
+<p>###第三题<br>ROC曲线即受试者工作特征曲线，其纵轴为TPR(True Positive Rate)，横轴为FPR(False Positive Rate)：<br>$$TPR&#x3D;\frac{TP}{TP+FN}$$<br>$$FPR&#x3D;\frac{FP}{FP+TN}$$<br>在ROC曲线中的每一个点都代表了一个分类器，而这个点的横纵坐标代表了这个分类器的性能。改变分类器的阈值，分类器所代表的点也在ROC曲线上移动。<br>ROC曲线的四个顶点$(0,0),(0,1),(1,0),(0,0)$；每个点都有特殊的含义：</p>
+<ul>
+<li>$(0,0)$点：即$FPR&#x3D;TPR&#x3D;0$，即$FP&#x3D;TP&#x3D;0$，可以发现该分类器预测所有的样本都为负样本;</li>
+<li>$(0,1)$点：即$FPR&#x3D;0,TPR&#x3D;1$，即$TP&#x3D;TP+FN，FN&#x3D;FP&#x3D;0$，且该分类器全部判断正确，是一种理想的分类器；</li>
+<li>$(1,0)$点：即$FPR&#x3D;1,TPR&#x3D;0$，即$FP&#x3D;FP+TN,TP&#x3D;TN&#x3D;0$，该分类器是最糟糕的分类器，所有的预测都是错误的；</li>
+<li>$(1,1)$点：即$FPR&#x3D;TPR&#x3D;1$，$TN&#x3D;FN&#x3D;0$，可以发现，该分类器判断所有的样本都是正样本。</li>
+</ul>
+<p>###第四题<br>$M_1$模型在大小为50的集合上进行测试，错误率$e_1&#x3D;0.13$;<br>$M_2$模型在大小为4500的集合上进行测试，错误率$e_2&#x3D;0.28$;<br>当测试集足够大时，可认为：<br>$$e_1 \sim N(\mu_1, \sigma_1^2)$$<br>$$e_2 \sim N(\mu_2, \sigma_2^2)$$<br>为了比较两个模型的性能是否有显著的统计学上的差异，令$d&#x3D;e_1-e_2$，因为$e_1\sim N,e_2\sim N$,所以，$d\sim N(d_t,\sigma_t)$,由正态分布的性质：<br>$$\sigma_t^2&#x3D;\sigma_1^2+\sigma_2^2\approx\hat{\sigma_1^2}+\hat{\sigma_2^2}&#x3D;\frac{e_1(1-e_1)}{n_1}+\frac{e_2(1-e_2)}{n_2}$$<br>$$d_t&#x3D;d\pm Z_{\frac{\alpha}{2}}\hat{\sigma_t}$$<br>$$d&#x3D;\lvert e_2-e_1 \rvert&#x3D;0.28-0.13&#x3D;0.15$$<br>$$\hat{\sigma_d}&#x3D;\frac{0.13(1-0.13)}{50}+\frac{0.28(1-0.28)}{4500}&#x3D;0.0023$$<br>当置信水平为0.95时，$Z_\frac{\alpha}{2}&#x3D;1.96$:<br>$$d_t&#x3D;0.15\pm 1.96\times \sqrt{0.0023}&#x3D;0.15\pm 0.094$$<br>区间中不包含0，认为两者之间有差距，模型$M_1$的性能优于模型$M_2$的性能。<br>###第五题<br>在机器学习建模过程中，通行的做法通常是将数据分为训练集和测试集。测试集是与训练独立的数据，完全不参与训练，用于最终模型的评估。在训练过程中，经常会出现过拟合的问题，就是模型可以很好的匹配训练数据，却不能很好在预测训练集外的数据。如果此时就使用测试数据来调整模型参数，就相当于在训练时已知部分测试数据的信息，会影响最终评估结果的准确性。通常的做法是在训练数据再中分出一部分做为验证(Validation)数据，用来评估模型的训练效果。</p>
+<p>验证数据取自训练数据，但不参与训练，这样可以相对客观的评估模型对于训练集之外数据的匹配程度。模型在验证数据中的评估常用的是交叉验证，又称循环验证。它将原始数据分成K组(K-Fold)，将每个子集数据分别做一次验证集，其余的K-1组子集数据作为训练集，这样会得到K个模型。这K个模型分别在验证集中评估结果，最后的误差MSE(Mean Squared Error)加和平均就得到交叉验证误差。交叉验证有效利用了有限的数据，并且评估结果能够尽可能接近模型在测试集上的表现，可以做为模型优化的指标使用。</p>
+<pre class="line-numbers language-python" data-language="python"><code class="language-python"><span class="token keyword">import</span> numpy <span class="token keyword">as</span> np
 <span class="token keyword">from</span> sklearn<span class="token punctuation">.</span>model_selection <span class="token keyword">import</span> KFold
 <span class="token keyword">import</span> random
 
@@ -805,7 +811,8 @@ kf<span class="token operator">=</span>KFold<span class="token punctuation">(</s
   
     <span class="token keyword">print</span><span class="token punctuation">(</span><span class="token string">"训练集为："</span><span class="token punctuation">,</span>num_train<span class="token punctuation">)</span>
     <span class="token keyword">print</span><span class="token punctuation">(</span><span class="token string">"验证集为："</span><span class="token punctuation">,</span>num_test<span class="token punctuation">)</span>
-<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre><br>程序运行结果：<img src="D:/py_workspace/homework/DecisionTree/5.png" alt="控制台输出结果" title="控制台输出结果"></p>
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p>程序运行结果：<img src="D:/py_workspace/homework/DecisionTree/5.png" alt="控制台输出结果" title="控制台输出结果"></p>
 
                 
             </div>

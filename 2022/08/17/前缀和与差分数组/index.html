@@ -363,7 +363,7 @@
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    803
+                    814
                 </div>
                 
 
@@ -396,12 +396,10 @@
                 <p>今天在看东哥的算法笔记时学习了两个以空间换时间的算法技巧，前缀和和差分数组。但是在刷题的时候不以为然，多层for循环走天下，直到测例超时才幡然醒悟，悔之晚矣呀！<br>但是还是不得不吐槽一下，leetcode的某些测试用例……</p>
 <p><img src="https://tuchuang-1307891532.cos.ap-nanjing.myqcloud.com/images/9c4c145a8cb580454498db4bb05b1f6.png" alt="想得出这种测例的人生活一定很不幸吧"></p>
 <h5 id="前缀和"><a href="#前缀和" class="headerlink" title="前缀和"></a>前缀和</h5><p>前缀和适用于需要快速，频繁的计算一个索引区间内的元素之和的场景。<br>对于一个长度为n的一维数组nums，维持一个长度为n+1的前缀和数组presum，其中，</p>
-<script type="math/tex; mode=display">presum[i] = \sum_{a=0}^{i-1} nums[a]</script><p>这样，我们在计算nums数组的一个索引区间内的元素之和时，只需要使用presum中的相应元素进行一次加减法运算即可。</p>
-<script type="math/tex; mode=display">
-\begin{align*}
-sum(nums[i], nums[j]) &= presum[j+1] - presum[i] = \sum_{a=0}^{j} nums[a] - \sum_{a=0}^{i-1} nums[a] \\
-&=\sum_{a=i}^{j} nums[a]
-\end{align*}</script><p>这种做法在仅需进行少量计算时，不如直接用for循环进行遍历求和，但当需要进行多次快速检索时，前缀和数组的优越性就体现出来了。</p>
+<p>$$presum[i] &#x3D; \sum_{a&#x3D;0}^{i-1} nums[a]$$</p>
+<p>这样，我们在计算nums数组的一个索引区间内的元素之和时，只需要使用presum中的相应元素进行一次加减法运算即可。</p>
+<p>$$<br>\begin{align*}<br>sum(nums[i], nums[j]) &amp;&#x3D; presum[j+1] - presum[i] &#x3D; \sum_{a&#x3D;0}^{j} nums[a] - \sum_{a&#x3D;0}^{i-1} nums[a] \<br>&amp;&#x3D;\sum_{a&#x3D;i}^{j} nums[a]<br>\end{align*}<br>$$</p>
+<p>这种做法在仅需进行少量计算时，不如直接用for循环进行遍历求和，但当需要进行多次快速检索时，前缀和数组的优越性就体现出来了。</p>
 <h6 id="实例"><a href="#实例" class="headerlink" title="实例"></a>实例</h6><p><img src="https://tuchuang-1307891532.cos.ap-nanjing.myqcloud.com/images/20220817155959.png" alt="[leetcode 303题](https://leetcode.cn/problems/range-sum-query-immutable/)"></p>
 <ul>
 <li>题解：</li>
@@ -429,7 +427,8 @@ public:
  *&#x2F;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <p>同样的，前缀和的方法也适用于二维数组。</p>
 <h5 id="差分数组"><a href="#差分数组" class="headerlink" title="差分数组"></a>差分数组</h5><p>类似与前缀和技巧，差分数组的思想是额外的维持一个长度为n的差分数组differ。</p>
-<script type="math/tex; mode=display">differ[i] = nums[i] - nums[i-1]</script><p>差分数组中的元素表示了原数组中相应位置上的元素与其前一个元素之间的差。差分数组的适用于我们需要频繁的对nums进行批量操作时。比如，场景要求我们对区间nums[2…6]全部加1，做一次这样的操作，只需要for循环遍历即可，但是，若是操作的太多，效率将极为低下。而若是使用差分数组，每次对区间i，j进行操作，只需要在差分数组的对应位置进行两次加减法操作即可，前者的时间复杂度为$O(n)$，而后者的时间复杂度仅为$O(1)$。</p>
+<p>$$differ[i] &#x3D; nums[i] - nums[i-1]$$</p>
+<p>差分数组中的元素表示了原数组中相应位置上的元素与其前一个元素之间的差。差分数组的适用于我们需要频繁的对nums进行批量操作时。比如，场景要求我们对区间nums[2…6]全部加1，做一次这样的操作，只需要for循环遍历即可，但是，若是操作的太多，效率将极为低下。而若是使用差分数组，每次对区间i，j进行操作，只需要在差分数组的对应位置进行两次加减法操作即可，前者的时间复杂度为$O(n)$，而后者的时间复杂度仅为$O(1)$。</p>
 <h6 id="实例-1"><a href="#实例-1" class="headerlink" title="实例"></a>实例</h6><p><img src="https://tuchuang-1307891532.cos.ap-nanjing.myqcloud.com/images/20220817161307.png" alt="[leetcode 1109题](https://leetcode.cn/problems/corporate-flight-bookings/)"></p>
 <ul>
 <li>题解：</li>
