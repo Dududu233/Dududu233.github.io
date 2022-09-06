@@ -405,9 +405,7 @@ void pop_sort(vector&lt;T&gt; &amp; nums)&#123;
         &#125;
     &#125;
 &#125;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-
-<h4 id="选择排序"><a href="#选择排序" class="headerlink" title="选择排序"></a>选择排序</h4><p>选择排序整体思路与冒泡排序的思路相似，都是在依次排序之后将最小的元素放在最前面，不同的是，冒泡排序是两个相邻元素之间的比较，而选择排序进行的是整体的选择，即在每一趟都查出无序区的最小元素，将最小的元素追加至有序区的末尾。<br>选择排序的平均时间复杂度为$O(n^2)$，在最好情况下的时间复杂度为$O(n^2)$，在最坏情况下的时间复杂度为$O(n^2)$，在原地修改，所以空间复杂度为$O(1)$。<br>代码实现如下：</p>
-<pre class="line-numbers language-C++" data-language="C++"><code class="language-C++">template&lt;typename T&gt;
+<h4 id="选择排序"><a href="#选择排序" class="headerlink" title="选择排序"></a>选择排序</h4><p>选择排序整体思路与冒泡排序的思路相似，都是在依次排序之后将最小的元素放在最前面，不同的是，冒泡排序是两个相邻元素之间的比较，而选择排序进行的是整体的选择，即在每一趟都查出无序区的最小元素，将最小的元素追加至有序区的末尾。<br>选择排序的平均时间复杂度为$O(n^2)$，在最好情况下的时间复杂度为$O(n^2)$，在最坏情况下的时间复杂度为$O(n^2)$，在原地修改，所以空间复杂度为$O(1)$。<br>代码实现如下：<br><pre class="line-numbers language-C++" data-language="C++"><code class="language-C++">template&lt;typename T&gt;
 void select_sort(vector&lt;T&gt; &amp; nums)&#123;
     int min;
     for(int i &#x3D; 0; i &lt; nums.size()-1; i++)&#123;
@@ -421,10 +419,8 @@ void select_sort(vector&lt;T&gt; &amp; nums)&#123;
         nums[i] &#x3D; nums[min];
         nums[min] &#x3D; buffer;
     &#125;
-&#125;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-
-<h4 id="插入排序"><a href="#插入排序" class="headerlink" title="插入排序"></a>插入排序</h4><p>插入排序的思路是构建一个有序数列，对于未排序的数据，在已排序的序列中从前往后扫描，找到正确的位置并插入。<br>平均时间复杂度为$O(n^2)$，在最好情况下的时间复杂度为$O(n)$，在最坏情况下的时间复杂度为$O(n^2)$，在原地修改，所以空间复杂度为$O(1)$。<br>代码实现如下：</p>
-<pre class="line-numbers language-C++" data-language="C++"><code class="language-C++">template&lt;typename T&gt;
+&#125;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre></p>
+<h4 id="插入排序"><a href="#插入排序" class="headerlink" title="插入排序"></a>插入排序</h4><p>插入排序的思路是构建一个有序数列，对于未排序的数据，在已排序的序列中从前往后扫描，找到正确的位置并插入。<br>平均时间复杂度为$O(n^2)$，在最好情况下的时间复杂度为$O(n)$，在最坏情况下的时间复杂度为$O(n^2)$，在原地修改，所以空间复杂度为$O(1)$。<br>代码实现如下：<br><pre class="line-numbers language-C++" data-language="C++"><code class="language-C++">template&lt;typename T&gt;
 void insert_sort(vector&lt;T&gt; &amp; nums)&#123;
     for(int i &#x3D; 1; i &lt; nums.size(); i++)&#123;
         int key &#x3D; nums[i];
@@ -435,10 +431,8 @@ void insert_sort(vector&lt;T&gt; &amp; nums)&#123;
         &#125;
         nums[j+1] &#x3D; key;
     &#125;
-&#125;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-
-<h4 id="希尔排序"><a href="#希尔排序" class="headerlink" title="希尔排序"></a>希尔排序</h4><p>希尔排序是对插入排序的一种修改。希尔排序的基本思想是将待排序的数据分为若干个子序列进行插入排序，等到整个序列都基本有序时，在对整个序列直接进行插入排序。<br>希尔排序的时间复杂度与子序列的选取有关，当子序列的步长设为1时，希尔排序退化为插入排序，时间复杂度为$O(n^2)$。希尔排序的平均时间复杂度为$O(n \log n)$<br>代码实现如下：</p>
-<pre class="line-numbers language-C++" data-language="C++"><code class="language-C++">template&lt;typename T&gt;
+&#125;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre></p>
+<h4 id="希尔排序"><a href="#希尔排序" class="headerlink" title="希尔排序"></a>希尔排序</h4><p>希尔排序是对插入排序的一种修改。希尔排序的基本思想是将待排序的数据分为若干个子序列进行插入排序，等到整个序列都基本有序时，在对整个序列直接进行插入排序。<br>希尔排序的时间复杂度与子序列的选取有关，当子序列的步长设为1时，希尔排序退化为插入排序，时间复杂度为$O(n^2)$。希尔排序的平均时间复杂度为$O(n \log n)$<br>代码实现如下：<br><pre class="line-numbers language-C++" data-language="C++"><code class="language-C++">template&lt;typename T&gt;
 void shell_sort(vector&lt;T&gt; &amp; nums)&#123;
     int h &#x3D; 1;
     int l &#x3D; 3; &#x2F;&#x2F; 步长，将原序列分为l个子序列
@@ -455,10 +449,8 @@ void shell_sort(vector&lt;T&gt; &amp; nums)&#123;
         &#125;
         h &#x3D; h &#x2F; l;
     &#125;
-&#125;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-
-<h4 id="归并排序"><a href="#归并排序" class="headerlink" title="归并排序"></a>归并排序</h4><p>归并排序是一种建立在归并操作上的有效的排序算法。是一种使用分治法思想的典型应用。基本步骤为，将$n$个元素分成含$\frac{n}{2}$个元素的子序列，用合并排序法对两个子序列递归的排序，合并两个已排序的子序列得到排序的结果<br>归并排序的实现由两种方法：自上而下的递归；自下而上的迭代。<br>归并排序的时间复杂度为$O(n \log n)$，由于使用了额外的内存空间，空间复杂度为$O(n)$。<br>代码实现如下：</p>
-<pre class="line-numbers language-C++" data-language="C++"><code class="language-C++">&#x2F;&#x2F;1、使用自上而下的递归的实现
+&#125;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre></p>
+<h4 id="归并排序"><a href="#归并排序" class="headerlink" title="归并排序"></a>归并排序</h4><p>归并排序是一种建立在归并操作上的有效的排序算法。是一种使用分治法思想的典型应用。基本步骤为，将$n$个元素分成含$\frac{n}{2}$个元素的子序列，用合并排序法对两个子序列递归的排序，合并两个已排序的子序列得到排序的结果<br>归并排序的实现由两种方法：自上而下的递归；自下而上的迭代。<br>归并排序的时间复杂度为$O(n \log n)$，由于使用了额外的内存空间，空间复杂度为$O(n)$。<br>代码实现如下：<br><pre class="line-numbers language-C++" data-language="C++"><code class="language-C++">&#x2F;&#x2F;1、使用自上而下的递归的实现
 template&lt;typename T&gt;
 vector&lt;T&gt; merge(vector&lt;T&gt; left, vector&lt;T&gt; right)&#123;
     vector&lt;T&gt; res;
@@ -505,10 +497,8 @@ void merge_sort_interation(vector&lt;T&gt; &amp; nums)&#123;
             &#125;
         &#125;
     &#125;
-&#125;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-
-<h4 id="快速排序"><a href="#快速排序" class="headerlink" title="快速排序"></a>快速排序</h4><p>快速排序也是分治思想在排序中的一种应用，快速排序是在冒泡排序的基础上的递归分治法。快速排序是处理大数据的最快的排序算法。<br>快排的基本算法步骤为：从数列中挑出一个元素，成为基准；重新排序数列，将所有元素中比基准值小的放在基准的前面，将所有元素中比基准值大的放在基准的后边；递归的将小于基准值元素的子数列和大于基准值元素的子数列进行排序。<br>快速排序的时间复杂度为$O(n \log n)$，空间复杂度为$O(\log n)$。</p>
-<pre class="line-numbers language-C++" data-language="C++"><code class="language-C++">&#x2F;&#x2F; 1、迭代实现
+&#125;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre></p>
+<h4 id="快速排序"><a href="#快速排序" class="headerlink" title="快速排序"></a>快速排序</h4><p>快速排序也是分治思想在排序中的一种应用，快速排序是在冒泡排序的基础上的递归分治法。快速排序是处理大数据的最快的排序算法。<br>快排的基本算法步骤为：从数列中挑出一个元素，成为基准；重新排序数列，将所有元素中比基准值小的放在基准的前面，将所有元素中比基准值大的放在基准的后边；递归的将小于基准值元素的子数列和大于基准值元素的子数列进行排序。<br>快速排序的时间复杂度为$O(n \log n)$，空间复杂度为$O(\log n)$。<br><pre class="line-numbers language-C++" data-language="C++"><code class="language-C++">&#x2F;&#x2F; 1、迭代实现
 struct Range&#123;
     int start, end;
     Range(int s &#x3D; 0, int e &#x3D; 0)&#123;
@@ -566,15 +556,14 @@ void quick_sort(vector&lt;T&gt; &amp; nums, int begin, int end)&#123;
     nums[i] &#x3D; temp;
     quick_sort(nums, begin, i-1);
     quick_sort(nums, i+1, end);
-&#125;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+&#125;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre></p>
 <h4 id="堆排序"><a href="#堆排序" class="headerlink" title="堆排序"></a>堆排序</h4><p>堆排序是指，利用堆数据结构的排序算法。堆积是一个近似完全二叉树的结构，同时满足堆积的性质，即子节点的键值或索引总是小于或大于它的父节点，分为两种方法：</p>
 <ul>
 <li>大顶堆(最大堆)：每个节点的值都大于或等于其子节点的值，在堆排序算法中用于升序排列；</li>
 <li>小顶堆(最小堆)：每个节点的值都小于或等于其子节点的值，在堆排序算法中用于降序排列。</li>
 </ul>
 <p>堆排序的平均时间复杂度为$O(n \log n)$，空间复杂度为$O(1)$。</p>
-<p>代码实现如下：</p>
-<pre class="line-numbers language-C++" data-language="C++"><code class="language-C++">void max_heapify(vector&lt;int&gt; &amp;nums, int start, int end)
+<p>代码实现如下：<br><pre class="line-numbers language-C++" data-language="C++"><code class="language-C++">void max_heapify(vector&lt;int&gt; &amp;nums, int start, int end)
 &#123;
     int dad &#x3D; start;
     int son &#x3D; dad * 2 + 1;
@@ -607,7 +596,7 @@ void heap_sort(vector&lt;int&gt; &amp;nums, int len)
         swap(nums[0], nums[i]);
         max_heapify(nums, 0, i - 1);
     &#125;
-&#125;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+&#125;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre></p>
 
                 
             </div>
