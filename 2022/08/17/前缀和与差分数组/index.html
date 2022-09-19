@@ -363,7 +363,7 @@
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    803
+                    757
                 </div>
                 
 
@@ -406,27 +406,27 @@ sum(nums[i], nums[j]) &= presum[j+1] - presum[i] = \sum_{a=0}^{j} nums[a] - \sum
 <ul>
 <li>题解：</li>
 </ul>
-<pre class="line-numbers language-C++" data-language="C++"><code class="language-C++">class NumArray &#123;
-private:
-    vector&lt;int&gt; preSum;
-public:
-    NumArray(vector&lt;int&gt;&amp; nums) &#123;
-        preSum &#x3D; vector&lt;int&gt; (nums.size() + 1, 0);
-        for(int i &#x3D; 1; i &lt;&#x3D; nums.size(); i++)&#123;
-            preSum[i] &#x3D; preSum[i-1] + nums[i-1]; 
-        &#125;
-    &#125;
+<pre class="line-numbers language-cpp" data-language="cpp"><code class="language-cpp"><span class="token keyword">class</span> <span class="token class-name">NumArray</span> <span class="token punctuation">&#123;</span>
+<span class="token keyword">private</span><span class="token operator">:</span>
+    vector<span class="token operator">&lt;</span><span class="token keyword">int</span><span class="token operator">></span> preSum<span class="token punctuation">;</span>
+<span class="token keyword">public</span><span class="token operator">:</span>
+    <span class="token function">NumArray</span><span class="token punctuation">(</span>vector<span class="token operator">&lt;</span><span class="token keyword">int</span><span class="token operator">></span><span class="token operator">&amp;</span> nums<span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+        preSum <span class="token operator">=</span> <span class="token generic-function"><span class="token function">vector</span><span class="token generic class-name"><span class="token operator">&lt;</span><span class="token keyword">int</span><span class="token operator">></span></span></span> <span class="token punctuation">(</span>nums<span class="token punctuation">.</span><span class="token function">size</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">+</span> <span class="token number">1</span><span class="token punctuation">,</span> <span class="token number">0</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token keyword">for</span><span class="token punctuation">(</span><span class="token keyword">int</span> i <span class="token operator">=</span> <span class="token number">1</span><span class="token punctuation">;</span> i <span class="token operator">&lt;=</span> nums<span class="token punctuation">.</span><span class="token function">size</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span> i<span class="token operator">++</span><span class="token punctuation">)</span><span class="token punctuation">&#123;</span>
+            preSum<span class="token punctuation">[</span>i<span class="token punctuation">]</span> <span class="token operator">=</span> preSum<span class="token punctuation">[</span>i<span class="token operator">-</span><span class="token number">1</span><span class="token punctuation">]</span> <span class="token operator">+</span> nums<span class="token punctuation">[</span>i<span class="token operator">-</span><span class="token number">1</span><span class="token punctuation">]</span><span class="token punctuation">;</span> 
+        <span class="token punctuation">&#125;</span>
+    <span class="token punctuation">&#125;</span>
     
-    int sumRange(int left, int right) &#123;
-        return preSum[right + 1] - preSum[left];
-    &#125;
-&#125;;
+    <span class="token keyword">int</span> <span class="token function">sumRange</span><span class="token punctuation">(</span><span class="token keyword">int</span> left<span class="token punctuation">,</span> <span class="token keyword">int</span> right<span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+        <span class="token keyword">return</span> preSum<span class="token punctuation">[</span>right <span class="token operator">+</span> <span class="token number">1</span><span class="token punctuation">]</span> <span class="token operator">-</span> preSum<span class="token punctuation">[</span>left<span class="token punctuation">]</span><span class="token punctuation">;</span>
+    <span class="token punctuation">&#125;</span>
+<span class="token punctuation">&#125;</span><span class="token punctuation">;</span>
 
-&#x2F;**
+<span class="token comment">/**
  * Your NumArray object will be instantiated and called as such:
- * NumArray* obj &#x3D; new NumArray(nums);
- * int param_1 &#x3D; obj-&gt;sumRange(left,right);
- *&#x2F;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+ * NumArray* obj = new NumArray(nums);
+ * int param_1 = obj->sumRange(left,right);
+ */</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <p>同样的，前缀和的方法也适用于二维数组。</p>
 <h5 id="差分数组"><a href="#差分数组" class="headerlink" title="差分数组"></a>差分数组</h5><p>类似与前缀和技巧，差分数组的思想是额外的维持一个长度为n的差分数组differ。</p>
 <script type="math/tex; mode=display">differ[i] = nums[i] - nums[i-1]</script><p>差分数组中的元素表示了原数组中相应位置上的元素与其前一个元素之间的差。差分数组的适用于我们需要频繁的对nums进行批量操作时。比如，场景要求我们对区间nums[2…6]全部加1，做一次这样的操作，只需要for循环遍历即可，但是，若是操作的太多，效率将极为低下。而若是使用差分数组，每次对区间i，j进行操作，只需要在差分数组的对应位置进行两次加减法操作即可，前者的时间复杂度为$O(n)$，而后者的时间复杂度仅为$O(1)$。</p>
@@ -434,34 +434,34 @@ public:
 <ul>
 <li>题解：</li>
 </ul>
-<pre class="line-numbers language-C++" data-language="C++"><code class="language-C++">class Solution &#123;
-public:
-    vector&lt;int&gt; corpFlightBookings(vector&lt;vector&lt;int&gt;&gt;&amp; bookings, int n) &#123;
-        &#x2F;&#x2F; 超时
-        &#x2F;&#x2F; vector&lt;int&gt; ans(n, 0);
-        &#x2F;&#x2F; for(auto p : bookings)&#123;
-        &#x2F;&#x2F;     for(int i &#x3D; p[0]; i &lt;&#x3D; p[1]; i++)&#123;
-        &#x2F;&#x2F;         ans[i-1] +&#x3D; p[2];
-        &#x2F;&#x2F;     &#125;
-        &#x2F;&#x2F; &#125;
-        &#x2F;&#x2F; return ans;
+<pre class="line-numbers language-cpp" data-language="cpp"><code class="language-cpp"><span class="token keyword">class</span> <span class="token class-name">Solution</span> <span class="token punctuation">&#123;</span>
+<span class="token keyword">public</span><span class="token operator">:</span>
+    vector<span class="token operator">&lt;</span><span class="token keyword">int</span><span class="token operator">></span> <span class="token function">corpFlightBookings</span><span class="token punctuation">(</span>vector<span class="token operator">&lt;</span>vector<span class="token operator">&lt;</span><span class="token keyword">int</span><span class="token operator">>></span><span class="token operator">&amp;</span> bookings<span class="token punctuation">,</span> <span class="token keyword">int</span> n<span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+        <span class="token comment">// 超时</span>
+        <span class="token comment">// vector&lt;int> ans(n, 0);</span>
+        <span class="token comment">// for(auto p : bookings)&#123;</span>
+        <span class="token comment">//     for(int i = p[0]; i &lt;= p[1]; i++)&#123;</span>
+        <span class="token comment">//         ans[i-1] += p[2];</span>
+        <span class="token comment">//     &#125;</span>
+        <span class="token comment">// &#125;</span>
+        <span class="token comment">// return ans;</span>
         
-        &#x2F;&#x2F; 构建差分数组
-        vector&lt;int&gt; differ(n + 1, 0);
-        for(auto p : bookings)&#123;
-            differ[p[0]] +&#x3D; p[2];
-            if(p[1]+1 &lt; differ.size())
-                differ[p[1]+1] -&#x3D; p[2];
-        &#125;
-        &#x2F;&#x2F; 从差分数组恢复出原数组
-        vector&lt;int&gt; ans(n, 0);
-        ans[0] &#x3D; differ[1];
-        for(int i &#x3D; 2; i &lt; differ.size(); i++)&#123;
-            ans[i-1] &#x3D; ans[i-2] + differ[i]; 
-        &#125;
-        return ans;
-    &#125;
-&#125;;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+        <span class="token comment">// 构建差分数组</span>
+        vector<span class="token operator">&lt;</span><span class="token keyword">int</span><span class="token operator">></span> <span class="token function">differ</span><span class="token punctuation">(</span>n <span class="token operator">+</span> <span class="token number">1</span><span class="token punctuation">,</span> <span class="token number">0</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token keyword">for</span><span class="token punctuation">(</span><span class="token keyword">auto</span> p <span class="token operator">:</span> bookings<span class="token punctuation">)</span><span class="token punctuation">&#123;</span>
+            differ<span class="token punctuation">[</span>p<span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span><span class="token punctuation">]</span> <span class="token operator">+=</span> p<span class="token punctuation">[</span><span class="token number">2</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
+            <span class="token keyword">if</span><span class="token punctuation">(</span>p<span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">]</span><span class="token operator">+</span><span class="token number">1</span> <span class="token operator">&lt;</span> differ<span class="token punctuation">.</span><span class="token function">size</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
+                differ<span class="token punctuation">[</span>p<span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">]</span><span class="token operator">+</span><span class="token number">1</span><span class="token punctuation">]</span> <span class="token operator">-=</span> p<span class="token punctuation">[</span><span class="token number">2</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
+        <span class="token punctuation">&#125;</span>
+        <span class="token comment">// 从差分数组恢复出原数组</span>
+        vector<span class="token operator">&lt;</span><span class="token keyword">int</span><span class="token operator">></span> <span class="token function">ans</span><span class="token punctuation">(</span>n<span class="token punctuation">,</span> <span class="token number">0</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        ans<span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span> <span class="token operator">=</span> differ<span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
+        <span class="token keyword">for</span><span class="token punctuation">(</span><span class="token keyword">int</span> i <span class="token operator">=</span> <span class="token number">2</span><span class="token punctuation">;</span> i <span class="token operator">&lt;</span> differ<span class="token punctuation">.</span><span class="token function">size</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span> i<span class="token operator">++</span><span class="token punctuation">)</span><span class="token punctuation">&#123;</span>
+            ans<span class="token punctuation">[</span>i<span class="token operator">-</span><span class="token number">1</span><span class="token punctuation">]</span> <span class="token operator">=</span> ans<span class="token punctuation">[</span>i<span class="token operator">-</span><span class="token number">2</span><span class="token punctuation">]</span> <span class="token operator">+</span> differ<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">;</span> 
+        <span class="token punctuation">&#125;</span>
+        <span class="token keyword">return</span> ans<span class="token punctuation">;</span>
+    <span class="token punctuation">&#125;</span>
+<span class="token punctuation">&#125;</span><span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
                 
             </div>
             <hr/>
