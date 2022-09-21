@@ -365,7 +365,7 @@
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    930
+                    932
                 </div>
                 
 
@@ -411,7 +411,10 @@
     路径<span class="token punctuation">.</span>remove<span class="token punctuation">(</span>option<span class="token punctuation">)</span>
     将该选择重新加入选择列表<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <h5 id="T46-全排列"><a href="#T46-全排列" class="headerlink" title="T46 全排列"></a>T46 全排列</h5><p><img src="https://tuchuang-1307891532.cos.ap-nanjing.myqcloud.com/images/20220629092430.png" alt="全排列"></p>
-<h5 id="Solution"><a href="#Solution" class="headerlink" title="Solution"></a>Solution</h5><pre class="line-numbers language-cpp" data-language="cpp"><code class="language-cpp">
+<ul>
+<li>题解</li>
+</ul>
+<pre class="line-numbers language-cpp" data-language="cpp"><code class="language-cpp">
 <span class="token keyword">void</span> <span class="token function">backtrack</span><span class="token punctuation">(</span>vector<span class="token operator">&lt;</span><span class="token keyword">int</span><span class="token operator">></span> nums<span class="token punctuation">,</span> vector<span class="token operator">&lt;</span><span class="token keyword">int</span><span class="token operator">></span><span class="token operator">&amp;</span> temp<span class="token punctuation">,</span> vector<span class="token operator">&lt;</span>vector<span class="token operator">&lt;</span><span class="token keyword">int</span><span class="token operator">>></span><span class="token operator">&amp;</span> ans<span class="token punctuation">,</span> vector<span class="token operator">&lt;</span><span class="token keyword">bool</span><span class="token operator">></span><span class="token operator">&amp;</span> used<span class="token punctuation">)</span><span class="token punctuation">&#123;</span>
         <span class="token keyword">if</span><span class="token punctuation">(</span>temp<span class="token punctuation">.</span><span class="token function">size</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">==</span> nums<span class="token punctuation">.</span><span class="token function">size</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">&#123;</span>
             ans<span class="token punctuation">.</span><span class="token function">push_back</span><span class="token punctuation">(</span>temp<span class="token punctuation">)</span><span class="token punctuation">;</span>
@@ -435,7 +438,8 @@
     <span class="token punctuation">&#125;</span>
 <span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <h5 id="T39-组合总和"><a href="#T39-组合总和" class="headerlink" title="T39 组合总和"></a>T39 组合总和</h5><p><img src="https://tuchuang-1307891532.cos.ap-nanjing.myqcloud.com/images/20220629160803.png" alt="组合总和"></p>
-<h5 id="Solution-1"><a href="#Solution-1" class="headerlink" title="Solution"></a>Solution</h5><pre class="line-numbers language-cpp" data-language="cpp"><code class="language-cpp">
+<ul>
+<li>题解<pre class="line-numbers language-cpp" data-language="cpp"><code class="language-cpp">
 <span class="token keyword">void</span> <span class="token function">backtrack</span><span class="token punctuation">(</span>vector<span class="token operator">&lt;</span><span class="token keyword">int</span><span class="token operator">></span> nums<span class="token punctuation">,</span> vector<span class="token operator">&lt;</span><span class="token keyword">int</span><span class="token operator">></span><span class="token operator">&amp;</span> temp<span class="token punctuation">,</span> vector<span class="token operator">&lt;</span>vector<span class="token operator">&lt;</span><span class="token keyword">int</span><span class="token operator">>></span><span class="token operator">&amp;</span> ans<span class="token punctuation">,</span> <span class="token keyword">int</span> target<span class="token punctuation">,</span> <span class="token keyword">int</span> startIndex<span class="token punctuation">)</span><span class="token punctuation">&#123;</span>
         <span class="token keyword">if</span><span class="token punctuation">(</span>target <span class="token operator">==</span> <span class="token number">0</span><span class="token punctuation">)</span><span class="token punctuation">&#123;</span>
             ans<span class="token punctuation">.</span><span class="token function">push_back</span><span class="token punctuation">(</span>temp<span class="token punctuation">)</span><span class="token punctuation">;</span>
@@ -460,8 +464,7 @@
         <span class="token keyword">return</span> ans<span class="token punctuation">;</span>
     <span class="token punctuation">&#125;</span>
 <span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-<h5 id="T40-组合总和2"><a href="#T40-组合总和2" class="headerlink" title="T40 组合总和2"></a>T40 组合总和2</h5><p><img src="https://tuchuang-1307891532.cos.ap-nanjing.myqcloud.com/images/20220629154746.png" alt="组合总和2"></p>
-<h5 id="Solution-2"><a href="#Solution-2" class="headerlink" title="Solution"></a>Solution</h5><h2 id=""><a href="#" class="headerlink" title=""></a><pre class="line-numbers language-cpp" data-language="cpp"><code class="language-cpp">
+<h5 id="T40-组合总和2"><a href="#T40-组合总和2" class="headerlink" title="T40 组合总和2"></a>T40 组合总和2</h5><img src="https://tuchuang-1307891532.cos.ap-nanjing.myqcloud.com/images/20220629154746.png" alt="组合总和2"><h5 id="Solution"><a href="#Solution" class="headerlink" title="Solution"></a>Solution</h5><pre class="line-numbers language-cpp" data-language="cpp"><code class="language-cpp">
 <span class="token keyword">void</span> <span class="token function">backtrack</span><span class="token punctuation">(</span>vector<span class="token operator">&lt;</span><span class="token keyword">int</span><span class="token operator">></span> nums<span class="token punctuation">,</span> vector<span class="token operator">&lt;</span><span class="token keyword">int</span><span class="token operator">></span><span class="token operator">&amp;</span> temp<span class="token punctuation">,</span> vector<span class="token operator">&lt;</span>vector<span class="token operator">&lt;</span><span class="token keyword">int</span><span class="token operator">>></span><span class="token operator">&amp;</span> ans<span class="token punctuation">,</span> vector<span class="token operator">&lt;</span><span class="token keyword">bool</span><span class="token operator">></span><span class="token operator">&amp;</span> used<span class="token punctuation">,</span> <span class="token keyword">int</span> target<span class="token punctuation">,</span> <span class="token keyword">int</span> startIndex<span class="token punctuation">)</span><span class="token punctuation">&#123;</span>
         <span class="token keyword">if</span><span class="token punctuation">(</span>target <span class="token operator">==</span> <span class="token number">0</span><span class="token punctuation">)</span><span class="token punctuation">&#123;</span>
             ans<span class="token punctuation">.</span><span class="token function">push_back</span><span class="token punctuation">(</span>temp<span class="token punctuation">)</span><span class="token punctuation">;</span>
@@ -494,9 +497,16 @@
         <span class="token function">backtrack</span><span class="token punctuation">(</span>candidates<span class="token punctuation">,</span> temp<span class="token punctuation">,</span> ans<span class="token punctuation">,</span> used<span class="token punctuation">,</span> target<span class="token punctuation">,</span> <span class="token number">0</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
         <span class="token keyword">return</span> ans<span class="token punctuation">;</span>
     <span class="token punctuation">&#125;</span>
-    <span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre></h2><p>9.20更新，最近又刷了一些回溯算法的题目，感觉难度还是比较大的。重点还是在于<strong>撤销选择</strong>和<strong>剪枝</strong>这两个操作上。<br>撤销选择是回溯算法的核心思想，所谓回溯就是撤销选择。<br>剪枝则是因为回溯算法本质上是dfs遍历，这样导致时间复杂度往往是极高的，就是暴力搜索，很多时候不能直接通过测试，因此使用剪枝来规避一些没有必要的遍历，从而降低时间复杂度。</p>
+    <span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+</li>
+</ul>
+<hr>
+<p>9.20更新，最近又刷了一些回溯算法的题目，感觉难度还是比较大的。重点还是在于<strong>撤销选择</strong>和<strong>剪枝</strong>这两个操作上。<br>撤销选择是回溯算法的核心思想，所谓回溯就是撤销选择。<br>剪枝则是因为回溯算法本质上是dfs遍历，这样导致时间复杂度往往是极高的，就是暴力搜索，很多时候不能直接通过测试，因此使用剪枝来规避一些没有必要的遍历，从而降低时间复杂度。</p>
 <h4 id="T698-划分为k个相等的子集"><a href="#T698-划分为k个相等的子集" class="headerlink" title="T698 划分为k个相等的子集"></a>T698 划分为k个相等的子集</h4><p><img src="https://tuchuang-1307891532.cos.ap-nanjing.myqcloud.com/images/20220920100545.png" alt="划分为k个相等的子集"></p>
-<h5 id="Solution-3"><a href="#Solution-3" class="headerlink" title="Solution"></a>Solution</h5><pre class="line-numbers language-cpp" data-language="cpp"><code class="language-cpp">
+<ul>
+<li>题解</li>
+</ul>
+<pre class="line-numbers language-cpp" data-language="cpp"><code class="language-cpp">
 <span class="token keyword">class</span> <span class="token class-name">Solution</span> <span class="token punctuation">&#123;</span>
 <span class="token keyword">public</span><span class="token operator">:</span>
     vector<span class="token operator">&lt;</span><span class="token keyword">int</span><span class="token operator">></span> bucket<span class="token punctuation">;</span>
