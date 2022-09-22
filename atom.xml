@@ -6,7 +6,7 @@
   <link href="http://dududu233.github.io/atom.xml" rel="self"/>
   
   <link href="http://dududu233.github.io/"/>
-  <updated>2022-09-21T07:20:20.857Z</updated>
+  <updated>2022-09-22T08:59:54.683Z</updated>
   <id>http://dududu233.github.io/</id>
   
   <author>
@@ -15,6 +15,32 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>剑指offer</title>
+    <link href="http://dududu233.github.io/2022/09/22/%E5%89%91%E6%8C%87offer/"/>
+    <id>http://dududu233.github.io/2022/09/22/%E5%89%91%E6%8C%87offer/</id>
+    <published>2022-09-22T06:40:09.000Z</published>
+    <updated>2022-09-22T08:59:54.683Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;p&gt;刷题到现在，稍微有了一点点手感，所以从今天开始，重点要刷一刷&lt;a href=&quot;https://leetcode.cn/problem-list/xb9nqhhg/&quot;&gt;剑指offer&lt;/a&gt;了。这里将记录在刷剑指offer的过程中，一些自己的题解。&lt;/p&gt;
+&lt;h4</summary>
+        
+      
+    
+    
+    
+    <category term="刷题赎罪" scheme="http://dududu233.github.io/categories/%E5%88%B7%E9%A2%98%E8%B5%8E%E7%BD%AA/"/>
+    
+    
+    <category term="leetcode" scheme="http://dududu233.github.io/tags/leetcode/"/>
+    
+  </entry>
   
   <entry>
     <title>很狂的人</title>
@@ -488,31 +514,6 @@
         
         
     <summary type="html">&lt;h4 id=&quot;第一件事&quot;&gt;&lt;a href=&quot;#第一件事&quot; class=&quot;headerlink&quot;</summary>
-        
-      
-    
-    
-    
-    <category term="日日谈" scheme="http://dududu233.github.io/categories/%E6%97%A5%E6%97%A5%E8%B0%88/"/>
-    
-    
-    <category term="normaldays" scheme="http://dududu233.github.io/tags/normaldays/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>机器学习与数据挖掘考试复习</title>
-    <link href="http://dududu233.github.io/2021/11/19/review-of-dmml/"/>
-    <id>http://dududu233.github.io/2021/11/19/review-of-dmml/</id>
-    <published>2021-11-19T12:17:43.000Z</published>
-    <updated>2022-07-12T12:36:32.343Z</updated>
-    
-    
-      
-      
-        
-        
-    <summary type="html">&lt;h2 id=&quot;引言之前&quot;&gt;&lt;a href=&quot;#引言之前&quot; class=&quot;headerlink&quot;</summary>
         
       
     
