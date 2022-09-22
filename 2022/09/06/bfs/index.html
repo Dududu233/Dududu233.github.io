@@ -419,7 +419,7 @@
 <span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <p>若bfs的对象为二叉树，仅有父节点指向子节点的指针而没有子节点指向父节点的指针时，不需要担心会走回头路的问题，可以不需要visited数组。若有子节点指向父节点的指针，则需要visited数组来记录已经访问过的节点，避免走回头路。</p>
 <h4 id="BFS的应用"><a href="#BFS的应用" class="headerlink" title="BFS的应用"></a>BFS的应用</h4><ul>
-<li><a target="_blank" rel="noopener" href="https://leetcode-cn.com/problems/minimum-depth-of-binary-tree/">leetcode 111. 二叉树的最小深度</a></li>
+<li><a target="_blank" rel="noopener" href="https://leetcode.cn/problems/minimum-depth-of-binary-tree/">leetcode 111. 二叉树的最小深度</a></li>
 </ul>
 <p><img src="https://tuchuang-1307891532.cos.ap-nanjing.myqcloud.com/images/20220906102003.png" alt="111. 二叉树的最小深度"></p>
 <p>题解：<br><pre class="line-numbers language-cpp" data-language="cpp"><code class="language-cpp"><span class="token keyword">class</span> <span class="token class-name">Solution</span> <span class="token punctuation">&#123;</span>
@@ -450,7 +450,7 @@
     <span class="token punctuation">&#125;</span>
 <span class="token punctuation">&#125;</span><span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre><br>这道题的题解完全套用上文的bfs框架，只需要设置合理的终止条件：当遍历到的节点的左右子节点都为空时，返回当前的步数。（同时由于你扣的优秀测例还需要考虑根节点为空的情况。。。）</p>
 <ul>
-<li><a target="_blank" rel="noopener" href="https://leetcode-cn.com/problems/open-the-lock/">leetcode 752. 打开转盘锁</a></li>
+<li><a target="_blank" rel="noopener" href="https://leetcode.cn/problems/open-the-lock/">leetcode 752. 打开转盘锁</a></li>
 </ul>
 <p><img src="https://tuchuang-1307891532.cos.ap-nanjing.myqcloud.com/images/20220906112215.png" alt="752. 打开转盘锁"></p>
 <p>题解：<br><pre class="line-numbers language-cpp" data-language="cpp"><code class="language-cpp"><span class="token keyword">class</span> <span class="token class-name">Solution</span> <span class="token punctuation">&#123;</span>

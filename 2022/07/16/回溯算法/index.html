@@ -365,7 +365,7 @@
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    932
+                    999
                 </div>
                 
 
@@ -395,13 +395,13 @@
 
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <h4 id="回溯算法"><a href="#回溯算法" class="headerlink" title="回溯算法"></a>回溯算法</h4><p>是一种类似于深搜的穷举类型的算法，回溯算法在遍历树的树枝，而深搜则是在遍历树的节点<br>在解决回溯算法时需要注意的几个问题是：</p>
+                <h5 id="回溯算法"><a href="#回溯算法" class="headerlink" title="回溯算法"></a>回溯算法</h5><p>是一种类似于深搜的穷举类型的算法，回溯算法在遍历树的树枝，而深搜则是在遍历树的节点<br>在解决回溯算法时需要注意的几个问题是：</p>
 <ul>
 <li>路径：即当前已做出的选择</li>
 <li>选择列表：即站在当前节点上，可以做出的选择</li>
 <li>结束条件： 即如何判断已经到达了树的底部，无法再做选择</li>
 </ul>
-<h6 id="核心代码"><a href="#核心代码" class="headerlink" title="核心代码"></a>核心代码</h6><p>主要的核心操作是在递归调用之前做出选择，将选择从选择列表中删除，在递归之后再撤销已做出的选择。</p>
+<h5 id="核心代码"><a href="#核心代码" class="headerlink" title="核心代码"></a>核心代码</h5><p>主要的核心操作是在递归调用之前做出选择，将选择从选择列表中删除，在递归之后再撤销已做出的选择。</p>
 <pre class="line-numbers language-python" data-language="python"><code class="language-python"><span class="token keyword">for</span> option <span class="token keyword">in</span> options<span class="token punctuation">:</span>
     <span class="token comment"># 做出选择</span>
     将该选择从选择列表中移除
@@ -410,7 +410,10 @@
     <span class="token comment"># 撤销选择</span>
     路径<span class="token punctuation">.</span>remove<span class="token punctuation">(</span>option<span class="token punctuation">)</span>
     将该选择重新加入选择列表<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-<h5 id="T46-全排列"><a href="#T46-全排列" class="headerlink" title="T46 全排列"></a>T46 全排列</h5><p><img src="https://tuchuang-1307891532.cos.ap-nanjing.myqcloud.com/images/20220629092430.png" alt="全排列"></p>
+<h5 id="回溯算法应用"><a href="#回溯算法应用" class="headerlink" title="回溯算法应用"></a>回溯算法应用</h5><ul>
+<li><a target="_blank" rel="noopener" href="https://leetcode.cn/problems/permutations/">T46 全排列</a></li>
+</ul>
+<p><img src="https://tuchuang-1307891532.cos.ap-nanjing.myqcloud.com/images/20220629092430.png" alt="全排列"></p>
 <ul>
 <li>题解</li>
 </ul>
@@ -437,7 +440,10 @@
         <span class="token keyword">return</span> ans<span class="token punctuation">;</span>    
     <span class="token punctuation">&#125;</span>
 <span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-<h5 id="T39-组合总和"><a href="#T39-组合总和" class="headerlink" title="T39 组合总和"></a>T39 组合总和</h5><p><img src="https://tuchuang-1307891532.cos.ap-nanjing.myqcloud.com/images/20220629160803.png" alt="组合总和"></p>
+<ul>
+<li><a target="_blank" rel="noopener" href="https://leetcode.cn/problems/combination-sum/">T39 组合总和</a></li>
+</ul>
+<p><img src="https://tuchuang-1307891532.cos.ap-nanjing.myqcloud.com/images/20220629160803.png" alt="组合总和"></p>
 <ul>
 <li>题解<pre class="line-numbers language-cpp" data-language="cpp"><code class="language-cpp">
 <span class="token keyword">void</span> <span class="token function">backtrack</span><span class="token punctuation">(</span>vector<span class="token operator">&lt;</span><span class="token keyword">int</span><span class="token operator">></span> nums<span class="token punctuation">,</span> vector<span class="token operator">&lt;</span><span class="token keyword">int</span><span class="token operator">></span><span class="token operator">&amp;</span> temp<span class="token punctuation">,</span> vector<span class="token operator">&lt;</span>vector<span class="token operator">&lt;</span><span class="token keyword">int</span><span class="token operator">>></span><span class="token operator">&amp;</span> ans<span class="token punctuation">,</span> <span class="token keyword">int</span> target<span class="token punctuation">,</span> <span class="token keyword">int</span> startIndex<span class="token punctuation">)</span><span class="token punctuation">&#123;</span>
@@ -463,8 +469,14 @@
         <span class="token function">backtrack</span><span class="token punctuation">(</span>candidates<span class="token punctuation">,</span> temp<span class="token punctuation">,</span> ans<span class="token punctuation">,</span> target<span class="token punctuation">,</span> <span class="token number">0</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
         <span class="token keyword">return</span> ans<span class="token punctuation">;</span>
     <span class="token punctuation">&#125;</span>
-<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-<h5 id="T40-组合总和2"><a href="#T40-组合总和2" class="headerlink" title="T40 组合总和2"></a>T40 组合总和2</h5><img src="https://tuchuang-1307891532.cos.ap-nanjing.myqcloud.com/images/20220629154746.png" alt="组合总和2"><h5 id="Solution"><a href="#Solution" class="headerlink" title="Solution"></a>Solution</h5><pre class="line-numbers language-cpp" data-language="cpp"><code class="language-cpp">
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre></li>
+<li><a target="_blank" rel="noopener" href="https://leetcode.cn/problems/combination-sum-ii/">T40 组合总和2</a></li>
+</ul>
+<p><img src="https://tuchuang-1307891532.cos.ap-nanjing.myqcloud.com/images/20220629154746.png" alt="组合总和2"></p>
+<ul>
+<li>题解</li>
+</ul>
+<pre class="line-numbers language-cpp" data-language="cpp"><code class="language-cpp">
 <span class="token keyword">void</span> <span class="token function">backtrack</span><span class="token punctuation">(</span>vector<span class="token operator">&lt;</span><span class="token keyword">int</span><span class="token operator">></span> nums<span class="token punctuation">,</span> vector<span class="token operator">&lt;</span><span class="token keyword">int</span><span class="token operator">></span><span class="token operator">&amp;</span> temp<span class="token punctuation">,</span> vector<span class="token operator">&lt;</span>vector<span class="token operator">&lt;</span><span class="token keyword">int</span><span class="token operator">>></span><span class="token operator">&amp;</span> ans<span class="token punctuation">,</span> vector<span class="token operator">&lt;</span><span class="token keyword">bool</span><span class="token operator">></span><span class="token operator">&amp;</span> used<span class="token punctuation">,</span> <span class="token keyword">int</span> target<span class="token punctuation">,</span> <span class="token keyword">int</span> startIndex<span class="token punctuation">)</span><span class="token punctuation">&#123;</span>
         <span class="token keyword">if</span><span class="token punctuation">(</span>target <span class="token operator">==</span> <span class="token number">0</span><span class="token punctuation">)</span><span class="token punctuation">&#123;</span>
             ans<span class="token punctuation">.</span><span class="token function">push_back</span><span class="token punctuation">(</span>temp<span class="token punctuation">)</span><span class="token punctuation">;</span>
@@ -498,11 +510,12 @@
         <span class="token keyword">return</span> ans<span class="token punctuation">;</span>
     <span class="token punctuation">&#125;</span>
     <span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-</li>
-</ul>
 <hr>
-<p>9.20更新，最近又刷了一些回溯算法的题目，感觉难度还是比较大的。重点还是在于<strong>撤销选择</strong>和<strong>剪枝</strong>这两个操作上。<br>撤销选择是回溯算法的核心思想，所谓回溯就是撤销选择。<br>剪枝则是因为回溯算法本质上是dfs遍历，这样导致时间复杂度往往是极高的，就是暴力搜索，很多时候不能直接通过测试，因此使用剪枝来规避一些没有必要的遍历，从而降低时间复杂度。</p>
-<h4 id="T698-划分为k个相等的子集"><a href="#T698-划分为k个相等的子集" class="headerlink" title="T698 划分为k个相等的子集"></a>T698 划分为k个相等的子集</h4><p><img src="https://tuchuang-1307891532.cos.ap-nanjing.myqcloud.com/images/20220920100545.png" alt="划分为k个相等的子集"></p>
+<p>9.20更新，最近又刷了一些回溯算法的题目，感觉难度还是比较大的。写一个回溯算法框架本身不是很难，但是困难的是要怎么用这种相对笨重的算法通过测例。重点还是在于<strong>撤销选择</strong>和<strong>剪枝</strong>这两个操作上。之后再做题的话会把这两个操作单独的注释出来。<br>撤销选择是回溯算法的核心思想，所谓回溯就是撤销选择。<br>剪枝则是因为回溯算法本质上是dfs遍历，这样导致时间复杂度往往是极高的，就是暴力搜索，很多时候不能直接通过测试，因此使用剪枝来规避一些没有必要的遍历，从而降低时间复杂度。</p>
+<ul>
+<li><a target="_blank" rel="noopener" href="https://leetcode.cn/problems/partition-to-k-equal-sum-subsets/">T698 划分为k个相等的子集</a></li>
+</ul>
+<p><img src="https://tuchuang-1307891532.cos.ap-nanjing.myqcloud.com/images/20220920100545.png" alt="划分为k个相等的子集"></p>
 <ul>
 <li>题解</li>
 </ul>
