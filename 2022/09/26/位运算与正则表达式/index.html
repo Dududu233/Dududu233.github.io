@@ -5,9 +5,8 @@
 <head>
     <!-- hexo-inject:begin --><!-- hexo-inject:end --><meta charset="utf-8">
     <meta name="keywords" content="位运算与正则表达式, 读读读233">
-    <meta name="description" content="位运算刷题时很常见的一种奇技淫巧就是位运算，用的好的话可以极大的降低算法的时间复杂度。这部分内容属于c++的基本语法，但是之前一直没有系统的进行学习，今天开一个坑，慢慢填。
-位运算是一种计算机对于二进制数据的运算。
-位运算的几种运算符位运算">
+    <meta name="description" content="位运算位运算是一种计算机对于二进制数据的运算。
+位运算的几种运算符位运算的几种运算符：下边写的很多二进制数处于方便都只写了一个字节，8位，因为大多数运算的举例都是按照正数举例的，所以对运算结果没什么影响，但实际上，int类型在c++中占四个">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <meta name="renderer" content="webkit|ie-stand|ie-comp">
@@ -363,7 +362,7 @@
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    1.5k
+                    2.3k
                 </div>
                 
 
@@ -393,13 +392,12 @@
 
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <h3 id="位运算"><a href="#位运算" class="headerlink" title="位运算"></a>位运算</h3><p>刷题时很常见的一种奇技淫巧就是位运算，用的好的话可以极大的降低算法的时间复杂度。这部分内容属于c++的基本语法，但是之前一直没有系统的进行学习，今天开一个坑，慢慢填。</p>
-<p>位运算是一种计算机对于二进制数据的运算。</p>
+                <h3 id="位运算"><a href="#位运算" class="headerlink" title="位运算"></a>位运算</h3><p>位运算是一种计算机对于二进制数据的运算。</p>
 <h4 id="位运算的几种运算符"><a href="#位运算的几种运算符" class="headerlink" title="位运算的几种运算符"></a>位运算的几种运算符</h4><p>位运算的几种运算符：下边写的很多二进制数处于方便都只写了一个字节，8位，因为大多数运算的举例都是按照正数举例的，所以对运算结果没什么影响，但实际上，int类型在c++中占四个字节，32位。</p>
 <ul>
 <li>$\And$:  与运算，当两位都为1时，运算的结果为1，否则为0。 例: $3 \And 5$，计算机在计算时先将其转化为二进制，即$0000 \; 0011 \And 0000 \; 0101$，与运算的结果就是二进制数对于每一位相与后的结果，即$0000 \; 0001$，转化为十进制就是$1$。</li>
 <li>| ：或运算，当两位同时为0时，结果为0，否则运算的结果为1。 同样的例子: $3 \; | \; 5$，还是先将十进制转换为二进制，在每一位上做或运算。最后得到的结果是$0000 \; 0111$，转化为十进制就是$7$。</li>
-<li>^：异或运算，当两位相同时，结果为0，否则结果为1。例: $3 \; \^{} \; 5$，转化为二进制后，异或运算的结果是$0000 \; 0110$，转化为十进制就是$6$。</li>
+<li>^：异或运算，当两位相同时，结果为0，否则结果为1。例: $3 \; $ ^ $ \; 5$，转化为二进制后，异或运算的结果是$0000 \; 0110$，转化为十进制就是$6$。</li>
 <li>~：取反运算，将二进制数的每一位取反。例: $~3$，转化为二进制后，取反运算的结果是$1111 \; 1100$，转化为十进制就是$-4$。</li>
 <li>‘&lt;&lt;’：左移，将二进位全部左移若干位，高位丢弃，低位补0。例: $3 \; &lt;&lt; \; 2$，转化为二进制后，左移两位的结果是$0000 \; 1100$，转化为十进制就是$12$。</li>
 <li>‘&gt;&gt;’: 右移，将二进位全部右移若干位，对无符号数，高位补0，有符号数，各编译器处理方法不一样，有的补符号位（算术右移），有的补0（逻辑右移）。例: $3 \; &gt;&gt; \; 2$，转化为二进制后，右移两位的结果是$0000 \; 0000$，转化为十进制就是$0$。而对于负数来说，就根据编译器的不同有所不同了，在c++中，右移是以补码形式参与运算，正数左右移、负数左移均以补 0 操作（符号位保持不变），负数右移以补 1 操作（符号位不变）。对于$-3 \; &gt;&gt; \; 2$，先取-3的补码，即$1111 \; 1111 \; 1111 \; 1111 \; 1111 \; 1111 \; 1111\; 1101$，算数右移两位直接在补码的前边补1，运算的的结果是$1111 \; 1111$(中间省略掉了很多组1)，由补码转换为原码，即$1000 \; 0001$，转化为十进制就是$-1$。逻辑补码则是在补码的前边补0，运算的结果是$0011 \; 1111$(中间同样省略掉了很多组1)，转化为十进制就是$1073741823$，就是2。<pre class="line-numbers language-cpp" data-language="cpp"><code class="language-cpp"><span class="token comment">/*在c++中，逻辑右移和算数右移公用一个运算符，>>，由编译器决定使用逻辑右移还是算术右移，当运
@@ -433,7 +431,7 @@ out: 11111111111111111111111111111101
 */</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 </li>
 </ul>
-<h4 id="bit-xor，bit-or和bit-and"><a href="#bit-xor，bit-or和bit-and" class="headerlink" title="bit_xor，bit_or和bit_and"></a>bit_xor，bit_or和bit_and</h4><p>bit_xor，bit_or和bit_and是c++20的新特性，作用是对两个数组进行迭代的异或，或和与运算，并返回结果，与transform函数结合返回一个新的数组，新数组的每个元素是对应元素的异或，或和与运算结果。用法如下:</p>
+<h4 id="bit-xor，bit-or和bit-and"><a href="#bit-xor，bit-or和bit-and" class="headerlink" title="bit_xor，bit_or和bit_and"></a>bit_xor，bit_or和bit_and</h4><p><code>bit_xor</code>，<code>bit_or</code>和<code>bit_and</code>是c++20的新特性，作用是对两个数组进行迭代的异或，或和与运算，并返回结果，与<code>transform</code>函数结合返回一个新的数组，新数组的每个元素是对应元素的异或，或和与运算结果。用法如下:</p>
 <pre class="line-numbers language-cpp" data-language="cpp"><code class="language-cpp"><span class="token macro property"><span class="token directive-hash">#</span> <span class="token directive keyword">include</span> <span class="token string">&lt;iostream></span></span>
 <span class="token macro property"><span class="token directive-hash">#</span> <span class="token directive keyword">include</span> <span class="token string">&lt;vector></span></span>
 <span class="token macro property"><span class="token directive-hash">#</span> <span class="token directive keyword">include</span> <span class="token string">&lt;algorithm></span></span>
@@ -455,7 +453,7 @@ out: 11111111111111111111111111111101
     <span class="token keyword">return</span> <span class="token number">0</span><span class="token punctuation">;</span>
 <span class="token punctuation">&#125;</span>
 <span class="token comment">/* out: 0 1 0 0 0 */</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-<p>bit_and和bit_or的用法相同：</p>
+<p><code>bit_and</code>和<code>bit_or</code>的用法相同：</p>
 <pre class="line-numbers language-cpp" data-language="cpp"><code class="language-cpp"><span class="token macro property"><span class="token directive-hash">#</span> <span class="token directive keyword">include</span> <span class="token string">&lt;iostream></span></span>
 <span class="token macro property"><span class="token directive-hash">#</span> <span class="token directive keyword">include</span> <span class="token string">&lt;vector></span></span>
 <span class="token macro property"><span class="token directive-hash">#</span> <span class="token directive keyword">include</span> <span class="token string">&lt;algorithm></span></span>
@@ -477,7 +475,7 @@ out: 11111111111111111111111111111101
     <span class="token keyword">return</span> <span class="token number">0</span><span class="token punctuation">;</span>
 <span class="token punctuation">&#125;</span>
 <span class="token comment">/* out: 1 0 3 4 5 */</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-<p>bit_xor同样也可以与accumulate函数结合，统计数组中出现次数为奇数次的元素，用法如下:</p>
+<p><code>bit_xor</code>同样也可以与<code>accumulate</code>函数结合，统计数组中出现次数为奇数次的元素，用法如下:</p>
 <pre class="line-numbers language-cpp" data-language="cpp"><code class="language-cpp"><span class="token macro property"><span class="token directive-hash">#</span> <span class="token directive keyword">include</span> <span class="token string">&lt;iostream></span></span>
 <span class="token macro property"><span class="token directive-hash">#</span> <span class="token directive keyword">include</span> <span class="token string">&lt;vector></span></span>
 <span class="token macro property"><span class="token directive-hash">#</span> <span class="token directive keyword">include</span> <span class="token string">&lt;algorithm></span></span>
@@ -544,7 +542,63 @@ out: 11111111111111111111111111111101
     <span class="token punctuation">&#125;</span>
 <span class="token punctuation">&#125;</span><span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <p>这样，时间复杂度为$O(n)$，而且不用使用额外的空间。</p>
-<h3 id="正则表达式"><a href="#正则表达式" class="headerlink" title="正则表达式"></a>正则表达式</h3>
+<h3 id="正则表达式"><a href="#正则表达式" class="headerlink" title="正则表达式"></a>正则表达式</h3><p>正则表达式是另一种奇技淫巧，用来检查一个串中是否含有某种子串，将匹配的子串替换或从某个串中取出符合要求的子串。</p>
+<h4 id="怎么去写一个正则表达式"><a href="#怎么去写一个正则表达式" class="headerlink" title="怎么去写一个正则表达式"></a>怎么去写一个正则表达式</h4><h5 id="基本语法："><a href="#基本语法：" class="headerlink" title="基本语法："></a>基本语法：</h5><ol>
+<li><code>[ABC]</code> 表示匹配<code>[ABC]</code>中的所有字符。</li>
+<li><code>[^ABC]</code> 表示匹配除了<code>[ABC]</code>之外的所有字符。</li>
+<li><code>[A-Z]</code> 表示匹配一个区间，匹配所有的大写字母。</li>
+<li><code>.</code> 表示匹配除了换行符之外的所有字符。</li>
+<li><code>[\s\S]</code> 表示匹配所有的字符。其中，<code>[\s]</code>表示匹配所有空白符，包括换行，<code>[\S]</code>表示匹配所有非空白符，不包括换行。</li>
+<li><code>[\w]</code> 表示匹配所有的字母，数字和下划线。</li>
+</ol>
+<h5 id="特殊字符"><a href="#特殊字符" class="headerlink" title="特殊字符"></a>特殊字符</h5><ol>
+<li><code>*</code>表示匹配前面的字符0次或多次。</li>
+<li><code>+</code>表示匹配前面的字符1次或多次。</li>
+<li><code>?</code>表示匹配前边的字符0次或1次。</li>
+<li><code>|</code>指明两项之间的一个选择，例如<code>a|b</code>表示匹配a或b。</li>
+<li><code>$</code>表示匹配输入字符串的结尾位置。</li>
+<li><code>()</code>表示一个子表达式的开始和结束位置。</li>
+<li><code>\</code> 转义字符，在表示特殊字符时统统要使用转义字符加以修饰。</li>
+</ol>
+<h5 id="量词"><a href="#量词" class="headerlink" title="量词"></a>量词</h5><ol>
+<li><code>*</code>表示匹配前面的字符0次或多次。</li>
+<li><code>+</code>表示匹配前面的字符1次或多次。</li>
+<li><code>?</code>表示匹配前边的字符0次或1次。</li>
+<li><code>&#123;n&#125;</code>表示匹配前面的字符n次。</li>
+<li><code>&#123;n,&#125;</code>表示匹配前面的字符至少n次。</li>
+<li><code>&#123;n,m&#125;</code>表示匹配前面的字符至少n次，至多m次。</li>
+</ol>
+<h4 id="正则表达式在python的基本用法"><a href="#正则表达式在python的基本用法" class="headerlink" title="正则表达式在python的基本用法"></a>正则表达式在python的基本用法</h4><p>python中提供了使用正则表达式的re模块。</p>
+<ul>
+<li><code>re.match()</code>函数：尝试从字符串的起始位置匹配一个模式，如果不是起始位置匹配成功的话，match()就返回none。若匹配成功，返回模式所占的区间。<pre class="line-numbers language-python" data-language="python"><code class="language-python">re<span class="token punctuation">.</span>match<span class="token punctuation">(</span>pattern<span class="token punctuation">,</span> string<span class="token punctuation">,</span> flags <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">)</span>
+<span class="token comment"># pattern: 匹配的正则表达式</span>
+<span class="token comment"># string: 要匹配的字符串</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre></li>
+<li><code>re.search()</code>函数：扫描整个字符串并返回第一个成功的匹配。<pre class="line-numbers language-python" data-language="python"><code class="language-python">re<span class="token punctuation">.</span>search<span class="token punctuation">(</span>pattern<span class="token punctuation">,</span> string<span class="token punctuation">,</span> flags <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">)</span>
+<span class="token comment"># pattern: 匹配的正则表达式</span>
+<span class="token comment"># string: 要匹配的字符串</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre></li>
+<li><code>re.sub()</code>函数：替换字符串中的匹配项。<pre class="line-numbers language-python" data-language="python"><code class="language-python">re<span class="token punctuation">.</span>sub<span class="token punctuation">(</span>pattern<span class="token punctuation">,</span> repl<span class="token punctuation">,</span> string<span class="token punctuation">,</span> count <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">,</span> flags <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">)</span>
+<span class="token comment"># repl: 替换的字符串</span>
+<span class="token comment"># count: 模式匹配后的最大替换次数，默认0表示替换所有的匹配</span>
+<span class="token comment"># 返回替换后的字符串</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre></li>
+<li><p><code>re.compile()</code>函数：用于编译正则表达式生成一个正则表达式的对象，供match()和search()这两个函数使用。</p>
+<pre class="line-numbers language-python" data-language="python"><code class="language-python">re<span class="token punctuation">.</span><span class="token builtin">compile</span><span class="token punctuation">(</span>pattern<span class="token punctuation">,</span> flags <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">)</span>
+<span class="token comment"># pattern: 正则表达式的字符串或原生字符串表示</span>
+<span class="token comment"># flags: 可选，表示匹配模式</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
+</li>
+<li><p>上文所述的<code>flags</code>的具体参数如下：</p>
+<ol>
+<li><code>re.I</code> 忽略大小写</li>
+<li><code>re.M</code> 多行模式</li>
+<li><code>re.S</code> 即为<code>.</code>并且包括换行符在内的任意字符（<code>.</code>不包括换行符）</li>
+<li><code>re.L</code> 表示特殊字符集 <code>\w, \W, \b, \B, \s, \S</code> 依赖于当前环境</li>
+<li><code>re.U</code> 表示特殊字符集 <code>\w, \W, \b, \B, \d, \D, \s, \S</code> 依赖于Unicode字符属性数据库</li>
+<li><code>re.X</code> 为了增加可读性，忽略空格和<code>#</code>后面的注释</li>
+</ol>
+</li>
+</ul>
+<hr>
+<p>突然发现正则表达式这个坑比我想象的要大上不少，先干活，接下来有时间再慢慢看。</p>
+
                 
             </div>
             <hr/>
