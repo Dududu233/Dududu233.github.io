@@ -21,15 +21,6 @@
     <title>位运算与正则表达式 | 读读读233</title>
     <link rel="icon" type="image/png" href="https://tuchuang-1307891532.cos.ap-nanjing.myqcloud.com/source/favicon.png">
     
-    <style>
-        body{
-            background-image: url(https://tuchuang-1307891532.cos.ap-nanjing.myqcloud.com/cover/15.jpg);
-            background-repeat:no-repeat;
-            background-size: 100% 100%;
-            background-attachment:fixed;
-        }
-    </style>
-
 
 
     <!-- bg-cover style     -->
@@ -221,75 +212,12 @@
         </li>
         
         
-        <li><div class="divider"></div></li>
-        <li>
-            <a href="https://github.com/blinkfox/hexo-theme-matery" class="waves-effect waves-light" target="_blank">
-                <i class="fab fa-github-square fa-fw"></i>Fork Me
-            </a>
-        </li>
-        
     </ul>
 </div>
 
 
         </div>
 
-        
-            <style>
-    .nav-transparent .github-corner {
-        display: none !important;
-    }
-
-    .github-corner {
-        position: absolute;
-        z-index: 10;
-        top: 0;
-        right: 0;
-        border: 0;
-        transform: scale(1.1);
-    }
-
-    .github-corner svg {
-        color: #0f9d58;
-        fill: #fff;
-        height: 64px;
-        width: 64px;
-    }
-
-    .github-corner:hover .octo-arm {
-        animation: a 0.56s ease-in-out;
-    }
-
-    .github-corner .octo-arm {
-        animation: none;
-    }
-
-    @keyframes a {
-        0%,
-        to {
-            transform: rotate(0);
-        }
-        20%,
-        60% {
-            transform: rotate(-25deg);
-        }
-        40%,
-        80% {
-            transform: rotate(10deg);
-        }
-    }
-</style>
-
-<a href="https://github.com/blinkfox/hexo-theme-matery" class="github-corner tooltipped hide-on-med-and-down" target="_blank"
-   data-tooltip="Fork Me" data-position="left" data-delay="50">
-    <svg viewBox="0 0 250 250" aria-hidden="true">
-        <path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"></path>
-        <path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2"
-              fill="currentColor" style="transform-origin: 130px 106px;" class="octo-arm"></path>
-        <path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z"
-              fill="currentColor" class="octo-body"></path>
-    </svg>
-</a>
         
     </nav>
 
@@ -358,11 +286,16 @@
                 
 
                 
+                <div class="post-date info-break-policy">
+                    <i class="far fa-calendar-check fa-fw"></i>更新日期:&nbsp;&nbsp;
+                    2022-10-18
+                </div>
+                
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    2.3k
+                    2.5k
                 </div>
                 
 
@@ -384,11 +317,6 @@
         
 
         
-        <!-- 代码块折行 -->
-        <style type="text/css">
-            code[class*="language-"], pre[class*="language-"] { white-space: pre-wrap !important; }
-        </style>
-        
 
         <div class="card-content article-card-content">
             <div id="articleContent">
@@ -400,7 +328,9 @@
 <li>^：异或运算，当两位相同时，结果为0，否则结果为1。例: $3 \; $ ^ $ \; 5$，转化为二进制后，异或运算的结果是$0000 \; 0110$，转化为十进制就是$6$。</li>
 <li>~：取反运算，将二进制数的每一位取反。例: $~3$，转化为二进制后，取反运算的结果是$1111 \; 1100$，转化为十进制就是$-4$。</li>
 <li>‘&lt;&lt;’：左移，将二进位全部左移若干位，高位丢弃，低位补0。例: $3 \; &lt;&lt; \; 2$，转化为二进制后，左移两位的结果是$0000 \; 1100$，转化为十进制就是$12$。</li>
-<li>‘&gt;&gt;’: 右移，将二进位全部右移若干位，对无符号数，高位补0，有符号数，各编译器处理方法不一样，有的补符号位（算术右移），有的补0（逻辑右移）。例: $3 \; &gt;&gt; \; 2$，转化为二进制后，右移两位的结果是$0000 \; 0000$，转化为十进制就是$0$。而对于负数来说，就根据编译器的不同有所不同了，在c++中，右移是以补码形式参与运算，正数左右移、负数左移均以补 0 操作（符号位保持不变），负数右移以补 1 操作（符号位不变）。对于$-3 \; &gt;&gt; \; 2$，先取-3的补码，即$1111 \; 1111 \; 1111 \; 1111 \; 1111 \; 1111 \; 1111\; 1101$，算数右移两位直接在补码的前边补1，运算的的结果是$1111 \; 1111$(中间省略掉了很多组1)，由补码转换为原码，即$1000 \; 0001$，转化为十进制就是$-1$。逻辑补码则是在补码的前边补0，运算的结果是$0011 \; 1111$(中间同样省略掉了很多组1)，转化为十进制就是$1073741823$，就是2。<pre class="line-numbers language-cpp" data-language="cpp"><code class="language-cpp"><span class="token comment">/*在c++中，逻辑右移和算数右移公用一个运算符，>>，由编译器决定使用逻辑右移还是算术右移，当运
+<li>‘&gt;&gt;’: 右移，将二进位全部右移若干位，对无符号数，高位补0，有符号数，各编译器处理方法不一样，有的补符号位（算术右移），有的补0（逻辑右移）。例: $3 \; &gt;&gt; \; 2$，转化为二进制后，右移两位的结果是$0000 \; 0000$，转化为十进制就是$0$。而对于负数来说，就根据编译器的不同有所不同了，在c++中，右移是以补码形式参与运算，正数左右移、负数左移均以补 0 操作（符号位保持不变），负数右移以补 1 操作（符号位不变）。对于$-3 \; &gt;&gt; \; 2$，先取-3的补码，即$1111 \; 1111 \; 1111 \; 1111 \; 1111 \; 1111 \; 1111\; 1101$，算数右移两位直接在补码的前边补1，运算的的结果是$1111 \; 1111$(中间省略掉了很多组1)，由补码转换为原码，即$1000 \; 0001$，转化为十进制就是$-1$。逻辑补码则是在补码的前边补0，运算的结果是$0011 \; 1111$(中间同样省略掉了很多组1)，转化为十进制就是$1073741823$，就是2。</li>
+</ul>
+<pre class="line-numbers language-cpp" data-language="cpp"><code class="language-cpp"><span class="token comment">/*在c++中，逻辑右移和算数右移公用一个运算符，>>，由编译器决定使用逻辑右移还是算术右移，当运
 算数的类型为unsigned时，使用逻辑右移，当运算数的类型为signed时，使用算数右移。*/</span>
 <span class="token macro property"><span class="token directive-hash">#</span> <span class="token directive keyword">include</span> <span class="token string">&lt;iostream></span></span>
 <span class="token macro property"><span class="token directive-hash">#</span> <span class="token directive keyword">include</span> <span class="token string">&lt;bitset></span></span>
@@ -429,8 +359,6 @@ out: 11111111111111111111111111111101
      1073741823
      -1 
 */</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-</li>
-</ul>
 <h4 id="bit-xor，bit-or和bit-and"><a href="#bit-xor，bit-or和bit-and" class="headerlink" title="bit_xor，bit_or和bit_and"></a>bit_xor，bit_or和bit_and</h4><p><code>bit_xor</code>，<code>bit_or</code>和<code>bit_and</code>是c++20的新特性，作用是对两个数组进行迭代的异或，或和与运算，并返回结果，与<code>transform</code>函数结合返回一个新的数组，新数组的每个元素是对应元素的异或，或和与运算结果。用法如下:</p>
 <pre class="line-numbers language-cpp" data-language="cpp"><code class="language-cpp"><span class="token macro property"><span class="token directive-hash">#</span> <span class="token directive keyword">include</span> <span class="token string">&lt;iostream></span></span>
 <span class="token macro property"><span class="token directive-hash">#</span> <span class="token directive keyword">include</span> <span class="token string">&lt;vector></span></span>
@@ -542,6 +470,21 @@ out: 11111111111111111111111111111101
     <span class="token punctuation">&#125;</span>
 <span class="token punctuation">&#125;</span><span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <p>这样，时间复杂度为$O(n)$，而且不用使用额外的空间。</p>
+<p>另一道可以使用位运算解决的题目是<a target="_blank" rel="noopener" href="https://leetcode.cn/problems/er-jin-zhi-zhong-1de-ge-shu-lcof/">二进制中1的个数</a>。</p>
+<p><img src="https://tuchuang-1307891532.cos.ap-nanjing.myqcloud.com/images/20221018093410.png" alt="二进制中1的个数"></p>
+<p>这道题我一眼看上去的话，思路就是把二进制数转化为字符串，然后遍历字符串去找到其中1的个数。但是，一个实际的问题是，<code>to_string()</code>存入字符串的是十进制的数字。而这样做显然也不够优雅，背离了题目的本意。因此，考虑使用位运算的方法来解决。</p>
+<pre class="line-numbers language-cpp" data-language="cpp"><code class="language-cpp"><span class="token keyword">class</span> <span class="token class-name">Solution</span> <span class="token punctuation">&#123;</span>
+<span class="token keyword">public</span><span class="token operator">:</span>
+    <span class="token keyword">int</span> <span class="token function">hammingWeight</span><span class="token punctuation">(</span><span class="token keyword">uint32_t</span> n<span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+        <span class="token keyword">int</span> res <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span>
+        <span class="token keyword">while</span><span class="token punctuation">(</span>n <span class="token operator">!=</span> <span class="token number">0</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+            res<span class="token operator">++</span><span class="token punctuation">;</span>
+            n <span class="token operator">=</span> n <span class="token operator">&amp;</span> <span class="token punctuation">(</span>n <span class="token operator">-</span> <span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token punctuation">&#125;</span>
+        <span class="token keyword">return</span> res<span class="token punctuation">;</span>
+    <span class="token punctuation">&#125;</span>
+<span class="token punctuation">&#125;</span><span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p>这种做法是比较容易想到的做法，每次将n减1与n相与，都可以消去最右边的1，这样循环直至将n变为0，就可以得到1的个数。这种做法的时间复杂度是$O(1)$，因为最多循环32次。</p>
 <h3 id="正则表达式"><a href="#正则表达式" class="headerlink" title="正则表达式"></a>正则表达式</h3><p>正则表达式是另一种奇技淫巧，用来检查一个串中是否含有某种子串，将匹配的子串替换或从某个串中取出符合要求的子串。</p>
 <h4 id="怎么去写一个正则表达式"><a href="#怎么去写一个正则表达式" class="headerlink" title="怎么去写一个正则表达式"></a>怎么去写一个正则表达式</h4><h5 id="基本语法："><a href="#基本语法：" class="headerlink" title="基本语法："></a>基本语法：</h5><ol>
 <li><code>[ABC]</code> 表示匹配<code>[ABC]</code>中的所有字符。</li>
