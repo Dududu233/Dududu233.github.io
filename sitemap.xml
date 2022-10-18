@@ -227,6 +227,13 @@
 
   
   <url>
+    <loc>http://dududu233.github.io/tags/normaldays/</loc>
+    <lastmod>2022-10-18</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
     <loc>http://dududu233.github.io/tags/tech/</loc>
     <lastmod>2022-10-18</lastmod>
     <changefreq>weekly</changefreq>
@@ -240,17 +247,10 @@
     <priority>0.2</priority>
   </url>
   
-  <url>
-    <loc>http://dududu233.github.io/tags/normaldays/</loc>
-    <lastmod>2022-10-18</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
 
   
   <url>
-    <loc>http://dududu233.github.io/categories/%E6%97%A5%E5%B8%B8%E6%8A%80%E6%9C%AF/</loc>
+    <loc>http://dududu233.github.io/categories/%E6%97%A5%E6%97%A5%E8%B0%88/</loc>
     <lastmod>2022-10-18</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
@@ -271,7 +271,7 @@
   </url>
   
   <url>
-    <loc>http://dududu233.github.io/categories/%E6%97%A5%E6%97%A5%E8%B0%88/</loc>
+    <loc>http://dududu233.github.io/categories/%E6%97%A5%E5%B8%B8%E6%8A%80%E6%9C%AF/</loc>
     <lastmod>2022-10-18</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
