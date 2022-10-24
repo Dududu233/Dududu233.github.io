@@ -4,8 +4,9 @@
 
 <head>
     <!-- hexo-inject:begin --><!-- hexo-inject:end --><meta charset="utf-8">
-    <meta name="keywords" content="Gated PixelCNN小结, 读读读233">
-    <meta name="description" content="Gated PixelCNN论文中提出的模型结合了PixelRNN和PixelCNN的优点。主体结构还是PixelCNN，因为PixelCNN使用卷积运算，可以节省运算时间和运算资源。相比于PixelCNN，PixelRNN的优点是使用了门">
+    <meta name="keywords" content="3dvi, 读读读233">
+    <meta name="description" content="论文名：Normalization and de-noising of scHi-C data with BandNorm and scVI-3D
+introduction主要使用了两种方法，BandNorm和scVI-3D。分别解决了sc">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <meta name="renderer" content="webkit|ie-stand|ie-comp">
@@ -17,7 +18,7 @@
     <!-- Global site tag (gtag.js) - Google Analytics -->
 
 
-    <title>Gated PixelCNN小结 | 读读读233</title>
+    <title>3dvi | 读读读233</title>
     <link rel="icon" type="image/png" href="https://tuchuang-1307891532.cos.ap-nanjing.myqcloud.com/source/favicon.png">
     
 
@@ -226,12 +227,12 @@
 
 
 
-<div class="bg-cover pd-header post-cover" style="background-image: url('https://tuchuang-1307891532.cos.ap-nanjing.myqcloud.com/cover/0.jpg')">
+<div class="bg-cover pd-header post-cover" style="background-image: url('https://tuchuang-1307891532.cos.ap-nanjing.myqcloud.com/cover/20.jpg')">
     <div class="container" style="right: 0px;left: 0px;">
         <div class="row">
             <div class="col s12 m12 l12">
                 <div class="brand">
-                    <h1 class="description center-align post-title">Gated PixelCNN小结</h1>
+                    <h1 class="description center-align post-title">3dvi</h1>
                 </div>
             </div>
         </div>
@@ -280,7 +281,7 @@
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-minus fa-fw"></i>发布日期:&nbsp;&nbsp;
-                    2022-08-15
+                    2022-10-24
                 </div>
                 
 
@@ -294,7 +295,7 @@
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    918
+                    959
                 </div>
                 
 
@@ -319,31 +320,56 @@
 
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <h4 id="Gated-PixelCNN"><a href="#Gated-PixelCNN" class="headerlink" title="Gated PixelCNN"></a>Gated PixelCNN</h4><p>论文中提出的模型结合了PixelRNN和PixelCNN的优点。<br>主体结构还是PixelCNN，因为PixelCNN使用卷积运算，可以节省运算时间和运算资源。<br>相比于PixelCNN，PixelRNN的优点是使用了门控单元，且没有感受野盲区。分别针对这两点对PixelCNN进行了针对性的改进。</p>
-<h5 id="Gated-activation"><a href="#Gated-activation" class="headerlink" title="Gated activation"></a>Gated activation</h5><p>首先，使用门激活函数代替PixelCNN中的线性激活函数。有助于建模更加复杂的interactions。门激活函数的数学表达式如下所示：</p>
-<script type="math/tex; mode=display">y = \tanh (W_{k, f} * \mathrm {x} ) \odot \sigma(W_{k, g}* \mathrm {x})</script><p>式中的参数分别表示：<br>$\sigma$:sigmoid函数<br>$k$:卷积的层数<br>$\odot$:逐元素点乘<br>$*$:卷积操作<br>$W<em>{k, f},W</em>{k, g}$:第k层的卷积核</p>
-<h5 id="解决Blind-spot"><a href="#解决Blind-spot" class="headerlink" title="解决Blind spot"></a>解决Blind spot</h5><p><img src="https://tuchuang-1307891532.cos.ap-nanjing.myqcloud.com/images/20220815105923.png" alt="上图为original pixelcnn的感受野，随着卷积核的叠加，感受野盲区的范围也不断地扩大，下图为本文的解决方案，将masked conv filter分为vertical stack和horizontal stack，完美的解决了感受野盲区的问题"></p>
-<p>Gated PixelCNN的输入被分为了两个部分，一部分是vertical，一部分是horizontal。vertical包含了现在行之上的所有行，而horizontal包含了现在行之前的所有的像素点。<br>github上已经有了完整的<a target="_blank" rel="noopener" href="https://github.com/kkleidal/GatedPixelCNNPyTorch/blob/master/note-on-conv-masking.ipynb">验证代码</a>。<br>在每一层结束之后，都将这两个stack的输出结合起来。<br>两者的结合方式如图所示，使用简单的卷积。</p>
-<p><img src="https://tuchuang-1307891532.cos.ap-nanjing.myqcloud.com/images/20220815151441.png" alt="一个简单的Gated PixelCNN单元"></p>
-<p><img src="https://tuchuang-1307891532.cos.ap-nanjing.myqcloud.com/images/20220815152247.png" alt="堆叠起来的Gated PixelCNN模型，绿色为vertival部分，蓝色为horizontal部分"></p>
-<h5 id="Conditional-PixelCNN"><a href="#Conditional-PixelCNN" class="headerlink" title="Conditional PixelCNN"></a>Conditional PixelCNN</h5><p>Gated PixelCNN在给定一些先验条件的情况下也可以成为一个条件图片生成器。<br>原始版的PixelCNN建模的对象为：</p>
-<script type="math/tex; mode=display">P(X) = \prod_{i=1}^{n^2} p(x_i|x_1, x_2, ... ,x_{i-1})</script><p>在加入先验条件$h$之后，建模的对象变成了:</p>
-<script type="math/tex; mode=display">P(X) = \prod_{i=1}^{n^2} p(x_i|x_1, x_2, ... ,x_{i-1},h)</script><p>此时，Gated激活函数的表达式也需要变化：</p>
-<script type="math/tex; mode=display">y = \tanh (W_{k, f} * \mathrm {x} + V_{k,f} * \mathrm s) \odot \sigma(W_{k, g}* \mathrm {x} + V_{k,g} * \mathrm s)</script><p>式中：<br>$\mathrm{s}$: h在频域上的表示，$\mathrm{s} = m(\mathrm{h})$<br>$V_{k,f}$: $1\times 1$的卷积</p>
-<h4 id="PixelSnail"><a href="#PixelSnail" class="headerlink" title="PixelSnail"></a>PixelSnail</h4><p>为了保证网络的设计可以满足能够轻松的推断出序列的前部分的要求，可能有以下几种做法。</p>
+                <p>论文名：<a target="_blank" rel="noopener" href="https://link.springer.com/article/10.1186/s13059-022-02774-z">Normalization and de-noising of scHi-C data with BandNorm and scVI-3D</a></p>
+<h4 id="introduction"><a href="#introduction" class="headerlink" title="introduction"></a>introduction</h4><p>主要使用了两种方法，BandNorm和scVI-3D。分别解决了scHi-C数据的normalization和de-noising问题。我们关心的主要的还是scVI-3D模型。</p>
 <ul>
-<li>传统的RNN，LSTM和GRU</li>
-<li>因果卷积</li>
-<li>自注意力机制</li>
+<li>数据</li>
 </ul>
-<p>因果卷积可以在有限的上下文中提供高带宽的访问方式，attention机制可以在很大的上下文中应用causal attention，使网络学习到挑出聚集到的哪些信息，以及如何更好地表现这些信息。snail(simple neural attentive meta-learner)便是由两个卷积和attention交错而成。</p>
-<p>为了在二维的图片上保证卷积的因果性，只能使用masked convolution(最原始的pixelcnn的做法)或者shift-based convlution(上文中介绍的gated-pixelcnn中将masked conv kernel分块的做法)。</p>
-<p>但是，卷积操作只能提取到局部的信息，为了保证能够使用到全局的信息，必须进行卷积层的堆叠。在这个过程中，通常使用到的操作时dilated convolution和strided convolution，通过膨胀系数的选取实现感受野的指数级扩增。</p>
-<p>尽管使用了dilated convolution和strided convolution，但是边缘处的像素信息依然是受限的—由于每次卷积仅能提取到有限的上下文中的信息，这些信息往往要通过一系列的中继。</p>
-<p>大多数pixelCNN中都使用了raster scan的方式，即从左到右，再从上到下扫描。这样扫描大多数的上下文都被浪费在了距离要推断的点比较远的部分，比如说右上角的点。因此本文使用了zigzag ordering。</p>
-<p><img src="https://tuchuang-1307891532.cos.ap-nanjing.myqcloud.com/images/20220818173438.png" alt="两种不同的扫描顺序"></p>
-<p>但是，使用这种扫描的顺序会导致blind spot的出现，为了解决这个问题，提出了pixelSNAIL—使用了更大更灵活的感受野。</p>
-<p>pixelSNAIL的主要做法是引入attention模块。</p>
+<p>Hi-C的数据天生的具有一些bias和noise，比如systematic genomic distance bias，这些噪声由测序的实验引起，很难改进，给下游的分析任务带来很大的困扰。而single cell数据相对于集群细胞的数据而言，又天生的具有稀疏性和噪声。相对于其他的single cell数据，scHi-C数据由于使用了基因组的绝对坐标作为基本的研究单元，所以更加的稀疏。</p>
+<ul>
+<li>方法</li>
+</ul>
+<p><img src="https://tuchuang-1307891532.cos.ap-nanjing.myqcloud.com/images/20221023105951.png" alt="论文的fig 1"></p>
+<p>fig-1a介绍了bandnorm方法。在进行bandnorm之前，首先将接触矩阵拆分成band-specific cell 和 基因座矩阵（感觉意思就是把数据拆成每个细胞）。然后再每个细胞的每条染色体上分别进行bandnorm，将原始的接触系数$Y_{r}^{cv}$(r:基因座；v:Band，感觉意思就是bin后的接触矩阵的坐标；c:cell)。bandnorm的公式是：</p>
+<script type="math/tex; mode=display">C_{r}^{cv} = \frac{Y_{r}^{cv}}{L^{cv}}\alpha(v)</script><p>fig-1b介绍了scVI-3D模型。将$Y<em>{r}^{cv}$投射为隐层变量$z</em>{cv}$…说是让看后边的详细介绍，最关心的就是这一部分，但是这部分最语焉不详。</p>
+<p>fig-1c和fig-1d介绍了几种方法的对比，<code>CellScale</code>, <code>BandScale</code>, <code>BandNorm</code>, <code>scHiCluster</code>, <code>scHiC Topics</code>, <code>Higashi</code>, <code>CellScale+CNN</code>, <code>scVI-3D</code>。分别在<code>Ramani2017</code>, <code>Lee2019</code>, <code>Li2019</code>, <code>Kim2020</code>数据集上进行了测试。不是我们关心的部分。</p>
+<p>接下来直接跳到论文的第23页看他的<code>scVI-3D</code>模型。</p>
+<h4 id="scVI-3D模型"><a href="#scVI-3D模型" class="headerlink" title="scVI-3D模型"></a><code>scVI-3D</code>模型</h4><p><code>scVI-3D</code>模型将基因座之间的交互频率建模为从<a href="#jump">零膨胀负二项分布</a>(zero-inflated negative binomial distribution)中得到的采样，同时考虑library size和batch effect。</p>
+<p>整体上跟用于<code>scRNA-seq</code>的<code>scVI</code>差距不大，模型的本质是一个<code>VAE</code>模型。原始的<code>VAE</code>模型中认为变量服从高斯分布，使用神经网络学习$\mu和\sigma$。这里的<code>scVI</code>认为输入的数据服从的是零膨胀负二项分布，使用神经网络学习$\theta, r和p$。</p>
+<hr>
+<h4 id="零膨胀负二项分布"><a href="#零膨胀负二项分布" class="headerlink" title="零膨胀负二项分布"></a><span id = "jump">零膨胀负二项分布</span></h4><p>在介绍零膨胀负二项分布之前，首先介绍一下为什么要使用这样一个分布对交互频率进行建模。之前介绍过，single cell数据天然的具有很高的稀疏性，而且，由于测序数据事实上就是基因座之间的交互频率，这些数据的取值必然是非负整数。很自然的，我们就可以想到使用Poisson分布对<code>scHiC</code>数据进行建模。</p>
+<ul>
+<li>泊松分布<br>泊松分布的概率密度函数如下所示：<script type="math/tex; mode=display">f(k;\lambda) = P(X = k) = \frac{\lambda^{k}e^{-\lambda}}{k!}</script></li>
+</ul>
+<p>使用泊松分布描述<code>scHiC</code>数据的问题在于，对于一个泊松分布来说，他的期望和方差是相等的，即$E(X) = Var(X) = \lambda$。但是对于实际的单细胞数据而言，随着基因的表达水平的越高，其样本方差和样本均值的差就越大。即所谓的过度分散性。所以使用泊松分布是不合时宜的。参考scRNA-seq的一些<a target="_blank" rel="noopener" href="https://www.jianshu.com/p/aa948e1be21c">相关解释</a>。引入Gamma分布。</p>
+<ul>
+<li>Gamma分布<br>Gamma分布的概率密度函数如下所示：</li>
+</ul>
+<script type="math/tex; mode=display">f(x ; \alpha, \beta)=\frac{\beta^{\alpha} x^{\alpha-1} e^{-\beta x}}{\Gamma(\alpha)} \quad \text { for } x>0 \quad \alpha, \beta>0</script><p>Poisson分布的$\lambda$是不变的，但是，这样的Poisson分布不能满足我们的要求，因此，我们引入一个先验，即：</p>
+<script type="math/tex; mode=display">\lambda \sim \Gamma(r, \frac{1-p}{p})</script><p>不知道为什么要这样做，但是这时，问题可以描述为：</p>
+<script type="math/tex; mode=display">X \sim Poisson(\lambda) \\
+\lambda \sim \Gamma(r, \frac{1-p}{p}) \quad r>0,0<p<1</script><ul>
+<li>负二项分布<br>这时，可以证明X服从负二项分布(negative binomial distribution)。<script type="math/tex; mode=display">
+\begin{aligned}
+P(X=x) &=\int_{0}^{\infty} P(x \mid \lambda) P(\lambda) d \lambda \\
+&=\int_{0}^{\infty} \frac{\lambda^{x} e^{-\lambda}}{x !} \frac{\left(\frac{1-p}{P}\right)^{r}}{\Gamma(r)} \lambda^{r-1} e^{-\frac{\lambda(1-p)}{p}} d \lambda \\
+&=\frac{\left(\frac{1-p}{p}\right)^{r}}{x ! \Gamma(r)} \int_{0}^{\infty} \lambda^{x+r-1} e^{-\frac{\lambda}{p}} d \lambda \\
+&=\frac{\left(\frac{1-p}{p}\right)^{r}}{x ! \Gamma(r)}(p)^{x+r} \Gamma(x+r) \\
+&=\frac{\Gamma(x+r)}{\Gamma(r) x !}(1-p)^{r} p^{x} \\
+&=\frac{(x+r-1) !}{(r-1) ! x !} p^{x}(1-p)^{r} \\
+&=N B(r, p)
+\end{aligned}</script></li>
+</ul>
+<p>这样的分布其实已经可以满足<code>scHiC</code>数据的离散特性和过度分散性。但是，实际的<code>scHiC</code>数据还具有稀疏性，因此在NB的基础上，进一步的发展出ZINB，即零膨胀负二项分布。</p>
+<ul>
+<li>零膨胀负二项分布<br>定义一个示性函数$I_0(x)$:<script type="math/tex; mode=display">I_0(x) = \left\{
+\begin{aligned}
+1 & & x = 0 \\
+0 & & x = 1 
+\end{aligned}
+\right.</script>零膨胀负二项分布的概率密度函数为：<script type="math/tex; mode=display">f_{Z I N B}(m \mid \theta, r, p)=\theta \cdot I_{0}(m)+(1-\theta) \cdot f_{N B}(m \mid r, p)</script></li>
+</ul>
+<p>式中，$\theta$可以认为是真实的基因表达值被观测为0的概率。<br>reference:<br><a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/95299303">单细胞RNA-seq数据分布的选择</a><br><a target="_blank" rel="noopener" href="https://blog.csdn.net/goodljq/article/details/117118810">单细胞数据分析工具scvi介绍</a></p>
 
                 
             </div>
@@ -370,7 +396,7 @@
                     </i>
                 </span>
                 <span class="reprint-info">
-                    <a href="http://Dududu233.github.io/2022/08/15/Gated-PixelCNN%E5%B0%8F%E7%BB%93/">http://Dududu233.github.io/2022/08/15/Gated-PixelCNN%E5%B0%8F%E7%BB%93/</a>
+                    <a href="http://Dududu233.github.io/2022/10/24/3dvi/">http://Dududu233.github.io/2022/10/24/3dvi/</a>
                 </span>
             </div>
             <div class="reprint__notice">
@@ -729,17 +755,18 @@
 <article id="prenext-posts" class="prev-next articles">
     <div class="row article-row">
         
-        <div class="article col s12 m6" data-aos="fade-up">
+        <div class="article col s12 m6" data-aos="fade-up" data-aos="fade-up">
             <div class="article-badge left-badge text-color">
-                <i class="fas fa-chevron-left"></i>&nbsp;上一篇</div>
+                <i class="far fa-dot-circle"></i>&nbsp;本篇
+            </div>
             <div class="card">
-                <a href="/2022/08/17/%E5%89%8D%E7%BC%80%E5%92%8C%E4%B8%8E%E5%B7%AE%E5%88%86%E6%95%B0%E7%BB%84/">
+                <a href="/2022/10/24/3dvi/">
                     <div class="card-image">
                         
                         
-                        <img src="https://tuchuang-1307891532.cos.ap-nanjing.myqcloud.com/cover/9.jpg" class="responsive-img" alt="前缀和与差分数组">
+                        <img src="https://tuchuang-1307891532.cos.ap-nanjing.myqcloud.com/cover/20.jpg" class="responsive-img" alt="3dvi">
                         
-                        <span class="card-title">前缀和与差分数组</span>
+                        <span class="card-title">3dvi</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
@@ -749,26 +776,27 @@
                         
                     </div>
                     <div class="publish-info">
-                        <span class="publish-date">
-                            <i class="far fa-clock fa-fw icon-date"></i>2022-08-17
-                        </span>
+                            <span class="publish-date">
+                                <i class="far fa-clock fa-fw icon-date"></i>2022-10-24
+                            </span>
                         <span class="publish-author">
                             
                             <i class="fas fa-bookmark fa-fw icon-category"></i>
                             
-                            <a href="/categories/%E5%88%B7%E9%A2%98%E8%B5%8E%E7%BD%AA/" class="post-category">
-                                    刷题赎罪
+                            <a href="/categories/%E8%AE%BA%E6%96%87%E6%80%BB%E7%BB%93/" class="post-category">
+                                    论文总结
                                 </a>
                             
                             
                         </span>
                     </div>
                 </div>
+
                 
                 <div class="card-action article-tags">
                     
-                    <a href="/tags/leetcode/">
-                        <span class="chip bg-color">leetcode</span>
+                    <a href="/tags/tech/">
+                        <span class="chip bg-color">tech</span>
                     </a>
                     
                 </div>
@@ -782,13 +810,13 @@
                 下一篇&nbsp;<i class="fas fa-chevron-right"></i>
             </div>
             <div class="card">
-                <a href="/2022/08/06/%E6%97%A0%E9%A2%98%E7%9A%84%E4%BF%A1/">
+                <a href="/2022/10/13/%E4%B8%80%E5%B9%B4%E5%95%A6/">
                     <div class="card-image">
                         
                         
-                        <img src="https://tuchuang-1307891532.cos.ap-nanjing.myqcloud.com/cover/13.jpg" class="responsive-img" alt="无题的信">
+                        <img src="https://tuchuang-1307891532.cos.ap-nanjing.myqcloud.com/cover/10.jpg" class="responsive-img" alt="一年啦">
                         
-                        <span class="card-title">无题的信</span>
+                        <span class="card-title">一年啦</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
@@ -799,7 +827,7 @@
                     </div>
                     <div class="publish-info">
                             <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2022-08-06
+                                <i class="far fa-clock fa-fw icon-date"></i>2022-10-13
                             </span>
                         <span class="publish-author">
                             
