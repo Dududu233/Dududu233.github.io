@@ -95,17 +95,6 @@
   
   <li class="hide-on-med-and-down nav-item">
     
-    <a href="/categories" class="waves-effect waves-light">
-      
-      <i class="fas fa-bookmark" style="zoom: 0.6;"></i>
-      
-      <span>分类</span>
-    </a>
-    
-  </li>
-  
-  <li class="hide-on-med-and-down nav-item">
-    
     <a href="/archives" class="waves-effect waves-light">
       
       <i class="fas fa-archive" style="zoom: 0.6;"></i>
@@ -122,6 +111,28 @@
       <i class="fas fa-user-circle" style="zoom: 0.6;"></i>
       
       <span>关于</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/links" class="waves-effect waves-light">
+      
+      <i class="fas fa-link" style="zoom: 0.6;"></i>
+      
+      <span>链接</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/comments" class="waves-effect waves-light">
+      
+      <i class="fas fa-comments" style="zoom: 0.6;"></i>
+      
+      <span>留言板</span>
     </a>
     
   </li>
@@ -179,17 +190,6 @@
         
         <li class="m-nav-item">
 	  
-		<a href="/categories" class="waves-effect waves-light">
-			
-			    <i class="fa-fw fas fa-bookmark"></i>
-			
-			分类
-		</a>
-          
-        </li>
-        
-        <li class="m-nav-item">
-	  
 		<a href="/archives" class="waves-effect waves-light">
 			
 			    <i class="fa-fw fas fa-archive"></i>
@@ -206,6 +206,28 @@
 			    <i class="fa-fw fas fa-user-circle"></i>
 			
 			关于
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/links" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-link"></i>
+			
+			链接
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/comments" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-comments"></i>
+			
+			留言板
 		</a>
           
         </li>
@@ -294,7 +316,7 @@
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    918
+                    925
                 </div>
                 
 
@@ -321,7 +343,13 @@
             <div id="articleContent">
                 <h4 id="Gated-PixelCNN"><a href="#Gated-PixelCNN" class="headerlink" title="Gated PixelCNN"></a>Gated PixelCNN</h4><p>论文中提出的模型结合了PixelRNN和PixelCNN的优点。<br>主体结构还是PixelCNN，因为PixelCNN使用卷积运算，可以节省运算时间和运算资源。<br>相比于PixelCNN，PixelRNN的优点是使用了门控单元，且没有感受野盲区。分别针对这两点对PixelCNN进行了针对性的改进。</p>
 <h5 id="Gated-activation"><a href="#Gated-activation" class="headerlink" title="Gated activation"></a>Gated activation</h5><p>首先，使用门激活函数代替PixelCNN中的线性激活函数。有助于建模更加复杂的interactions。门激活函数的数学表达式如下所示：</p>
-<script type="math/tex; mode=display">y = \tanh (W_{k, f} * \mathrm {x} ) \odot \sigma(W_{k, g}* \mathrm {x})</script><p>式中的参数分别表示：<br>$\sigma$:sigmoid函数<br>$k$:卷积的层数<br>$\odot$:逐元素点乘<br>$*$:卷积操作<br>$W<em>{k, f},W</em>{k, g}$:第k层的卷积核</p>
+<script type="math/tex; mode=display">y = \tanh (W_{k, f} * \mathrm {x} ) \odot \sigma(W_{k, g}* \mathrm {x})</script><p>式中的参数分别表示：</p>
+<p>$\sigma$:sigmoid函数</p>
+<p>$k$:卷积的层数</p>
+<p>$\odot$:逐元素点乘</p>
+<p>*:卷积操作</p>
+<p>$W_{k, f}$:第k层的卷积核</p>
+<p>$W_{k, g}$:第k层的卷积核</p>
 <h5 id="解决Blind-spot"><a href="#解决Blind-spot" class="headerlink" title="解决Blind spot"></a>解决Blind spot</h5><p><img src="https://tuchuang-1307891532.cos.ap-nanjing.myqcloud.com/images/20220815105923.png" alt="上图为original pixelcnn的感受野，随着卷积核的叠加，感受野盲区的范围也不断地扩大，下图为本文的解决方案，将masked conv filter分为vertical stack和horizontal stack，完美的解决了感受野盲区的问题"></p>
 <p>Gated PixelCNN的输入被分为了两个部分，一部分是vertical，一部分是horizontal。vertical包含了现在行之上的所有行，而horizontal包含了现在行之前的所有的像素点。<br>github上已经有了完整的<a target="_blank" rel="noopener" href="https://github.com/kkleidal/GatedPixelCNNPyTorch/blob/master/note-on-conv-masking.ipynb">验证代码</a>。<br>在每一层结束之后，都将这两个stack的输出结合起来。<br>两者的结合方式如图所示，使用简单的卷积。</p>
 <p><img src="https://tuchuang-1307891532.cos.ap-nanjing.myqcloud.com/images/20220815151441.png" alt="一个简单的Gated PixelCNN单元"></p>
@@ -1112,6 +1140,18 @@
 
 
 
+    <a href="https://t.me/dududu996" class="tooltipped" target="_blank" data-tooltip="通过telegram联系我" data-position="top" data-delay="50">
+        <i class="fab fa-telegram"></i>
+    </a>
+
+
+
+    <a href="https://weixin.qq.com/" class="tooltipped" target="_blank" data-tooltip="通过微信联系我: ly860514292" data-position="top" data-delay="50">
+        <i class="fab fa-weixin"></i>
+    </a>
+
+
+
 
 
     <a href="tencent://AddContact/?fromId=50&fromSubId=1&subcmd=all&uin=860514292" class="tooltipped" target="_blank" data-tooltip="QQ联系我: 860514292" data-position="top" data-delay="50">
@@ -1119,10 +1159,6 @@
     </a>
 
 
-
-    <a href="https://weibo.com/u/6067922378" class="tooltipped" target="_blank" data-tooltip="关注我的微博: https://weibo.com/u/6067922378" data-position="top" data-delay="50">
-        <i class="fab fa-weibo"></i>
-    </a>
 
 
 
