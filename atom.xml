@@ -6,7 +6,7 @@
   <link href="http://dududu233.github.io/atom.xml" rel="self"/>
   
   <link href="http://dududu233.github.io/"/>
-  <updated>2022-10-24T09:01:21.297Z</updated>
+  <updated>2022-10-31T08:38:35.033Z</updated>
   <id>http://dududu233.github.io/</id>
   
   <author>
@@ -15,6 +15,31 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>juicer工具的使用</title>
+    <link href="http://dududu233.github.io/2022/10/30/juicer/"/>
+    <id>http://dududu233.github.io/2022/10/30/juicer/</id>
+    <published>2022-10-30T01:39:40.000Z</published>
+    <updated>2022-10-31T08:38:35.033Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;p&gt;juicer工具是AidenLab推出的一款处理Hi-C数据的工具，来源于他们的大作&lt;a href=&quot;https://www.sciencedirect.com/science/article/pii/S2405471216302198&quot;&gt;Juicer Provides</summary>
+        
+      
+    
+    
+    
+    <category term="论文总结" scheme="http://dududu233.github.io/categories/%E8%AE%BA%E6%96%87%E6%80%BB%E7%BB%93/"/>
+    
+    
+    <category term="tech" scheme="http://dududu233.github.io/tags/tech/"/>
+    
+  </entry>
   
   <entry>
     <title>3dvi</title>
@@ -502,31 +527,6 @@
     
     
     <category term="normaldays" scheme="http://dududu233.github.io/tags/normaldays/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>记一次平平无奇的作业/练习markdown语法/决策树算法和模型评估标准</title>
-    <link href="http://dududu233.github.io/2021/10/30/%E8%AE%B0%E4%B8%80%E6%AC%A1%E5%B9%B3%E5%B9%B3%E6%97%A0%E5%A5%87%E7%9A%84%E4%BD%9C%E4%B8%9A/"/>
-    <id>http://dududu233.github.io/2021/10/30/%E8%AE%B0%E4%B8%80%E6%AC%A1%E5%B9%B3%E5%B9%B3%E6%97%A0%E5%A5%87%E7%9A%84%E4%BD%9C%E4%B8%9A/</id>
-    <published>2021-10-30T13:23:14.000Z</published>
-    <updated>2022-10-16T12:16:31.291Z</updated>
-    
-    
-      
-      
-        
-        
-    <summary type="html">&lt;p&gt;记一次平平无奇的数据挖掘课的作业。&lt;br&gt;顺便练习使用markdown语法。&lt;br&gt;作业题：&lt;br&gt;&lt;img</summary>
-        
-      
-    
-    
-    
-    <category term="日常技术" scheme="http://dududu233.github.io/categories/%E6%97%A5%E5%B8%B8%E6%8A%80%E6%9C%AF/"/>
-    
-    
-    <category term="tech" scheme="http://dududu233.github.io/tags/tech/"/>
     
   </entry>
   
