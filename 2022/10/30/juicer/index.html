@@ -309,14 +309,14 @@
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-check fa-fw"></i>更新日期:&nbsp;&nbsp;
-                    2022-10-31
+                    2022-11-01
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    1.2k
+                    1.7k
                 </div>
                 
 
@@ -378,14 +378,15 @@ wegt https://hicfiles.tc4ga.com/public/juicer/juicer_tools.1.9.9_jcuda.0.8.jar
 <h4 id="准备restriction-sites"><a href="#准备restriction-sites" class="headerlink" title="准备restriction_sites"></a>准备restriction_sites</h4><p>参考李国强等人的<a target="_blank" rel="noopener" href="https://www.nature.com/articles/s41592-019-0502-z">论文</a>，他们在实验中所使用的酶是<code>DpnII</code>，<code>juicer</code>中支持直接输出这种内切酶的酶切图谱，因此，我们只需要运行以下命令：</p>
 <p>按照博客中的说法，我们只需要执行以下命令：<br><pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token builtin class-name">cd</span> ./references
 python /home/penglab/package/juicer/misc/generate_site_positions.py DpnII mm9 mm9.fasta 
-<span class="token comment"># 三个参数分别为 酶切酶名称，参考基因组名称，参考基因组序列文件的路径</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre></p>
+<span class="token comment"># 三个参数分别为 内切酶名称，参考基因组名称，参考基因组序列文件的路径</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre></p>
 <p>此时，<code>mm9_DpnII.txt</code>已经在<code>references</code>中准备好了。</p>
 <p>另一个需要准备的文件是<code>mm9.chrom.sizes</code>，这个文件是参考基因组的染色体长度文件，可以从<a target="_blank" rel="noopener" href="https://hgdownload.soe.ucsc.edu/downloads.html">这里</a>下载。</p>
 <h4 id="准备work"><a href="#准备work" class="headerlink" title="准备work"></a>准备work</h4><p>需要处理的文件从<a href="#jump">上图</a>所示的路径中下载(此链接已经失效，如有需要可以找<a target="_blank" rel="noopener" href="https://www.nature.com/articles/s41592-019-0502-z">论文</a>原作者进行询问)<br>软件运行时对样本文件的存放位置也有要求，必须位于work目录下，以样本名作为一个子目录，序列文件存放于fastq目录下。</p>
 <p>这里，我仅从下载下来的数据中选择了一组进行验证性的操作。<br>将<code>JL_392_1.ACTTGA.mm9.calmd.bam.mapQ10.noDup.bam.mapQ20.sam2juice.filter.gz</code>移动到<code>work</code>目录下，新建<code>JL_392_1</code>文件夹，将上述文件解压至<code>JL_392_1</code>文件夹。</p>
 <p>此时，全部的准备工作都已经完成了，我们可以开始运行<code>juicer</code>了。<br>此时，juicer文件夹下的文件结构如下图所示。</p>
 <p><img src="https://tuchuang-1307891532.cos.ap-nanjing.myqcloud.com/images/20221031163510.png" alt="准备工作完成之后的文件结构"></p>
-<h4 id="开始处理"><a href="#开始处理" class="headerlink" title="开始处理"></a>开始处理</h4><p>juicer的用法如下：<br><pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token builtin class-name">cd</span> ./scripts
+<h4 id="开始处理"><a href="#开始处理" class="headerlink" title="开始处理"></a>开始处理</h4><p><del>juicer的用法如下：</del></p>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token builtin class-name">cd</span> ./scripts
 <span class="token function">bash</span> juicer.sh <span class="token punctuation">\</span>
 -z /home/xxx/juicer/references/mm9.fasta 
 -p /home/xxx/juicer/restriction_sites/mm9.chrom.sizes <span class="token punctuation">\</span>
@@ -396,10 +397,26 @@ python /home/penglab/package/juicer/misc/generate_site_positions.py DpnII mm9 mm
 <span class="token comment"># -p参数指定染色体长度文件；</span>
 <span class="token comment"># -y指定基因组酶切图谱的路径；</span>
 <span class="token comment"># -d指定样本原始文件存放的路径；</span>
-<span class="token comment"># -D指定软件的安装路径</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre></p>
+<span class="token comment"># -D指定软件的安装路径</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <p>第一次跑踩了个坑，没有<code>samtools</code>。参考<a target="_blank" rel="noopener" href="https://www.jianshu.com/p/6b7a442d293f">博客</a>安装<code>samtools</code>。</p>
-<h4 id="使用juicer将-hic文件转为-txt文件"><a href="#使用juicer将-hic文件转为-txt文件" class="headerlink" title="使用juicer将.hic文件转为.txt文件"></a>使用juicer将.hic文件转为.txt文件</h4><pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
-<p>在得到<code>.txt</code>文件之后，后序的处理工作就跟其他几个数据集大同小异了，还是bin一下，得到不同分辨率的hic矩阵。</p>
+<p>这种做法不太适合我们的数据，使用下边的方法。</p>
+<hr>
+<p>经过跟3dvi的作者进行讨论，发现可能是不需要使用juicer.sh对文件进行处理，直接使用juicer_tools进行处理即可。<br>参考<a target="_blank" rel="noopener" href="https://github.com/aidenlab/juicer/wiki/Pre">这里</a>的说明</p>
+<p>我们使用下边的命令，可以得到全分辨率所有染色体的原始接触矩阵的<code>.hic</code>文件。<br><pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token comment"># "Create index for data at all resolutions, all chromosomes"</span>
+java -Xmx8g -jar /home/penglab/juicer/scripts/common/juicer_tools.jar pre -v -q <span class="token number">1</span> JL_392_1.ACTTGA.mm9.calmd.bam.mapQ10.noDup.bam.mapQ20.sam2juice.filter test.hic mm9<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre></p>
+<p>对每个文件都进行同样的操作即可，参考<code>juicer</code>作者给出的实例，可能在进行转化之前不解压也是可行的。</p>
+<h4 id="使用juicer将-hic文件转为-txt文件"><a href="#使用juicer将-hic文件转为-txt文件" class="headerlink" title="使用juicer将.hic文件转为.txt文件"></a>使用juicer将.hic文件转为.txt文件</h4><p>此时，我们已经得到了<code>.hic</code>文件，使用<code>juicer</code>工具将其转化为我们熟悉的<code>.txt</code>文件。</p>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">java -jar /home/penglab/juicer/scripts/common/juicer_tools.jar dump observed NONE test.hic <span class="token number">1</span>:0:200000000 <span class="token number">1</span>:0:200000000 BP <span class="token number">10000</span> ./test.txt<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<p>其他参数不用修改，每次修改<code>BP</code>后的参数，得到不同分辨率的稀疏矩阵。</p>
+<p>在得到<code>.txt</code>文件之后，这时他的坐标值还需要除以我们选取的分辨率，得到真实的矩阵坐标，这个可以用任意语言完成。</p>
+<h4 id="对比实验"><a href="#对比实验" class="headerlink" title="对比实验"></a>对比实验</h4><p>按照<code>juicer</code>作者的说法，<code>long format</code>格式的文件也可以直接<code>bin</code>以得到不同分辨率的接触矩阵。</p>
+<pre class="line-numbers language-none"><code class="language-none">&lt;str1&gt; &lt;chr1&gt; &lt;pos1&gt; &lt;frag1&gt; &lt;str2&gt; &lt;chr2&gt; &lt;pos2&gt; &lt;frag2&gt; &lt;mapq1&gt; &lt;cigar1&gt; &lt;sequence1&gt; &lt;mapq2&gt; &lt;cigar2&gt; &lt;sequence2&gt; &lt;readname1&gt; &lt;readname2&gt;<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<p>我们需要用到的是<code>&lt;chr1&gt; &lt;pos1&gt; &lt;frag1&gt; &lt;str2&gt; &lt;chr2&gt; &lt;pos2&gt; &lt;frag2&gt;</code>，将这六列提取出来，其他的操作与对其他数据集的操作大同小异。</p>
+<p>将这样直接从<code>long format</code>bin的结果和由<code>juicer</code>工具处理得到的结果进行对比。</p>
+<h4 id="目标"><a href="#目标" class="headerlink" title="目标"></a>目标</h4><ul>
+<li>熟悉<code>juicer</code>的使用，熟悉<code>hic</code>矩阵的格式；</li>
+<li>得到<code>Li2019</code>数据集不同分辨率的接触矩阵，感兴趣的主要为<code>25k</code>，<code>40k</code>和<code>50k</code>。</li>
+</ul>
 <h3 id="reference"><a href="#reference" class="headerlink" title="reference"></a>reference</h3><ul>
 <li><a target="_blank" rel="noopener" href="https://www.sciencedirect.com/science/article/pii/S2405471216302198">Juicer Provides a One-Click System for Analyzing Loop-Resolution Hi-C Experiments</a></li>
 <li><a target="_blank" rel="noopener" href="https://blog.csdn.net/weixin_43569478/article/details/108079488">Juicer软件的安装详解</a></li>
@@ -407,6 +424,7 @@ python /home/penglab/package/juicer/misc/generate_site_positions.py DpnII mm9 mm
 <li><a target="_blank" rel="noopener" href="https://link.springer.com/article/10.1186/s13059-022-02774-z#availability-of-data-and-materials">Normalization and de-noising of single-cell Hi-C data with BandNorm and scVI-3D</a></li>
 <li><a target="_blank" rel="noopener" href="https://www.nature.com/articles/s41592-019-0502-z">Joint profiling of DNA methylation and chromatin architecture in single cells</a></li>
 <li><a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/342250758">BWA使用详解</a></li>
+<li><a target="_blank" rel="noopener" href="https://github.com/aidenlab/juicer/wiki/Pre">Juicer Pre Wiki</a></li>
 </ul>
 
                 
