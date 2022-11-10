@@ -6,7 +6,7 @@
   <link href="http://dududu233.github.io/atom.xml" rel="self"/>
   
   <link href="http://dududu233.github.io/"/>
-  <updated>2022-11-01T02:51:39.412Z</updated>
+  <updated>2022-11-09T12:23:20.639Z</updated>
   <id>http://dududu233.github.io/</id>
   
   <author>
@@ -15,6 +15,32 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>字符串匹配</title>
+    <link href="http://dududu233.github.io/2022/11/03/string-match/"/>
+    <id>http://dududu233.github.io/2022/11/03/string-match/</id>
+    <published>2022-11-03T02:52:36.000Z</published>
+    <updated>2022-11-09T12:23:20.639Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;p&gt;字符串匹配相对来说是一个很常见的问题，无论是在工程中还是在笔试和面试中。&lt;br&gt;一般来说，字符串匹配的输入有一个原字符串和一个子串，要求返回子串在原字符串中首次出现的位置。即，c++标准库中的find函数。&lt;/p&gt;
+&lt;p&gt;本文以leetcode的&lt;a</summary>
+        
+      
+    
+    
+    
+    <category term="tech, leetcode" scheme="http://dududu233.github.io/categories/tech-leetcode/"/>
+    
+    
+    <category term="刷题赎罪" scheme="http://dududu233.github.io/tags/%E5%88%B7%E9%A2%98%E8%B5%8E%E7%BD%AA/"/>
+    
+  </entry>
   
   <entry>
     <title>juicer工具的使用</title>
@@ -46,7 +72,7 @@
     <link href="http://dududu233.github.io/2022/10/24/3dvi/"/>
     <id>http://dududu233.github.io/2022/10/24/3dvi/</id>
     <published>2022-10-24T08:59:33.000Z</published>
-    <updated>2022-10-24T09:01:21.297Z</updated>
+    <updated>2022-11-01T07:05:52.002Z</updated>
     
     
       
@@ -123,7 +149,7 @@
     <link href="http://dududu233.github.io/2022/09/22/%E5%89%91%E6%8C%87offer/"/>
     <id>http://dududu233.github.io/2022/09/22/%E5%89%91%E6%8C%87offer/</id>
     <published>2022-09-22T06:40:09.000Z</published>
-    <updated>2022-10-24T03:35:04.953Z</updated>
+    <updated>2022-11-09T08:10:52.751Z</updated>
     
     
       
@@ -493,31 +519,6 @@
     <summary type="html">&lt;hr&gt;
 &lt;p&gt;2021.12.03更新&lt;/p&gt;
 &lt;h4 id=&quot;第一件事&quot;&gt;&lt;a href=&quot;#第一件事&quot; class=&quot;headerlink&quot;</summary>
-        
-      
-    
-    
-    
-    <category term="日日谈" scheme="http://dududu233.github.io/categories/%E6%97%A5%E6%97%A5%E8%B0%88/"/>
-    
-    
-    <category term="normaldays" scheme="http://dududu233.github.io/tags/normaldays/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>机器学习与数据挖掘考试复习</title>
-    <link href="http://dududu233.github.io/2021/11/19/review-of-dmml/"/>
-    <id>http://dududu233.github.io/2021/11/19/review-of-dmml/</id>
-    <published>2021-11-19T12:17:43.000Z</published>
-    <updated>2022-10-16T10:24:41.779Z</updated>
-    
-    
-      
-      
-        
-        
-    <summary type="html">&lt;h3 id=&quot;引言之前&quot;&gt;&lt;a href=&quot;#引言之前&quot; class=&quot;headerlink&quot;</summary>
         
       
     
