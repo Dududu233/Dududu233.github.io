@@ -319,14 +319,14 @@
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-check fa-fw"></i>更新日期:&nbsp;&nbsp;
-                    2022-11-18
+                    2022-11-21
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    5k
+                    6.8k
                 </div>
                 
 
@@ -364,9 +364,9 @@
 <h5 id="cpu"><a href="#cpu" class="headerlink" title="cpu"></a>cpu</h5><p>cpu是计算机的核心，负责执行程序。cpu分为32位和64位。主要区别在于，一次能计算多少字节数据。32位cpu一次能计算4个字节(4x8=32个二进制位)，64位cpu一次能计算8个字节(8x8=64个二进制位)。32位和64位又称为cpu的位宽。将cpu设计成多位的，可以计算大数。32位的cpu能计算的最大数值为$2^{32}-1$，64位的cpu能计算的最大数值为$2^{64}-1$。</p>
 <p>cpu的组件主要有，寄存器，控制单元和逻辑运算单元。控制单元负责控制cpu的工作，逻辑运算单元负责运算，寄存器分为多种种类，每种寄存器的功能不尽相同。</p>
 <ul>
-<li><font color = yellow>通用寄存器</font>：用来储存需要进行运算的数据</li>
-<li><font color = yellow>程序计数器</font>：用来储存cpu要执行的下一条<strong>指令的内存地址</strong></li>
-<li><font color = yellow>指令寄存器</font>：用来存放现在正在执行的<strong>指令</strong></li>
+<li><font color = blue>通用寄存器</font>：用来储存需要进行运算的数据</li>
+<li><font color = blue>程序计数器</font>：用来储存cpu要执行的下一条<strong>指令的内存地址</strong></li>
+<li><font color = blue>指令寄存器</font>：用来存放现在正在执行的<strong>指令</strong></li>
 </ul>
 <p>此时，我们已经了解到计算机的三种存储器，寄存器，cpu cache，内存和硬盘。寄存器和cpu cache都是cpu内部的存储器，寄存器的速度比cpu cache快，但是寄存器的容量比cpu cache小。寄存器的容量一般为几十个字节，cpu cache的容量一般为几十兆字节。内存和硬盘是cpu之外的存储器，内存的访问速度比硬盘快10-1000倍。</p>
 <p><img src="https://tuchuang-1307891532.cos.ap-nanjing.myqcloud.com/images/20221118110115.png" alt="计算机的存储结构"></p>
@@ -382,7 +382,7 @@
 <h5 id="中断和软中断"><a href="#中断和软中断" class="headerlink" title="中断和软中断"></a>中断和软中断</h5><p>中断是cpu在执行指令时，发生了某种事件，cpu会暂停当前的指令，转而去执行中断处理程序。中断的事件有很多种，比如时钟中断，键盘中断，鼠标中断等等。中断的处理程序是由操作系统提供的。<br>操作系统在处理中断时应该尽可能快的执行完，这样可以减少对正常进程运行调度的影响。中断程序在相应中断时，可能还会临时关闭中断，这就导致，在当前的中断处理程序执行完之前，系统中的其他中断程序无法被响应，导致中断可能会丢失（一种形象的类比是由于电话占线而漏接电话），所以中断程序应该尽可能的短且快。</p>
 <p>Linux系统为了解决中断丢失的问题，将中断过程分成了两个阶段，上半部分用来快速处理中断，主要负责处理跟硬件紧密相关或者时间敏感的事情，下半部分延迟处理上半部未完成的工作，一般以内核线程的方式进行运行。<br>上半部直接处理硬件请求，也就是硬中断，主要负责耗时短的工作。下半部由操作系统自己触发，也就是软中断，用于处理上半部未完成的工作，特点是延时执行。</p>
 <p>中断（上半部）是会打断 CPU 正在执行的任务，然后立即执行中断处理程序，而软中断（下半部）是以内核线程的方式执行，并且每一个 CPU 都对应一个软中断内核线程。不过，软中断不只是包括硬件设备中断处理程序的下半部，一些内核自定义事件也属于软中断，比如内核调度等、RCU锁（内核里常用的一种锁）等。</p>
-<h3 id="操作系统启动"><a href="#操作系统启动" class="headerlink" title="操作系统启动"></a>操作系统启动</h3><p>以linux0.11为例：<br>操作系统在启动时，首先要将磁盘上的操作系统加载到内存中，即著名的<code>bootsect.s</code>所做的任务。</p>
+<h4 id="操作系统启动"><a href="#操作系统启动" class="headerlink" title="操作系统启动"></a>操作系统启动</h4><p>以linux0.11为例：<br>操作系统在启动时，首先要将磁盘上的操作系统加载到内存中，即著名的<code>bootsect.s</code>所做的任务。</p>
 <ul>
 <li>分段将操作系统的代码读入，<code>setup.s</code>和<code>system</code></li>
 <li>调用<code>1ah=0x13</code>中断将存在es:bp寄存器的字符串打印在串口屏幕，只要在使用中断时，将输入设定好即可</li>
@@ -419,38 +419,127 @@
     <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token operator">!</span><span class="token function">fork</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span> <span class="token function">init</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token punctuation">&#125;</span>
     <span class="token keyword">for</span><span class="token punctuation">(</span><span class="token punctuation">;</span><span class="token punctuation">;</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span> <span class="token function">pause</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token punctuation">&#125;</span>
 <span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-<h3 id="操作系统接口"><a href="#操作系统接口" class="headerlink" title="操作系统接口"></a>操作系统接口</h3><p>操作系统的接口，就是链接操作系统和应用软件的一些重要函数。接口表现为函数调用，由系统提供，因此称为系统调用。(这部分有极多的内嵌汇编代码，找个时间好好学习一下)<br>常见的系统调用：</p>
-<h4 id="任务管理："><a href="#任务管理：" class="headerlink" title="任务管理："></a>任务管理：</h4><ol>
-<li><code>fork()</code> 创建一个进程</li>
-<li><code>execl()</code> 运行一个可执行程序</li>
-<li><code>pthread_create()</code> 创建一个线程</li>
-</ol>
-<h4 id="文件系统："><a href="#文件系统：" class="headerlink" title="文件系统："></a>文件系统：</h4><ol>
-<li><code>open()</code> 打开一个文件</li>
-<li><code>EACCES()</code> 判断是否有权限</li>
-<li><code>mode_t(), st_mode()</code> 文件头结构：文件属性</li>
-</ol>
-<h4 id="系统调用的实现"><a href="#系统调用的实现" class="headerlink" title="系统调用的实现"></a>系统调用的实现</h4><p>为什么要使用系统调用？以<code>whoami</code>为例。</p>
-<p><code>whoami</code>是一个常见的指令，通过<code>whoami</code>，用户可以打印当前使用计算机的用户名。</p>
-<p>出于安全方面的考虑，用户并不能访问所有的内存。  </p>
-<p>通过cpu的硬件设计，将内存分割为内核态和用户态。内核态可以访问任何数据，用户态不能访问内核数据。对于指令跳转也一样实现了隔离。</p>
-<p>计算机的用户名和密码都被保存在内核态中，因此，用户不能通过函数调用实现对当前使用计算机的用户名的访问。</p>
-<p>硬件提供了主动进入内核态的方法，通过中断，可以进入内核态。在intel X86下，就是中断指令<code>int</code>，<code>int</code>指令将<code>CS</code>中的<code>CPL</code>改成0，进入内核。</p>
-<p>系统调用的核心：</p>
-<ol>
-<li>用户程序中包含一段<code>int</code>指令代码；</li>
-<li>操作系统写中断处理，获取想调用的程序的编号；</li>
-<li>操作系统根据编号执行相应的代码。</li>
-</ol>
-<h3 id="多进程图像"><a href="#多进程图像" class="headerlink" title="多进程图像"></a>多进程图像</h3><h4 id="cpu管理的直观想法"><a href="#cpu管理的直观想法" class="headerlink" title="cpu管理的直观想法"></a>cpu管理的直观想法</h4><p>最简单的使用cpu的方法就是给<code>pc</code>设置一个初值，然后让cpu取址执行下去。但是，一些指令比如<code>io</code>指令执行时间长，且并不占用cpu，这时候cpu就会空闲下来，导致cpu的利用率低。<br>一种直观的改善方法是，设置多道程序交替执行。这样，当一个程序执行<code>io</code>指令时，cpu就会执行另一个程序，这样就能提高cpu的利用率。怎么做到呢？不仅需要在切换程序的时候修改<code>pc</code>的值，还需要保存当前程序的状态，以便下次切换回来时，能够恢复程序的状态。这就引出了<code>pcb(process control block)</code>的概念，<code>pcb</code>是一个数据结构，用来保存程序的状态。<br>同时，也引出了进程的概念，进程就是一个运行中的程序。</p>
-<h4 id="多进程图像-1"><a href="#多进程图像-1" class="headerlink" title="多进程图像"></a>多进程图像</h4><p>多进程图像是一个抽象的概念，它是一个进程的集合。</p>
+<h3 id="进程和线程"><a href="#进程和线程" class="headerlink" title="进程和线程"></a>进程和线程</h3><h4 id="cpu管理的直观想法"><a href="#cpu管理的直观想法" class="headerlink" title="cpu管理的直观想法"></a>cpu管理的直观想法</h4><p>最简单的使用cpu的方法就是给<code>pc</code>设置一个初值，然后让cpu取址执行下去。但是，一些指令比如<code>io</code>指令执行时间长，且并不占用cpu，这时候cpu就会空闲下来，导致cpu的利用率低。<br>一种直观的改善方法是，设置多道程序交替执行。这样，当一个程序执行<code>io</code>指令时，cpu就会执行另一个程序，这样就能提高cpu的利用率。怎么做到呢？不仅需要在切换程序的时候修改<code>pc</code>的值，还需要保存当前程序的状态，以便下次切换回来时，能够恢复程序的状态。这就引出了<code>pcb(process control block)</code>的概念，<a href="#pcb"><code>pcb</code>是一个数据结构</a>，用来保存程序的状态。<br>同时，也引出了进程的概念，进程就是一个运行中的程序。</p>
+<p><img src="https://tuchuang-1307891532.cos.ap-nanjing.myqcloud.com/images/20221121155320.png" alt="为什么要进行进程的切换？"></p>
+<p>对于一个支持多进程的系统，单核的cpu会从一个进程快速的切换到另一个进程，这样就产生了一种并行的错觉，但是，事实上单核的cpu只能执行一个进程，实际上这是并发而不是并行。</p>
+<h4 id="多进程图像"><a href="#多进程图像" class="headerlink" title="多进程图像"></a>多进程图像</h4><p>多进程图像是一个抽象的概念，它是一个进程的集合。</p>
 <p>多进程的组织是怎么样的？有一个进程在执行，一些进程在等待执行，有一些进程在等待某事件。为了管理这些进程的状态，引入了就绪态，运行态，阻塞态的概念。除了这三种状态之外，再加上新建态和终止态，这就是进程的五种基本状态，这五种基本状态完整的描述了一个进程的生命周期。</p>
 <p>多进程是如何交替的？依赖于<code>schedule</code>函数。<code>schedule</code>函数是一个函数，它的作用是选择一个进程，让cpu执行这个进程。<code>schedule</code>函数的选择过程是怎么样的？有两种选择方式，一种是抢占式，一种是非抢占式。抢占式是指，当一个进程执行的时候，如果有更高优先级的进程需要执行，那么就会抢占当前进程，让更高优先级的进程执行。非抢占式是指，当一个进程执行的时候，如果有更高优先级的进程需要执行，那么就会等待当前进程执行完毕，再执行更高优先级的进程。</p>
 <p>多进程如何互相影响？进程之间切换时，可能会导致不同的进程同时修改同一个内存地址，这样就导致进程的执行乱套了，为了避免这种状况，我们对每一个进程都设置一个单独的映射，使相同的虚拟地址对应到不同的物理地址。多进程是怎么合作的？核心的想法在于进程同步，确定一个合理的推进顺序，实现方法是给进程上锁。</p>
-<h3 id="用户级线程和内核级线程"><a href="#用户级线程和内核级线程" class="headerlink" title="用户级线程和内核级线程"></a>用户级线程和内核级线程</h3><h4 id="用户级线程"><a href="#用户级线程" class="headerlink" title="用户级线程"></a>用户级线程</h4><p>多个进程，操作系统是如何切换进程？</p>
-<p>进程：将资源和指令执行分开。一个资源+多个指令执行序列。</p>
-<p>进程的切换分为内存的切换和指令的切换，线程的切换只有指令的切换。</p>
-<p>线程：线程是操作系统能够进行运算调度的最小单位，线程是进程中的实际运作单元。一条线程指的是进程中一个单一顺序的控制流，一个进程中可以并发多个线程，每条线程执行不同的任务。</p>
+<h4 id="进程的基本知识"><a href="#进程的基本知识" class="headerlink" title="进程的基本知识"></a>进程的基本知识</h4><p>进程的定义：<br>我们编写的代码只是一个存储在硬盘的静态文件，通过编译后就会生成二进制可执行文件，当我们运行这个可执行文件后，它会被装载到内存中，接着 CPU 会执行程序中的每一条指令，那么这个运行中的程序，就被称为 <strong>进程</strong>（Process）。</p>
+<h5 id="进程的状态"><a href="#进程的状态" class="headerlink" title="进程的状态"></a>进程的状态</h5><div class="table-container">
+<table>
+<thead>
+<tr>
+<th>进程的几种状态</th>
+<th>意义</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>运行态</td>
+<td>进程此时处于运行态，表示进程此时正占用cpu</td>
+</tr>
+<tr>
+<td>就绪态</td>
+<td>进程此时可运行，但是由于其他进程处于运行态而暂时的停止运行</td>
+</tr>
+<tr>
+<td>阻塞态</td>
+<td>进程此时正在等待另一事件的发生，如等待输入输出操作的完成，此时，即使cpu空闲此进程也不能运行</td>
+</tr>
+<tr>
+<td>创建状态</td>
+<td>进程正在被创建的状态</td>
+</tr>
+<tr>
+<td>结束状态</td>
+<td>进程正在从系统中消失时的状态</td>
+</tr>
+</tbody>
+</table>
+</div>
+<p><img src="https://tuchuang-1307891532.cos.ap-nanjing.myqcloud.com/images/20221121160125.png" alt="进程的三种主要状态"></p>
+<p>如果大量的进程都处于阻塞状态，这些在阻塞态的进程将占用大量的物理内存空间，根据我们上文所说的，cpu附近的内存空间寸土寸金，阻塞态占用大量的内存空间显然是一种浪费物理内存的行为。为了避免大量物理内存的浪费，通常会把阻塞状态的进程的物理内存空间换到硬盘中，等进程再次被运行时，再从硬盘换入物理内存中。</p>
+<p>当进程没有实际占用物理内存空间时，我们称这种状态为 <strong>挂起状态</strong>。<br>挂起状态可以分为两种，阻塞挂起状态和就绪挂起状态。阻塞挂起状态是指，进程在硬盘中等待某个事件的发生。就绪挂起状态是指，进程在硬盘中等待被调度，只要进入内存就能立刻被执行。</p>
+<p><img src="https://tuchuang-1307891532.cos.ap-nanjing.myqcloud.com/images/20221121161235.png" alt="进程的状态变迁"></p>
+<h5 id="进程的控制结构"><a href="#进程的控制结构" class="headerlink" title="进程的控制结构"></a><span id = 'pcb'>进程的控制结构</span></h5><p>上文提到过，在操作系统中通过pcb来控制进程。<br>pcb是进程存在的唯一标识。在pcb中包含了进程的各种信息：</p>
+<ul>
+<li>进程描述信息<ul>
+<li>进程标识符：用于标识各个进程，每个进程都有唯一的标识符</li>
+<li>用户标识符：用于标识进程的所有者</li>
+</ul>
+</li>
+</ul>
+<ul>
+<li><p>进程控制和管理信息</p>
+<ul>
+<li>进程当前的状态：创建态，结束态，就绪态，运行态，阻塞态 </li>
+<li>进程优先级：用于调度进程的优先级</li>
+</ul>
+</li>
+<li><p>资源分配清单</p>
+<ul>
+<li>进程的内存分配情况，打开的文件列表和所使用的I/O设备信息等等 </li>
+</ul>
+</li>
+<li><p>cpu相关的信息</p>
+<ul>
+<li>cpu中各个寄存器的值，当进程被切换时，需要保存进程的cpu相关信息，以便下次切换回来时，能够恢复进程的运行状态</li>
+</ul>
+</li>
+</ul>
+<p>pcb通过链表的方式进行组织，操作系统将状态相同的进程的pcb连在一块组成各种队列。比如，就绪队列，阻塞队列，挂起队列等等。</p>
+<h5 id="进程的控制"><a href="#进程的控制" class="headerlink" title="进程的控制"></a>进程的控制</h5><p>进程是如何被创建，终止，阻塞和唤醒的？</p>
+<font color = blue>01 创建进程</font>
+
+<p>操作系统允许一个进程创建另一个进程，且允许子进程继承父进程所拥有的资源。<br>操作系统创建一个进程的步骤为：</p>
+<ul>
+<li>申请一个空白的pcb，并向pcb中填写一些控制和管理进程相关的信息，比如进程的唯一标识等</li>
+<li>为该进程分配运行所需的内存资源等</li>
+<li>将创建的pcb插入就绪队列中，等待被调度</li>
+</ul>
+<font color = blue>02 终止进程</font>
+
+<p>进程的终止是指进程的执行结束，进程的pcb被释放，进程所占用的资源被回收。<br>进程的终止有三种方式，正常终止，异常终止和被动终止(被用户手动的kill掉)。<br>当子进程被终止时，其继承的父进程的资源应当全部还给父进程，当父进程被终止时，其名下的子进程变成了孤儿进程，由1号进程（init进程）对他们进行状态收集工作（收养）。<br>终止进程时，操作系统会进行以下步骤：</p>
+<ul>
+<li>查找要释放的进程的pcb，</li>
+<li>若该进程还处于执行状态，则立刻停止该进程的执行，将cpu资源分配给其他进程，</li>
+<li>若该进程还有子进程，则将其子进程交给1号进程进行接管，</li>
+<li>将该进程所占用的所有资源交还给操作系统，</li>
+<li>将该进程的pcb从所在的队列中删除。</li>
+</ul>
+<p>为什么要收养孤儿进程？<br>任何一个子进程(init除外)在<code>exit()</code>之后，并非马上就消失掉，而是留下一个称为僵尸进程(Zombie)的数据结构，等待父进程处理。这是每个子进程在结束时都要经过的阶段。如果子进程在<code>exit()</code>之后，父进程没有来得及处理，这时用ps命令就能看到子进程的状态是<code>Z</code>。如果父进程能及时处理，可能用<code>ps</code>命令就来不及看到子进程的僵尸状态，但这并不等于子进程不经过僵尸状态。如果父进程在子进程结束之前退出，则子进程将由<code>init</code>接管。<code>init</code>将会以父进程的身份对僵尸状态的子进程进行处理。<br>孤儿进程的父进程已经被终止，但是，父进程还没有调用<code>wait</code>获取子进程的状态信息，孤儿进程的信息不能被处理，这些孤儿进程的进程标识符等信息将一直被保存在操作系统中，变成了僵尸进程，导致操作系统的空间被浪费，因此，必须对孤儿进程进行收养。init进程会循环地<code>wait</code>它的已经退出的子进程，避免僵尸进程对操作系统的危害。</p>
+<font color = blue>03 阻塞进程</font>
+
+<p>当进程需要等待另一事件完成时，可以调用阻塞语句将自己置于阻塞状态。一个处于阻塞态的进程只能被另一进程唤醒。<br>阻塞进程时，操作系统会进行以下步骤：</p>
+<ul>
+<li>查找要阻塞的进程标识号对应的pcb，</li>
+<li>若该进程处于运行状态，则保护其现场，将其状态转换为阻塞态，停止运行，</li>
+<li>将该进程对应的pcb从原队列中删除，加入阻塞队列中。</li>
+</ul>
+<font color = blue>04 唤醒进程</font>
+
+<p>进程由运行态转变为阻塞态时由于进程必须等待某一事件的完成，因此，进程必须等待另一进程的唤醒。当另一进程完成了事件后，会调用唤醒语句将阻塞进程唤醒。处于阻塞状态的进程绝对不可能自己叫醒自己。<br>唤醒进程时，操作系统会进行以下步骤：</p>
+<ul>
+<li>查找要唤醒的进程标识号对应的pcb，</li>
+<li>将其从阻塞队列中移出，并将其状态置为就绪态，</li>
+<li>将其插入到就绪队列中，等待调度。</li>
+</ul>
+<h4 id="线程的基本知识"><a href="#线程的基本知识" class="headerlink" title="线程的基本知识"></a>线程的基本知识</h4><p>在早期的操作系统中，进程就是调度的最基本单元，随着操作系统的发展，提出了更小的能独立运行的基本单位，也就是线程。</p>
+<h5 id="为什么要使用线程？"><a href="#为什么要使用线程？" class="headerlink" title="为什么要使用线程？"></a>为什么要使用线程？</h5><p>对于一些任务，如果我们使用单进程进行运行，各个函数之间不能并发的执行，导致资源利用效率低下。若使用多进程的方式，可以提高资源的利用效率，但是又带来了新的问题，进程之间如何相互通信？如何共享数据？维护这么多的进程又要消耗大量的资源。<br>为了解决这些问题，我们设计了一种新的实体供操作系统进行调度，即线程。线程具有以下特点：</p>
+<ul>
+<li>线程之间可以并发的运行</li>
+<li>线程之间可以共享相同的地址空间</li>
+</ul>
+<h5 id="线程的定义"><a href="#线程的定义" class="headerlink" title="线程的定义"></a>线程的定义</h5><p>线程是进程中的一条执行流程。<br>同一进程中的多个线程之间可以共享代码块，数据段和打开的文件等资源，以节省维护很多进程对应的pcb所需要的物理内存空间，但是每个线程都有自己独立的一套寄存器和栈，确保线程的控制流时相对独立的，从而使得线程可以被操作系统调度。</p>
+<p>使用线程的优点：</p>
+<ul>
+<li>一个进程中可以同时并发多个线程</li>
+<li>各个线程之间可以同步执行</li>
+<li>各个线程之间可以共享地址空间和文件等资源<br>使用线程的缺点：</li>
+<li>进程中的一个线程崩溃时，会导致该线程所属的进程的所有线程崩溃。这并非不可避免的，在java编程中，<a href="#threadbk">线程的崩溃不会导致进程的崩溃</a>。</li>
+</ul>
 <h4 id="进程、线程和协程的区别和联系"><a href="#进程、线程和协程的区别和联系" class="headerlink" title="进程、线程和协程的区别和联系"></a>进程、线程和协程的区别和联系</h4><div class="table-container">
 <table>
 <thead>
@@ -550,7 +639,7 @@
 <li>中断出口</li>
 </ol>
 <p>内核级线程的核心是内核栈。</p>
-<h3 id="cpu调度"><a href="#cpu调度" class="headerlink" title="cpu调度"></a>cpu调度</h3><p>直观的想法：FIFO，先来先服务。Piority，优先级，任务短的可以适当优先。RR，时间片轮转。</p>
+<h4 id="cpu调度"><a href="#cpu调度" class="headerlink" title="cpu调度"></a>cpu调度</h4><p>直观的想法：FIFO，先来先服务。Piority，优先级，任务短的可以适当优先。RR，时间片轮转。</p>
 <p>考虑到任务的特点，将任务分为前台任务和后台任务，前台任务使用时间片轮转进行调度，后台任务使用最短作业优先进行调度，前台任务和后台任务之间使用优先级进行调度。</p>
 <h4 id="一个实际的schedule-函数"><a href="#一个实际的schedule-函数" class="headerlink" title="一个实际的schedule()函数"></a>一个实际的schedule()函数</h4><p>linux0.11中的<code>schedule</code>函数如下所示：<br><pre class="line-numbers language-cpp" data-language="cpp"><code class="language-cpp"><span class="token keyword">void</span> <span class="token function">schedule</span><span class="token punctuation">(</span><span class="token keyword">void</span><span class="token punctuation">)</span>
 <span class="token punctuation">&#123;</span>
@@ -589,7 +678,7 @@
          <span class="token function">switch_to</span><span class="token punctuation">(</span>next<span class="token punctuation">)</span><span class="token punctuation">;</span>
 <span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre></p>
 <p>counter代表的优先级在不断的动态调整。<br>counter保证了响应时间的界。$c(t)=\frac{c(t-1)}{2} + p,c(0) = p$是一个几何级数，且一定收敛，这也是为什么降低counter一定是除以一个数而不是减去一个数的原因。<br>经过IO之后，counter会变大，IO时间越长，counter就越大，变相的照顾了前台的进程。<br>后台进程一直按照counter的大小进行轮转，近似了sjf调度。</p>
-
+<h4 id="进程同步和信号量"><a href="#进程同步和信号量" class="headerlink" title="进程同步和信号量"></a>进程同步和信号量</h4>
                 
             </div>
             <hr/>
@@ -978,18 +1067,16 @@
 <article id="prenext-posts" class="prev-next articles">
     <div class="row article-row">
         
-        <div class="article col s12 m6" data-aos="fade-up" data-aos="fade-up">
+        <div class="article col s12 m6" data-aos="fade-up">
             <div class="article-badge left-badge text-color">
-                <i class="far fa-dot-circle"></i>&nbsp;本篇
-            </div>
+                <i class="fas fa-chevron-left"></i>&nbsp;上一篇</div>
             <div class="card">
-                <a href="/2022/11/18/os/">
+                <a href="/2022/11/21/smoggydays/">
                     <div class="card-image">
                         
+                        <img src="https://tuchuang-1307891532.cos.ap-nanjing.myqcloud.com/images/20221121215242.png" class="responsive-img" alt="smoggydays">
                         
-                        <img src="https://tuchuang-1307891532.cos.ap-nanjing.myqcloud.com/cover/21.jpg" class="responsive-img" alt="学习操作系统">
-                        
-                        <span class="card-title">学习操作系统</span>
+                        <span class="card-title">smoggydays</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
@@ -999,31 +1086,26 @@
                         
                     </div>
                     <div class="publish-info">
-                            <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2022-11-18
-                            </span>
+                        <span class="publish-date">
+                            <i class="far fa-clock fa-fw icon-date"></i>2022-11-21
+                        </span>
                         <span class="publish-author">
                             
                             <i class="fas fa-bookmark fa-fw icon-category"></i>
                             
-                            <a href="/categories/%E5%85%AB%E8%82%A1/" class="post-category">
-                                    八股
+                            <a href="/categories/%E6%97%A5%E6%97%A5%E8%B0%88/" class="post-category">
+                                    日日谈
                                 </a>
                             
                             
                         </span>
                     </div>
                 </div>
-
                 
                 <div class="card-action article-tags">
                     
-                    <a href="/tags/tech/">
-                        <span class="chip bg-color">tech</span>
-                    </a>
-                    
-                    <a href="/tags/os/">
-                        <span class="chip bg-color">os</span>
+                    <a href="/tags/normaldays/">
+                        <span class="chip bg-color">normaldays</span>
                     </a>
                     
                 </div>
