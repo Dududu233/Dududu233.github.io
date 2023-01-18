@@ -313,14 +313,14 @@
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-check fa-fw"></i>更新日期:&nbsp;&nbsp;
-                    2022-11-30
+                    2022-12-19
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    15.5k
+                    16.5k
                 </div>
                 
 
@@ -1117,7 +1117,37 @@ pthread_mutex_t mutex_B <span class="token operator">=</span> PTHREAD_MUTEX_INIT
 <blockquote>
 <p>操作系统是怎么管理虚拟地址和物理地址之间的关系的？主要有内存分段和内存分页两种方法。</p>
 </blockquote>
-<h4 id="内存分段"><a href="#内存分段" class="headerlink" title="内存分段"></a>内存分段</h4><h2 id="学习资料"><a href="#学习资料" class="headerlink" title="学习资料"></a>学习资料</h2><ul>
+<h4 id="内存分段"><a href="#内存分段" class="headerlink" title="内存分段"></a>内存分段</h4><p>计算机程序是由若干个逻辑分段组成的，包括代码分段，数据分段，栈段，堆段等。不同的段有不同属性，所以，使用分段的形式将这些段分离出来。</p>
+<blockquote>
+<p>分段机制下，虚拟地址和物理地址应该如何映射？</p>
+</blockquote>
+<p>分段机制下的虚拟地址由两部分组成，段选择因子和段内偏移量。</p>
+<p><img src="https://tuchuang-1307891532.cos.ap-nanjing.myqcloud.com/images/20221201161416.png" alt="内存分段"></p>
+<h5 id="段选择因子和段内偏移量"><a href="#段选择因子和段内偏移量" class="headerlink" title="段选择因子和段内偏移量"></a>段选择因子和段内偏移量</h5><p>段选择因子保存在段寄存器中。段选择因子中，最重要的是段号，用于段表的索引。段表中保存的是这个段的基地址，段的界限和特权等级等。</p>
+<p>虚拟地址中的段内偏移量应该位于0和段界限之间，如果段内偏移量是合法的，就将段基地址加上段内偏移量得到物理内存地址。</p>
+<p>虚拟地址通过<font color = green>段表</font>与物理地址进行映射，分段机制将<a href="#c++codememory">程序的虚拟地址</a>分为四个段，每个段在段表中占一个项，在这一项中找到段的基地址。再加上偏移量，就可以找到物理内存中的地址。</p>
+<p>这其中的机制如下图所示：</p>
+<p><img src="https://tuchuang-1307891532.cos.ap-nanjing.myqcloud.com/images/20221216093757.png" alt=""></p>
+<p>如果要访问栈区偏移量为500的虚拟地址，我们可以计算出物理地址为，栈区的基地址7000+偏移量500 = 7500。<br>这样，我们就解决了从程序中的虚拟地址到实际物理地址对应的问题。但是，这种分段的解决方式是有一些不足之处的。</p>
+<ul>
+<li>会产生内存碎片</li>
+<li>内存的交换效率低下</li>
+</ul>
+<blockquote>
+<p>为什么会产生内存碎片？</p>
+</blockquote>
+<p>假设计算机的物理内存空间为1G，此时，我们并发使用游戏，浏览器和音乐，这几个应用占用的物理内存如下图所示：</p>
+<p><img src="https://tuchuang-1307891532.cos.ap-nanjing.myqcloud.com/images/20221216094554.png" alt="为什么会产生内存碎片"></p>
+<p>当浏览器的任务退出时，释放出128MB的内存空间，此时，加上之前剩余128MB内存空间，计算机可分配的物理内存空间共有256MB，但是，此时我们却无法打开一个200MB内存占用的新程序，因为按照之前的做法，一个程序只能使用一段连续的内存空间。</p>
+<blockquote>
+<p>内存分段会出现内存碎片吗？</p>
+</blockquote>
+<p>内存碎片分为，内部内存碎片和外部内存碎片。</p>
+<p>内存分段管理可以做到段根据实际需求分配内存，所以有多少需求就分配多大的段，所以不会出现内部内存碎片。<br>但是由于每个段的长度不固定，所以多个段未必能恰好使用所有的内存空间，会产生了多个不连续的小物理内存，导致新的程序无法被装载，<font color = green>所以会出现外部内存碎片的问题</font>。<br>解决「外部内存碎片」的问题就是内存交换。<br>可以把音乐程序占用的那 256MB 内存写到硬盘上，然后再从硬盘上读回来到内存里。不过再读回的时候，我们不能装载回原来的位置，而是紧紧跟着那已经被占用了的 512MB 内存后面。这样就能空缺出连续的 256MB 空间，于是新的 200MB 程序就可以装载进来。<br>这个内存交换空间，在 Linux 系统里，也就是我们常看到的 Swap 空间，这块空间是从硬盘划分出来的，用于内存与硬盘的空间交换。</p>
+<blockquote>
+<p><span id = c++codememory>为什么程序的的虚拟地址有四个段？ </span><br>c++程序的内存模型分为四个区，代码区，全局区，栈区，堆区。代码区是只读的，全局区是全局变量和静态变量的存储区，栈区是函数调用时的临时变量，由编译器自动分配和释放，堆区是由程序员自己动态分配的内存区域，若在使用后没有释放，则在程序结束后由操作系统进行回收。<br> <img src="https://tuchuang-1307891532.cos.ap-nanjing.myqcloud.com/images/20221213094057.png" alt="c++内存模型"></p>
+</blockquote>
+<h2 id="学习资料"><a href="#学习资料" class="headerlink" title="学习资料"></a>学习资料</h2><ul>
 <li>操作系统6.828 <a target="_blank" rel="noopener" href="https://knowledgehive.github.io/6.828/">笔记</a> <a target="_blank" rel="noopener" href="https://abelay.github.io/6828seminar/schedule.html">官网</a></li>
 <li>哈工大李治军老师的操作系统课程 <a target="_blank" rel="noopener" href="https://www.bilibili.com/video/BV1d4411v7u7/?spm_id_from=333.337.search-card.all.click&amp;vd_source=0819e1872d4b44489d49f89acd6be56c">视频</a> <a target="_blank" rel="noopener" href="https://www.lanqiao.cn/courses/115">实验</a></li>
 <li>蒋岩炎的操作系统 <a target="_blank" rel="noopener" href="https://www.bilibili.com/video/BV1Cm4y1d7Ur/?spm_id_from=333.337.search-card.all.click">视频</a></li>
@@ -1598,12 +1628,12 @@ pthread_mutex_t mutex_B <span class="token operator">=</span> PTHREAD_MUTEX_INIT
                 
                 <div class="card-action article-tags">
                     
-                    <a href="/tags/leetcode/">
-                        <span class="chip bg-color">leetcode</span>
-                    </a>
-                    
                     <a href="/tags/tech/">
                         <span class="chip bg-color">tech</span>
+                    </a>
+                    
+                    <a href="/tags/leetcode/">
+                        <span class="chip bg-color">leetcode</span>
                     </a>
                     
                 </div>
@@ -1799,7 +1829,7 @@ pthread_mutex_t mutex_B <span class="token operator">=</span> PTHREAD_MUTEX_INIT
         <div class="col s12 m8 l8 copy-right">
             Copyright&nbsp;&copy;
             
-                <span id="year">2021-2022</span>
+                <span id="year">2021-2023</span>
             
             <a href="/about" target="_blank">李垚</a>
             |&nbsp;Powered by&nbsp;<a href="https://hexo.io/" target="_blank">Hexo</a>
