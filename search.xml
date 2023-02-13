@@ -4,6 +4,33 @@
   
     
     <entry>
+      <title>使用GDB调试工具调试C++代码</title>
+      <link href="/2023/02/13/gdb/"/>
+      <url>/2023/02/13/gdb/</url>
+      
+        <content type="html"><![CDATA[<p>在windows下，我们有一套微软提供的集成开发工具，可以便捷的对C++代码进行调试。可是，在实际的工作中，我们也常常需要在linux下进行调试，这时候，我们就需要使用GDB调试工具了。</p><h4 id="1-GDB简介"><a href="#1-GDB简介" class="headerlink" title="1. GDB简介"></a>1. GDB简介</h4><p>GDB是GNU项目的一个开源调试工具，它可以让我们在linux下进行C/C++代码的调试。GDB的全称是GNU Project Debugger，它是一个基于命令行的调试工具，它可以让我们在程序运行时，查看程序的运行状态，以及程序的运行过程中的变量的值。GDB的使用非常简单，只需要在命令行中输入gdb命令，然后再输入程序的路径，就可以进行调试了。</p><pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">gdb ./xxx <span class="token comment"># xxx为要测试的程序的路径</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre><p>常见的linux发行版中，基本都已经安装了GDB调试工具，我们可以直接使用。<br>如果不确定有没有安装，可以使用如下命令进行安装：</p><pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">gdb -version <span class="token comment"># 查看GDB的版本 确定是否安装</span><span class="token function">sudo</span> <span class="token function">apt-get</span> <span class="token function">install</span> gdb <span class="token comment"># 安装GDB</span><span class="token comment"># 或者</span><span class="token function">sudo</span> yum -y <span class="token function">install</span> gdb <span class="token comment"># 安装GDB</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre><p>GDB的主要功能是监控程序的执行流程，以排除代码中的逻辑错误。GDB调试的对象是已经编译成可执行文件的程序，而不是源代码。但是，不是所有的可执行文件都可以用GDB工具进行调试，只有在编译时，包含了必要的调试信息的可执行文件，才可以用GDB进行调试。如果没有添加调试信息，GDB将无法找到源文件，也就无法进行调试了。<br>因此，在进行编译时，我们需要使用-g选项，来生成调试信息。</p><pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">g++ -g xxx.cpp -o xxx <span class="token comment"># 编译时，使用-g选项，生成调试信息</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre><p>在实际工作中，常用的c++编译方式是使用cmake进行编译，我们需要在CMakeLists.txt中添加如下代码：</p><pre class="line-numbers language-cmake" data-language="cmake"><code class="language-cmake"><span class="token keyword">set</span><span class="token punctuation">(</span><span class="token variable">CMAKE_BUILD_TYPE</span> <span class="token string">"Debug"</span><span class="token punctuation">)</span> <span class="token comment"># 设置编译模式为Debug</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre><p>对于一个可执行程序<code>test</code>，我们可以用如下指令启动GDB进行调试。<br><pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">gdb ./test<span class="token comment"># 若程序需要传入参数，可以使用如下指令</span>gdb ./test --args arg1 arg2 arg3<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre></p><h4 id="2-GDB常用命令"><a href="#2-GDB常用命令" class="headerlink" title="2. GDB常用命令"></a>2. GDB常用命令</h4><p>在调试一个程序时，我们最常见的想法就是打个断点，观察程序运行到某个地方的时候，变量的值是多少。GDB提供了如下命令来设置断点：</p><pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token punctuation">(</span>gdb<span class="token punctuation">)</span> <span class="token builtin class-name">break</span> <span class="token punctuation">[</span>function<span class="token operator">|</span>filename:line<span class="token operator">|</span>*address<span class="token punctuation">]</span> <span class="token comment"># 设置断点</span><span class="token punctuation">(</span>gdb<span class="token punctuation">)</span> <span class="token builtin class-name">break</span> <span class="token number">10</span> <span class="token comment"># 在第10行设置断点</span><span class="token punctuation">(</span>gdb<span class="token punctuation">)</span> <span class="token builtin class-name">break</span> main <span class="token comment"># 在main函数中设置断点</span><span class="token punctuation">(</span>gdb<span class="token punctuation">)</span> <span class="token builtin class-name">break</span> test.cpp:10 <span class="token comment"># 在test.cpp文件的第10行设置断点</span><span class="token punctuation">(</span>gdb<span class="token punctuation">)</span> <span class="token builtin class-name">break</span> *0x400000 <span class="token comment"># 在地址为0x400000处设置断点</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre><p>在设置断点后，我们可以使用如下命令来查看当前的断点：</p><pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token punctuation">(</span>gdb<span class="token punctuation">)</span> info <span class="token builtin class-name">break</span> <span class="token comment"># 查看当前的断点</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre><p>设置好断点之后，我们就可以开始调试了。我们可以使用如下命令来运行程序：</p><pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token punctuation">(</span>gdb<span class="token punctuation">)</span> run <span class="token comment"># 运行程序 程序会自动运行到第一个断点处</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre><p>也可以使用如下命令来逐行运行程序：</p><pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token punctuation">(</span>gdb<span class="token punctuation">)</span> next <span class="token comment"># 逐行运行程序</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre><p>在程序运行到断点处，我们可以使用如下命令来打印指定变量的值：</p><pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token punctuation">(</span>gdb<span class="token punctuation">)</span> print <span class="token punctuation">[</span>variable<span class="token punctuation">]</span> <span class="token comment"># 打印变量的值</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre><p>我们也可以使用如下命令来查看源代码的内容：</p><pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token punctuation">(</span>gdb<span class="token punctuation">)</span> list <span class="token comment"># 查看源代码</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre><p>在调试结束之后，可以使用如下指令退出调试</p><pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token punctuation">(</span>gdb<span class="token punctuation">)</span> quit <span class="token comment"># 退出调试</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre><p>上述所有操作均可以使用首字母缩写来代替，如<code>break</code>可以使用<code>b</code>来代替，<code>next</code>可以使用<code>n</code>来代替。</p>]]></content>
+      
+      
+      <categories>
+          
+          <category> 实用技术 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> C++ </tag>
+            
+            <tag> GDB </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>新年快乐！</title>
       <link href="/2023/01/01/2023/"/>
       <url>/2023/01/01/2023/</url>
@@ -122,9 +149,9 @@
       
         <tags>
             
-            <tag> leetcode </tag>
-            
             <tag> tech </tag>
+            
+            <tag> leetcode </tag>
             
         </tags>
       

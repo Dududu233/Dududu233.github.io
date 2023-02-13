@@ -4,15 +4,9 @@
 
 <head>
     <!-- hexo-inject:begin --><!-- hexo-inject:end --><meta charset="utf-8">
-    <meta name="keywords" content="新年快乐！, 读读读233">
-    <meta name="description" content="
-
-
-
-0. 写在前边
-为什么迟到？
-
-十二月初就早早的创建了年终总结的文件，按照往年的惯例是该在元旦之前把年终总结写完。到了中旬，千防万防之下还是一不小心阳了，死去活来的烧了几天。接下来又匆匆的准备开题。都说故事的结局影响对过程的评价，2">
+    <meta name="keywords" content="使用GDB调试工具调试C++代码, 读读读233">
+    <meta name="description" content="在windows下，我们有一套微软提供的集成开发工具，可以便捷的对C++代码进行调试。可是，在实际的工作中，我们也常常需要在linux下进行调试，这时候，我们就需要使用GDB调试工具了。
+1. GDB简介GDB是GNU项目的一个开源调试工具">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <meta name="renderer" content="webkit|ie-stand|ie-comp">
@@ -24,7 +18,7 @@
     <!-- Global site tag (gtag.js) - Google Analytics -->
 
 
-    <title>新年快乐！ | 读读读233</title>
+    <title>使用GDB调试工具调试C++代码 | 读读读233</title>
     <link rel="icon" type="image/png" href="https://tuchuang-1307891532.cos.ap-nanjing.myqcloud.com/source/favicon.png">
     
 
@@ -255,12 +249,12 @@
 
 
 
-<div class="bg-cover pd-header post-cover" style="background-image: url('https://tuchuang-1307891532.cos.ap-nanjing.myqcloud.com/images/20230114094457.png')">
+<div class="bg-cover pd-header post-cover" style="background-image: url('https://tuchuang-1307891532.cos.ap-nanjing.myqcloud.com/cover/7.jpg')">
     <div class="container" style="right: 0px;left: 0px;">
         <div class="row">
             <div class="col s12 m12 l12">
                 <div class="brand">
-                    <h1 class="description center-align post-title">新年快乐！</h1>
+                    <h1 class="description center-align post-title">使用GDB调试工具调试C++代码</h1>
                 </div>
             </div>
         </div>
@@ -284,8 +278,12 @@
                     
                     <div class="article-tag">
                         
-                            <a href="/tags/normaldays/">
-                                <span class="chip bg-color">normaldays</span>
+                            <a href="/tags/C/">
+                                <span class="chip bg-color">C++</span>
+                            </a>
+                        
+                            <a href="/tags/GDB/">
+                                <span class="chip bg-color">GDB</span>
                             </a>
                         
                     </div>
@@ -296,8 +294,8 @@
                     <div class="post-cate">
                         <i class="fas fa-bookmark fa-fw icon-category"></i>
                         
-                            <a href="/categories/%E6%97%A5%E6%97%A5%E8%B0%88/" class="post-category">
-                                日日谈
+                            <a href="/categories/%E5%AE%9E%E7%94%A8%E6%8A%80%E6%9C%AF/" class="post-category">
+                                实用技术
                             </a>
                         
                     </div>
@@ -309,21 +307,21 @@
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-minus fa-fw"></i>发布日期:&nbsp;&nbsp;
-                    2023-01-01
+                    2023-02-13
                 </div>
                 
 
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-check fa-fw"></i>更新日期:&nbsp;&nbsp;
-                    2023-01-18
+                    2023-02-13
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    2.4k
+                    933
                 </div>
                 
 
@@ -348,46 +346,40 @@
 
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <div>
-<iframe style="border-radius:12px" src="//music.163.com/outchain/player?type=2&id=22197007&auto=1&height=66" width="100%" height="80" frameBorder="0" allowfullscreen="" allow="clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
-</div>
-
-<h4 id="0-写在前边"><a href="#0-写在前边" class="headerlink" title="0. 写在前边"></a>0. 写在前边</h4><blockquote>
-<p>为什么迟到？</p>
-</blockquote>
-<p>十二月初就早早的创建了年终总结的文件，按照往年的惯例是该在元旦之前把年终总结写完。到了中旬，千防万防之下还是一不小心阳了，死去活来的烧了几天。接下来又匆匆的准备开题。都说故事的结局影响对过程的评价，2022这个年末，生理上的压力加上心理上的压力使得人双重不适，在这般灰暗的滤镜下，说出完全不想回忆2022的狠话便是再正常不过，这文件便被搁置了。转机在于元旦夜，百无聊赖时被推荐去看了相册里的2022年度回忆，不得不承认照片是记录生活的最好形式，回忆起照片里的故事像是铅黑色的乌云中透出的几缕金色霞光。</p>
-<div align = center><div style="position: relative; width: 33%; height: 0; padding-bottom: 58%;"><iframe 
-src="https://tuchuang-1307891532.cos.ap-nanjing.myqcloud.com/videos/2023.mp4" scrolling="no" border="0" 
-frameborder="no" framespacing="0" allowfullscreen="true" style="position: absolute; width: 100%; 
-height: 100%; left: 0; top: 0;"> </iframe></div></div>
-
-<blockquote>
-<p>壬寅年的故事里，有晚霞，有鸽子，有樱花和彩虹，还有钟楼上挂的风铃……</p>
-</blockquote>
-<p>过了元旦，又坐下细细的回想2022年。此时已是壬寅之末。</p>
-<h4 id="1-壬寅年的第一场雪"><a href="#1-壬寅年的第一场雪" class="headerlink" title="1. 壬寅年的第一场雪"></a>1. 壬寅年的第一场雪</h4><p>壬寅年的第一场雪落在正月十五的前一天。尽管寒假没有受到太多来自于老师的支配，度过的相当愉快且完整。可是在即将离乡之时仍是十分不舍。<br>那就自己坐上公交车去流浪吧。约上朋友去夜市吃麻辣烫和小贝贝烤面筋。没能赶上末班车，但却碰上了壬寅年的初雪。</p>
-<p><img src="https://tuchuang-1307891532.cos.ap-nanjing.myqcloud.com/images/20230116103953.png" alt=""></p>
-<blockquote>
-<p>初雪当然美好，可初雪之下埋藏了多少故事。到了写下这些话的今天，降下的是2023年的初雪，看着屋外银装素裹，心里想的确是白茫茫的一片真干净。</p>
-</blockquote>
-<p>有时会想，如果那天晚上成功的赶上了末班的二路车会怎么样。<br>多想无益，就算回到原点，避开了走入一条崎岖的岔路，可谁又能保证另一条路不是同样的崎岖且布满沟壑。曾经也觉得后悔无比，心痛万分，可时间过去了，那些激荡起来的情绪也逐渐的平复，到了现在，心中所想所思只剩下感恩遇见的所有人。<br>总告诫自己不要回想，不知不觉中，那些记忆已经被时间冲刷的只剩下午夜梦回时的一个剪影。那就让那些曾经的美好与懊悔都存在于初雪之下，存在于午夜梦回的那个剪影中。</p>
-<h4 id="2-壬寅年的一场暴雨"><a href="#2-壬寅年的一场暴雨" class="headerlink" title="2. 壬寅年的一场暴雨"></a>2. 壬寅年的一场暴雨</h4><p>在六月末完成了所有的考试科目和课程作业之后，尽管自己心中清楚已经不是考完试就能放假回家的本科生了，但是仍对暑假有一些不切实际的幻想。从七月初开始，就陷入了一种事实上不能工作的迟缓光环中。这种得过且过的状态持续了两周，就找老师告假回家了。<br>好消息是老师准了，坏消息是暑假只有一周时间。又要学驾照，还帮师兄做了一些论文返修的活计，回家的日子并不算轻松。每天早上要六点就起床，骑上电动车跑十公里去练习科目三。科三训练场在山脚下，风景很好，就是教练老是骂人。但凡驾校的教练说话好听一点，我都能传递出更多的正能量。可惜，驾校的教练从来就吝啬于夸奖和表扬，对于他们来说开车似乎是一种本能，他们本能的不能理解为什么一些人不能掌握本能。只是人们常常忘了的一件事是，即使是吃饭喝水这样的本能也是需要学习的。祝愿天下的驾校教练都能想明白这个道理，且对学员多一些些耐心。回家的日子很忙，但是还是要挤出时间去吃一碗魂牵梦绕的烩面，以及有登封特色的刀削面。哪怕被雨淋。哪怕是大暴雨。</p>
-<p><img src="https://tuchuang-1307891532.cos.ap-nanjing.myqcloud.com/images/20230116114628.png" alt=""></p>
-<blockquote>
-<p>和去年7月一样，几乎是同样的时间，暴雨再次如期而至。</p>
-</blockquote>
-<p>而我在暴雨前后紧赶慢赶的考完了科三，来不及考科四就要再次踏上回学校的路了。这短短的一周的暑假就是我学生时代的最后一次暑假啦。</p>
-<h4 id="3-壬寅年的一片晚霞"><a href="#3-壬寅年的一片晚霞" class="headerlink" title="3. 壬寅年的一片晚霞"></a>3. 壬寅年的一片晚霞</h4><p>壬寅年，我还是跟以前一样喜欢看晚霞。可能是因为地处郊区，没有各种高楼大厦的遮挡，创新港的晚霞总是很绚烂。<br>太阳以各种形式给予人类各种恩赐。即使是将要落下时的惊鸿一瞥，也是生活中最美丽的诗篇。</p>
-<p><img src="https://tuchuang-1307891532.cos.ap-nanjing.myqcloud.com/images/20230117230855.png" alt=""></p>
-<blockquote>
-<p>云朵偷喝了我放在屋顶的酒，于是她脸红变成了晚霞。</p>
-</blockquote>
-<p>看晚霞是在创新港的日常生活的缩影。在创新港的日子，生活总是相当的规律(规律的不健康也是规律)。每天在什么时间出现在哪里，总是固定的。九点到九点半准时出现在上班的路上，十一点半在B区食堂1楼吃中午饭，下午两点半出现在上班的路上，下午五点半在c区食堂吃晚饭。吃罢晚饭，往往就是晚霞最美丽的时候。而这时也恰是最放松的时候，是计划着去九楼打会球，还是回宿舍小6两把，还是回工位刷两道题。<br>偶尔也会有例外，就是偷懒的时候。不想去工位就一个人躲在宿舍。偶尔打打游戏，追追剧，下袋三鲜水饺。这时候的晚霞同样美丽，似乎更加美丽。因为它照亮了我一个人的平凡日子。<br>每片灿烂的晚霞都照亮了每个平凡的日子。似乎，在创新港的平凡日子，笑得也很开心。</p>
-<h4 id="4-壬寅年的一场大雾"><a href="#4-壬寅年的一场大雾" class="headerlink" title="4. 壬寅年的一场大雾"></a>4. 壬寅年的一场大雾</h4><p>壬寅年的印象中，水汽十分的充足。<br>宽大的秦岭山脉为西安城遮风挡雨，也拦住了蒸腾的水汽和烟火气息。在夏天闷热的时候水汽便常常浓郁的凝结成大雾，这时的雾中还尚且只有水汽和泥土的味道。到了秋天，雾中的气味被再次丰富了——煤炭燃烧后的二氧化硫味道中偶尔也掺杂着烧烤的香味。雾大的时候，站在泓理楼下看不见涵英楼。晚上下班后，常常跟同门一块去兴华买水果。走在红枫路上，偶尔也会遇到人机所的自动驾驶车像是雾中的白色怪兽从身边划过。<br>雾中的丁达尔效应确实很惊艳，但回宿舍之后看到湿漉漉的床单还是觉得恼人。湿湿的水汽把人包围，常常会觉得自己像是咸菜缸中正在发酵的白菜叶。生活中的种种压力也像这雾气般无孔不入，无处不在。虽不至于让人窒息，但总是使人厌烦这湿漉漉的天气，对过于丰富的水汽充满了怨念。<br>偶尔也会期待一场小雨将这雾气全部冲刷。尽管秋天的小雨总是冰冷刺骨。<br>时间真的过的很快，研二之后就业和毕业的压力扑面而来。仿佛大雾降临，看不清前路，也找不到同行者；这雾气渗透进生活的方方面面，无处不在。<br>大雾总不会一直持续。总会有一阵风将雾气全部吹散，而水汽累积到一定的程度也一定会下雨。<br>前路崎岖，可车到山前必有路。</p>
-<h4 id="5-壬寅年的一点点小进步"><a href="#5-壬寅年的一点点小进步" class="headerlink" title="5. 壬寅年的一点点小进步"></a>5. 壬寅年的一点点小进步</h4><p>如果说壬寅年有什么进步。<br>首先是经常在没有疫情的时候出去走走。在南京读了四年书，说起来鸡鸣寺，总统府，老门东这些大名鼎鼎的景点也是一次都没有去过。阿宅的生活真是太难了。 南京不是只有南航，西安也不是只有交大。虽然从本质上来说自己还是一个学生，在学校的时间多一些似乎也是无可厚非的。但是，也不能把自己的生活范围画一个小小的圈，然后就在学校附近这个小小的圈里边活动。今年的一个收获就是，在没有疫情的时候常常跟同学一块出去玩。虽然去的也经常不是什么鼎鼎大名的景点，有时也只是坐两个消失的地铁去吃一家在短视频里看到的美食；但是总归是出去多走了许多。西安不只有交大，人生也不只是单线程。</p>
-<p><img src="https://tuchuang-1307891532.cos.ap-nanjing.myqcloud.com/images/20230118102324.png" alt=""></p>
-<p>其他的进步大概是自己稀烂的c++提升成了稀碎的c++，在两个同门的带领下参加了几个比赛，小有成绩，感谢张哥和秦哥提供的大腿。张哥秦哥明年继续带我！</p>
-<h4 id="6-癸卯年的一点点小展望"><a href="#6-癸卯年的一点点小展望" class="headerlink" title="6. 癸卯年的一点点小展望"></a>6. 癸卯年的一点点小展望</h4><p>对癸卯年的期盼，就如这个特意制作的标题图，平凡快乐。希望自己可以在平凡的日子里，得到快乐。<br>希望癸卯年可以更多的出去走走，希望找到一个好的工作，希望可以更抗压，更坚强，更快乐！</p>
+                <p>在windows下，我们有一套微软提供的集成开发工具，可以便捷的对C++代码进行调试。可是，在实际的工作中，我们也常常需要在linux下进行调试，这时候，我们就需要使用GDB调试工具了。</p>
+<h4 id="1-GDB简介"><a href="#1-GDB简介" class="headerlink" title="1. GDB简介"></a>1. GDB简介</h4><p>GDB是GNU项目的一个开源调试工具，它可以让我们在linux下进行C/C++代码的调试。GDB的全称是GNU Project Debugger，它是一个基于命令行的调试工具，它可以让我们在程序运行时，查看程序的运行状态，以及程序的运行过程中的变量的值。GDB的使用非常简单，只需要在命令行中输入gdb命令，然后再输入程序的路径，就可以进行调试了。</p>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">gdb ./xxx <span class="token comment"># xxx为要测试的程序的路径</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<p>常见的linux发行版中，基本都已经安装了GDB调试工具，我们可以直接使用。<br>如果不确定有没有安装，可以使用如下命令进行安装：</p>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">gdb -version <span class="token comment"># 查看GDB的版本 确定是否安装</span>
+<span class="token function">sudo</span> <span class="token function">apt-get</span> <span class="token function">install</span> gdb <span class="token comment"># 安装GDB</span>
+<span class="token comment"># 或者</span>
+<span class="token function">sudo</span> yum -y <span class="token function">install</span> gdb <span class="token comment"># 安装GDB</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
+<p>GDB的主要功能是监控程序的执行流程，以排除代码中的逻辑错误。GDB调试的对象是已经编译成可执行文件的程序，而不是源代码。但是，不是所有的可执行文件都可以用GDB工具进行调试，只有在编译时，包含了必要的调试信息的可执行文件，才可以用GDB进行调试。如果没有添加调试信息，GDB将无法找到源文件，也就无法进行调试了。<br>因此，在进行编译时，我们需要使用-g选项，来生成调试信息。</p>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">g++ -g xxx.cpp -o xxx <span class="token comment"># 编译时，使用-g选项，生成调试信息</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<p>在实际工作中，常用的c++编译方式是使用cmake进行编译，我们需要在CMakeLists.txt中添加如下代码：</p>
+<pre class="line-numbers language-cmake" data-language="cmake"><code class="language-cmake"><span class="token keyword">set</span><span class="token punctuation">(</span><span class="token variable">CMAKE_BUILD_TYPE</span> <span class="token string">"Debug"</span><span class="token punctuation">)</span> <span class="token comment"># 设置编译模式为Debug</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<p>对于一个可执行程序<code>test</code>，我们可以用如下指令启动GDB进行调试。<br><pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">gdb ./test
+<span class="token comment"># 若程序需要传入参数，可以使用如下指令</span>
+gdb ./test --args arg1 arg2 arg3<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre></p>
+<h4 id="2-GDB常用命令"><a href="#2-GDB常用命令" class="headerlink" title="2. GDB常用命令"></a>2. GDB常用命令</h4><p>在调试一个程序时，我们最常见的想法就是打个断点，观察程序运行到某个地方的时候，变量的值是多少。GDB提供了如下命令来设置断点：</p>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token punctuation">(</span>gdb<span class="token punctuation">)</span> <span class="token builtin class-name">break</span> <span class="token punctuation">[</span>function<span class="token operator">|</span>filename:line<span class="token operator">|</span>*address<span class="token punctuation">]</span> <span class="token comment"># 设置断点</span>
+<span class="token punctuation">(</span>gdb<span class="token punctuation">)</span> <span class="token builtin class-name">break</span> <span class="token number">10</span> <span class="token comment"># 在第10行设置断点</span>
+<span class="token punctuation">(</span>gdb<span class="token punctuation">)</span> <span class="token builtin class-name">break</span> main <span class="token comment"># 在main函数中设置断点</span>
+<span class="token punctuation">(</span>gdb<span class="token punctuation">)</span> <span class="token builtin class-name">break</span> test.cpp:10 <span class="token comment"># 在test.cpp文件的第10行设置断点</span>
+<span class="token punctuation">(</span>gdb<span class="token punctuation">)</span> <span class="token builtin class-name">break</span> *0x400000 <span class="token comment"># 在地址为0x400000处设置断点</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p>在设置断点后，我们可以使用如下命令来查看当前的断点：</p>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token punctuation">(</span>gdb<span class="token punctuation">)</span> info <span class="token builtin class-name">break</span> <span class="token comment"># 查看当前的断点</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<p>设置好断点之后，我们就可以开始调试了。我们可以使用如下命令来运行程序：</p>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token punctuation">(</span>gdb<span class="token punctuation">)</span> run <span class="token comment"># 运行程序 程序会自动运行到第一个断点处</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<p>也可以使用如下命令来逐行运行程序：</p>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token punctuation">(</span>gdb<span class="token punctuation">)</span> next <span class="token comment"># 逐行运行程序</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<p>在程序运行到断点处，我们可以使用如下命令来打印指定变量的值：</p>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token punctuation">(</span>gdb<span class="token punctuation">)</span> print <span class="token punctuation">[</span>variable<span class="token punctuation">]</span> <span class="token comment"># 打印变量的值</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<p>我们也可以使用如下命令来查看源代码的内容：</p>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token punctuation">(</span>gdb<span class="token punctuation">)</span> list <span class="token comment"># 查看源代码</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<p>在调试结束之后，可以使用如下指令退出调试</p>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token punctuation">(</span>gdb<span class="token punctuation">)</span> quit <span class="token comment"># 退出调试</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<p>上述所有操作均可以使用首字母缩写来代替，如<code>break</code>可以使用<code>b</code>来代替，<code>next</code>可以使用<code>n</code>来代替。</p>
 
                 
             </div>
@@ -414,7 +406,7 @@ height: 100%; left: 0; top: 0;"> </iframe></div></div>
                     </i>
                 </span>
                 <span class="reprint-info">
-                    <a href="http://Dududu233.github.io/2023/01/01/2023/">http://Dududu233.github.io/2023/01/01/2023/</a>
+                    <a href="http://Dududu233.github.io/2023/02/13/gdb/">http://Dududu233.github.io/2023/02/13/gdb/</a>
                 </span>
             </div>
             <div class="reprint__notice">
@@ -452,8 +444,12 @@ height: 100%; left: 0; top: 0;"> </iframe></div></div>
                     
                         <div class="article-tag">
                             
-                                <a href="/tags/normaldays/">
-                                    <span class="chip bg-color">normaldays</span>
+                                <a href="/tags/C/">
+                                    <span class="chip bg-color">C++</span>
+                                </a>
+                            
+                                <a href="/tags/GDB/">
+                                    <span class="chip bg-color">GDB</span>
                                 </a>
                             
                         </div>
@@ -773,9 +769,10 @@ height: 100%; left: 0; top: 0;"> </iframe></div></div>
 <article id="prenext-posts" class="prev-next articles">
     <div class="row article-row">
         
-        <div class="article col s12 m6" data-aos="fade-up">
+        <div class="article col s12 m6" data-aos="fade-up" data-aos="fade-up">
             <div class="article-badge left-badge text-color">
-                <i class="fas fa-chevron-left"></i>&nbsp;上一篇</div>
+                <i class="far fa-dot-circle"></i>&nbsp;本篇
+            </div>
             <div class="card">
                 <a href="/2023/02/13/gdb/">
                     <div class="card-image">
@@ -793,9 +790,9 @@ height: 100%; left: 0; top: 0;"> </iframe></div></div>
                         
                     </div>
                     <div class="publish-info">
-                        <span class="publish-date">
-                            <i class="far fa-clock fa-fw icon-date"></i>2023-02-13
-                        </span>
+                            <span class="publish-date">
+                                <i class="far fa-clock fa-fw icon-date"></i>2023-02-13
+                            </span>
                         <span class="publish-author">
                             
                             <i class="fas fa-bookmark fa-fw icon-category"></i>
@@ -808,6 +805,7 @@ height: 100%; left: 0; top: 0;"> </iframe></div></div>
                         </span>
                     </div>
                 </div>
+
                 
                 <div class="card-action article-tags">
                     
@@ -830,12 +828,12 @@ height: 100%; left: 0; top: 0;"> </iframe></div></div>
                 下一篇&nbsp;<i class="fas fa-chevron-right"></i>
             </div>
             <div class="card">
-                <a href="/2022/11/30/2022-2023/">
+                <a href="/2023/01/01/2023/">
                     <div class="card-image">
                         
-                        <img src="https://tuchuang-1307891532.cos.ap-nanjing.myqcloud.com/images/20221130210109.png" class="responsive-img" alt="创新港的一年四季">
+                        <img src="https://tuchuang-1307891532.cos.ap-nanjing.myqcloud.com/images/20230114094457.png" class="responsive-img" alt="新年快乐！">
                         
-                        <span class="card-title">创新港的一年四季</span>
+                        <span class="card-title">新年快乐！</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
@@ -846,7 +844,7 @@ height: 100%; left: 0; top: 0;"> </iframe></div></div>
                     </div>
                     <div class="publish-info">
                             <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2022-11-30
+                                <i class="far fa-clock fa-fw icon-date"></i>2023-01-01
                             </span>
                         <span class="publish-author">
                             
