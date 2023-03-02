@@ -199,9 +199,9 @@
     <category term="刷题赎罪" scheme="http://dududu233.github.io/categories/%E5%88%B7%E9%A2%98%E8%B5%8E%E7%BD%AA/"/>
     
     
-    <category term="leetcode" scheme="http://dududu233.github.io/tags/leetcode/"/>
-    
     <category term="tech" scheme="http://dududu233.github.io/tags/tech/"/>
+    
+    <category term="leetcode" scheme="http://dududu233.github.io/tags/leetcode/"/>
     
   </entry>
   
