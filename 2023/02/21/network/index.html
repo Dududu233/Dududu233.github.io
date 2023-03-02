@@ -4,9 +4,9 @@
 
 <head>
     <!-- hexo-inject:begin --><!-- hexo-inject:end --><meta charset="utf-8">
-    <meta name="keywords" content="使用GDB调试工具调试C++代码, 读读读233">
-    <meta name="description" content="在windows下，我们有一套微软提供的集成开发工具，可以便捷的对C++代码进行调试。可是，在实际的工作中，我们也常常需要在linux下进行调试，这时候，我们就需要使用GDB调试工具了。
-1. GDB简介GDB是GNU项目的一个开源调试工具">
+    <meta name="keywords" content="计算机网络, 读读读233">
+    <meta name="description" content="
+为什么要有计算机网络？在同一台设备上进行通信时，我们可以直接使用进程间通信的方式：管道，消息队列，共享内存，信号。但是，当我们需要在不同的设备上进行进程间通信时，就需要使用计算机网络进行通信了。不同设备之间的差异很大，为了兼容各种各样的设">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <meta name="renderer" content="webkit|ie-stand|ie-comp">
@@ -18,7 +18,7 @@
     <!-- Global site tag (gtag.js) - Google Analytics -->
 
 
-    <title>使用GDB调试工具调试C++代码 | 读读读233</title>
+    <title>计算机网络 | 读读读233</title>
     <link rel="icon" type="image/png" href="https://tuchuang-1307891532.cos.ap-nanjing.myqcloud.com/source/favicon.png">
     
 
@@ -249,12 +249,12 @@
 
 
 
-<div class="bg-cover pd-header post-cover" style="background-image: url('https://tuchuang-1307891532.cos.ap-nanjing.myqcloud.com/cover/7.jpg')">
+<div class="bg-cover pd-header post-cover" style="background-image: url('https://tuchuang-1307891532.cos.ap-nanjing.myqcloud.com/cover/9.jpg')">
     <div class="container" style="right: 0px;left: 0px;">
         <div class="row">
             <div class="col s12 m12 l12">
                 <div class="brand">
-                    <h1 class="description center-align post-title">使用GDB调试工具调试C++代码</h1>
+                    <h1 class="description center-align post-title">计算机网络</h1>
                 </div>
             </div>
         </div>
@@ -278,12 +278,12 @@
                     
                     <div class="article-tag">
                         
-                            <a href="/tags/C/">
-                                <span class="chip bg-color">C++</span>
+                            <a href="/tags/tech/">
+                                <span class="chip bg-color">tech</span>
                             </a>
                         
-                            <a href="/tags/GDB/">
-                                <span class="chip bg-color">GDB</span>
+                            <a href="/tags/network/">
+                                <span class="chip bg-color">network</span>
                             </a>
                         
                     </div>
@@ -294,8 +294,8 @@
                     <div class="post-cate">
                         <i class="fas fa-bookmark fa-fw icon-category"></i>
                         
-                            <a href="/categories/%E5%AE%9E%E7%94%A8%E6%8A%80%E6%9C%AF/" class="post-category">
-                                实用技术
+                            <a href="/categories/%E5%85%AB%E8%82%A1/" class="post-category">
+                                八股
                             </a>
                         
                     </div>
@@ -307,21 +307,21 @@
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-minus fa-fw"></i>发布日期:&nbsp;&nbsp;
-                    2023-02-13
+                    2023-02-21
                 </div>
                 
 
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-check fa-fw"></i>更新日期:&nbsp;&nbsp;
-                    2023-02-13
+                    2023-02-22
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    933
+                    1.7k
                 </div>
                 
 
@@ -346,40 +346,41 @@
 
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <p>在windows下，我们有一套微软提供的集成开发工具，可以便捷的对C++代码进行调试。可是，在实际的工作中，我们也常常需要在linux下进行调试，这时候，我们就需要使用GDB调试工具了。</p>
-<h4 id="1-GDB简介"><a href="#1-GDB简介" class="headerlink" title="1. GDB简介"></a>1. GDB简介</h4><p>GDB是GNU项目的一个开源调试工具，它可以让我们在linux下进行C/C++代码的调试。GDB的全称是GNU Project Debugger，它是一个基于命令行的调试工具，它可以让我们在程序运行时，查看程序的运行状态，以及程序的运行过程中的变量的值。GDB的使用非常简单，只需要在命令行中输入gdb命令，然后再输入程序的路径，就可以进行调试了。</p>
-<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">gdb ./xxx <span class="token comment"># xxx为要测试的程序的路径</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
-<p>常见的linux发行版中，基本都已经安装了GDB调试工具，我们可以直接使用。<br>如果不确定有没有安装，可以使用如下命令进行安装：</p>
-<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">gdb -version <span class="token comment"># 查看GDB的版本 确定是否安装</span>
-<span class="token function">sudo</span> <span class="token function">apt-get</span> <span class="token function">install</span> gdb <span class="token comment"># 安装GDB</span>
-<span class="token comment"># 或者</span>
-<span class="token function">sudo</span> yum -y <span class="token function">install</span> gdb <span class="token comment"># 安装GDB</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
-<p>GDB的主要功能是监控程序的执行流程，以排除代码中的逻辑错误。GDB调试的对象是已经编译成可执行文件的程序，而不是源代码。但是，不是所有的可执行文件都可以用GDB工具进行调试，只有在编译时，包含了必要的调试信息的可执行文件，才可以用GDB进行调试。如果没有添加调试信息，GDB将无法找到源文件，也就无法进行调试了。<br>因此，在进行编译时，我们需要使用-g选项，来生成调试信息。</p>
-<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">g++ -g xxx.cpp -o xxx <span class="token comment"># 编译时，使用-g选项，生成调试信息</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
-<p>在实际工作中，常用的c++编译方式是使用cmake进行编译，我们需要在CMakeLists.txt中添加如下代码：</p>
-<pre class="line-numbers language-cmake" data-language="cmake"><code class="language-cmake"><span class="token keyword">set</span><span class="token punctuation">(</span><span class="token variable">CMAKE_BUILD_TYPE</span> <span class="token string">"Debug"</span><span class="token punctuation">)</span> <span class="token comment"># 设置编译模式为Debug</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
-<p>对于一个可执行程序<code>test</code>，我们可以用如下指令启动GDB进行调试。<br><pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">gdb ./test
-<span class="token comment"># 若程序需要传入参数，可以使用如下指令</span>
-gdb ./test --args arg1 arg2 arg3<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre></p>
-<h4 id="2-GDB常用命令"><a href="#2-GDB常用命令" class="headerlink" title="2. GDB常用命令"></a>2. GDB常用命令</h4><p>在调试一个程序时，我们最常见的想法就是打个断点，观察程序运行到某个地方的时候，变量的值是多少。GDB提供了如下命令来设置断点：</p>
-<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token punctuation">(</span>gdb<span class="token punctuation">)</span> <span class="token builtin class-name">break</span> <span class="token punctuation">[</span>function<span class="token operator">|</span>filename:line<span class="token operator">|</span>*address<span class="token punctuation">]</span> <span class="token comment"># 设置断点</span>
-<span class="token punctuation">(</span>gdb<span class="token punctuation">)</span> <span class="token builtin class-name">break</span> <span class="token number">10</span> <span class="token comment"># 在第10行设置断点</span>
-<span class="token punctuation">(</span>gdb<span class="token punctuation">)</span> <span class="token builtin class-name">break</span> main <span class="token comment"># 在main函数中设置断点</span>
-<span class="token punctuation">(</span>gdb<span class="token punctuation">)</span> <span class="token builtin class-name">break</span> test.cpp:10 <span class="token comment"># 在test.cpp文件的第10行设置断点</span>
-<span class="token punctuation">(</span>gdb<span class="token punctuation">)</span> <span class="token builtin class-name">break</span> *0x400000 <span class="token comment"># 在地址为0x400000处设置断点</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-<p>在设置断点后，我们可以使用如下命令来查看当前的断点：</p>
-<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token punctuation">(</span>gdb<span class="token punctuation">)</span> info <span class="token builtin class-name">break</span> <span class="token comment"># 查看当前的断点</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
-<p>设置好断点之后，我们就可以开始调试了。我们可以使用如下命令来运行程序：</p>
-<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token punctuation">(</span>gdb<span class="token punctuation">)</span> run <span class="token comment"># 运行程序 程序会自动运行到第一个断点处</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
-<p>也可以使用如下命令来逐行运行程序：</p>
-<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token punctuation">(</span>gdb<span class="token punctuation">)</span> next <span class="token comment"># 逐行运行程序</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
-<p>在程序运行到断点处，我们可以使用如下命令来打印指定变量的值：</p>
-<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token punctuation">(</span>gdb<span class="token punctuation">)</span> print <span class="token punctuation">[</span>variable<span class="token punctuation">]</span> <span class="token comment"># 打印变量的值</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
-<p>我们也可以使用如下命令来查看源代码的内容：</p>
-<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token punctuation">(</span>gdb<span class="token punctuation">)</span> list <span class="token comment"># 查看源代码</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
-<p>在调试结束之后，可以使用如下指令退出调试</p>
-<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token punctuation">(</span>gdb<span class="token punctuation">)</span> quit <span class="token comment"># 退出调试</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
-<p>上述所有操作均可以使用首字母缩写来代替，如<code>break</code>可以使用<code>b</code>来代替，<code>next</code>可以使用<code>n</code>来代替。</p>
+                <blockquote>
+<p>为什么要有计算机网络？<br>在同一台设备上进行通信时，我们可以直接使用进程间通信的方式：管道，消息队列，共享内存，信号。但是，当我们需要在不同的设备上进行进程间通信时，就需要使用计算机网络进行通信了。不同设备之间的差异很大，为了兼容各种各样的设备，协商出了一套通用的网络协议，这就是TCP/IP协议。</p>
+</blockquote>
+<h3 id="1-1-TCP-IP网络模型"><a href="#1-1-TCP-IP网络模型" class="headerlink" title="1.1 TCP/IP网络模型"></a>1.1 TCP/IP网络模型</h3><p>TCP/IP网络模型通常分为四层或者五层，其中最常用的协议是HTTP协议(应用层)，TCP协议(传输层)和IP协议(网络层)。</p>
+<p><img src="https://tuchuang-1307891532.cos.ap-nanjing.myqcloud.com/images/20230221151209.png" alt="OSI模型和TCP/IP模型"></p>
+<h4 id="应用层"><a href="#应用层" class="headerlink" title="应用层"></a>应用层</h4><p>最上层的，也是我们能直接接触到的是应用层，我们的手机电脑等设备使用的应用软件都是在应用层实现的。当两个不同设备的应用需要进行通信时，应用将数据传给应用层的下一层，也就是传输层。<br>应用层只需要专注于为用户提供应用功能。比如HTTP，FTP，SMTP等。<br>应用层工作在操作系统中的用户态，而传输层及以下工作在操作系统的内核态。</p>
+<h4 id="传输层"><a href="#传输层" class="headerlink" title="传输层"></a>传输层</h4><p>应用层的数据包会传给传输层，传输层是为应用层提供网络支持的。</p>
+<p>传输层有两个传输协议，分别是TCP和UDP。</p>
+<p>TCP的全称是传输控制协议(Transmission Control Protocol)，大部分应用使用的都是TCP传输层协议，比如HTTP应用层协议。TCP相比于UDP多了很多特性，比如流量控制超时重传，拥塞控制等，这些都是为了保证数据包可靠安全的传输给对方。</p>
+<p>UDP的全称是用户数据报协议(User Datagram Protocol)，相对于TCP来说简单很多，只负责发送数据包，并不保证对方是否真正收到，但是他的传输效率更高，实时性相对来说也更好。</p>
+<p>应用需要传输的数据可能会非常大，如果直接传输就不好控制，因此当传输层的数据包大小超过 MSS（TCP 最大报文段长度） ，就要将数据包分块，这样即使中途有一个分块丢失或损坏了，只需要重新发送这一个分块，而不用重新发送整个数据包。在 TCP 协议中，我们把每个分块称为一个 TCP 段（TCP Segment）。</p>
+<p>当设备作为接收方时，传输层则要负责把数据包传给应用，但是一台设备上可能会有很多应用在接收或者传输数据，因此需要用一个编号将应用区分开来，这个编号就是端口。</p>
+<p>比如 80 端口通常是 Web 服务器用的，22 端口通常是远程登录服务器用的。而对于浏览器（客户端）中的每个标签栏都是一个独立的进程，操作系统会为这些进程分配临时的端口号。</p>
+<p>由于传输层的报文中会携带端口号，因此接收方可以识别出该报文是发送给哪个应用。</p>
+<h4 id="网络层"><a href="#网络层" class="headerlink" title="网络层"></a>网络层</h4><p>在TCP/IP模型中，传输层负责应用之间数据传输，帮助实现从应用到应用的通信，实际上，传输层并不负责传输功能，真正实现传输功能是在网络层。</p>
+<p>网络层中最常使用的协议是IP(Internet Protocol)协议，IP协议将传输层的报文作为数据部分，加上IP包头组装成IP报文，如果 IP 报文大小超过 MTU（以太网中一般为 1500 字节）就会再次进行分片，得到一个即将发送到网络的 IP 报文。</p>
+<p><img src="https://tuchuang-1307891532.cos.ap-nanjing.myqcloud.com/images/20230221153207.png" alt="从应用层到传输层再到网络层"></p>
+<p>为了不同设备之间互相寻找，我们将每个设备都进行编号，这个编号就是所谓的IP地址。对于IPv4协议，IP地址一共有32位，分为四段，每段8位($2^8=256$)。这样已经可以区分设备，但是，为了便于寻址，将IP地址分成两种意义。</p>
+<ul>
+<li>网络号：标识该IP地址属于哪个子网</li>
+<li>主机号：表示同一子网下的不同主机</li>
+</ul>
+<p>为了便于计算一个IP地址的网络号和主机号，我们通常会使用子网掩码。</p>
+<p>在寻址的过程中，先匹配到相同的网络号（表示要找到同一个子网），才会去找对应的主机。</p>
+<p>除了寻址能力， IP 协议还有另一个重要的能力就是路由。实际场景中，两台设备并不是用一条网线连接起来的，而是通过很多网关、路由器、交换机等众多网络设备连接起来的，那么就会形成很多条网络的路径，因此当数据包到达一个网络节点，就需要通过路由算法决定下一步走哪条路径。</p>
+<p>路由器寻址工作中，就是要找到目标地址的子网，找到后进而把数据包转发给对应的网络内。</p>
+<p><img src="https://tuchuang-1307891532.cos.ap-nanjing.myqcloud.com/images/20230221155144.png" alt="路由器寻址的过程"></p>
+<h4 id="网络接口层"><a href="#网络接口层" class="headerlink" title="网络接口层"></a>网络接口层</h4><p>生成了 IP 头部之后，接下来要交给网络接口层（Link Layer）在 IP 头部的前面加上 MAC 头部，并封装成数据帧（Data frame）发送到网络上。</p>
+<p>IP 头部中的接收方 IP 地址表示网络包的目的地，通过这个地址我们就可以判断要将包发到哪里，但在以太网的世界中，这个思路是行不通的。</p>
+<p>什么是以太网呢？电脑上的以太网接口，Wi-Fi接口，以太网交换机、路由器上的千兆，万兆以太网口，还有网线，它们都是以太网的组成部分。以太网就是一种在「局域网」内，把附近的设备连接起来，使它们之间可以进行通讯的技术。</p>
+<p>以太网在判断网络包目的地时和 IP 的方式不同，因此必须采用相匹配的方式才能在以太网中将包发往目的地，而 MAC 头部就是干这个用的，所以，在以太网进行通讯要用到 MAC 地址。</p>
+<p>MAC 头部是以太网使用的头部，它包含了接收方和发送方的 MAC 地址等信息，我们可以通过 ARP 协议获取对方的 MAC 地址。</p>
+<p>所以说，网络接口层主要为网络层提供「链路级别」传输的服务，负责在以太网、WiFi 这样的底层网络上发送原始数据包，工作在网卡这个层次，使用 MAC 地址来标识网络上的设备。</p>
+<p><img src="https://tuchuang-1307891532.cos.ap-nanjing.myqcloud.com/images/20230221155429.png" alt="每一层的封装格式"></p>
+<p>网络接口层的传输单位使帧，网络层传输的基本单位是数据包，而传输层传输的基本单位是报文段。</p>
 
                 
             </div>
@@ -406,7 +407,7 @@ gdb ./test --args arg1 arg2 arg3<span aria-hidden="true" class="line-numbers-row
                     </i>
                 </span>
                 <span class="reprint-info">
-                    <a href="http://Dududu233.github.io/2023/02/13/gdb/">http://Dududu233.github.io/2023/02/13/gdb/</a>
+                    <a href="http://Dududu233.github.io/2023/02/21/network/">http://Dududu233.github.io/2023/02/21/network/</a>
                 </span>
             </div>
             <div class="reprint__notice">
@@ -444,12 +445,12 @@ gdb ./test --args arg1 arg2 arg3<span aria-hidden="true" class="line-numbers-row
                     
                         <div class="article-tag">
                             
-                                <a href="/tags/C/">
-                                    <span class="chip bg-color">C++</span>
+                                <a href="/tags/tech/">
+                                    <span class="chip bg-color">tech</span>
                                 </a>
                             
-                                <a href="/tags/GDB/">
-                                    <span class="chip bg-color">GDB</span>
+                                <a href="/tags/network/">
+                                    <span class="chip bg-color">network</span>
                                 </a>
                             
                         </div>
@@ -769,9 +770,10 @@ gdb ./test --args arg1 arg2 arg3<span aria-hidden="true" class="line-numbers-row
 <article id="prenext-posts" class="prev-next articles">
     <div class="row article-row">
         
-        <div class="article col s12 m6" data-aos="fade-up">
+        <div class="article col s12 m6" data-aos="fade-up" data-aos="fade-up">
             <div class="article-badge left-badge text-color">
-                <i class="fas fa-chevron-left"></i>&nbsp;上一篇</div>
+                <i class="far fa-dot-circle"></i>&nbsp;本篇
+            </div>
             <div class="card">
                 <a href="/2023/02/21/network/">
                     <div class="card-image">
@@ -789,9 +791,9 @@ gdb ./test --args arg1 arg2 arg3<span aria-hidden="true" class="line-numbers-row
                         
                     </div>
                     <div class="publish-info">
-                        <span class="publish-date">
-                            <i class="far fa-clock fa-fw icon-date"></i>2023-02-21
-                        </span>
+                            <span class="publish-date">
+                                <i class="far fa-clock fa-fw icon-date"></i>2023-02-21
+                            </span>
                         <span class="publish-author">
                             
                             <i class="fas fa-bookmark fa-fw icon-category"></i>
@@ -804,6 +806,7 @@ gdb ./test --args arg1 arg2 arg3<span aria-hidden="true" class="line-numbers-row
                         </span>
                     </div>
                 </div>
+
                 
                 <div class="card-action article-tags">
                     
@@ -826,12 +829,13 @@ gdb ./test --args arg1 arg2 arg3<span aria-hidden="true" class="line-numbers-row
                 下一篇&nbsp;<i class="fas fa-chevron-right"></i>
             </div>
             <div class="card">
-                <a href="/2023/01/01/2023/">
+                <a href="/2023/02/13/gdb/">
                     <div class="card-image">
                         
-                        <img src="https://tuchuang-1307891532.cos.ap-nanjing.myqcloud.com/images/20230114094457.png" class="responsive-img" alt="新年快乐！">
                         
-                        <span class="card-title">新年快乐！</span>
+                        <img src="https://tuchuang-1307891532.cos.ap-nanjing.myqcloud.com/cover/7.jpg" class="responsive-img" alt="使用GDB调试工具调试C++代码">
+                        
+                        <span class="card-title">使用GDB调试工具调试C++代码</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
@@ -842,14 +846,14 @@ gdb ./test --args arg1 arg2 arg3<span aria-hidden="true" class="line-numbers-row
                     </div>
                     <div class="publish-info">
                             <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2023-01-01
+                                <i class="far fa-clock fa-fw icon-date"></i>2023-02-13
                             </span>
                         <span class="publish-author">
                             
                             <i class="fas fa-bookmark fa-fw icon-category"></i>
                             
-                            <a href="/categories/%E6%97%A5%E6%97%A5%E8%B0%88/" class="post-category">
-                                    日日谈
+                            <a href="/categories/%E5%AE%9E%E7%94%A8%E6%8A%80%E6%9C%AF/" class="post-category">
+                                    实用技术
                                 </a>
                             
                             
@@ -859,8 +863,12 @@ gdb ./test --args arg1 arg2 arg3<span aria-hidden="true" class="line-numbers-row
                 
                 <div class="card-action article-tags">
                     
-                    <a href="/tags/normaldays/">
-                        <span class="chip bg-color">normaldays</span>
+                    <a href="/tags/C/">
+                        <span class="chip bg-color">C++</span>
+                    </a>
+                    
+                    <a href="/tags/GDB/">
+                        <span class="chip bg-color">GDB</span>
                     </a>
                     
                 </div>
@@ -984,6 +992,13 @@ gdb ./test --args arg1 arg2 arg3<span aria-hidden="true" class="line-numbers-row
 
 </main>
 
+
+<script src="https://cdn.bootcss.com/mathjax/2.7.5/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+<script>
+    MathJax.Hub.Config({
+        tex2jax: {inlineMath: [['$', '$'], ['\\(', '\\)']]}
+    });
+</script>
 
 
 
