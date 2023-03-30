@@ -6,7 +6,7 @@
   <link href="http://dududu233.github.io/atom.xml" rel="self"/>
   
   <link href="http://dududu233.github.io/"/>
-  <updated>2023-02-22T02:01:05.544Z</updated>
+  <updated>2023-03-30T13:41:32.045Z</updated>
   <id>http://dududu233.github.io/</id>
   
   <author>
@@ -15,6 +15,34 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>面试总结</title>
+    <link href="http://dududu233.github.io/2023/03/29/interview/"/>
+    <id>http://dududu233.github.io/2023/03/29/interview/</id>
+    <published>2023-03-29T12:16:15.000Z</published>
+    <updated>2023-03-30T13:41:32.045Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;p&gt;本文分为四个部分。c++面试常问题，计算机网络常问题和操作系统常问题，以及自己找工作的过程。&lt;/p&gt;
+&lt;h3 id=&quot;c-面经&quot;&gt;&lt;a href=&quot;#c-面经&quot; class=&quot;headerlink&quot; title=&quot;c++面经&quot;&gt;&lt;/a&gt;c++面经&lt;/h3&gt;&lt;h4</summary>
+        
+      
+    
+    
+    
+    <category term="八股" scheme="http://dududu233.github.io/categories/%E5%85%AB%E8%82%A1/"/>
+    
+    
+    <category term="面试" scheme="http://dududu233.github.io/tags/%E9%9D%A2%E8%AF%95/"/>
+    
+    <category term="八股" scheme="http://dududu233.github.io/tags/%E5%85%AB%E8%82%A1/"/>
+    
+  </entry>
   
   <entry>
     <title>计算机网络</title>
@@ -312,7 +340,7 @@
     <link href="http://dududu233.github.io/2022/09/22/%E5%89%91%E6%8C%87offer/"/>
     <id>http://dududu233.github.io/2022/09/22/%E5%89%91%E6%8C%87offer/</id>
     <published>2022-09-22T06:40:09.000Z</published>
-    <updated>2022-11-09T08:10:52.751Z</updated>
+    <updated>2023-03-04T11:25:31.666Z</updated>
     
     
       
@@ -508,32 +536,6 @@
     
     
     <category term="leetcode" scheme="http://dududu233.github.io/tags/leetcode/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>写在回家的前一夜</title>
-    <link href="http://dududu233.github.io/2022/07/18/%E5%86%99%E5%9C%A8%E6%94%BE%E5%81%87%E5%89%8D%E7%9A%84%E4%B8%80%E5%A4%9C/"/>
-    <id>http://dududu233.github.io/2022/07/18/%E5%86%99%E5%9C%A8%E6%94%BE%E5%81%87%E5%89%8D%E7%9A%84%E4%B8%80%E5%A4%9C/</id>
-    <published>2022-07-18T12:33:51.000Z</published>
-    <updated>2022-07-18T14:20:25.031Z</updated>
-    
-    
-      
-      
-        
-        
-    <summary type="html">&lt;p&gt;到了回家前的最后一晚。按照惯例打扫了宿舍，收拾了行李，把充电宝充上电。&lt;/p&gt;
-&lt;p&gt;西安近来的天气很不怎么样。闷热天气像极了南京的夏天。兴华永远不新鲜的西瓜也像极了教超。每天苦闷的永远就是那么几事，导师，论文，工作。有时候觉得自己像祥林嫂一样啰嗦——可能是比祥林嫂还不堪，</summary>
-        
-      
-    
-    
-    
-    <category term="日日谈" scheme="http://dududu233.github.io/categories/%E6%97%A5%E6%97%A5%E8%B0%88/"/>
-    
-    
-    <category term="normaldays" scheme="http://dududu233.github.io/tags/normaldays/"/>
     
   </entry>
   

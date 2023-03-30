@@ -4,8 +4,9 @@
 
 <head>
     <!-- hexo-inject:begin --><!-- hexo-inject:end --><meta charset="utf-8">
-    <meta name="keywords" content="Gated PixelCNN小结, 读读读233">
-    <meta name="description" content="Gated PixelCNN论文中提出的模型结合了PixelRNN和PixelCNN的优点。主体结构还是PixelCNN，因为PixelCNN使用卷积运算，可以节省运算时间和运算资源。相比于PixelCNN，PixelRNN的优点是使用了门">
+    <meta name="keywords" content="面试总结, 读读读233">
+    <meta name="description" content="本文分为四个部分。c++面试常问题，计算机网络常问题和操作系统常问题，以及自己找工作的过程。
+c++面经多态1. 谈谈你对多态的理解？多态，就是一个对象在不同的时刻体现出来的不同的状态。在c++中，多态可以分为静态多态和动态多态。静态多态是">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <meta name="renderer" content="webkit|ie-stand|ie-comp">
@@ -17,7 +18,7 @@
     <!-- Global site tag (gtag.js) - Google Analytics -->
 
 
-    <title>Gated PixelCNN小结 | 读读读233</title>
+    <title>面试总结 | 读读读233</title>
     <link rel="icon" type="image/png" href="https://tuchuang-1307891532.cos.ap-nanjing.myqcloud.com/source/favicon.png">
     
 
@@ -248,12 +249,12 @@
 
 
 
-<div class="bg-cover pd-header post-cover" style="background-image: url('https://tuchuang-1307891532.cos.ap-nanjing.myqcloud.com/cover/0.jpg')">
+<div class="bg-cover pd-header post-cover" style="background-image: url('https://tuchuang-1307891532.cos.ap-nanjing.myqcloud.com/cover/19.jpg')">
     <div class="container" style="right: 0px;left: 0px;">
         <div class="row">
             <div class="col s12 m12 l12">
                 <div class="brand">
-                    <h1 class="description center-align post-title">Gated PixelCNN小结</h1>
+                    <h1 class="description center-align post-title">面试总结</h1>
                 </div>
             </div>
         </div>
@@ -277,8 +278,12 @@
                     
                     <div class="article-tag">
                         
-                            <a href="/tags/tech/">
-                                <span class="chip bg-color">tech</span>
+                            <a href="/tags/%E9%9D%A2%E8%AF%95/">
+                                <span class="chip bg-color">面试</span>
+                            </a>
+                        
+                            <a href="/tags/%E5%85%AB%E8%82%A1/">
+                                <span class="chip bg-color">八股</span>
                             </a>
                         
                     </div>
@@ -289,8 +294,8 @@
                     <div class="post-cate">
                         <i class="fas fa-bookmark fa-fw icon-category"></i>
                         
-                            <a href="/categories/%E8%AE%BA%E6%96%87%E6%80%BB%E7%BB%93/" class="post-category">
-                                论文总结
+                            <a href="/categories/%E5%85%AB%E8%82%A1/" class="post-category">
+                                八股
                             </a>
                         
                     </div>
@@ -302,21 +307,21 @@
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-minus fa-fw"></i>发布日期:&nbsp;&nbsp;
-                    2022-08-15
+                    2023-03-29
                 </div>
                 
 
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-check fa-fw"></i>更新日期:&nbsp;&nbsp;
-                    2022-10-24
+                    2023-03-30
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    925
+                    1.6k
                 </div>
                 
 
@@ -341,37 +346,24 @@
 
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <h4 id="Gated-PixelCNN"><a href="#Gated-PixelCNN" class="headerlink" title="Gated PixelCNN"></a>Gated PixelCNN</h4><p>论文中提出的模型结合了PixelRNN和PixelCNN的优点。<br>主体结构还是PixelCNN，因为PixelCNN使用卷积运算，可以节省运算时间和运算资源。<br>相比于PixelCNN，PixelRNN的优点是使用了门控单元，且没有感受野盲区。分别针对这两点对PixelCNN进行了针对性的改进。</p>
-<h5 id="Gated-activation"><a href="#Gated-activation" class="headerlink" title="Gated activation"></a>Gated activation</h5><p>首先，使用门激活函数代替PixelCNN中的线性激活函数。有助于建模更加复杂的interactions。门激活函数的数学表达式如下所示：</p>
-<script type="math/tex; mode=display">y = \tanh (W_{k, f} * \mathrm {x} ) \odot \sigma(W_{k, g}* \mathrm {x})</script><p>式中的参数分别表示：</p>
-<p>$\sigma$:sigmoid函数</p>
-<p>$k$:卷积的层数</p>
-<p>$\odot$:逐元素点乘</p>
-<p>*:卷积操作</p>
-<p>$W_{k, f}$:第k层的卷积核</p>
-<p>$W_{k, g}$:第k层的卷积核</p>
-<h5 id="解决Blind-spot"><a href="#解决Blind-spot" class="headerlink" title="解决Blind spot"></a>解决Blind spot</h5><p><img src="https://tuchuang-1307891532.cos.ap-nanjing.myqcloud.com/images/20220815105923.png" alt="上图为original pixelcnn的感受野，随着卷积核的叠加，感受野盲区的范围也不断地扩大，下图为本文的解决方案，将masked conv filter分为vertical stack和horizontal stack，完美的解决了感受野盲区的问题"></p>
-<p>Gated PixelCNN的输入被分为了两个部分，一部分是vertical，一部分是horizontal。vertical包含了现在行之上的所有行，而horizontal包含了现在行之前的所有的像素点。<br>github上已经有了完整的<a target="_blank" rel="noopener" href="https://github.com/kkleidal/GatedPixelCNNPyTorch/blob/master/note-on-conv-masking.ipynb">验证代码</a>。<br>在每一层结束之后，都将这两个stack的输出结合起来。<br>两者的结合方式如图所示，使用简单的卷积。</p>
-<p><img src="https://tuchuang-1307891532.cos.ap-nanjing.myqcloud.com/images/20220815151441.png" alt="一个简单的Gated PixelCNN单元"></p>
-<p><img src="https://tuchuang-1307891532.cos.ap-nanjing.myqcloud.com/images/20220815152247.png" alt="堆叠起来的Gated PixelCNN模型，绿色为vertival部分，蓝色为horizontal部分"></p>
-<h5 id="Conditional-PixelCNN"><a href="#Conditional-PixelCNN" class="headerlink" title="Conditional PixelCNN"></a>Conditional PixelCNN</h5><p>Gated PixelCNN在给定一些先验条件的情况下也可以成为一个条件图片生成器。<br>原始版的PixelCNN建模的对象为：</p>
-<script type="math/tex; mode=display">P(X) = \prod_{i=1}^{n^2} p(x_i|x_1, x_2, ... ,x_{i-1})</script><p>在加入先验条件$h$之后，建模的对象变成了:</p>
-<script type="math/tex; mode=display">P(X) = \prod_{i=1}^{n^2} p(x_i|x_1, x_2, ... ,x_{i-1},h)</script><p>此时，Gated激活函数的表达式也需要变化：</p>
-<script type="math/tex; mode=display">y = \tanh (W_{k, f} * \mathrm {x} + V_{k,f} * \mathrm s) \odot \sigma(W_{k, g}* \mathrm {x} + V_{k,g} * \mathrm s)</script><p>式中：<br>$\mathrm{s}$: h在频域上的表示，$\mathrm{s} = m(\mathrm{h})$<br>$V_{k,f}$: $1\times 1$的卷积</p>
-<h4 id="PixelSnail"><a href="#PixelSnail" class="headerlink" title="PixelSnail"></a>PixelSnail</h4><p>为了保证网络的设计可以满足能够轻松的推断出序列的前部分的要求，可能有以下几种做法。</p>
-<ul>
-<li>传统的RNN，LSTM和GRU</li>
-<li>因果卷积</li>
-<li>自注意力机制</li>
-</ul>
-<p>因果卷积可以在有限的上下文中提供高带宽的访问方式，attention机制可以在很大的上下文中应用causal attention，使网络学习到挑出聚集到的哪些信息，以及如何更好地表现这些信息。snail(simple neural attentive meta-learner)便是由两个卷积和attention交错而成。</p>
-<p>为了在二维的图片上保证卷积的因果性，只能使用masked convolution(最原始的pixelcnn的做法)或者shift-based convlution(上文中介绍的gated-pixelcnn中将masked conv kernel分块的做法)。</p>
-<p>但是，卷积操作只能提取到局部的信息，为了保证能够使用到全局的信息，必须进行卷积层的堆叠。在这个过程中，通常使用到的操作时dilated convolution和strided convolution，通过膨胀系数的选取实现感受野的指数级扩增。</p>
-<p>尽管使用了dilated convolution和strided convolution，但是边缘处的像素信息依然是受限的—由于每次卷积仅能提取到有限的上下文中的信息，这些信息往往要通过一系列的中继。</p>
-<p>大多数pixelCNN中都使用了raster scan的方式，即从左到右，再从上到下扫描。这样扫描大多数的上下文都被浪费在了距离要推断的点比较远的部分，比如说右上角的点。因此本文使用了zigzag ordering。</p>
-<p><img src="https://tuchuang-1307891532.cos.ap-nanjing.myqcloud.com/images/20220818173438.png" alt="两种不同的扫描顺序"></p>
-<p>但是，使用这种扫描的顺序会导致blind spot的出现，为了解决这个问题，提出了pixelSNAIL—使用了更大更灵活的感受野。</p>
-<p>pixelSNAIL的主要做法是引入attention模块。</p>
+                <p>本文分为四个部分。c++面试常问题，计算机网络常问题和操作系统常问题，以及自己找工作的过程。</p>
+<h3 id="c-面经"><a href="#c-面经" class="headerlink" title="c++面经"></a>c++面经</h3><h4 id="多态"><a href="#多态" class="headerlink" title="多态"></a>多态</h4><h5 id="1-谈谈你对多态的理解？"><a href="#1-谈谈你对多态的理解？" class="headerlink" title="1. 谈谈你对多态的理解？"></a>1. 谈谈你对多态的理解？</h5><p>多态，就是一个对象在不同的时刻体现出来的不同的状态。<br>在c++中，多态可以分为静态多态和动态多态。静态多态是通过重载和模板实现的，动态多态是通过虚函数实现的。</p>
+<p>c++中的动态多态，简单的说，就是在基类的函数前加上<code>virtual</code>关键字，在派生类中重写该函数，运行时，将会根据指针的类型来调用相应的函数。这样就实现了在运行时，根据不同的对象来调用不同的函数。若指针所指的对象是基类，就调用基类中的函数，若指针所指的对象是派生类，就调用派生类中的函数。多态的实现基于虚函数，虚函数的实现基于虚函数表。</p>
+<p>实现多态的过程：编译器在发现基类中有<code>virtual</code>关键字时，会为含有虚函数的类生成一份虚函数表，虚函数表是一个一维数组，在虚函数表中保存了虚函数的入口地址。编译器会在每个对象的前四个字节中保存一个虚表指针，指向对象所属类中的虚表，在构造时，根据对象的类型去初始化虚表指针，这样就实现了在运行时，根据不同的对象来调用不同的函数。派生类的构造函数晚于基类的构造函数，在初始化一个派生类的对象时，会先调用基类的构造函数，在此时，编译器将虚表指针先指向基类的虚表，然后再调用派生类的构造函数，此时，虚表指针指向派生类的虚表，这样就实现了在运行时，根据不同的对象来调用不同的函数。</p>
+<p>c++的多态是通过动态绑定来实现的，含有虚函数的类都有自己的虚表。当派生类没有对基类中的虚函数进行重写时，派生类中的虚表指针保存的是父类的虚表，当派生类中自己含有虚函数时，在虚表中将此虚函数的地址添加在后边。</p>
+<h5 id="2-什么是虚函数？什么是纯虚函数？为什么有了虚函数还要有纯虚函数？"><a href="#2-什么是虚函数？什么是纯虚函数？为什么有了虚函数还要有纯虚函数？" class="headerlink" title="2. 什么是虚函数？什么是纯虚函数？为什么有了虚函数还要有纯虚函数？"></a>2. 什么是虚函数？什么是纯虚函数？为什么有了虚函数还要有纯虚函数？</h5><p>被<code>virtual</code>关键字修饰的类非静态成员函数称为虚函数。只有类的非静态成员函数可以加<code>virtual</code>关键字，普通函数不能加<code>virtual</code>关键字。</p>
+<p>纯虚函数是没有函数体的虚函数。纯虚函数在基类中被定义，但是在基类中并不实现，在所有的派生类中必须实现。</p>
+<p>为了实现多态，我们常常需要在基类中定义虚拟函数，但是，在很多情况下，基类本身生成对象不合情理，因此，我们需要将基类中的虚函数定义为纯虚函数，这样，基类就不能生成对象了，只能作为接口使用。定义纯虚函数的目的就在于，使派生类仅仅只是继承函数的接口。纯虚函数的意义，让所有的类对象（主要是派生类对象）都可以执行纯虚函数的动作，但类无法为纯虚函数提供一个合理的默认实现。所以类纯虚函数的声明就是在告诉子类的设计者，”你必须提供一个纯虚函数的实现，但我不知道你会怎样实现它”。</p>
+<h5 id="3-什么是虚函数表？虚函数表是怎么实现的？"><a href="#3-什么是虚函数表？虚函数表是怎么实现的？" class="headerlink" title="3. 什么是虚函数表？虚函数表是怎么实现的？"></a>3. 什么是虚函数表？虚函数表是怎么实现的？</h5><p>虚函数表是编译器在处理虚函数时引入的一个新成员。编译器在处理虚函数时，给每个对象都添加了一个隐藏成员，隐藏成员中保存了一个指向函数地址数组的指针，这个保存函数地址的数组称为虚函数表，虚函数表中存储了为类成员进行声明的虚函数的地址。</p>
+<p>虚函数表在编译器进行编译时创造，且编译器会在构造函数中插入一段代码，用来给虚指针进行赋值。虚函数表放在全局数据区，虚指针放在对象的内存中。</p>
+<h5 id="4-析构函数为什么要声明为虚函数？"><a href="#4-析构函数为什么要声明为虚函数？" class="headerlink" title="4. 析构函数为什么要声明为虚函数？"></a>4. 析构函数为什么要声明为虚函数？</h5><p>如果基类的析构函数不是虚函数，那么在删除派生类对象时，只会调用基类的析构函数，而不会调用派生类的析构函数，这样就会造成派生类中的成员没有被释放，造成内存泄漏。</p>
+<h5 id="5-什么是虚继承？虚继承的实现原理是什么？"><a href="#5-什么是虚继承？虚继承的实现原理是什么？" class="headerlink" title="5. 什么是虚继承？虚继承的实现原理是什么？"></a>5. 什么是虚继承？虚继承的实现原理是什么？</h5><p>虚继承是指在派生类中，将多个基类的同一个成员变量视为一个变量，而不是多个变量。虚继承的实现原理是，编译器在派生类中为虚继承的基类添加一个虚基类指针，指向虚基类的对象。</p>
+<h4 id="智能指针"><a href="#智能指针" class="headerlink" title="智能指针"></a>智能指针</h4><p>智能指针出现的原因，是为了帮助程序员管理使用<code>new</code>运算符在堆区开辟的空间，在需要释放的时候及时的释放，避免造成内存泄露。最早，在c++98标准中就已经有了智能指针的雏形<code>auto_ptr</code>。但是，<code>auto_ptr</code>存在一些问题，比如不能拷贝，不能赋值，不能作为函数的返回值等，因此，c++11标准中引入了智能指针的新标准<code>shared_ptr</code>，<code>weak_ptr</code>和<code>unique_ptr</code>。</p>
+<h5 id="1-智能指针的实现原理是什么？"><a href="#1-智能指针的实现原理是什么？" class="headerlink" title="1. 智能指针的实现原理是什么？"></a>1. 智能指针的实现原理是什么？</h5><p>智能指针的实现原理是，智能指针是一个类，类中有一个指针，指向堆中的对象，当智能指针被销毁时，会调用析构函数，析构函数中会调用delete，从而释放堆中的对象。</p>
+<h3 id="计算机网络面经"><a href="#计算机网络面经" class="headerlink" title="计算机网络面经"></a>计算机网络面经</h3><h3 id="操作系统面经"><a href="#操作系统面经" class="headerlink" title="操作系统面经"></a>操作系统面经</h3><h3 id="求职过程"><a href="#求职过程" class="headerlink" title="求职过程"></a>求职过程</h3><h4 id="实习"><a href="#实习" class="headerlink" title="实习"></a>实习</h4><ol>
+<li>实习简历投递的第一家公司是pdd，开的早，就直接投了。但是时间跟别的事情冲突了没有做笔试，寄。</li>
+<li>第二家是百度，这次做了笔试，无消息，进池子了。</li>
+</ol>
 
                 
             </div>
@@ -398,7 +390,7 @@
                     </i>
                 </span>
                 <span class="reprint-info">
-                    <a href="http://Dududu233.github.io/2022/08/15/Gated-PixelCNN%E5%B0%8F%E7%BB%93/">http://Dududu233.github.io/2022/08/15/Gated-PixelCNN%E5%B0%8F%E7%BB%93/</a>
+                    <a href="http://Dududu233.github.io/2023/03/29/interview/">http://Dududu233.github.io/2023/03/29/interview/</a>
                 </span>
             </div>
             <div class="reprint__notice">
@@ -436,8 +428,12 @@
                     
                         <div class="article-tag">
                             
-                                <a href="/tags/tech/">
-                                    <span class="chip bg-color">tech</span>
+                                <a href="/tags/%E9%9D%A2%E8%AF%95/">
+                                    <span class="chip bg-color">面试</span>
+                                </a>
+                            
+                                <a href="/tags/%E5%85%AB%E8%82%A1/">
+                                    <span class="chip bg-color">八股</span>
                                 </a>
                             
                         </div>
@@ -757,17 +753,18 @@
 <article id="prenext-posts" class="prev-next articles">
     <div class="row article-row">
         
-        <div class="article col s12 m6" data-aos="fade-up">
+        <div class="article col s12 m6" data-aos="fade-up" data-aos="fade-up">
             <div class="article-badge left-badge text-color">
-                <i class="fas fa-chevron-left"></i>&nbsp;上一篇</div>
+                <i class="far fa-dot-circle"></i>&nbsp;本篇
+            </div>
             <div class="card">
-                <a href="/2022/08/17/%E5%89%8D%E7%BC%80%E5%92%8C%E4%B8%8E%E5%B7%AE%E5%88%86%E6%95%B0%E7%BB%84/">
+                <a href="/2023/03/29/interview/">
                     <div class="card-image">
                         
                         
-                        <img src="https://tuchuang-1307891532.cos.ap-nanjing.myqcloud.com/cover/9.jpg" class="responsive-img" alt="前缀和与差分数组">
+                        <img src="https://tuchuang-1307891532.cos.ap-nanjing.myqcloud.com/cover/19.jpg" class="responsive-img" alt="面试总结">
                         
-                        <span class="card-title">前缀和与差分数组</span>
+                        <span class="card-title">面试总结</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
@@ -777,26 +774,31 @@
                         
                     </div>
                     <div class="publish-info">
-                        <span class="publish-date">
-                            <i class="far fa-clock fa-fw icon-date"></i>2022-08-17
-                        </span>
+                            <span class="publish-date">
+                                <i class="far fa-clock fa-fw icon-date"></i>2023-03-29
+                            </span>
                         <span class="publish-author">
                             
                             <i class="fas fa-bookmark fa-fw icon-category"></i>
                             
-                            <a href="/categories/%E5%88%B7%E9%A2%98%E8%B5%8E%E7%BD%AA/" class="post-category">
-                                    刷题赎罪
+                            <a href="/categories/%E5%85%AB%E8%82%A1/" class="post-category">
+                                    八股
                                 </a>
                             
                             
                         </span>
                     </div>
                 </div>
+
                 
                 <div class="card-action article-tags">
                     
-                    <a href="/tags/leetcode/">
-                        <span class="chip bg-color">leetcode</span>
+                    <a href="/tags/%E9%9D%A2%E8%AF%95/">
+                        <span class="chip bg-color">面试</span>
+                    </a>
+                    
+                    <a href="/tags/%E5%85%AB%E8%82%A1/">
+                        <span class="chip bg-color">八股</span>
                     </a>
                     
                 </div>
@@ -810,13 +812,13 @@
                 下一篇&nbsp;<i class="fas fa-chevron-right"></i>
             </div>
             <div class="card">
-                <a href="/2022/08/06/%E6%97%A0%E9%A2%98%E7%9A%84%E4%BF%A1/">
+                <a href="/2023/02/21/network/">
                     <div class="card-image">
                         
                         
-                        <img src="https://tuchuang-1307891532.cos.ap-nanjing.myqcloud.com/cover/13.jpg" class="responsive-img" alt="无题的信">
+                        <img src="https://tuchuang-1307891532.cos.ap-nanjing.myqcloud.com/cover/9.jpg" class="responsive-img" alt="计算机网络">
                         
-                        <span class="card-title">无题的信</span>
+                        <span class="card-title">计算机网络</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
@@ -827,14 +829,14 @@
                     </div>
                     <div class="publish-info">
                             <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2022-08-06
+                                <i class="far fa-clock fa-fw icon-date"></i>2023-02-21
                             </span>
                         <span class="publish-author">
                             
                             <i class="fas fa-bookmark fa-fw icon-category"></i>
                             
-                            <a href="/categories/%E6%97%A5%E6%97%A5%E8%B0%88/" class="post-category">
-                                    日日谈
+                            <a href="/categories/%E5%85%AB%E8%82%A1/" class="post-category">
+                                    八股
                                 </a>
                             
                             
@@ -844,8 +846,12 @@
                 
                 <div class="card-action article-tags">
                     
-                    <a href="/tags/normaldays/">
-                        <span class="chip bg-color">normaldays</span>
+                    <a href="/tags/tech/">
+                        <span class="chip bg-color">tech</span>
+                    </a>
+                    
+                    <a href="/tags/network/">
+                        <span class="chip bg-color">network</span>
                     </a>
                     
                 </div>
@@ -969,13 +975,6 @@
 
 </main>
 
-
-<script src="https://cdn.bootcss.com/mathjax/2.7.5/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
-<script>
-    MathJax.Hub.Config({
-        tex2jax: {inlineMath: [['$', '$'], ['\\(', '\\)']]}
-    });
-</script>
 
 
 
