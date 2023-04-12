@@ -314,14 +314,14 @@ c++面经多态1. 谈谈你对多态的理解？多态，就是一个对象在�
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-check fa-fw"></i>更新日期:&nbsp;&nbsp;
-                    2023-04-03
+                    2023-04-12
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    3.6k
+                    6.3k
                 </div>
                 
 
@@ -530,7 +530,83 @@ p1<span class="token punctuation">.</span><span class="token function">swap</spa
 <h5 id="lambda表达式"><a href="#lambda表达式" class="headerlink" title="lambda表达式"></a>lambda表达式</h5><p>lambda表达式是C++11中新增的特性，它是一个匿名函数，可以作为参数传递给其他函数，也可以作为其他函数的返回值。lambda表达式的语法如下：</p>
 <pre class="line-numbers language-cpp" data-language="cpp"><code class="language-cpp"><span class="token punctuation">[</span>capture<span class="token punctuation">]</span><span class="token punctuation">(</span>parameters<span class="token punctuation">)</span> <span class="token operator">-></span> return_type <span class="token punctuation">&#123;</span>body<span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 <p>用的很多很熟，不再赘述。</p>
-<h3 id="计算机网络面经"><a href="#计算机网络面经" class="headerlink" title="计算机网络面经"></a>计算机网络面经</h3><h3 id="操作系统面经"><a href="#操作系统面经" class="headerlink" title="操作系统面经"></a>操作系统面经</h3><h3 id="求职过程"><a href="#求职过程" class="headerlink" title="求职过程"></a>求职过程</h3><h4 id="实习"><a href="#实习" class="headerlink" title="实习"></a>实习</h4><ol>
+<h3 id="计算机网络面经"><a href="#计算机网络面经" class="headerlink" title="计算机网络面经"></a>计算机网络面经</h3><h4 id="1-20"><a href="#1-20" class="headerlink" title="1-20"></a>1-20</h4><h5 id="1-OSI七层模型？"><a href="#1-OSI七层模型？" class="headerlink" title="1. OSI七层模型？"></a>1. OSI七层模型？</h5><p>物理层： 底层数据传输，网线，网卡标准。<br>数据链路层：定义数据的基本格式，如何传输，如何标识。<br>网络层：定义IP编址，定义路由功能，如不同设备的数据转发。<br>传输层：端到端传输数据的基本功能，如TCP，UDP。<br>会话层：控制应用程序之间会话能力，将不同软件的数据分发给不同软件。<br>表示层：数据格式转换，加密解密，压缩解压缩。<br>应用层：应用程序，包括Web应用。</p>
+<p>传输层的数据称为报文，网络层的数据称为包，数据链路层的数据称为帧，物理层的数据称为比特流。</p>
+<p>网络七层模型是一个理论模型，而非实现。网络四层模型是实现模型，是实际的网络协议栈。</p>
+<h5 id="2-说一下一个完整的HTTP请求过程包含哪些内容？"><a href="#2-说一下一个完整的HTTP请求过程包含哪些内容？" class="headerlink" title="2. 说一下一个完整的HTTP请求过程包含哪些内容？"></a>2. 说一下一个完整的HTTP请求过程包含哪些内容？</h5><p>建立起客户机与服务器的TCP连接，发送HTTP请求报文，服务器接收请求报文，服务器处理请求报文，服务器发送响应报文，客户端接收响应报文，客户端关闭TCP连接。</p>
+<h5 id="3-DNS是什么？"><a href="#3-DNS是什么？" class="headerlink" title="3. DNS是什么？"></a>3. DNS是什么？</h5><p>DNS（domain name system），因特网上作为域名和IP地址相互映射的一个分布式数据库，能够使人更方便地访问互联网。通过DNS，用户只需要输入域名，就可以访问对应的IP地址的服务器。</p>
+<h5 id="4-DNS的工作原理？"><a href="#4-DNS的工作原理？" class="headerlink" title="4. DNS的工作原理？"></a>4. DNS的工作原理？</h5><p>DNS将主机域名转换为IP地址，属于应用层协议，使用UDP传输。<br>DNS服务器是一个分布式的数据库，存储着域名和IP地址的对应关系。当用户访问一个域名时，首先会在本地的DNS缓存中查找，如果没有找到，就会向根域名服务器发起请求，根域名服务器会返回顶级域名服务器的地址，然后向顶级域名服务器发起请求，顶级域名服务器会返回权威域名服务器的地址，然后向权威域名服务器发起请求，权威域名服务器会返回域名对应的IP地址，然后用户就可以访问该IP地址的服务器了。</p>
+<h5 id="5-为什么DNS使用UDP而不是TCP？"><a href="#5-为什么DNS使用UDP而不是TCP？" class="headerlink" title="5. 为什么DNS使用UDP而不是TCP？"></a>5. 为什么DNS使用UDP而不是TCP？</h5><p>DNS请求的数据包很小，一般不超过512字节，而且DNS服务器之间的通信是一次性的，不需要保持连接，所以使用UDP比较合适。</p>
+<h5 id="6-为什么区域传送使用TCP协议？"><a href="#6-为什么区域传送使用TCP协议？" class="headerlink" title="6. 为什么区域传送使用TCP协议？"></a>6. 为什么区域传送使用TCP协议？</h5><p>区域传送是指DNS服务器之间的数据传输，区域传送使用TCP协议，因为区域传送需要保持连接，而且数据量比较大，一般在512字节以上，所以使用TCP比较合适。</p>
+<h5 id="7-HTTP长连接和短连接的区别？"><a href="#7-HTTP长连接和短连接的区别？" class="headerlink" title="7. HTTP长连接和短连接的区别？"></a>7. HTTP长连接和短连接的区别？</h5><p>长连接：客户端和服务器建立连接后，不关闭连接，可以继续发送请求和接收响应。<br>短连接：客户端和服务器建立连接后，发送请求，接收响应，然后关闭连接。<br>长连接常常用于客户端和服务器之间需要频繁通信的场景，且连接数不太多的情况下；短连接常常用于客户端和服务器之间只需要一次通信的场景。</p>
+<h5 id="8-什么是TCP的粘包-拆包？发生的原因？"><a href="#8-什么是TCP的粘包-拆包？发生的原因？" class="headerlink" title="8. 什么是TCP的粘包/拆包？发生的原因？"></a>8. 什么是TCP的粘包/拆包？发生的原因？</h5><p>TCP是面向字节流的协议，发送端将数据分割成报文段，然后按序发送给接收端，接收端将报文段按序组装成数据。如果一次请求发送的数据量比较小，没达到缓冲区大小，TCP则会将多个请求合并为同一个请求进行发送，这就形成了粘包问题。如果一次请求发送的数据量比较大，超过了缓冲区大小，TCP就会将其拆分为多次发送，这就是拆包。</p>
+<p>解决方案：</p>
+<ol>
+<li>消息定长，例如每个报文的大小固定为200字节，如果不够，就用空格补齐。</li>
+<li>发送端在每个包的末尾都使用固定的分割符，如果发生拆包需等待多个包全部发送过来之后再找到其中的分割符，然后再进行合并。</li>
+<li>将消息分为头部和消息体，头部中保存整个消息的长度，只有读取到足够的长度之后才算是读到了一个完整的消息。</li>
+<li>使用更加复杂的传输协议</li>
+</ol>
+<h5 id="9-HTTP请求方法？"><a href="#9-HTTP请求方法？" class="headerlink" title="9. HTTP请求方法？"></a>9. HTTP请求方法？</h5><p>客户端发送的请求报文的第一行为请求行，其中包含了方法字段。<br>常见的方法有GET，POST，PUT，DELETE，HEAD，OPTIONS，TRACE，CONNECT。</p>
+<div class="table-container">
+<table>
+<thead>
+<tr>
+<th style="text-align:center">序号</th>
+<th style="text-align:center">方法</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">1</td>
+<td style="text-align:center">GET</td>
+<td>请求获取Request-URI所标识的资源</td>
+</tr>
+<tr>
+<td style="text-align:center">2</td>
+<td style="text-align:center">HEAD</td>
+<td>类似于GET请求，只不过返回的响应中没有具体的内容，用于获取报头</td>
+</tr>
+<tr>
+<td style="text-align:center">3</td>
+<td style="text-align:center">POST</td>
+<td>向指定资源提交数据进行处理请求（例如提交表单或者上传文件）。数据被包含在请求体中。POST请求可能会导致新的资源的建立和/或已有资源的修改</td>
+</tr>
+<tr>
+<td style="text-align:center">4</td>
+<td style="text-align:center">PUT</td>
+<td>从客户端向服务器传送的数据取代指定的文档的内容</td>
+</tr>
+<tr>
+<td style="text-align:center">5</td>
+<td style="text-align:center">DELETE</td>
+<td>请求服务器删除Request-URI所标识的资源</td>
+</tr>
+<tr>
+<td style="text-align:center">6</td>
+<td style="text-align:center">CONNECT</td>
+<td>HTTP/1.1协议中预留给能够将连接改为管道方式的代理服务器</td>
+</tr>
+<tr>
+<td style="text-align:center">7</td>
+<td style="text-align:center">OPTIONS</td>
+<td>允许客户端查看服务器的性能</td>
+</tr>
+<tr>
+<td style="text-align:center">8</td>
+<td style="text-align:center">TRACE</td>
+<td>回显服务器收到的请求，主要用于测试或诊断</td>
+</tr>
+</tbody>
+</table>
+</div>
+<h5 id="10-GET和POST的区别？"><a href="#10-GET和POST的区别？" class="headerlink" title="10. GET和POST的区别？"></a>10. GET和POST的区别？</h5><p>GET和POST都是HTTP协议中的请求方法，用于向服务器发出指定资源的请求。GET请求是获取数据，POST请求是修改数据。GET请求将数据放在URL上，以?分割URL和传输数据，参数之间以&amp;相连，所以get不太安全。而post把数据放在HTTP的包体内（request body 相对安全）。get提交的数据最大是2k（ 限制实际上取决于浏览器）， post理论上没有限制。GET产生一个TCP数据包，浏览器会把http header和data一并发送出去，服务器响应200(返回数据); POST产生两个TCP数据包，浏览器先发送header，服务器响应100 continue，浏览器再发送data，服务器响应200 ok(返回数据)。GET请求会被浏览器主动缓存，而POST不会，除非手动设置。本质区别：GET是幂等的，而POST不是幂等的。正因为它们有这样的区别，所以不应该且不能用get请求做数据的增删改这些有副作用的操作。因为get请求是幂等的，在网络不好的隧道中会尝试重试。如果用get请求增数据，会有重复操作的风险，而这种重复操作可能会导致副作用（浏览器和操作系统并不知道你会用get请求去做增操作）。</p>
+<h5 id="11-一段TCP报文的首部有哪些内容？"><a href="#11-一段TCP报文的首部有哪些内容？" class="headerlink" title="11. 一段TCP报文的首部有哪些内容？"></a>11. 一段TCP报文的首部有哪些内容？</h5><p>TCP首部分为固定首部和扩展首部，固定首部的大小为20字节，扩展首部的大小为0-40字节。固定首部包含了源端口号，目的端口号，序列号，确认号，数据偏移，保留位，标志位，窗口大小，校验和，紧急指针。扩展首部包含了选项和填充。</p>
+<p>源端口号：16位，标识发送端的端口号<br>目的端口号：16位，标识接收端的端口号<br>序列号：32位，取值范围为$[0, 2^{32} - 1]$，序号增加到最后一个后，下一个序号就变为0。标识发送端发送的数据字节流的第一个字节的序号<br>确认号：32位，取值范围为$[0, 2^{32} - 1]$，确认号增加到最后一个之后，下一个确认号就又变为0。标识接收端期望收到的下一个TCP报文段的第一个字节的序号，同时也是对之前收到的所有数据的确认。若确认号为n，则代表接收端期望收到的下一个字节的序号为n，同时也代表接收端已经收到了序号为0到n-1的所有字节。<br>数据偏移：4位，标识TCP首部的长度，单位为4字节，取值范围为$[5, 15]$，即TCP首部的长度为$[20, 60]$字节。<br>标志位：6位，标识TCP报文段的各种控制信息，包括URG，ACK，PSH，RST，SYN，FIN。<br>确认标志位ACK: 1位，若为1，则确认号字段有效，若为0，则确认号字段无效。TCP规定，在TCP建立连接后发送的所有TCP报文段都必须把ACK置为1。<br>同步标志位SYN：在TCP建立连接时用来同步序号。<br>终止标志位FIN：在TCP释放连接时用来释放序号。<br>复位标志位RST：用来复位TCP连接。<br>推送标志位PSH：用来要求接收端尽快将数据交给应用层。<br>校验和：16位，标识TCP首部和TCP数据的校验和，用于检测TCP报文段在传输过程中是否发生了错误。在计算校验和时，TCP首部和TCP数据的长度必须是16位的整数倍，若不是，则需要填充。</p>
+<h5 id="12-TCP建立连接三次握手？"><a href="#12-TCP建立连接三次握手？" class="headerlink" title="12. TCP建立连接三次握手？"></a>12. TCP建立连接三次握手？</h5><p>三次握手表示的是在TCP连接建立之前，服务器端和用户端之间需要交换三个TCP报文段。<br>第一次握手之前，客户端处于<code>CLOSED</code>状态，服务器处于<code>LISTEN</code>状态。第一次握手，客户端发送<code>SYN</code>报文，进入<code>SYN_SENT</code>状态。第二次握手，服务器收到<code>SYN</code>报文，发送<code>SYN+ACK</code>报文，进入<code>SYN_RCVD</code>状态。第三次握手，客户端收到<code>SYN+ACK</code>报文，发送<code>ACK</code>报文，进入<code>ESTABLISHED</code>状态。服务器收到<code>ACK</code>报文，进入<code>ESTABLISHED</code>状态。</p>
+<h5 id="13-TCP断开连接四次挥手？"><a href="#13-TCP断开连接四次挥手？" class="headerlink" title="13. TCP断开连接四次挥手？"></a>13. TCP断开连接四次挥手？</h5><p>四次挥手表示的是在TCP连接断开之前，服务器端和用户端之间需要交换四个TCP报文段。<br>第一次挥手之前，客户端处于<code>ESTABLISHED</code>状态，服务器处于<code>ESTABLISHED</code>状态。第一次挥手，客户端发送<code>FIN</code>报文，进入<code>FIN_WAIT_1</code>状态。第二次挥手，服务器收到<code>FIN</code>报文，发送<code>ACK</code>报文，进入<code>CLOSE_WAIT</code>状态。第三次挥手，服务器发送<code>FIN</code>报文，进入<code>LAST_ACK</code>状态。第四次挥手，客户端收到<code>FIN</code>报文，发送<code>ACK</code>报文，进入<code>TIME_WAIT</code>状态。服务器收到<code>ACK</code>报文，进入<code>CLOSED</code>状态。客户端等待2MSL后，进入<code>CLOSED</code>状态。</p>
+<h3 id="操作系统面经"><a href="#操作系统面经" class="headerlink" title="操作系统面经"></a>操作系统面经</h3><h3 id="求职过程"><a href="#求职过程" class="headerlink" title="求职过程"></a>求职过程</h3><h4 id="实习"><a href="#实习" class="headerlink" title="实习"></a>实习</h4><ol>
 <li>实习简历投递的第一家公司是pdd，开的早，就直接投了。但是时间跟别的事情冲突了没有做笔试，寄。</li>
 <li>第二家是百度，这次做了笔试，无消息，进池子了。</li>
 </ol>
@@ -1145,6 +1221,13 @@ p1<span class="token punctuation">.</span><span class="token function">swap</spa
 
 </main>
 
+
+<script src="https://cdn.bootcss.com/mathjax/2.7.5/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+<script>
+    MathJax.Hub.Config({
+        tex2jax: {inlineMath: [['$', '$'], ['\\(', '\\)']]}
+    });
+</script>
 
 
 
