@@ -336,14 +336,14 @@ c++面经多态1. 谈谈你对多态的理解？多态，就是一个对象在�
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-check fa-fw"></i>更新日期:&nbsp;&nbsp;
-                    2023-04-20
+                    2023-05-09
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    9.9k
+                    15.3k
                 </div>
                 
 
@@ -552,6 +552,25 @@ p1<span class="token punctuation">.</span><span class="token function">swap</spa
 <h5 id="lambda表达式"><a href="#lambda表达式" class="headerlink" title="lambda表达式"></a>lambda表达式</h5><p>lambda表达式是C++11中新增的特性，它是一个匿名函数，可以作为参数传递给其他函数，也可以作为其他函数的返回值。lambda表达式的语法如下：</p>
 <pre class="line-numbers language-cpp" data-language="cpp"><code class="language-cpp"><span class="token punctuation">[</span>capture<span class="token punctuation">]</span><span class="token punctuation">(</span>parameters<span class="token punctuation">)</span> <span class="token operator">-></span> return_type <span class="token punctuation">&#123;</span>body<span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 <p>用的很多很熟，不再赘述。</p>
+<h4 id="STL"><a href="#STL" class="headerlink" title="STL"></a>STL</h4><h5 id="vector"><a href="#vector" class="headerlink" title="vector"></a>vector</h5><p><code>vector</code>是C++中的一个容器，它是一个动态数组，可以根据需要动态的增加和删除元素。<code>vector</code>的实现原理是，<code>vector</code>中有一个指针，指向堆中的数组，当<code>vector</code>中的元素个数超过数组的大小时，会重新分配一块更大的内存（原内存大小的二倍），将原来的元素拷贝到新的内存中，然后释放原来的内存。</p>
+<p><code>vector</code>的缺点：增删元素时，需要重新分配内存，拷贝元素，效率较低。</p>
+<blockquote>
+<p><code>vector</code>删除元素时会发生什么？<br><code>vector</code>删除元素有四种方式，<code>remove</code>，<code>erase</code>，<code>pop_back</code>和<code>clear</code>。使用<code>remove</code>删除元素时，不改变容器的大小，将删除的目标元素的后边的元素向前移动，然后返回一个指向最后一个元素的迭代器，使用<code>erase</code>删除元素时，会改变容器的大小，将删除的目标元素的后边的元素向前移动，然后释放最后一个元素的内存，使用<code>pop_back</code>删除元素时，会改变容器的大小，释放最后一个元素的内存，使用<code>clear</code>删除元素时，会改变容器的大小，释放所有元素的内存。<br>所有的删除元素的方式都不会涉及到重新给容器分配空间，容器的<code>capacity</code>始终不变。</p>
+<p>sort的底层是什么?<br>sort的底层是快速排序+堆排序/插入排序，第一种排序方式在递归深度超过排序元素数量的对数值之后转换为堆排序。第二种排序方式在排序元素数量较少时使用，当排序元素数量超过16时，转换为第一种排序方式。</p>
+</blockquote>
+<h5 id="unordered-map"><a href="#unordered-map" class="headerlink" title="unordered_map"></a>unordered_map</h5><p><code>unordered_map</code>的元素是无序的。<br><code>unordered_map</code>的底层实现是一个哈希表。<br><code>unordered_map</code>的插入，查找时间复杂度都是$O(1)$。</p>
+<h5 id="map"><a href="#map" class="headerlink" title="map"></a>map</h5><p><code>map</code>的元素是有序的。<br><code>map</code>是STL的一个关联容器，<code>map</code>中的元素是关键字-值的对(key-value)：关键字起到索引的作用，值则表示与索引相关联的数据。每个关键字只能在<code>map</code>中出现一次。<code>map</code>的底层实现是一个红黑树，自平衡的二叉搜索树。</p>
+<h5 id=""><a href="#" class="headerlink" title=" "></a> </h5><h4 id="语言律师"><a href="#语言律师" class="headerlink" title="语言律师"></a>语言律师</h4><h5 id="const和宏定义的区别"><a href="#const和宏定义的区别" class="headerlink" title="const和宏定义的区别"></a>const和宏定义的区别</h5><p>const定义的变量在编译阶段进行处理，宏定义的变量在预编译阶段进行处理。</p>
+<p>编译器在预编译阶段会对源代码中的宏定义进行展开，提取其中的参数，并将他们替换成对应的值。</p>
+<h5 id="typedef的作用"><a href="#typedef的作用" class="headerlink" title="typedef的作用"></a>typedef的作用</h5><p>typedef关键字的作用是为已有的类型定义一个新的名字，这个新的名字可以方便地使用，且具有更具描述性的名字。通过typedef，可以让程序更加易读，易于维护。</p>
+<pre class="line-numbers language-cpp" data-language="cpp"><code class="language-cpp"><span class="token keyword">typedef</span> <span class="token keyword">int</span> INT_8<span class="token punctuation">;</span> <span class="token comment">// 根据编码规范，指明INT_8是一个8位的整型</span>
+INT_8 a <span class="token operator">=</span> <span class="token number">10</span><span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+<h5 id="c-编译分为哪些阶段？"><a href="#c-编译分为哪些阶段？" class="headerlink" title="c++编译分为哪些阶段？"></a>c++编译分为哪些阶段？</h5><ol>
+<li>预编译阶段 进行一些简单的文本替换工作，将宏定义 <code>define</code> 和 条件编译指令 <code>ifndef, ifdef, endif</code> 等进行替换，将头文件中的内容替换到源文件中，将注释去掉等。(#.cpp -&gt; #.i)</li>
+<li>编译优化阶段 通过预编译输出的.i文件中，只有常量：数字、字符串、变量的定义，以及关键字：main、if、else、for、while等。这阶段要做的工作主要是，通过语法分析和词法分析，确定所有指令是否符合规则，之后翻译成汇编代码。(#.i -&gt; #.s)</li>
+<li>汇编阶段 汇编过程就是把汇编语言翻译成目标机器指令的过程，生成目标文件（.obj .o等）。目标文件中存放的也就是与源程序等效的目标的机器语言代码。(#.s -&gt; #.o)</li>
+<li>链接过程 链接过程就是把各个目标文件合并成一个可执行文件的过程。(#.o -&gt; #.exe)</li>
+</ol>
 <h3 id="计算机网络面经"><a href="#计算机网络面经" class="headerlink" title="计算机网络面经"></a>计算机网络面经</h3><h4 id="OSI七层模型"><a href="#OSI七层模型" class="headerlink" title="OSI七层模型"></a>OSI七层模型</h4><p>物理层： 底层数据传输，网线，网卡标准。<br>数据链路层：定义数据的基本格式，如何传输，如何标识。<br>网络层：定义IP编址，定义路由功能，如不同设备的数据转发。<br>传输层：端到端传输数据的基本功能，如TCP，UDP。<br>会话层：控制应用程序之间会话能力，将不同软件的数据分发给不同软件。<br>表示层：数据格式转换，加密解密，压缩解压缩。<br>应用层：应用程序，包括Web应用。</p>
 <p>传输层的数据称为报文，网络层的数据称为包，数据链路层的数据称为帧，物理层的数据称为比特流。</p>
 <p>网络七层模型是一个理论模型，而非实现。网络四层模型是实现模型，是实际的网络协议栈。</p>
@@ -698,9 +717,272 @@ p1<span class="token punctuation">.</span><span class="token function">swap</spa
 <li>将消息分为头部和消息体，头部中保存整个消息的长度，只有读取到足够的长度之后才算是读到了一个完整的消息。</li>
 <li>使用更加复杂的传输协议</li>
 </ol>
-<h3 id="操作系统面经"><a href="#操作系统面经" class="headerlink" title="操作系统面经"></a>操作系统面经</h3><h3 id="求职过程"><a href="#求职过程" class="headerlink" title="求职过程"></a>求职过程</h3><h4 id="实习"><a href="#实习" class="headerlink" title="实习"></a>实习</h4><ol>
+<h5 id="6-重传机制？"><a href="#6-重传机制？" class="headerlink" title="6. 重传机制？"></a>6. 重传机制？</h5><p>超时重传机制是指，当发送端发送一个报文段之后，如果在规定的时间内没有收到接收端的确认报文段，就会重传该报文段。超时重传机制可以保证TCP的可靠性，但是会降低TCP的性能。</p>
+<p>超时重传的几种方式：</p>
+<ol>
+<li>固定超时时间：发送端发送报文段之后，固定一个时间，如果在这个时间内没有收到确认报文段，则重传该报文段。</li>
+<li>加权平均往返时间：发送端发送报文段之后，记录下发送报文段的时间，然后等待接收到确认报文段之后，记录下接收到确认报文段的时间，然后计算出往返时间RTT，然后根据RTT计算出超时时间，如果在超时时间内没有收到确认报文段，则重传该报文段。</li>
+</ol>
+<p>快速重传机制是指，当发送端发送一个报文段之后，如果接收端收到了报文段，但是发现报文段的序号不是自己期望的序号，就会立即发送一个确认报文段，告诉发送端自己期望的序号，然后发送端就会重传该报文段。快速重传机制可以保证TCP的可靠性，但是也会降低TCP的性能。</p>
+<p>选择性确认机制是指，接收端在接收到报文段之后，不会立即发送确认报文段，而是会等到自己期望的序号的报文段都收到之后，才会发送确认报文段。</p>
+<h5 id="7-TCP的流量控制？"><a href="#7-TCP的流量控制？" class="headerlink" title="7. TCP的流量控制？"></a>7. TCP的流量控制？</h5><p>所谓流量控制，就是让发送方的发送速率不要太快，让接收方来得及接收。利用滑动窗口机制可以很方便地在TCP连接上实现对发送方的流量控制。</p>
+<h4 id="链路层和IP层"><a href="#链路层和IP层" class="headerlink" title="链路层和IP层"></a>链路层和IP层</h4><h5 id="1-什么是ARP协议？"><a href="#1-什么是ARP协议？" class="headerlink" title="1. 什么是ARP协议？"></a>1. 什么是ARP协议？</h5><p>ARP协议是ARP（Address Resolution Protocol）协议是一种用于将网络层地址（如IPv4地址）映射到数据链路层地址（如MAC地址）的协议。<br>其工作原理是，主机向自己所在的网络广播一个ARP请求，该请求中包含了目标机器的网络地址。此网络上的其他机器都将收到这个请求，但是只有被请求的目标机器会回应一个ARP响应，其中包含了自己的物理地址。</p>
+<blockquote>
+<p>如果获取不到mac地址会发生什么<br>当ARP无法获取特定IP地址对应的MAC地址时，它将无法通过局域网发送任何数据包给该IP地址。这可能导致数据包被丢弃或超时。（ChatGPT）</p>
+</blockquote>
+<p>ARP协议主要应用于局域网（LAN）中，其作用是将网络层（IP层）的IP地址和数据链路层（MAC层）的物理地址建立映射关系，这样网络设备就可以通过MAC地址来寻址其他设备，以实现数据的传输。在LAN中，每个设备（如计算机、交换机、路由器等）都有唯一的MAC地址，以及在当前网络中分配的唯一IP地址，ARP协议就是将这两者建立映射关系的协议。在实际应用中，ARP协议主要用于以下两个方面：</p>
+<ol>
+<li>以太网中的ARP协议常用于获取主机或路由器在局域网中的MAC地址。</li>
+<li>ARP协议还有一个重要的应用是在网络层（IP层）找到下一跳路由器的MAC地址，以便进行跨子网的通信。这种情况下的ARP通常被称为“无状态ARP”或“动态ARP”。（ChatGPT）</li>
+</ol>
+<p>在实际操作中，计算机会在自己的ARP缓存中保存IP地址和MAC地址的映射关系，这样就可以避免每次都要发送ARP请求来获取MAC地址，提高了效率。</p>
+<h5 id="2-什么是ICMP协议？"><a href="#2-什么是ICMP协议？" class="headerlink" title="2. 什么是ICMP协议？"></a>2. 什么是ICMP协议？</h5><p>ICMP（Internet Control Message Protocol）协议是TCP/IP协议族的一个子协议，主要用于在IP主机、路由器之间传递控制消息。ICMP协议是IP协议的一个重要组成部分，它是IP协议的补充，为IP协议提供差错报告、网络统计和诊断等功能。ICMP协议是TCP/IP协议族中最基本的协议之一，它是TCP/IP协议族的一个子协议，主要用于在IP主机、路由器之间传递控制消息。ICMP协议是IP协议的一个重要组成部分，它是IP协议的补充，为IP协议提供差错报告、网络统计和诊断等功能。</p>
+<h5 id="3-什么是IP协议？"><a href="#3-什么是IP协议？" class="headerlink" title="3. 什么是IP协议？"></a>3. 什么是IP协议？</h5><p>IP协议是一种无连接协议，它不会在通信的两端维护一个持久的连接，而是将每个数据包独立看作一个独立的单元进行传输。这个单元包含了目标主机的IP地址以及其他必要的信息，它们能够在传输过程中被路由器进行转发，并最终到达目标主机。</p>
+<p>IP协议是Internet中最底层的协议之一，它定义了地址标识和寻址机制，还定义了如何将数据分组并进行路由选择等细节。IP协议对于Internet的实现来说是非常关键的一部分，它能够让不同类型的设备（如路由器和交换机）进行通信，同时也为上层的应用层协议提供了一个可靠的传输机制。</p>
+<p>ipv4: 五类IP地址 0-127，128-191，192-223，224-239，240-255。</p>
+<blockquote>
+<p>解决IP地址不够用的问题：无地址分类，不通过地址分类来确定网络号和主机号的位数，而是通过在IP地址后加上一个0-32的数字来指示网络号所占的位数。</p>
+</blockquote>
+<h5 id="4-NAT"><a href="#4-NAT" class="headerlink" title="4. NAT"></a>4. NAT</h5><p>NAT 即网络地址转换（Network Address Translation），是一种用于将私有网络中的 IP 地址转换为公网 IP 地址的技术，在互联网出现前就已存在并广泛应用于局域网中。</p>
+<p>当局域网中的主机需要与互联网上的其他主机进行通信时，NAT 会将局域网中的私有 IP 地址转换为公网 IP 地址，并在路由器上将数据包转发到公网。另外，在互联网上的主机向局域网中的主机发起连接时，NAT 也会将数据包的目标 IP 地址进行转换，将公网 IP 地址转换为局域网中的私有 IP 地址。</p>
+<p>这种转换可以使得私有网络中的主机访问互联网，同时也能够保证私有网络中的主机的安全性，因为私有网络中的主机并不直接暴露在公网上。</p>
+<h5 id="5-DHCP协议？"><a href="#5-DHCP协议？" class="headerlink" title="5. DHCP协议？"></a>5. DHCP协议？</h5><p>DHCP（Dynamic Host Configuration Protocol）协议是一种用于自动分配IP地址的协议，它可以为网络中的主机自动分配IP地址，从而使得网络中的主机可以方便地进行通信。</p>
+<h3 id="操作系统面经"><a href="#操作系统面经" class="headerlink" title="操作系统面经"></a>操作系统面经</h3><h4 id="I-O多路复用-select-poll-epoll"><a href="#I-O多路复用-select-poll-epoll" class="headerlink" title="I/O多路复用 select/poll/epoll"></a>I/O多路复用 select/poll/epoll</h4><h5 id="1-socket网络模型？"><a href="#1-socket网络模型？" class="headerlink" title="1. socket网络模型？"></a>1. socket网络模型？</h5><blockquote>
+<p>服务端调用：</p>
+<ol>
+<li>调用<code>socket()</code>函数，创建一个制定了网络协议和传输协议的Socket，</li>
+<li>调用<code>bind()</code>函数，给这个Socket绑定一个IP地址和端口号，</li>
+<li>调用<code>listen()</code>函数，将这个Socket设置为监听状态，通过netstat命令，我们可以看到一个端口是否真的在被监听，</li>
+<li>调用<code>accept()</code>函数，等待客户端的连接，</li>
+</ol>
+</blockquote>
+<p>用来监听的Socket和用来进行通信的Socket是不同的Socket。</p>
+<p>为了实现并发访问，采用多线程模型。服务器的主进程负责监听客户的连接，<code>accept()</code>函数用于接收客户端的连接请求，当接收到客户端的连接请求之后，主进程就会创建一个新的Socket，然后将新创建的Socket对应的文件描述符交给子线程来处理，主进程继续监听客户端的连接请求。</p>
+<h5 id="2-I-O多路复用技术"><a href="#2-I-O多路复用技术" class="headerlink" title="2. I/O多路复用技术"></a>2. I/O多路复用技术</h5><p>使用一个进程维护多个socket。类似于一个CPU并发多个进程。<br>通过select/epoll/poll等系统调用，进程通过一个系统调用函数，从内核中获取多个事件。</p>
+<h5 id="3-select-poll"><a href="#3-select-poll" class="headerlink" title="3. select/poll"></a>3. select/poll</h5><ol>
+<li>select<br>将已连接的所有的Socket放进一个文件描述符的集合中，通过调用select函数实现将文件描述符集合拷贝到内核中，让内核检测是否有网络事件发生。select的底层实现是一个bitsmap，默认最大值是1024。</li>
+<li>poll<br>相比于select，poll的底层是一个链表，可以设置最大值。</li>
+</ol>
+<h5 id="3-epoll"><a href="#3-epoll" class="headerlink" title="3. epoll"></a>3. epoll</h5><p>epoll在内核中使用了一个红黑树来跟踪进程中所有等待检测的文件描述字。<br>epoll使用事件驱动的机制，在内核中维护了一个链表来记录就绪事件，当某个socket有事件发生时，通过回调函数内核会将其加入到这个就绪事件列表中，当用户调用 <code>epoll_wait()</code> 函数时，只会返回有事件发生的文件描述符的个数，不需要像 select/poll 那样轮询扫描整个 socket 集合，大大提高了检测的效率。</p>
+<p>epoll有两种触发方式，边缘触发(ET)和水平触发(LT)。<br>使用边缘触发模式时，当被监控的 Socket 描述符上有可读事件发生时，服务器端只会从 epoll_wait 中苏醒一次，即使进程没有调用 read 函数从内核读取数据，也依然只苏醒一次，因此我们程序要保证一次性将内核缓冲区的数据读取完；<br>使用水平触发模式时，当被监控的 Socket 上有可读事件发生时，服务器端不断地从 epoll_wait 中苏醒，直到内核缓冲区数据被 read 函数读完才结束，目的是告诉我们有数据需要读取；</p>
+<p>如果使用水平触发模式，当内核通知文件描述符可读写时，接下来还可以继续去检测它的状态，看它是否依然可读或可写。所以在收到通知后，没必要一次执行尽可能多的读写操作。</p>
+<p>如果使用边缘触发模式，I/O 事件发生时只会通知一次，而且我们不知道到底能读写多少数据，所以在收到通知后应尽可能地读写数据，以免错失读写的机会。因此，我们会循环从文件描述符读写数据，那么如果文件描述符是阻塞的，没有数据可读写时，进程会阻塞在读写函数那里，程序就没办法继续往下执行。所以，边缘触发模式一般和非阻塞 I/O 搭配使用，程序会一直执行 I/O 操作，直到系统调用（如 read 和 write）返回错误，错误类型为 EAGAIN 或 EWOULDBLOCK</p>
+<h3 id="设计模式"><a href="#设计模式" class="headerlink" title="设计模式"></a>设计模式</h3><h4 id="1-什么是单例模式？"><a href="#1-什么是单例模式？" class="headerlink" title="1. 什么是单例模式？"></a>1. 什么是单例模式？</h4><p>单例模式是指一个类只能创建一个实例，并且提供一个全局的访问点。<br>为什么要有单例模式 因为有很多类 我们希望它只创建一个对象，比如线程池，缓存，网络请求。</p>
+<p>单例的优点：提供了对唯一实例的受控访问 节省了系统的资源</p>
+<p>单例实现的关键点：</p>
+<ol>
+<li>构造函数设置为私有的，这样就不能通过new来创建对象了</li>
+<li>提供一个全局的访问点（静态方法或者枚举），通过该访问点来获取唯一的实例</li>
+<li>考虑对象创建时的线程安全问题，确保单例类的对象有且仅有一个</li>
+<li>考虑对象的序列化和反序列化问题，确保单例类的对象在序列化和反序列化之后仍然是同一个对象</li>
+<li>考虑是否支持延迟加载，如果支持延迟加载，需要考虑线程安全问题</li>
+</ol>
+<p>单例模式的实现方式：</p>
+<ol>
+<li>饿汉式</li>
+</ol>
+<pre class="line-numbers language-cpp" data-language="cpp"><code class="language-cpp"><span class="token keyword">class</span> <span class="token class-name">Singleton</span> <span class="token punctuation">&#123;</span>
+<span class="token keyword">private</span><span class="token operator">:</span>
+    <span class="token function">Singleton</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span><span class="token punctuation">&#125;</span>
+    <span class="token keyword">static</span> Singleton<span class="token operator">*</span> instance<span class="token punctuation">;</span>
+<span class="token keyword">public</span><span class="token operator">:</span>
+    <span class="token keyword">static</span> Singleton<span class="token operator">*</span> <span class="token function">getInstance</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+        <span class="token keyword">return</span> instance<span class="token punctuation">;</span>
+    <span class="token punctuation">&#125;</span>
+<span class="token punctuation">&#125;</span><span class="token punctuation">;</span>
+Singleton<span class="token operator">*</span> Singleton<span class="token double-colon punctuation">::</span>instance <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token function">Singleton</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p>在类加载的过程中就已经将对象创建好了，所以是线程安全的，但是如果不使用的话，会造成资源的浪费。</p>
+<ol>
+<li>懒汉式</li>
+</ol>
+<pre class="line-numbers language-cpp" data-language="cpp"><code class="language-cpp"><span class="token keyword">class</span> <span class="token class-name">Singleton</span> <span class="token punctuation">&#123;</span>
+<span class="token keyword">private</span><span class="token operator">:</span>
+    <span class="token function">Singleton</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span><span class="token punctuation">&#125;</span>
+    <span class="token keyword">static</span> Singleton<span class="token operator">*</span> instance<span class="token punctuation">;</span>
+<span class="token keyword">public</span><span class="token operator">:</span>
+    <span class="token keyword">static</span> Singleton<span class="token operator">*</span> <span class="token function">getInstance</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+        <span class="token keyword">if</span> <span class="token punctuation">(</span>instance <span class="token operator">==</span> <span class="token keyword">nullptr</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+            instance <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token function">Singleton</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token punctuation">&#125;</span>
+        <span class="token keyword">return</span> instance<span class="token punctuation">;</span>
+    <span class="token punctuation">&#125;</span>
+<span class="token punctuation">&#125;</span><span class="token punctuation">;</span>
+Singleton<span class="token operator">*</span> Singleton<span class="token double-colon punctuation">::</span>instance <span class="token operator">=</span> <span class="token keyword">nullptr</span><span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p>懒汉式是在第一次调用getInstance方法时才创建对象，所以是延迟加载的，但是如果多个线程同时调用getInstance方法，就会创建多个对象，所以是线程不安全的。</p>
+<ol>
+<li>懒汉式加锁</li>
+</ol>
+<pre class="line-numbers language-cpp" data-language="cpp"><code class="language-cpp"><span class="token keyword">class</span> <span class="token class-name">Singleton</span> <span class="token punctuation">&#123;</span>
+<span class="token keyword">private</span><span class="token operator">:</span>
+    <span class="token function">Singleton</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span><span class="token punctuation">&#125;</span>
+    <span class="token keyword">static</span> Singleton<span class="token operator">*</span> instance<span class="token punctuation">;</span>
+    <span class="token keyword">static</span> mutex mtx<span class="token punctuation">;</span>
+<span class="token keyword">public</span><span class="token operator">:</span>
+    <span class="token keyword">static</span> Singleton<span class="token operator">*</span> <span class="token function">getInstance</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+        <span class="token keyword">if</span> <span class="token punctuation">(</span>instance <span class="token operator">==</span> <span class="token keyword">nullptr</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+            mtx<span class="token punctuation">.</span><span class="token function">lock</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+            <span class="token keyword">if</span> <span class="token punctuation">(</span>instance <span class="token operator">==</span> <span class="token keyword">nullptr</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+                instance <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token function">Singleton</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+            <span class="token punctuation">&#125;</span>
+            mtx<span class="token punctuation">.</span><span class="token function">unlock</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token punctuation">&#125;</span>
+        <span class="token keyword">return</span> instance<span class="token punctuation">;</span>
+    <span class="token punctuation">&#125;</span>
+<span class="token punctuation">&#125;</span><span class="token punctuation">;</span>
+Singleton<span class="token operator">*</span> Singleton<span class="token double-colon punctuation">::</span>instance <span class="token operator">=</span> <span class="token keyword">nullptr</span><span class="token punctuation">;</span>
+mutex Singleton<span class="token double-colon punctuation">::</span>mtx<span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<h4 id="2-什么是工厂模式？"><a href="#2-什么是工厂模式？" class="headerlink" title="2. 什么是工厂模式？"></a>2. 什么是工厂模式？</h4><p>工厂模式是一种创建型设计模式，它使用工厂方法来创建对象，而不是通过直接实例化对象来完成。工厂模式有以下一些优点：</p>
+<ol>
+<li><p>将客户端代码与具体创建对象的代码解耦：客户端只需要知道统一的接口，而不必关心具体对象的创建和实现。</p>
+</li>
+<li><p>可以根据需要灵活地添加新产品：如果以后需要添加新的产品，只需要实现相应的产品类和工厂类就可以了，不需要修改客户端代码。</p>
+</li>
+<li><p>可以确保创建出来的对象都符合特定的规格、接口或标准：通过工厂方法创建对象，可以确保它们都符合预定的标准。</p>
+</li>
+<li><p>对象的创建可以集中管理：所有需要创建对象的地方都可以通过工厂方法获取创建的对象，这样可以更容易地对对象的创建过程进行管理和优化。</p>
+</li>
+</ol>
+<p>总的来说，工厂模式可以提高代码的灵活性、可维护性和可扩展性，更好地符合面向对象设计的封装和解耦原则。</p>
+<p>工厂模式的实现方式：</p>
+<ol>
+<li>简单工厂模式</li>
+</ol>
+<pre class="line-numbers language-cpp" data-language="cpp"><code class="language-cpp"><span class="token keyword">class</span> <span class="token class-name">Product</span> <span class="token punctuation">&#123;</span>
+<span class="token keyword">public</span><span class="token operator">:</span>
+    <span class="token keyword">virtual</span> <span class="token keyword">void</span> <span class="token function">show</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span>
+<span class="token punctuation">&#125;</span><span class="token punctuation">;</span>
+<span class="token keyword">class</span> <span class="token class-name">ProductA</span> <span class="token operator">:</span> <span class="token base-clause"><span class="token keyword">public</span> <span class="token class-name">Product</span></span> <span class="token punctuation">&#123;</span>
+<span class="token keyword">public</span><span class="token operator">:</span>
+    <span class="token keyword">void</span> <span class="token function">show</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+        cout <span class="token operator">&lt;&lt;</span> <span class="token string">"ProductA"</span> <span class="token operator">&lt;&lt;</span> endl<span class="token punctuation">;</span>
+    <span class="token punctuation">&#125;</span>
+<span class="token punctuation">&#125;</span><span class="token punctuation">;</span>
+<span class="token keyword">class</span> <span class="token class-name">ProductB</span> <span class="token operator">:</span> <span class="token base-clause"><span class="token keyword">public</span> <span class="token class-name">Product</span></span> <span class="token punctuation">&#123;</span>
+<span class="token keyword">public</span><span class="token operator">:</span>
+    <span class="token keyword">void</span> <span class="token function">show</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+        cout <span class="token operator">&lt;&lt;</span> <span class="token string">"ProductB"</span> <span class="token operator">&lt;&lt;</span> endl<span class="token punctuation">;</span>
+    <span class="token punctuation">&#125;</span>
+<span class="token punctuation">&#125;</span><span class="token punctuation">;</span>
+<span class="token keyword">class</span> <span class="token class-name">Factory</span> <span class="token punctuation">&#123;</span>
+<span class="token keyword">public</span><span class="token operator">:</span>
+    <span class="token keyword">static</span> Product<span class="token operator">*</span> <span class="token function">createProduct</span><span class="token punctuation">(</span>string type<span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+        <span class="token keyword">if</span> <span class="token punctuation">(</span>type <span class="token operator">==</span> <span class="token string">"A"</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+            <span class="token keyword">return</span> <span class="token keyword">new</span> <span class="token function">ProductA</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token punctuation">&#125;</span> <span class="token keyword">else</span> <span class="token keyword">if</span> <span class="token punctuation">(</span>type <span class="token operator">==</span> <span class="token string">"B"</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+            <span class="token keyword">return</span> <span class="token keyword">new</span> <span class="token function">ProductB</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token punctuation">&#125;</span>
+        <span class="token keyword">return</span> <span class="token keyword">nullptr</span><span class="token punctuation">;</span>
+    <span class="token punctuation">&#125;</span>
+<span class="token punctuation">&#125;</span><span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p>简单工厂模式的缺点是，如果需要添加新的产品，就需要修改工厂类的代码，违反了开闭原则。使用了比较多的ifelse语句，不易维护。</p>
+<ol>
+<li>工厂方法模式</li>
+</ol>
+<pre class="line-numbers language-cpp" data-language="cpp"><code class="language-cpp"><span class="token keyword">class</span> <span class="token class-name">Product</span> <span class="token punctuation">&#123;</span>
+<span class="token keyword">public</span><span class="token operator">:</span>
+    <span class="token keyword">virtual</span> <span class="token keyword">void</span> <span class="token function">show</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span>
+<span class="token punctuation">&#125;</span><span class="token punctuation">;</span>
+<span class="token keyword">class</span> <span class="token class-name">ProductA</span> <span class="token operator">:</span> <span class="token base-clause"><span class="token keyword">public</span> <span class="token class-name">Product</span></span> <span class="token punctuation">&#123;</span>
+<span class="token keyword">public</span><span class="token operator">:</span>
+    <span class="token keyword">void</span> <span class="token function">show</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+        cout <span class="token operator">&lt;&lt;</span> <span class="token string">"ProductA"</span> <span class="token operator">&lt;&lt;</span> endl<span class="token punctuation">;</span>
+    <span class="token punctuation">&#125;</span>
+<span class="token punctuation">&#125;</span><span class="token punctuation">;</span>
+<span class="token keyword">class</span> <span class="token class-name">ProductB</span> <span class="token operator">:</span> <span class="token base-clause"><span class="token keyword">public</span> <span class="token class-name">Product</span></span> <span class="token punctuation">&#123;</span>
+<span class="token keyword">public</span><span class="token operator">:</span>
+    <span class="token keyword">void</span> <span class="token function">show</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+        cout <span class="token operator">&lt;&lt;</span> <span class="token string">"ProductB"</span> <span class="token operator">&lt;&lt;</span> endl<span class="token punctuation">;</span>
+    <span class="token punctuation">&#125;</span>
+<span class="token punctuation">&#125;</span><span class="token punctuation">;</span>
+<span class="token keyword">class</span> <span class="token class-name">Factory</span> <span class="token punctuation">&#123;</span>
+<span class="token keyword">public</span><span class="token operator">:</span>
+    <span class="token keyword">virtual</span> Product<span class="token operator">*</span> <span class="token function">createProduct</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span>
+<span class="token punctuation">&#125;</span><span class="token punctuation">;</span>
+<span class="token keyword">class</span> <span class="token class-name">FactoryA</span> <span class="token operator">:</span> <span class="token base-clause"><span class="token keyword">public</span> <span class="token class-name">Factory</span></span> <span class="token punctuation">&#123;</span>
+<span class="token keyword">public</span><span class="token operator">:</span>
+    Product<span class="token operator">*</span> <span class="token function">createProduct</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+        <span class="token keyword">return</span> <span class="token keyword">new</span> <span class="token function">ProductA</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">&#125;</span>
+<span class="token punctuation">&#125;</span><span class="token punctuation">;</span>
+<span class="token keyword">class</span> <span class="token class-name">FactoryB</span> <span class="token operator">:</span> <span class="token base-clause"><span class="token keyword">public</span> <span class="token class-name">Factory</span></span> <span class="token punctuation">&#123;</span>
+<span class="token keyword">public</span><span class="token operator">:</span>
+    Product<span class="token operator">*</span> <span class="token function">createProduct</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+        <span class="token keyword">return</span> <span class="token keyword">new</span> <span class="token function">ProductB</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">&#125;</span>
+<span class="token punctuation">&#125;</span><span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p>工厂方法模式的优点：遵循了开闭原则，扩展性极强。比如现在要增加一个产品C，我们只需要增加一个创建C产品的工厂，这个工厂继承自抽象工厂即可，不需要改变原有代码，可维护性高。</p>
+<p>工厂方法模式的缺点：增加了类的数量，当有成千上万个类型的产品时，就需要有成千上万个工厂类来生产这些产品。</p>
+<ol>
+<li>抽象工厂模式</li>
+</ol>
+<pre class="line-numbers language-cpp" data-language="cpp"><code class="language-cpp"><span class="token keyword">class</span> <span class="token class-name">ProductA</span> <span class="token punctuation">&#123;</span>
+<span class="token keyword">public</span><span class="token operator">:</span>
+    <span class="token keyword">virtual</span> <span class="token keyword">void</span> <span class="token function">show</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span>
+<span class="token punctuation">&#125;</span><span class="token punctuation">;</span>
+<span class="token keyword">class</span> <span class="token class-name">ProductA1</span> <span class="token operator">:</span> <span class="token base-clause"><span class="token keyword">public</span> <span class="token class-name">ProductA</span></span> <span class="token punctuation">&#123;</span>
+<span class="token keyword">public</span><span class="token operator">:</span>
+    <span class="token keyword">void</span> <span class="token function">show</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+        cout <span class="token operator">&lt;&lt;</span> <span class="token string">"ProductA1"</span> <span class="token operator">&lt;&lt;</span> endl<span class="token punctuation">;</span>
+    <span class="token punctuation">&#125;</span>
+<span class="token punctuation">&#125;</span><span class="token punctuation">;</span>
+<span class="token keyword">class</span> <span class="token class-name">ProductA2</span> <span class="token operator">:</span> <span class="token base-clause"><span class="token keyword">public</span> <span class="token class-name">ProductA</span></span> <span class="token punctuation">&#123;</span>
+<span class="token keyword">public</span><span class="token operator">:</span>
+    <span class="token keyword">void</span> <span class="token function">show</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+        cout <span class="token operator">&lt;&lt;</span> <span class="token string">"ProductA2"</span> <span class="token operator">&lt;&lt;</span> endl<span class="token punctuation">;</span>
+    <span class="token punctuation">&#125;</span>
+<span class="token punctuation">&#125;</span><span class="token punctuation">;</span>
+<span class="token keyword">class</span> <span class="token class-name">ProductB</span> <span class="token punctuation">&#123;</span>
+<span class="token keyword">public</span><span class="token operator">:</span>
+    <span class="token keyword">virtual</span> <span class="token keyword">void</span> <span class="token function">show</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span>
+<span class="token punctuation">&#125;</span><span class="token punctuation">;</span>
+<span class="token keyword">class</span> <span class="token class-name">ProductB1</span> <span class="token operator">:</span> <span class="token base-clause"><span class="token keyword">public</span> <span class="token class-name">ProductB</span></span> <span class="token punctuation">&#123;</span>
+<span class="token keyword">public</span><span class="token operator">:</span>
+    <span class="token keyword">void</span> <span class="token function">show</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+        cout <span class="token operator">&lt;&lt;</span> <span class="token string">"ProductB1"</span> <span class="token operator">&lt;&lt;</span> endl<span class="token punctuation">;</span>
+    <span class="token punctuation">&#125;</span>
+<span class="token punctuation">&#125;</span><span class="token punctuation">;</span>
+<span class="token keyword">class</span> <span class="token class-name">ProductB2</span> <span class="token operator">:</span> <span class="token base-clause"><span class="token keyword">public</span> <span class="token class-name">ProductB</span></span> <span class="token punctuation">&#123;</span>
+<span class="token keyword">public</span><span class="token operator">:</span>
+    <span class="token keyword">void</span> <span class="token function">show</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+        cout <span class="token operator">&lt;&lt;</span> <span class="token string">"ProductB2"</span> <span class="token operator">&lt;&lt;</span> endl<span class="token punctuation">;</span>
+    <span class="token punctuation">&#125;</span>
+<span class="token punctuation">&#125;</span><span class="token punctuation">;</span>
+<span class="token keyword">class</span> <span class="token class-name">Factory</span> <span class="token punctuation">&#123;</span>
+<span class="token keyword">public</span><span class="token operator">:</span>
+    <span class="token keyword">virtual</span> ProductA<span class="token operator">*</span> <span class="token function">createProductA</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span>
+    <span class="token keyword">virtual</span> ProductB<span class="token operator">*</span> <span class="token function">createProductB</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span>
+<span class="token punctuation">&#125;</span><span class="token punctuation">;</span>
+<span class="token keyword">class</span> <span class="token class-name">Factory1</span> <span class="token operator">:</span> <span class="token base-clause"><span class="token keyword">public</span> <span class="token class-name">Factory</span></span> <span class="token punctuation">&#123;</span>
+<span class="token keyword">public</span><span class="token operator">:</span>
+    ProductA<span class="token operator">*</span> <span class="token function">createProductA</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+        <span class="token keyword">return</span> <span class="token keyword">new</span> <span class="token function">ProductA1</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">&#125;</span>
+    ProductB<span class="token operator">*</span> <span class="token function">createProductB</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+        <span class="token keyword">return</span> <span class="token keyword">new</span> <span class="token function">ProductB1</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">&#125;</span>
+<span class="token punctuation">&#125;</span><span class="token punctuation">;</span>
+<span class="token keyword">class</span> <span class="token class-name">Factory2</span> <span class="token operator">:</span> <span class="token base-clause"><span class="token keyword">public</span> <span class="token class-name">Factory</span></span> <span class="token punctuation">&#123;</span>
+<span class="token keyword">public</span><span class="token operator">:</span>
+    ProductA<span class="token operator">*</span> <span class="token function">createProductA</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+        <span class="token keyword">return</span> <span class="token keyword">new</span> <span class="token function">ProductA2</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">&#125;</span>
+    ProductB<span class="token operator">*</span> <span class="token function">createProductB</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+        <span class="token keyword">return</span> <span class="token keyword">new</span> <span class="token function">ProductB2</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">&#125;</span>
+<span class="token punctuation">&#125;</span><span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p>抽象工厂模式把产品子类进行分组，同组中的不同产品由同一个工厂子类的不同方法负责创建，从而减少了工厂子类的数量。</p>
+<h3 id="求职过程"><a href="#求职过程" class="headerlink" title="求职过程"></a>求职过程</h3><h4 id="实习"><a href="#实习" class="headerlink" title="实习"></a>实习</h4><ol>
 <li>实习简历投递的第一家公司是pdd，开的早，就直接投了。但是时间跟别的事情冲突了没有做笔试，寄。</li>
 <li>第二家是百度，这次做了笔试，无消息，进池子了。</li>
+<li>小红书 泡池子。。。。</li>
+<li>地平线 简历寄</li>
+<li>华为 免笔试了 5.10号面试</li>
+<li>招行信用卡 没做笔试</li>
+<li>荣耀 笔试做了 5.8一面<blockquote>
+<p>项目 问了十五分钟<br> 五分钟 八股<br> c++面向对象的三大特性？封装，继承和多态 分别详细展开说一下？<br> 父类子类构造函数和析构函数的调用顺序？构造函数先调用父类的，然后调用子类的，析构函数相反<br> STL map list和vector的区别<br> 了解过智能指针吗？了解过 没用过 不问了？？？<br> 多线程怎么解决资源冲突的问题？ 锁和信号量 接着不问了？？？<br> 用过什么设计模式？了解过 没用过 又不问了？？？<br> 感觉面试官问完项目之后就不太感兴趣了。。。。</p>
+</blockquote>
+</li>
+<li>美团 笔试寄</li>
 </ol>
 
                 
