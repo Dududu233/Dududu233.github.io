@@ -1285,7 +1285,7 @@ thead {
 .chip-container .tag-chips {
     margin: 1rem auto 0.5rem;
     max-width: 850px;
-    text-align: center;
+    text-align: left;
 }
 
 .chip-container .tags-posts {
