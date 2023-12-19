@@ -378,6 +378,13 @@
   </url>
   
   <url>
+    <loc>https://blog.ylee.cn/tags/tech/</loc>
+    <lastmod>2023-12-19</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
     <loc>https://blog.ylee.cn/tags/ATAC/</loc>
     <lastmod>2023-12-19</lastmod>
     <changefreq>weekly</changefreq>
@@ -386,13 +393,6 @@
   
   <url>
     <loc>https://blog.ylee.cn/tags/scATAC-seq/</loc>
-    <lastmod>2023-12-19</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
-    <loc>https://blog.ylee.cn/tags/tech/</loc>
     <lastmod>2023-12-19</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>

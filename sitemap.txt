@@ -40,9 +40,9 @@ https://blog.ylee.cn/tags/index.html
 https://blog.ylee.cn/categories/index.html
 https://blog.ylee.cn/
 https://blog.ylee.cn/tags/normaldays/
+https://blog.ylee.cn/tags/tech/
 https://blog.ylee.cn/tags/ATAC/
 https://blog.ylee.cn/tags/scATAC-seq/
-https://blog.ylee.cn/tags/tech/
 https://blog.ylee.cn/tags/C/
 https://blog.ylee.cn/tags/GDB/
 https://blog.ylee.cn/tags/leetcode/
