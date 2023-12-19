@@ -4,6 +4,60 @@
   
     
     <entry>
+      <title>走向何处</title>
+      <link href="/2023/12/19/wherewego/"/>
+      <url>/2023/12/19/wherewego/</url>
+      
+        <content type="html"><![CDATA[<p>在地铁上坐着，想起了自己之前在北京的一段时间。</p><p>当时我租住在沙河高教园附近的一个小公寓里，每天挤昌平线转十三号线去市里做社会实践。<br>可是地铁站离我住的地方还有一点八公里。中间有一段路没有路灯，黑乎乎的行道树张牙舞爪，随时准备吞掉对帝都不敬的僭越者。大国气象也许就是如此，巍巍的城墙投下了一片片的阴影。<br>走过这段路时，总想起自己一个人身处异地他乡，心里一阵阵的犯怵。因此每天晚上回住处时，最纠结的事情是要不要打个车回住处——因为这真的很奢侈。从大栅栏到沙河也就十块钱的票价，但是这一小段打车就要十五块钱。十五块钱能在租住的小公寓里买一份番茄鸡蛋盖饭。比起为滴滴打车做贡献，我还是喜欢带着锅气的煎蛋在夜里给自己带来的慰藉。</p><p>今天跟在北京实习了一段时间的室友又聊起来了这件事。我说我这辈子都不想再去北京了。室友说是因为我没有钱，有钱的北京就是纸醉金迷没有烦恼的帝都，没钱的北京是沙丁鱼罐头一样人挤人的巢都。我想也是的———二环胡同角落里的涮羊肉蘸麻酱已经是难得的美食，更别提哪怕是钝感如我这样的人在打车路过笔直宽阔的长安街也会有种旧时王谢堂前燕的错觉。</p><p>这种雄心持续到晚上听说了噩耗。</p><p>成年人的世界从来没有哪怕一刻钟的休息。在车上匆匆的听说了这个消息，就又要马上前行。站在地铁站口打电话关心我妈的精神状态，但又钝感到根本没发现自己的精神状态先开始失常了。<br>所以哪怕是飞进寻常百姓家了又如何？又想到跟室友说的玩笑话，活一天就是赚一天。没想到一语成谶。</p><p>死亡是夏天的积雨云，慢慢的堆积，雷声在轰轰，可当闪电劈到自己头上的一刹那，心瞬间烧成焦炭。而情绪的累积像尿酸结晶，逐渐的析出，晶体在生长，刺进骨肉，扎入神经。红肿只是外在，而更深层的神经也已糜烂不堪。</p><p>听妈妈说，已经不省人事的大舅在听到孙女外孙在床前呼唤时，也从眼角流下了泪。新老交替的规律在病房中显露出来。按照农村的规矩，红事不请不到，白事不请自到。孝子要为逝者送三次汤，净面，发丧。从一七到五七再到百日，次次祭奠。我们隆重的纪念，是因为生命如此的珍贵，应当善始善终。</p><p>所以珍贵的生命究竟该走向何处？<br>逝者已逝。但是活着的人，难免物伤其类。</p>]]></content>
+      
+      
+      <categories>
+          
+          <category> 日日谈 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> normaldays </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>summary of scATAC related papers</title>
+      <link href="/2023/08/03/ATAC/"/>
+      <url>/2023/08/03/ATAC/</url>
+      
+        <content type="html"><![CDATA[<p>补充阅读一些关于ATAC的论文</p><h4 id="snapATAC"><a href="#snapATAC" class="headerlink" title="snapATAC"></a>snapATAC</h4><h5 id="1-introduction"><a href="#1-introduction" class="headerlink" title="1. introduction"></a>1. introduction</h5><p>The current analysis methods often require performing linear dimensionality reduction. In addition, the unsupervised identification of cell types or states in complex tissues using scATAC-seq dataset does not have the same degree of sensitivity as that from scRNA-seq.A sufficient number of single-cell profiles would be required to create robust aggregate signal for creating the peak reference.<br>To overcome these limitations, a software package, Single Nucleus Analysis Pipeline for ATAC-seq—SnapATAC is developed, that does not require population-level peak annotation prior to clustering.</p><h5 id="2-results"><a href="#2-results" class="headerlink" title="2. results"></a>2. results</h5><p>input: binary cell-by-bin matrix with a resolution of 5kb </p><p>SnapATAC provides several useful features:</p><ol><li><p>embedding<br>Nyström method:(1) it computes the low-dimension embedding for a subset of selected cells (also known as landmarks); (2) it projects the remaining cells to the embedding structure learned from the landmarks.</p><ul><li>shortcoming:Nyström method is stochastic and could yield different clustering results in each sampling.</li></ul><p>To overcome this limitation, a consensus approach is used that combines a mixture of low-dimensional manifolds learned from different sets of sampling.</p></li><li>annotation to the clustering result </li><li>indentification of the candidate regulatory elements</li><li>link candidate regulatory elements to their putative target genes</li><li>construct cellular trajectories from single-cell ATAC-seq</li></ol><p>They compared the snapATAC methods with other published scATAC-seq analysis methods, which is quantified by both ARI and NMI. Also some experiments are performed to evaluate the robustness of snapATAC.</p><p><img src="https://tuchuang-1307891532.cos.ap-nanjing.myqcloud.com/images/20230803151319.png" alt="The comparation of snapATAC and other scATAC-seq analysis methods"></p><p>They thought that the improvment performence of snapATAAC comes from that it considers all reads from each cell.</p><h5 id="3-discussion"><a href="#3-discussion" class="headerlink" title="3. discussion"></a>3. discussion</h5><ol><li>snapATAC is a useful tool for analyzing scATAC-seq data.</li><li>snapATAC dosen’t require population-level peak annotation prior to clustering.</li><li>snapATAC is applied to newly generated scATAC-seq datasets from mouse brain and human PBMCs and the results are consistent with the known cell types.</li></ol><h5 id="4-method"><a href="#4-method" class="headerlink" title="4. method"></a>4. method</h5><p>data processing:<br>The very origin input for snapATAC is the fastq files. The fastq files are processed by flloing steps: 1. add barcodes and demultiplexing, 2. reads alignment with bwa and sorted by reads name with samtools, 3. QC and reads filtering(don’t know anything about this part), 4. barcode filtering: filter cells by number of unique fragments and the fragments in promoter ratio, 5. bin filtering with blaklist from ENCODE, 6. binarization: convert the binary cell-by-bin matrix with a resolution of 5kb.<br>data file format: <a href="https://github.com/r3fang/SnapTools/blob/master/docs/snap_format.docx">snap-file</a>.</p><p>They carried experiments to different bin size matrix from 1kb to 10kb, and they choose 5kbas the default bin width for the analysis.</p><p>As for dimension reduction, they used the Nyström method to compute the low-dimension embedding for a subset of selected cells (also known as landmarks); it projects the remaining cells to the embedding structure learned from the landmarks. The number of landmarks is set to 1000 by default. The number of nearest neighbors is set to 15 by default(the proof process will be added in future). </p><h4 id="simATAC"><a href="#simATAC" class="headerlink" title="simATAC"></a>simATAC</h4><h4 id="From-reads-to-insight-a-hitchhiker’s-guide-to-ATAC-seq-data-analysis"><a href="#From-reads-to-insight-a-hitchhiker’s-guide-to-ATAC-seq-data-analysis" class="headerlink" title="From reads to insight: a hitchhiker’s guide to ATAC-seq data analysis"></a>From reads to insight: a hitchhiker’s guide to ATAC-seq data analysis</h4><h4 id="Assessment-of-computational-methods-for-the-analysis-of-single-cell-ATAC-seq-data"><a href="#Assessment-of-computational-methods-for-the-analysis-of-single-cell-ATAC-seq-data" class="headerlink" title="Assessment of computational methods for the analysis of single-cell ATAC-seq data"></a>Assessment of computational methods for the analysis of single-cell ATAC-seq data</h4>]]></content>
+      
+      
+      <categories>
+          
+          <category> 论文总结 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> tech </tag>
+            
+            <tag> ATAC </tag>
+            
+            <tag> scATAC-seq </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>时间静止</title>
       <link href="/2023/06/16/timestop/"/>
       <url>/2023/06/16/timestop/</url>
@@ -139,7 +193,7 @@
       <link href="/2022/11/30/2022-2023/"/>
       <url>/2022/11/30/2022-2023/</url>
       
-        <content type="html"><![CDATA[<p>不读博士的话，在创新港的日子就可以掰着指头算啦。<br>行事奔流不息，切记流连。</p><h4 id="11-30-创新港2022年的初雪"><a href="#11-30-创新港2022年的初雪" class="headerlink" title="11.30 创新港2022年的初雪"></a>11.30 创新港2022年的初雪</h4><blockquote><p>应是天仙狂醉，乱把白云揉碎。</p></blockquote><div><iframe style="border-radius:12px" src="//music.163.com/outchain/player?type=2&id=480751&auto=1&height=66" width="100%" height="80" frameBorder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe></div><p><img src="https://tuchuang-1307891532.cos.ap-nanjing.myqcloud.com/images/fef2c20b14a5ae42ce58d2fd505598ce.jpg" alt="今日最佳！看雪还是得在朋友圈。"></p><div style="position: relative; width: 100%; height: 0; padding-bottom: 60%;"><iframe src="https://tuchuang-1307891532.cos.ap-nanjing.myqcloud.com/videos/5e7bab7e222a657596c19e04ea54253e.mp4" scrolling="no" border="0" frameborder="no" framespacing="0" allowfullscreen="true" style="position: absolute; width: 100%; height: 100%; left: 0; top: 0;"> </iframe></div>]]></content>
+        <content type="html"><![CDATA[<p>不读博士的话，在创新港的日子就可以掰着指头算啦。<br>行事奔流不息，切记流连。</p><h4 id="2022-11-30-创新港2022年的初雪"><a href="#2022-11-30-创新港2022年的初雪" class="headerlink" title="2022.11.30 创新港2022年的初雪"></a>2022.11.30 创新港2022年的初雪</h4><blockquote><p>应是天仙狂醉，乱把白云揉碎。</p></blockquote><div><iframe style="border-radius:12px" src="//music.163.com/outchain/player?type=2&id=480751&auto=1&height=66" width="100%" height="80" frameBorder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe></div><p><img src="https://tuchuang-1307891532.cos.ap-nanjing.myqcloud.com/images/fef2c20b14a5ae42ce58d2fd505598ce.jpg" alt="今日最佳！看雪还是得在朋友圈。"></p><div style="position: relative; width: 100%; height: 0; padding-bottom: 60%;"><iframesrc="https://tuchuang-1307891532.cos.ap-nanjing.myqcloud.com/videos/5e7bab7e222a657596c19e04ea54253e.mp4" scrolling="no" border="0"frameborder="no" framespacing="0" allowfullscreen="true" style="position: absolute; width: 100%;height: 100%; left: 0; top: 0;"> </iframe></div><h4 id="2023-11-11-创新港2023年的初雪"><a href="#2023-11-11-创新港2023年的初雪" class="headerlink" title="2023.11.11 创新港2023年的初雪"></a>2023.11.11 创新港2023年的初雪</h4><blockquote><p>续费啦，又能继续看港里的一年四季了。</p></blockquote><p><img src="https://tuchuang-1307891532.cos.ap-nanjing.myqcloud.com/images/1.jpg" alt="1"></p>]]></content>
       
       
       <categories>

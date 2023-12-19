@@ -6,7 +6,7 @@
   <link href="https://blog.ylee.cn/atom.xml" rel="self"/>
   
   <link href="https://blog.ylee.cn/"/>
-  <updated>2023-07-24T12:53:17.392Z</updated>
+  <updated>2023-12-19T07:36:12.105Z</updated>
   <id>https://blog.ylee.cn/</id>
   
   <author>
@@ -15,6 +15,62 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>走向何处</title>
+    <link href="https://blog.ylee.cn/2023/12/19/wherewego/"/>
+    <id>https://blog.ylee.cn/2023/12/19/wherewego/</id>
+    <published>2023-12-19T07:34:28.000Z</published>
+    <updated>2023-12-19T07:36:12.105Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;p&gt;在地铁上坐着，想起了自己之前在北京的一段时间。&lt;/p&gt;
+&lt;p&gt;当时我租住在沙河高教园附近的一个小公寓里，每天挤昌平线转十三号线去市里做社会实践。&lt;br&gt;可是地铁站离我住的地方还有一点八公里。中间有一段路没有路灯，黑乎乎的行道树张牙舞爪，随时准备吞掉对帝都不敬的僭越者。大国气</summary>
+        
+      
+    
+    
+    
+    <category term="日日谈" scheme="https://blog.ylee.cn/categories/%E6%97%A5%E6%97%A5%E8%B0%88/"/>
+    
+    
+    <category term="normaldays" scheme="https://blog.ylee.cn/tags/normaldays/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>summary of scATAC related papers</title>
+    <link href="https://blog.ylee.cn/2023/08/03/ATAC/"/>
+    <id>https://blog.ylee.cn/2023/08/03/ATAC/</id>
+    <published>2023-08-03T02:17:22.000Z</published>
+    <updated>2023-08-04T03:13:04.563Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;p&gt;补充阅读一些关于ATAC的论文&lt;/p&gt;
+&lt;h4 id=&quot;snapATAC&quot;&gt;&lt;a href=&quot;#snapATAC&quot; class=&quot;headerlink&quot; title=&quot;snapATAC&quot;&gt;&lt;/a&gt;snapATAC&lt;/h4&gt;&lt;h5</summary>
+        
+      
+    
+    
+    
+    <category term="论文总结" scheme="https://blog.ylee.cn/categories/%E8%AE%BA%E6%96%87%E6%80%BB%E7%BB%93/"/>
+    
+    
+    <category term="tech" scheme="https://blog.ylee.cn/tags/tech/"/>
+    
+    <category term="ATAC" scheme="https://blog.ylee.cn/tags/ATAC/"/>
+    
+    <category term="scATAC-seq" scheme="https://blog.ylee.cn/tags/scATAC-seq/"/>
+    
+  </entry>
   
   <entry>
     <title>时间静止</title>
@@ -158,7 +214,7 @@
     <link href="https://blog.ylee.cn/2022/11/30/2022-2023/"/>
     <id>https://blog.ylee.cn/2022/11/30/2022-2023/</id>
     <published>2022-11-30T12:13:39.000Z</published>
-    <updated>2022-11-30T13:03:27.012Z</updated>
+    <updated>2023-11-28T07:39:47.969Z</updated>
     
     
       
@@ -166,7 +222,7 @@
         
         
     <summary type="html">&lt;p&gt;不读博士的话，在创新港的日子就可以掰着指头算啦。&lt;br&gt;行事奔流不息，切记流连。&lt;/p&gt;
-&lt;h4 id=&quot;11-30-创新港2022年的初雪&quot;&gt;&lt;a href=&quot;#11-30-创新港2022年的初雪&quot; class=&quot;headerlink&quot; title=&quot;11.30</summary>
+&lt;h4 id=&quot;2022-11-30-创新港2022年的初雪&quot;&gt;&lt;a href=&quot;#2022-11-30-创新港2022年的初雪&quot; class=&quot;headerlink&quot;</summary>
         
       
     
@@ -487,57 +543,6 @@
     
     
     <category term="tech" scheme="https://blog.ylee.cn/tags/tech/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>无题的信</title>
-    <link href="https://blog.ylee.cn/2022/08/06/%E6%97%A0%E9%A2%98%E7%9A%84%E4%BF%A1/"/>
-    <id>https://blog.ylee.cn/2022/08/06/%E6%97%A0%E9%A2%98%E7%9A%84%E4%BF%A1/</id>
-    <published>2022-08-06T13:47:51.000Z</published>
-    <updated>2022-09-29T15:16:03.037Z</updated>
-    
-    
-      
-      
-        
-        
-    <summary type="html">&lt;div&gt;
-&lt;iframe style=&quot;border-radius:12px&quot; src=&quot;https://open.spotify.com/embed/track/3pxh8Z4hb3kTdZ3vxTEMLT?utm_source=generator&quot;</summary>
-        
-      
-    
-    
-    
-    <category term="日日谈" scheme="https://blog.ylee.cn/categories/%E6%97%A5%E6%97%A5%E8%B0%88/"/>
-    
-    
-    <category term="normaldays" scheme="https://blog.ylee.cn/tags/normaldays/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>排序算法</title>
-    <link href="https://blog.ylee.cn/2022/08/04/%E6%8E%92%E5%BA%8F%E7%AE%97%E6%B3%95/"/>
-    <id>https://blog.ylee.cn/2022/08/04/%E6%8E%92%E5%BA%8F%E7%AE%97%E6%B3%95/</id>
-    <published>2022-08-04T14:50:34.000Z</published>
-    <updated>2022-09-19T09:28:08.609Z</updated>
-    
-    
-      
-      
-        
-        
-    <summary type="html">&lt;h3 id=&quot;排序&quot;&gt;&lt;a href=&quot;#排序&quot; class=&quot;headerlink&quot; title=&quot;排序&quot;&gt;&lt;/a&gt;排序&lt;/h3&gt;&lt;h4 id=&quot;冒泡排序&quot;&gt;&lt;a href=&quot;#冒泡排序&quot; class=&quot;headerlink&quot;</summary>
-        
-      
-    
-    
-    
-    <category term="刷题赎罪" scheme="https://blog.ylee.cn/categories/%E5%88%B7%E9%A2%98%E8%B5%8E%E7%BD%AA/"/>
-    
-    
-    <category term="leetcode" scheme="https://blog.ylee.cn/tags/leetcode/"/>
     
   </entry>
   
