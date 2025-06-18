@@ -396,13 +396,6 @@
   </url>
   
   <url>
-    <loc>https://blog.ylee.cn/tags/tech/</loc>
-    <lastmod>2025-06-18</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
     <loc>https://blog.ylee.cn/tags/ATAC/</loc>
     <lastmod>2025-06-18</lastmod>
     <changefreq>weekly</changefreq>
@@ -411,6 +404,13 @@
   
   <url>
     <loc>https://blog.ylee.cn/tags/scATAC-seq/</loc>
+    <lastmod>2025-06-18</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>https://blog.ylee.cn/tags/tech/</loc>
     <lastmod>2025-06-18</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
