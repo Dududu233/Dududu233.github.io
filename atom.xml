@@ -6,7 +6,7 @@
   <link href="https://blog.ylee.cn/atom.xml" rel="self"/>
   
   <link href="https://blog.ylee.cn/"/>
-  <updated>2023-12-19T07:36:12.105Z</updated>
+  <updated>2025-06-18T03:16:18.895Z</updated>
   <id>https://blog.ylee.cn/</id>
   
   <author>
@@ -15,6 +15,57 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>既然巅峰留不住，那就重走来时路！</title>
+    <link href="https://blog.ylee.cn/2025/06/18/retracingthepath/"/>
+    <id>https://blog.ylee.cn/2025/06/18/retracingthepath/</id>
+    <published>2025-06-18T01:48:49.000Z</published>
+    <updated>2025-06-18T03:16:18.895Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;h3 id=&quot;动机&quot;&gt;&lt;a href=&quot;#动机&quot; class=&quot;headerlink&quot; title=&quot;动机&quot;&gt;&lt;/a&gt;动机&lt;/h3&gt;&lt;p&gt;跟室友丁神聊完之后，感到了深深的peer</summary>
+        
+      
+    
+    
+    
+    <category term="刷题赎罪" scheme="https://blog.ylee.cn/categories/%E5%88%B7%E9%A2%98%E8%B5%8E%E7%BD%AA/"/>
+    
+    
+    <category term="leetcode" scheme="https://blog.ylee.cn/tags/leetcode/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>新年快乐V2.0！</title>
+    <link href="https://blog.ylee.cn/2024/01/09/2024/"/>
+    <id>https://blog.ylee.cn/2024/01/09/2024/</id>
+    <published>2024-01-09T07:38:57.000Z</published>
+    <updated>2024-01-09T11:57:50.766Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;div&gt;
+&lt;iframe style=&quot;border-radius:12px&quot; src=&quot;//music.163.com/outchain/player?type=2&amp;id=22197007&amp;auto=1&amp;height=66&quot; width=&quot;100%&quot; height=&quot;80&quot;</summary>
+        
+      
+    
+    
+    
+    <category term="日日谈" scheme="https://blog.ylee.cn/categories/%E6%97%A5%E6%97%A5%E8%B0%88/"/>
+    
+    
+    <category term="normaldays" scheme="https://blog.ylee.cn/tags/normaldays/"/>
+    
+  </entry>
   
   <entry>
     <title>走向何处</title>
@@ -64,11 +115,11 @@
     <category term="论文总结" scheme="https://blog.ylee.cn/categories/%E8%AE%BA%E6%96%87%E6%80%BB%E7%BB%93/"/>
     
     
-    <category term="tech" scheme="https://blog.ylee.cn/tags/tech/"/>
-    
     <category term="ATAC" scheme="https://blog.ylee.cn/tags/ATAC/"/>
     
     <category term="scATAC-seq" scheme="https://blog.ylee.cn/tags/scATAC-seq/"/>
+    
+    <category term="tech" scheme="https://blog.ylee.cn/tags/tech/"/>
     
   </entry>
   
@@ -492,57 +543,6 @@
     
     
     <category term="normaldays" scheme="https://blog.ylee.cn/tags/normaldays/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>前缀和与差分数组</title>
-    <link href="https://blog.ylee.cn/2022/08/17/%E5%89%8D%E7%BC%80%E5%92%8C%E4%B8%8E%E5%B7%AE%E5%88%86%E6%95%B0%E7%BB%84/"/>
-    <id>https://blog.ylee.cn/2022/08/17/%E5%89%8D%E7%BC%80%E5%92%8C%E4%B8%8E%E5%B7%AE%E5%88%86%E6%95%B0%E7%BB%84/</id>
-    <published>2022-08-17T08:27:40.000Z</published>
-    <updated>2022-09-19T09:28:26.586Z</updated>
-    
-    
-      
-      
-        
-        
-    <summary type="html">&lt;p&gt;今天在看东哥的算法笔记时学习了两个以空间换时间的算法技巧，前缀和和差分数组。但是在刷题的时候不以为然，多层for循环走天下，直到测例超时才幡然醒悟，悔之晚矣呀！&lt;br&gt;但是还是不得不吐槽一下，leetcode的某些测试用例……&lt;/p&gt;
-&lt;p&gt;&lt;img</summary>
-        
-      
-    
-    
-    
-    <category term="刷题赎罪" scheme="https://blog.ylee.cn/categories/%E5%88%B7%E9%A2%98%E8%B5%8E%E7%BD%AA/"/>
-    
-    
-    <category term="leetcode" scheme="https://blog.ylee.cn/tags/leetcode/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Gated PixelCNN小结</title>
-    <link href="https://blog.ylee.cn/2022/08/15/Gated-PixelCNN%E5%B0%8F%E7%BB%93/"/>
-    <id>https://blog.ylee.cn/2022/08/15/Gated-PixelCNN%E5%B0%8F%E7%BB%93/</id>
-    <published>2022-08-15T07:43:27.000Z</published>
-    <updated>2022-10-24T11:32:49.486Z</updated>
-    
-    
-      
-      
-        
-        
-    <summary type="html">&lt;h4 id=&quot;Gated-PixelCNN&quot;&gt;&lt;a href=&quot;#Gated-PixelCNN&quot; class=&quot;headerlink&quot; title=&quot;Gated PixelCNN&quot;&gt;&lt;/a&gt;Gated</summary>
-        
-      
-    
-    
-    
-    <category term="论文总结" scheme="https://blog.ylee.cn/categories/%E8%AE%BA%E6%96%87%E6%80%BB%E7%BB%93/"/>
-    
-    
-    <category term="tech" scheme="https://blog.ylee.cn/tags/tech/"/>
     
   </entry>
   
